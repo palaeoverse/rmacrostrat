@@ -1,25 +1,15 @@
 #' Fetch data from Macrostrat
-#' 
+#'
 #' This function fetches data from [Macrostrat](https://macrostrat.org)
 #' via the Application Programming Interface (API). This is the core
 #' function for handling user requests.
-#' 
-#' @return User requested data, either a:
-#'    \item{data.frame}{}
-#'    \item{rast}{}
-#' 
+#'
+#' @return User requested data, either a \code{data.frame} or...
 #' @importFrom jsonlite fromJSON
 #' @importFrom httr GET content
 #' @importFrom curl nslookup
-#' 
-#' @examples
-#' path <- "defs/intervals?format=csv&timescale="
-#' query <- "International Periods"
-#' fetch_macrostrat(path = path, query = query, format = "csv")
-#' @export
-fetch_macrostrat <- function(path, query = NULL, format = "csv", ...) {
-  # Define root of API
-  root <- "https://macrostrat.org/api/"
+#' @importFrom geojsonsf geojson_sf
+GET_macrostrat <- function(path, query = NULL, format = "csv", ...) {
   # Is Macrostrat and user online?
   tryCatch(
     {
@@ -29,7 +19,7 @@ fetch_macrostrat <- function(path, query = NULL, format = "csv", ...) {
       stop("Macrostrat is unavailable or you have no internet connection.")
     })
   # Build url
-  request <- paste0(root, path, query)
+  request <- paste0(root(), api_ver(), path, query)
   request <- gsub(" ", "%20", request)
   # Fetch data
   dat <- GET(url = request)
@@ -37,10 +27,12 @@ fetch_macrostrat <- function(path, query = NULL, format = "csv", ...) {
   if (format == "csv") {
     dat <- data.frame(content(dat, as = "parsed", encoding = "UTF-8",
                               show_col_types = FALSE))
-  }
-  else if (format == "json") {
+  } else if (format == "json") {
     dat <- content(dat, as = "text", encoding = "UTF-8")
     dat <- fromJSON(dat)
+  } else if (format == "geojson") {
+    dat <- content(dat, as = "parsed", encoding = "UTF-8")
+    dat <- geojson_sf(dat)
   }
   # Return data
   return(dat)
