@@ -61,16 +61,20 @@ get_lithology <- function(x = NULL, by = "name", available = FALSE) {
   var <- by
   # Get available lithologies
   if (available) {
-    x <- get_available_content(x = x, path = path, query = query,
-                               var = var, available = TRUE)
+    x <- get_available_content(
+      x = x, path = path, query = query,
+      var = var, available = TRUE
+    )
     # Remove no-content
     x <- x[which(x != "")]
     return(x)
   }
   # Check and match content if x is required
   if (!is.null(x)) {
-    x <- get_available_content(x = x, path = path, query = query,
-                               var = by, available = FALSE)
+    x <- get_available_content(
+      x = x, path = path, query = query,
+      var = by, available = FALSE
+    )
   }
   # Get user request
   # if x required, filter

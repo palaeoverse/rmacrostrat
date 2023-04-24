@@ -62,7 +62,7 @@ get_stats <- function(x = NULL, available = FALSE) {
   }
   # Filter data if requested
   if (!is.null(x)) {
-    if(!x %in% dat$project) {
+    if (!x %in% dat$project) {
       stop("`x` not available. Set `available` to TRUE to see options.")
     }
     dat <- dat[which(dat$project == x), ]

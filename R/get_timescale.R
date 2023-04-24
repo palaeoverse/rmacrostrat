@@ -51,15 +51,19 @@ get_timescale <- function(x = "international ages", available = FALSE) {
 
   # Check which scales are available
   if (available) {
-    x <- get_available_content(x = x, path = path,
-                               query = query,
-                               var = var,
-                               available = TRUE)
+    x <- get_available_content(
+      x = x, path = path,
+      query = query,
+      var = var,
+      available = TRUE
+    )
     return(x)
   } else {
     # Get matched content
-    x <- get_available_content(x = x, path = path, query = query,
-                               var = var, available = FALSE)
+    x <- get_available_content(
+      x = x, path = path, query = query,
+      var = var, available = FALSE
+    )
   }
 
   # Get user request
@@ -68,9 +72,11 @@ get_timescale <- function(x = "international ages", available = FALSE) {
   dat <- GET_macrostrat(path = path, query = query)
 
   # Clean up data (should we be cleaning up data?)
-  dat <- dat[, -which(colnames(dat) %in% c("int_id",
-                                           "int_type",
-                                           "timescales"))]
+  dat <- dat[, -which(colnames(dat) %in% c(
+    "int_id",
+    "int_type",
+    "timescales"
+  ))]
   # Add abbreviation if it doesn't exist
   if (any(is.na(dat$abbrev))) {
     dat$abbrev <- abbreviate(names.arg = dat$name, minlength = 2)

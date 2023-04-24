@@ -72,8 +72,10 @@ get_available_content <- function(x = NULL, path = NULL, query = NULL,
   mch <- charmatch(x = x, table = content)
   # No match
   if (is.na(mch)) {
-    stop(paste(x, "not found.",
-    "Set `available` to TRUE to return available content."))
+    stop(paste(
+      x, "not found.",
+      "Set `available` to TRUE to return available content."
+    ))
   }
   # Use matched scale
   if (mch != 0) {

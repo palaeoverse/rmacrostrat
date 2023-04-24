@@ -36,12 +36,15 @@ GET_macrostrat <- function(path, query = list()) {
     },
     error = function(e) {
       stop("Macrostrat is unavailable or you have no internet connection.")
-    })
+    }
+  )
   # Build path route
   path <- paste0(api_ver(), path)
   # Fetch data
-  dat <- GET(url = root(), path = path,
-             query = query)
+  dat <- GET(
+    url = root(), path = path,
+    query = query
+  )
   # Check for error
   e <- http_error(dat)
   if (e) {
@@ -49,8 +52,10 @@ GET_macrostrat <- function(path, query = list()) {
   }
   # Extract content
   if (query["format"] == "csv") {
-    dat <- data.frame(content(dat, as = "parsed", encoding = "UTF-8",
-                              show_col_types = FALSE))
+    dat <- data.frame(content(dat,
+      as = "parsed", encoding = "UTF-8",
+      show_col_types = FALSE
+    ))
   } else if (query["format"] == "json") {
     dat <- content(dat, as = "text", encoding = "UTF-8")
     dat <- fromJSON(dat)

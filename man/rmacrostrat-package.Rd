@@ -12,7 +12,9 @@ Work with the Macrostrat Web Service (\url{https://macrostrat.org/}) to fetch ge
 Useful links:
 \itemize{
   \item \url{https://rmacrostrat.palaeoverse.org}
-  \item \url{https://palaeoverse.org https://macrostrat.org}
+  \item \url{https://palaeoverse.org}
+  \item \url{https://macrostrat.org}
+  \item \url{https://palaeoverse-community.github.io/rmacrostrat/}
   \item Report bugs at \url{https://github.com/palaeoverse-community/rmacrostrat/issues}
 }
 
