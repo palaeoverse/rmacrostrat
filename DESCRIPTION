@@ -31,6 +31,7 @@ Suggests:
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 URL: https://rmacrostrat.palaeoverse.org,
-     https://palaeoverse.org
-     https://macrostrat.org
+    https://palaeoverse.org,
+    https://macrostrat.org,
+    https://palaeoverse-community.github.io/rmacrostrat/
 BugReports: https://github.com/palaeoverse-community/rmacrostrat/issues
