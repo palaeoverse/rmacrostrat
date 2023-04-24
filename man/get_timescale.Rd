@@ -4,10 +4,10 @@
 \alias{get_timescale}
 \title{Get timescale data from Macrostrat}
 \usage{
-get_timescale(scale = "international ages", available = FALSE)
+get_timescale(x = "international ages", available = FALSE)
 }
 \arguments{
-\item{scale}{\code{character}. The name of a timescale available via
+\item{x}{\code{character}. The name of a timescale available via
 \href{https://macrostrat.org/api/defs/timescales?all}{Macrostrat}.}
 
 \item{available}{\code{logical}. If set to \code{TRUE}, a vector of the
@@ -15,9 +15,15 @@ available timescales will be returned. If set to \code{FALSE} (default),
 the requested scale will be checked against those available.}
 }
 \value{
-A \code{data.frame} of the requested
-\href{https://macrostrat.org/api/defs/timescales?all}{Macrostrat} timescale or
-a \code{vector} of available timescales.
+A \code{vector} of available timescales or a \code{data.frame} of
+the requested
+\href{https://macrostrat.org/api/defs/timescales?all}{Macrostrat} timescale
+containing:
+\item{name}{Interval name.}
+\item{abbrev}{Interval name abbreviation.}
+\item{t_age}{Interval top age, i.e. minimum age.}
+\item{b_age}{Interval bottom age, i.e. maximum age.}
+\item{color}{Assigned interval colour.}
 }
 \description{
 This function gets timescale data from \href{http://macrostrat.org}{Macrostrat}.
@@ -32,7 +38,9 @@ return the desired timescale, this argument should be set to
 \code{FALSE}.
 }
 \examples{
+# Get available timescales
 available <- get_timescale(available = TRUE)
-ages <- get_timescale(scale = "international ages")
-periods <- get_timescale(scale = "international periods")
+# Get timescale data
+ages <- get_timescale(x = "international ages")
+periods <- get_timescale(x = "international periods")
 }

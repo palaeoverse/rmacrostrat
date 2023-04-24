@@ -19,15 +19,18 @@ RoxygenNote: 7.2.3
 Depends: 
     R (>= 4.0)
 Imports: 
-    sf
+    curl,
+    httr,
+    jsonlite,
+    geojsonsf
 Suggests:
     rmarkdown,
     knitr,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    covr
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 URL: https://rmacrostrat.palaeoverse.org,
      https://palaeoverse.org
      https://macrostrat.org
 BugReports: https://github.com/palaeoverse-community/rmacrostrat/issues
-

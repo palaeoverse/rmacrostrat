@@ -2,7 +2,7 @@
 #'
 #' This function gets timescale data from [Macrostrat](http://macrostrat.org).
 #'
-#' @param scale \code{character}. The name of a timescale available via
+#' @param x \code{character}. The name of a timescale available via
 #'   [Macrostrat](https://macrostrat.org/api/defs/timescales?all).
 #' @param available \code{logical}. If set to \code{TRUE}, a vector of the
 #'   available timescales will be returned. If set to \code{FALSE} (default),
@@ -16,49 +16,65 @@
 #'   return the desired timescale, this argument should be set to
 #'   \code{FALSE}.
 #'
-#' @returns A \code{data.frame} of the requested
-#'   [Macrostrat](https://macrostrat.org/api/defs/timescales?all) timescale or
-#'   a \code{vector} of available timescales.
+#' @returns A \code{vector} of available timescales or a \code{data.frame} of
+#'   the requested
+#'   [Macrostrat](https://macrostrat.org/api/defs/timescales?all) timescale
+#'   containing:
+#'  \item{name}{Interval name.}
+#'  \item{abbrev}{Interval name abbreviation.}
+#'  \item{t_age}{Interval top age, i.e. minimum age.}
+#'  \item{b_age}{Interval bottom age, i.e. maximum age.}
+#'  \item{color}{Assigned interval colour.}
 #'
 #' @examples
+#' # Get available timescales
 #' available <- get_timescale(available = TRUE)
-#' ages <- get_timescale(scale = "international ages")
-#' periods <- get_timescale(scale = "international periods")
+#' # Get timescale data
+#' ages <- get_timescale(x = "international ages")
+#' periods <- get_timescale(x = "international periods")
 #' @export
-get_timescale <- function(scale = "international ages",
-                          available = FALSE) {
+get_timescale <- function(x = "international ages", available = FALSE) {
   # Error handling
-  if (!is.character(scale)) {
-    stop("`scale` must be of character class.")
+  if (!is.character(x)) {
+    stop("`x` must be of character class.")
   }
   if (!is.logical(available)) {
     stop("`available` must be of logical class.")
   }
+
+  # Define path
+  path <- "defs/timescales"
+  # Define variable
+  var <- "timescale"
+  # Define query
+  query <- list(all = "all", format = "csv")
+
   # Check which scales are available
-  path <- "defs/timescales?all"
-  available_scales <- data.frame(GET_macrostrat(path = path,
-                                                  query = NULL,
-                                                  format = "json"))
-  available_scales <- available_scales$success.data.timescale
-  # Return available scales if requested
   if (available) {
-    return(available_scales)
+    x <- get_available_content(x = x, path = path,
+                               query = query,
+                               var = var,
+                               available = TRUE)
+    return(x)
+  } else {
+    # Get matched content
+    x <- get_available_content(x = x, path = path, query = query,
+                               var = var, available = FALSE)
   }
-  # Lower case timescale
-  scale <- tolower(scale)
-  # Match available scales
-  mch <- charmatch(x = scale, table = available_scales)
-  # No match
-  if (is.na(mch) || mch == 0) {
-    stop(paste("No scale matched. Choose from:",
-                toString(available_scales)))
-  }
-  # Use matched scale
-  scale <- available_scales[mch]
+
   # Get user request
-  path <- "defs/intervals?format=csv&timescale="
-  dat <- GET_macrostrat(path = path, query = scale, format = "csv")
-  # Clean up data
-  dat <- dat[, -which(colnames(dat) %in% c("int_id", "timescales"))]
+  path <- "defs/intervals"
+  query <- list(timescale = x, format = "csv")
+  dat <- GET_macrostrat(path = path, query = query)
+
+  # Clean up data (should we be cleaning up data?)
+  dat <- dat[, -which(colnames(dat) %in% c("int_id",
+                                           "int_type",
+                                           "timescales"))]
+  # Add abbreviation if it doesn't exist
+  if (any(is.na(dat$abbrev))) {
+    dat$abbrev <- abbreviate(names.arg = dat$name, minlength = 2)
+  }
+  # Return data
   return(dat)
 }
