@@ -1,45 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>/404.html</loc>
+    <loc>https://palaeoverse-community.github.io/rmacrostrat/404.html</loc>
   </url>
   <url>
-    <loc>/LICENSE.html</loc>
+    <loc>https://palaeoverse-community.github.io/rmacrostrat/LICENSE.html</loc>
   </url>
   <url>
-    <loc>/authors.html</loc>
+    <loc>https://palaeoverse-community.github.io/rmacrostrat/authors.html</loc>
   </url>
   <url>
-    <loc>/index.html</loc>
+    <loc>https://palaeoverse-community.github.io/rmacrostrat/index.html</loc>
   </url>
   <url>
-    <loc>/reference/GET_macrostrat.html</loc>
+    <loc>https://palaeoverse-community.github.io/rmacrostrat/reference/GET_macrostrat.html</loc>
   </url>
   <url>
-    <loc>/reference/api_ver.html</loc>
+    <loc>https://palaeoverse-community.github.io/rmacrostrat/reference/api_ver.html</loc>
   </url>
   <url>
-    <loc>/reference/get_available_content.html</loc>
+    <loc>https://palaeoverse-community.github.io/rmacrostrat/reference/get_available_content.html</loc>
   </url>
   <url>
-    <loc>/reference/get_lithology.html</loc>
+    <loc>https://palaeoverse-community.github.io/rmacrostrat/reference/get_lithology.html</loc>
   </url>
   <url>
-    <loc>/reference/get_options.html</loc>
+    <loc>https://palaeoverse-community.github.io/rmacrostrat/reference/get_options.html</loc>
   </url>
   <url>
-    <loc>/reference/get_stats.html</loc>
+    <loc>https://palaeoverse-community.github.io/rmacrostrat/reference/get_stats.html</loc>
   </url>
   <url>
-    <loc>/reference/get_timescale.html</loc>
+    <loc>https://palaeoverse-community.github.io/rmacrostrat/reference/get_timescale.html</loc>
   </url>
   <url>
-    <loc>/reference/index.html</loc>
+    <loc>https://palaeoverse-community.github.io/rmacrostrat/reference/index.html</loc>
   </url>
   <url>
-    <loc>/reference/rmacrostrat-package.html</loc>
+    <loc>https://palaeoverse-community.github.io/rmacrostrat/reference/rmacrostrat-package.html</loc>
   </url>
   <url>
-    <loc>/reference/root.html</loc>
+    <loc>https://palaeoverse-community.github.io/rmacrostrat/reference/root.html</loc>
   </url>
 </urlset>
