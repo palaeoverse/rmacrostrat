@@ -1,4 +1,4 @@
-url: https://palaeoverse-community.github.io/rmacrostrat/
+url: https://rmacrostrat.palaeoverse.org
 template:
   bootstrap: 5
   bootswatch: flatly
@@ -6,10 +6,10 @@ template:
     navbar-padding-y: 8px
 
 authors:
-  Lewis A. Jones:
-    href: https://www.lewisajones.com
   William Gearty:
     href: https://williamgearty.com
+  Lewis A. Jones:
+    href: https://www.lewisajones.com
 
 home:
   links:
@@ -17,5 +17,3 @@ home:
     href: https://twitter.com/ThePalaeoverse
   - text: Palaeoverse website
     href: https://palaeoverse.org
-
-

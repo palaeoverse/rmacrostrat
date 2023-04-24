@@ -22,7 +22,8 @@ Imports:
     curl,
     httr,
     jsonlite,
-    geojsonsf
+    geojsonsf,
+    readr
 Suggests:
     rmarkdown,
     knitr,
