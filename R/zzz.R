@@ -27,6 +27,7 @@ api_ver <- function() {
 #' @importFrom jsonlite fromJSON
 #' @importFrom httr GET content http_error
 #' @importFrom curl nslookup
+#' @importFrom readr read_csv
 #' @importFrom geojsonsf geojson_sf
 GET_macrostrat <- function(path, query = list()) {
   # Is Macrostrat and the user online?

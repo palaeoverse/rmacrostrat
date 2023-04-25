@@ -4,43 +4,64 @@
 \alias{get_timescale}
 \title{Get timescale data from Macrostrat}
 \usage{
-get_timescale(x = "international ages", available = FALSE)
+get_timescale(query = NULL, params = FALSE, available = FALSE)
 }
 \arguments{
-\item{x}{\code{character}. The name of a timescale available via
-\href{https://macrostrat.org/api/defs/timescales?all}{Macrostrat}.}
+\item{query}{\code{list}. A named parameter list to query the
+Macrostrat API by. The name of the element within the list must be
+an available parameter and the element an available value.}
+
+\item{params}{\code{logical}. If set to \code{TRUE}, a list of the
+available parameters for the Macrostrat interval route will be returned.
+If set to \code{FALSE} (default), the \code{query} will be checked against
+available parameters.}
 
 \item{available}{\code{logical}. If set to \code{TRUE}, a vector of the
 available timescales will be returned. If set to \code{FALSE} (default),
 the requested scale will be checked against those available.}
 }
 \value{
-A \code{vector} of available timescales or a \code{data.frame} of
-the requested
+A \code{list} of available parameters, a \code{vector} of
+available timescales, or a \code{data.frame} of the requested
 \href{https://macrostrat.org/api/defs/timescales?all}{Macrostrat} timescale
-containing:
-\item{name}{Interval name.}
-\item{abbrev}{Interval name abbreviation.}
-\item{t_age}{Interval top age, i.e. minimum age.}
-\item{b_age}{Interval bottom age, i.e. maximum age.}
-\item{color}{Assigned interval colour.}
+content containing:
+\item{int_id}{The unique ID of the interval.}
+\item{name}{The name of the interval.}
+\item{abbrev}{The respective abbreviation of the interval name.}
+\item{t_age}{The interval top age, i.e. minimum age in millions of years.}
+\item{b_age}{The interval bottom age, i.e. maximum age in millions of years.}
+\item{int_type}{The type of interval.}
+\item{timescales}{The respective timescale the interval belongs to.}
+\item{color}{The assigned interval colour.}
 }
 \description{
-This function gets timescale data from \href{http://macrostrat.org}{Macrostrat}.
+This function can be used to query timescale data from
+\href{http://macrostrat.org}{Macrostrat}.
 }
 \details{
 This function returns a \code{data.frame} of the requested
-timescale. Available
+content. Available parameters for the query can be requested via the
+\code{params} argument. Available
 \href{https://macrostrat.org/api/defs/timescales?all}{Macrostrat} timescales
-can be requested via the \code{available} argument. Note: if this argument is
-set to \code{TRUE}, only a vector of available scales are returned. To
-return the desired timescale, this argument should be set to
-\code{FALSE}.
+can be requested via the \code{available} argument. Note: if the \code{params} or
+\code{available} argument is set to \code{TRUE}, only the available
+parameters or timescales are returned. To return the desired content,
+these arguments should be set to \code{FALSE}.
 }
 \examples{
 # Get available timescales
-available <- get_timescale(available = TRUE)
-# Get timescale data
-ages <- get_timescale(x = "international ages")
-periods <- get_timescale(x = "international periods")
+timescales <- get_timescale(available = TRUE)
+# Get available parameters
+params <- get_timescale(params = TRUE)
+# Get timescale data by name (ages)
+ages <- get_timescale(query = list(timescale = "international ages"))
+# Get timescale data by id (epochs)
+periods <- get_timescale(query = list(timescale_id = 2))
+# Get specific interval based on one age
+int_age <- get_timescale(query = list(timescale = "international ages",
+                                      age = 50))
+# Get specific intervals based on age range
+int_range <- get_timescale(query = list(timescale = "international ages",
+                                        b_age = 100,
+                                        t_age = 30))
 }

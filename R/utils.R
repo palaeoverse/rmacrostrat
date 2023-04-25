@@ -84,3 +84,18 @@ get_available_content <- function(x = NULL, path = NULL, query = NULL,
   # Return content
   return(x)
 }
+
+handle_error_query <- function(query, params, available) {
+  if (!is.list(query) && !is.null(query)) {
+    stop("`query` must be a list or NULL.")
+  }
+  if (is.null(names(query)) && !is.null(query)) {
+    stop("`query` must be a named parameter list or NULL.")
+  }
+  if (!is.logical(params)) {
+    stop("`params` must be of logical class.")
+  }
+  if (!is.logical(available)) {
+    stop("`available` must be of logical class.")
+  }
+}
