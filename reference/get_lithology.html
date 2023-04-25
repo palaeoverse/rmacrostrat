@@ -111,22 +111,330 @@ To return the desired lithology, this argument should be set to
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Get lithology by name</span></span></span>
 <span class="r-in"><span><span class="fu">get_lithology</span><span class="op">(</span>by <span class="op">=</span> <span class="st">"name"</span>, available <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> Please install readr package</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [1] "siliciclastic"                 "gravel"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [3] "sand"                          "silt"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [5] "mud"                           "claystone"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [7] "mudstone"                      "shale"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   [9] "siltstone"                     "sandstone"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [11] "arkose"                        "greywacke"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [13] "conglomerate"                  "breccia"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [15] "diamictite"                    "mixed carbonate-siliciclastic"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [17] "carbonate"                     "marl"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [19] "lime mudstone"                 "wackestone"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [21] "packstone"                     "grainstone"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [23] "boundstone"                    "floatstone"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [25] "rudstone"                      "bafflestone"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [27] "bindstone"                     "framestone"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [29] "limestone"                     "dolomite"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [31] "siderite"                      "ankerite"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [33] "evaporite"                     "halite"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [35] "gypsum"                        "anhydrite"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [37] "coal"                          "peat"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [39] "lignite"                       "anthracite"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [41] "tar"                           "chert"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [43] "phosphorite"                   "ironstone"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [45] "iron formation"                "volcaniclastic"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [47] "plutonic"                      "granite"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [49] "monzonite"                     "granodiorite"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [51] "syenite"                       "diorite"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [53] "tonalite"                      "gabbro"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [55] "foidolite"                     "peridotite"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [57] "pyroxenite"                    "volcanic"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [59] "rhyolite"                      "phonolite"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [61] "trachyte"                      "rhyodacite"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [63] "dacite"                        "andesite"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [65] "basalt"                        "latite"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [67] "felsite"                       "mafite"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [69] "volcanic glass"                "ash"                          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [71] "tuff"                          "welded tuff"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [73] "metamorphic"                   "gneiss"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [75] "migmatite"                     "mylonite"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [77] "slate"                         "phyllite"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [79] "schist"                        "quartzite"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [81] "amphibolite"                   "greenstone"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [83] "serpentinite"                  "hornfels"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [85] "marble"                        "argillite"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [87] "chalk"                         "clay"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [89] "diabase"                       "igneous"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [91] "ignimbrite"                    "till"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [93] "greenschist"                   "quartz monzonite"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [95] "kimberlite"                    "anorthosite"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [97] "carbonatite"                   "diatomite"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [99] "calcareous ooze"               "troctolite"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [101] "bauxite"                       "lamprophyre"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [103] "norite"                        "granofel"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [105] "granulite"                     "sedimentary"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [107] "siliceous ooze"                "graywacke"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [109] "dolostone"                     "micrite"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [111] "greensand"                     "grit"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [113] "orthogneiss"                   "tephra"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [115] "paragneiss"                    "loess"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [117] "metasedimentary"               "coquina"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [119] "flint"                         "oolite"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [121] "trachyandesite"                "komatiite"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [123] "dunite"                        "charnockite"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [125] "aplite"                        "trondhjemite"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [127] "eclogite"                      "metapelite"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [129] "arenite"                       "pelite"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [131] "biomicrite"                    "oomicrite"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [133] "biosparite"                    "pelmicrite"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [135] "oosparite"                     "pelsparite"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [137] "intrasparite"                  "intramicrite"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [139] "monzogranite"                  "syenogranite"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [141] "novaculite"                    "travertine"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [143] "trona"                         "scoria"                       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [145] "pumice"                        "pegmatite"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [147] "dolerite"                      "encrinite"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [149] "alluvium"                      "colluvium"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [151] "regolith"                      "soil"                         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [153] "paleosol"                      "laterite"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [155] "eluvium"                       "mafic"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [157] "subarkose"                     "lherzolite"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [159] "harzburgite"                   "wehrlite"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [161] "websterite"                    "orthopyroxenite"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [163] "clinopyroxenite"               "quartz arenite"               </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [165] "metabasalt"                    "metagabbro"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [167] "cataclasite"                   "fault gouge"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [169] "fault breccia"                 "pseudotachylite"              </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [171] "blueschist"                    "skarn"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [173] "metavolcanic"                  "obsidian"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [175] "gyttja"                        "drift"                        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [177] "tillite"                       "metaconglomerate"             </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [179] "diatexite"                     "ankaramite"                   </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [181] "wacke"                         "agglomerate"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [183] "leucogranite"                  "metaigneous"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [185] "tufa"                          "metarhyolite"                 </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [187] "metagraywacke"                 "bentonite"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [189] "metasiltstone"                 "basanite"                     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [191] "tuffite"                       "litharenite"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [193] "sublitharenite"                "radiolarite"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [195] "calcarenite"                   "calcilutite"                  </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [197] "metabasite"                    "diamicton"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [199] "porcellanite"                  "hyaloclastite"                </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [201] "hawaiite"                      "mugearite"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [203] "granophyre"                    "comendite"                    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [205] "tephrite"                      "spilite"                      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [207] "benmoreite"                   </span>
 <span class="r-in"><span><span class="co"># Get lithology by type</span></span></span>
 <span class="r-in"><span><span class="fu">get_lithology</span><span class="op">(</span>by <span class="op">=</span> <span class="st">"type"</span>, available <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> Please install readr package</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] "siliciclastic"   "carbonate"       "evaporite"       "organic"        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [5] "chemical"        "plutonic"        "volcanic"        "metamorphic"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [9] "metasedimentary" "metavolcanic"    "igneous"         "sedimentary"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [13] "metaigneous"     "regolith"        "cataclastic"    </span>
 <span class="r-in"><span><span class="co"># Get lithology by group</span></span></span>
 <span class="r-in"><span><span class="fu">get_lithology</span><span class="op">(</span>by <span class="op">=</span> <span class="st">"group"</span>, available <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> Please install readr package</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "unconsolidated" "mudrocks"       "sandstones"     "conglomerates" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [5] "Dunham"         "felsic"         "mafic"          "ultramafic"    </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [9] "Folk"          </span>
 <span class="r-in"><span><span class="co"># Get lithology by class</span></span></span>
 <span class="r-in"><span><span class="fu">get_lithology</span><span class="op">(</span>by <span class="op">=</span> <span class="st">"class"</span>, available <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> Please install readr package</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "sedimentary" "igneous"     "metamorphic"</span>
 <span class="r-in"><span><span class="co"># Get all sedimentary lithologies</span></span></span>
 <span class="r-in"><span><span class="fu">get_lithology</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"sedimentary"</span>, by <span class="op">=</span> <span class="st">"class"</span>, available <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> Please install readr package</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    lith_id                          name          type          group</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1        1                 siliciclastic siliciclastic           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2        2                        gravel siliciclastic unconsolidated</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3        3                          sand siliciclastic unconsolidated</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4        4                          silt siliciclastic unconsolidated</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5        5                           mud siliciclastic unconsolidated</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6        6                     claystone siliciclastic       mudrocks</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7        7                      mudstone siliciclastic       mudrocks</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8        8                         shale siliciclastic       mudrocks</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9        9                     siltstone siliciclastic       mudrocks</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10      10                     sandstone siliciclastic     sandstones</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11      11                        arkose siliciclastic     sandstones</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12      12                     greywacke siliciclastic     sandstones</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13      14                  conglomerate siliciclastic  conglomerates</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14      15                       breccia siliciclastic  conglomerates</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15      16                    diamictite siliciclastic  conglomerates</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16      17 mixed carbonate-siliciclastic     carbonate           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17      18                     carbonate     carbonate           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18      19                          marl     carbonate           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19      20                 lime mudstone     carbonate         Dunham</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20      21                    wackestone     carbonate         Dunham</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21      22                     packstone     carbonate         Dunham</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22      23                    grainstone     carbonate         Dunham</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23      24                    boundstone     carbonate         Dunham</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24      25                    floatstone     carbonate         Dunham</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25      26                      rudstone     carbonate         Dunham</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26      27                   bafflestone     carbonate         Dunham</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27      28                     bindstone     carbonate         Dunham</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28      29                    framestone     carbonate         Dunham</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29      30                     limestone     carbonate           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30      31                      dolomite     carbonate           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31      32                      siderite     carbonate           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32      33                      ankerite     carbonate           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33      34                     evaporite     evaporite           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34      35                        halite     evaporite           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35      36                        gypsum     evaporite           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36      37                     anhydrite     evaporite           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37      38                          coal       organic           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38      39                          peat       organic           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39      40                       lignite       organic           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40      43                    anthracite       organic           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41      44                           tar       organic           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42      45                         chert      chemical           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43      46                   phosphorite      chemical           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44      47                     ironstone      chemical           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45      48                iron formation      chemical           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46      49                volcaniclastic siliciclastic           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47      91                     argillite siliciclastic       mudrocks</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48      92                         chalk     carbonate           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49      93                          clay siliciclastic unconsolidated</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50      97                          till siliciclastic  conglomerates</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51     103                     diatomite      chemical           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52     104               calcareous ooze     carbonate           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53     106                       bauxite      chemical           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54     111                   sedimentary   sedimentary           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55     112                siliceous ooze      chemical           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56     113                     graywacke siliciclastic     sandstones</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57     114                     dolostone     carbonate           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58     115                       micrite     carbonate           Folk</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59     116                     greensand siliciclastic     sandstones</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60     117                          grit siliciclastic     sandstones</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 61     121                         loess siliciclastic           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 62     123                       coquina     carbonate           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63     124                         flint      chemical           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 64     125                        oolite     carbonate           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 65     134                       arenite siliciclastic     sandstones</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 66     135                        pelite siliciclastic       mudrocks</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 67     136                    biomicrite     carbonate           Folk</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 68     137                     oomicrite     carbonate           Folk</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 69     138                    biosparite     carbonate           Folk</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 70     139                    pelmicrite     carbonate           Folk</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 71     140                     oosparite     carbonate           Folk</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 72     141                    pelsparite     carbonate           Folk</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 73     142                  intrasparite     carbonate           Folk</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 74     143                  intramicrite     carbonate           Folk</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 75     146                    novaculite      chemical           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 76     147                    travertine     carbonate           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 77     148                         trona     evaporite           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 78     153                     encrinite     carbonate           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 79     154                      alluvium siliciclastic unconsolidated</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 80     155                     colluvium siliciclastic unconsolidated</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 81     156                      regolith      regolith           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 82     157                          soil      regolith           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 83     158                      paleosol      regolith           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 84     159                      laterite      regolith           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 85     160                       eluvium      regolith           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 86     162                     subarkose siliciclastic     sandstones</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 87     169                quartz arenite siliciclastic     sandstones</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 88     180                        gyttja       organic unconsolidated</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 89     181                         drift siliciclastic unconsolidated</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 90     182                       tillite siliciclastic  conglomerates</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 91     187                         wacke siliciclastic     sandstones</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 92     191                          tufa     carbonate           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 93     198                   litharenite siliciclastic     sandstones</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 94     199                sublitharenite siliciclastic     sandstones</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 95     200                   radiolarite      chemical           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 96     201                   calcarenite     carbonate           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 97     202                   calcilutite     carbonate           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 98     204                     diamicton siliciclastic unconsolidated</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 99     205                  porcellanite      chemical           &lt;NA&gt;</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>          class   color fill t_units</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  sedimentary #FFF400  670     346</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  sedimentary #FFAB00  601    1188</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  sedimentary #FFCA00  607   11704</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  sedimentary #919AA3  619    8596</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  sedimentary #A7ACB0  641    8274</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  sedimentary #B2B5B7  620    4742</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7  sedimentary #9CA3AA  620    4875</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8  sedimentary #7B8896  620   11246</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  sedimentary #86919D  616    6708</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 sedimentary #FFD500  607   12874</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11 sedimentary #FFEA00  654     407</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12 sedimentary #FFDF00  654     486</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13 sedimentary #FFC000  602    3714</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14 sedimentary #FFB500  603     719</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15 sedimentary #FF9600  682     209</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16 sedimentary #0000FF  674     230</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17 sedimentary #0508FD  641     742</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18 sedimentary #0B11FC  623     654</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19 sedimentary #111AFB  627      66</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20 sedimentary #1723FA  627    1399</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21 sedimentary #1D2BF9  628    1814</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22 sedimentary #2334F8  629     930</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23 sedimentary #293DF7  627      37</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24 sedimentary #2F46F6  627     267</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25 sedimentary #344EF5    0     297</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26 sedimentary #3A57F4    0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27 sedimentary #4060F3    0       5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28 sedimentary #4669F2    0      78</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29 sedimentary #4C71F1  627    9590</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30 sedimentary #527AF0  642    4155</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31 sedimentary #5883EF    0       8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32 sedimentary #5E8CEE    0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33 sedimentary #FFB6C1  667     101</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34 sedimentary #F9AFBA  668     213</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35 sedimentary #F3A8B3  667     214</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36 sedimentary #EEA2AD  667     569</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37 sedimentary #000000  658     670</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 38 sedimentary #090F0F  657      33</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 39 sedimentary #121F1F  657      94</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 40 sedimentary #1C2F2F  658       2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 41 sedimentary #253F3F    0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 42 sedimentary #CD5C5C  649    2101</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 43 sedimentary #C96566    0      29</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 44 sedimentary #C66F70    0      45</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 45 sedimentary #C37879    0      73</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 46 sedimentary #FFFF00  714    3180</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 47 sedimentary #708090    0     554</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 48 sedimentary #6495ED  626    4428</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 49 sedimentary #BEBEBE    0   25047</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 50 sedimentary #FFA000  682     151</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 51 sedimentary #BF8283  653     112</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 52 sedimentary #BC8B8E  626   14271</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 53 sedimentary #B99598    0      13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 54 sedimentary #FF8C00    0      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 55 sedimentary #CCEDCC    0    3048</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 56 sedimentary #FFDF00  654      72</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 57 sedimentary #527AF0    0     332</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 58 sedimentary #111AFB    0      21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 59 sedimentary #E6C000    0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 60 sedimentary #FFD500    0       4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 61 sedimentary #919AA3    0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 62 sedimentary #2334F8    0     262</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 63 sedimentary #CD5C5C    0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 64 sedimentary #2334F8    0       7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 65 sedimentary #FFD500    0      71</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 66 sedimentary #9CA3AA    0       7</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 67 sedimentary #111AFB    0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 68 sedimentary #111AFB    0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 69 sedimentary #2334F8    0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 70 sedimentary #111AFB    0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 71 sedimentary #2334F8    0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 72 sedimentary #2334F8    0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 73 sedimentary #2334F8    0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 74 sedimentary #111AFB    0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 75 sedimentary #CD5C5C    0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 76 sedimentary #1D2BF9    0       2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 77 sedimentary #EEA2AD    0       1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 78 sedimentary #2334F8  629       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 79 sedimentary #FFCA00  101      34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 80 sedimentary #FFCA00  102       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 81 sedimentary #FFFF80    0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 82 sedimentary #FFE6E6    0       6</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 83 sedimentary #FFE6E6    0       1</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 84 sedimentary #FFE6E6    0       5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 85 sedimentary #FFE6E6    0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 86 sedimentary #FFEA00  654      47</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 87 sedimentary #FFD500    0     525</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 88 sedimentary #0F0301    0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 89 sedimentary #FFAB00  601       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 90 sedimentary #E08D02  682       2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 91 sedimentary #FFDF00  654      63</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 92 sedimentary #1D2BF9    0       0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 93 sedimentary #FFDF00  654      78</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 94 sedimentary #FFDF00  654      35</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 95 sedimentary #BF8283  653      25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 96 sedimentary #2334F8  629      23</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 97 sedimentary #111AFB  627      14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 98 sedimentary #FF9600  682     555</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 99 sedimentary #CD5C5C  649     230</span>
 <span class="r-in"><span><span class="co"># Get specific lithology</span></span></span>
 <span class="r-in"><span><span class="fu">get_lithology</span><span class="op">(</span>x <span class="op">=</span> <span class="st">"limestone"</span>, by <span class="op">=</span> <span class="st">"name"</span>, available <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> Please install readr package</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   lith_id      name      type group       class   color fill t_units</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1      30 limestone carbonate    NA sedimentary #4C71F1  627    9590</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>

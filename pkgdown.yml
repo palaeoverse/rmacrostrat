@@ -2,8 +2,8 @@ pandoc: 2.19.2
 pkgdown: 2.0.7
 pkgdown_sha: ~
 articles: {}
-last_built: 2023-04-24T19:10Z
+last_built: 2023-04-25T06:59Z
 urls:
-  reference: https://palaeoverse-community.github.io/rmacrostrat/reference
-  article: https://palaeoverse-community.github.io/rmacrostrat/articles
+  reference: https://rmacrostrat.palaeoverse.org/reference
+  article: https://rmacrostrat.palaeoverse.org/articles
 
