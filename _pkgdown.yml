@@ -6,10 +6,10 @@ template:
     navbar-padding-y: 8px
 
 authors:
-  William Gearty:
-    href: https://williamgearty.com
   Lewis A. Jones:
     href: https://www.lewisajones.com
+  William Gearty:
+    href: https://williamgearty.com
 
 home:
   links:
