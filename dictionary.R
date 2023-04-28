@@ -82,7 +82,6 @@
 #' @param format \code{}. Desired output format. Default is GeoJSON
 #' @param format \code{}. Desired output format. Default is JSON
 #' @param format \code{}. desired output format, options given below in output_formats
-#' @param geo_format \code{}. Output geometry format - can be 'wkt' or 'geojson'; Defaults to 'geojson'
 #' @param geom_age \code{}. If requesting a geographic format, specifies which age to use for the primary coordinates. Accepted parameters are 'modern' (clat, clng), 'top' (t_plat, t_plng) and 'bottom' (b_plat, b_plng). Default is 'modern'
 #' @param grain_group \code{}. The family of grains the grain belongs to
 #' @param grain_id \code{}. Unique grain ID
@@ -222,4 +221,3 @@
 #' @param unit_id \code{}. One or more comma-separated valid unit IDs
 #' @param unit_id \code{}. integer, one or more valid unit_ids from /units
 #' @param unit_id \code{}. integer, one or more ids for unit containing measurements
-#' @param unit_id \code{}. Macrostrat unit ID

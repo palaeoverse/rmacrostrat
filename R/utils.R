@@ -60,7 +60,7 @@ create_function <- function(name,
   # Generate documentation
   writeLines(text = c(makeOxygen(
     obj = name,
-    use_dictionary = "./R/dictionary.R",
+    use_dictionary = "./dictionary.R",
     add_fields = fields,
     print = FALSE), func),
    con = path)
