@@ -28,6 +28,7 @@ api_ver <- function() {
 #' @importFrom httr GET content http_error
 #' @importFrom curl nslookup
 #' @importFrom readr read_csv
+#' @importFrom geojsonsf geojson_sf
 GET_macrostrat <- function(path, query = list()) {
   # Is Macrostrat and the user online?
   tryCatch(
@@ -59,6 +60,9 @@ GET_macrostrat <- function(path, query = list()) {
   } else if (query["format"] == "json") {
     dat <- content(dat, as = "text", encoding = "UTF-8")
     dat <- fromJSON(dat)
+  } else if (query["format"] == "geojson") {
+    dat <- content(dat, as = "text", encoding = "UTF-8")
+    dat <- geojson_sf(dat)
   }
   # Return data
   return(dat)

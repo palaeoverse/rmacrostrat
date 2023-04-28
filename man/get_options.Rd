@@ -4,22 +4,19 @@
 \alias{get_options}
 \title{Check available options}
 \usage{
-get_options(x = NULL, route = NULL, path = NULL)
+get_options(x = NULL, endpoint = NULL)
 }
 \arguments{
 \item{x}{\code{character}. Which options should be checked? Choose from
 "parameters", "output_formats", "examples", or "fields". If this argument
 is set to \code{NULL} (default), all options are returned.}
 
-\item{route}{\code{character}. The first-level route that should be checked
-such as "defs" or "columns".}
-
-\item{path}{\code{character}. The second-level route that should be checked
-such as "columns" or "minerals" if \code{route} is "defs".}
+\item{endpoint}{\code{character}. The endpoint that should be checked
+such as "defs/timescales" or "columns".}
 }
 \value{
 A \code{list} of available "parameters", "output_formats",
-"examples", or "fields". If \code{x}, \code{route}, and \code{path} are set to \code{NULL},
+"examples", or "fields". If \code{x} and \code{endpoint} are set to \code{NULL},
 the base routes are returned.
 }
 \description{
