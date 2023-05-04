@@ -1,0 +1,16 @@
+#' @param col_id \code{NA}. columns
+#' @param econ_id \code{NA}. econs
+#' @param econ_type \code{NA}. econs
+#' @param econ_class \code{NA}. econs
+#' @param environ_id \code{NA}. environments
+#' @param environ_type \code{NA}. environments
+#' @param environ_class \code{NA}. environments
+#' @param col_group_id \code{NA}. groups
+#' @param int_id \code{NA}. intervals
+#' @param lith_id \code{NA}. lithologies
+#' @param lith_type \code{NA}. lithologies
+#' @param lith_class \code{NA}. lithologies
+#' @param lith_att_id \code{NA}. lithology_attributes
+#' @param strat_name_id \code{NA}. strat_names
+#' @param strat_name_concept_id \code{NA}. strat_name_concepts
+#' @param timescale_id \code{NA}. timescales

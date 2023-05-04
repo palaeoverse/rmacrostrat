@@ -35,11 +35,13 @@ create_function <- function(name,
     args <- toString(args)
   } else if (!is.null(endpoint))  {
     # Get arguments from endpoint
-    args <- get_options(x = "parameters", endpoint = endpoint)
+    args <- params[[endpoint]]
     # Extract arguments
-    args <- unlist(names(args[[1]]))
+    args <- unlist(names(args))
     # Convert to string for writing lines
     args <- toString(args)
+    # Replace text
+    args <- gsub(pattern = ",", replacement = " = NULL,\n  ", x = args)
   } else {
     stop("Neither `endpoint` or `args` provided.")
   }
@@ -51,7 +53,19 @@ create_function <- function(name,
     # Create file
     file.create(paste0("./R/", name, ".R"))
     # Create function
-    func <- paste0(name, " <- function (", args, ") {\n\n}")
+    func <- paste0(name, " <- function (\n   ",
+                   args,
+                   " = NULL) {\n\n",
+                   "  # Error handling\n",
+                   "  # Collect input arguments as a list\n",
+                   "  args <- as.list(environment())\n",
+                   "  # Check whether class of arguments is valid\n",
+                   "  check_arguments(x = args, ref = 'INSERT ENDPOINT')\n\n",
+                   "  # Get request\n",
+                   "  dat <- GET_macrostrat(endpoint = 'INSERT ENDPOINT', query = args, format = 'INSERT FORMAT')\n\n",
+                   "  # Return data\n",
+                   "  return(dat)\n",
+                   "}")
     # Write lines
     writeLines(text = func, con = path)
     # Source function
@@ -60,7 +74,7 @@ create_function <- function(name,
   # Generate documentation
   writeLines(text = c(makeOxygen(
     obj = name,
-    use_dictionary = "./dictionary.R",
+    use_dictionary = paste0("./data-raw/dictionary", endpoint, ".R"),
     add_fields = fields,
     print = FALSE), func),
    con = path)
@@ -91,7 +105,7 @@ get_options <- function(x = NULL, endpoint = NULL) {
   # Set path
   path <- do.call(paste, args)
   # Get content
-  cont <- GET_macrostrat(path = path)
+  cont <- GET_macrostrat(endpoint = path)
   cont <- httr::content(cont)
   # Extract x if exists
   if (!is.null(x)) {
@@ -114,7 +128,7 @@ get_options <- function(x = NULL, endpoint = NULL) {
 #'
 #' @param x \code{character}. The requested content value (e.g. "international
 #'   ages").
-#' @param path \code{character}. The relevant Macrostrat API path.
+#' @param endpoint \code{character}. The relevant Macrostrat API endpoint.
 #' @param query \code{list}. The variable to extract from the returned
 #'   object to check \code{x} against.
 #' @param var \code{character}. The variable to filter the content by.
@@ -127,10 +141,10 @@ get_options <- function(x = NULL, endpoint = NULL) {
 #'
 #' @return A \code{vector} of the available content or the matched \code{x}
 #'   value.
-get_available_content <- function(x = NULL, path = NULL, query = NULL,
+get_available_content <- function(x = NULL, endpoint = NULL, query = NULL,
                                   var = NULL, available = TRUE) {
   # Is data available?
-  content <- GET_macrostrat(path = path, query = query)
+  content <- GET_macrostrat(endpoint = endpoint, query = query)
   content <- content[, var]
   # Return available content if requested
   if (available) {
@@ -154,17 +168,50 @@ get_available_content <- function(x = NULL, path = NULL, query = NULL,
   return(x)
 }
 
-handle_error_query <- function(query, params, available) {
-  if (!is.list(query) && !is.null(query)) {
-    stop("`query` must be a list or NULL.")
+#' Filters NULL arguments from a list
+#'
+#' This function checks whether any elements in a list are
+#' NULL and removes them.
+#'
+#' @param x \code{list}. The user-query list
+#'
+#' @return A `NULL` filtered list of `x`.
+filter_null <- function(x) {
+  x <- x[!unlist(lapply(x, is.null))]
+  return(x)
+}
+
+#' Check if arguments are valid (internal)
+#'
+#' This function checks whether user arguments are valid
+#' in terms of being an available argument or of the correct
+#' class.
+#'
+#' @param x \code{list}. The user-query list to compare against `ref`.
+#' @param ref \code{list}. The reference list to compare `x` against.
+#'
+#' @return Error messages or \code{TRUE} if all arguments are valid.
+check_arguments <- function(x, ref) {
+  chk <- names(x) %in% names(ref)
+  if (!all(chk)) {
+    invalid <- toString(names(x)[!chk])
+    stop("The following are not valid argument(s): ", invalid,
+         ". \nSee function documentation.")
   }
-  if (is.null(names(query)) && !is.null(query)) {
-    stop("`query` must be a named parameter list or NULL.")
+  # Filter ref by matched arguments
+  ref <- ref[names(ref) %in% names(x)]
+  # reorder by ref
+  x <- x[names(ref)]
+  # Evaluate class
+  chk <- unlist(lapply(x, class)) == unlist(ref)
+  if (!all(chk)) {
+    invalid <- toString(names(x)[!chk])
+    invalid <- sapply(invalid, function(x) {
+      message(paste0("`", x, "` should be of class ",
+                     unlist(ref[x]), "."))
+    })
+    stop("Invalid class of argument(s).")
   }
-  if (!is.logical(params)) {
-    stop("`params` must be of logical class.")
-  }
-  if (!is.logical(available)) {
-    stop("`available` must be of logical class.")
-  }
+  # Return TRUE if valid arguments
+  return(TRUE)
 }

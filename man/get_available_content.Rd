@@ -6,7 +6,7 @@
 \usage{
 get_available_content(
   x = NULL,
-  path = NULL,
+  endpoint = NULL,
   query = NULL,
   var = NULL,
   available = TRUE
@@ -16,7 +16,7 @@ get_available_content(
 \item{x}{\code{character}. The requested content value (e.g. "international
 ages").}
 
-\item{path}{\code{character}. The relevant Macrostrat API path.}
+\item{endpoint}{\code{character}. The relevant Macrostrat API endpoint.}
 
 \item{query}{\code{list}. The variable to extract from the returned
 object to check \code{x} against.}

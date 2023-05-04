@@ -18,10 +18,12 @@ api_ver <- function() {
 #' via the Application Programming Interface (API). This is the core
 #' function for handling user requests.
 #'
-#' @param path \code{character}. The API path to retrieve data from
+#' @param endpoint \code{character}. The API endpoint to retrieve data from
 #' Macrostrat.
-#' @param query \code{character}. The API query to retreive data from
+#' @param query \code{character}. The API query to retrieve data from
 #' Macrostrat.
+#' @param format \code{character}. The format that data should be downloaded
+#' in. Either: "csv", "json", or "geojson".
 #'
 #' @return A \code{data.frame} of user-requested data.
 #' @importFrom jsonlite fromJSON
@@ -29,7 +31,7 @@ api_ver <- function() {
 #' @importFrom curl nslookup
 #' @importFrom readr read_csv
 #' @importFrom geojsonsf geojson_sf
-GET_macrostrat <- function(path, query = list()) {
+GET_macrostrat <- function(endpoint, query = list(), format = "csv") {
   # Is Macrostrat and the user online?
   tryCatch(
     {
@@ -39,8 +41,11 @@ GET_macrostrat <- function(path, query = list()) {
       stop("Macrostrat is unavailable or you have no internet connection.")
     }
   )
+  # Add format to query
+  format <- list(format = format)
+  query <- append(query, format)
   # Build path route
-  path <- paste0(api_ver(), path)
+  path <- paste0(api_ver(), endpoint)
   # Fetch data
   dat <- GET(
     url = root(), path = path,

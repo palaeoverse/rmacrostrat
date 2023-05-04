@@ -4,14 +4,17 @@
 \alias{GET_macrostrat}
 \title{Fetch data from Macrostrat}
 \usage{
-GET_macrostrat(path, query = list())
+GET_macrostrat(endpoint, query = list(), format = "csv")
 }
 \arguments{
-\item{path}{\code{character}. The API path to retrieve data from
+\item{endpoint}{\code{character}. The API endpoint to retrieve data from
 Macrostrat.}
 
-\item{query}{\code{character}. The API query to retreive data from
+\item{query}{\code{character}. The API query to retrieve data from
 Macrostrat.}
+
+\item{format}{\code{character}. The format that data should be downloaded
+in. Either: "csv", "json", or "geojson".}
 }
 \value{
 A \code{data.frame} of user-requested data.
