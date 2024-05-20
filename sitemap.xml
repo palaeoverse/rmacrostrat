@@ -22,7 +22,7 @@
     <loc>https://rmacrostrat.palaeoverse.org/reference/GET_macrostrat.html</loc>
   </url>
   <url>
-    <loc>https://rmacrostrat.palaeoverse.org/reference/api_ver.html</loc>
+    <loc>https://rmacrostrat.palaeoverse.org/reference/api_version.html</loc>
   </url>
   <url>
     <loc>https://rmacrostrat.palaeoverse.org/reference/check_arguments.html</loc>
@@ -38,6 +38,9 @@
   </url>
   <url>
     <loc>https://rmacrostrat.palaeoverse.org/reference/get_options.html</loc>
+  </url>
+  <url>
+    <loc>https://rmacrostrat.palaeoverse.org/reference/get_sections.html</loc>
   </url>
   <url>
     <loc>https://rmacrostrat.palaeoverse.org/reference/index.html</loc>

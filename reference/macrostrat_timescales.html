@@ -76,180 +76,83 @@ is based on.</p></li>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Get available time scales</span></span></span>
 <span class="r-in"><span><span class="fu">macrostrat_timescales</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.v success.license success.data.timescale_id success.data.timescale</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1         2       CC-BY 4.0                         1     international ages</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals success.data.max_age success.data.min_age</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                      102                538.8                    0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id success.data.timescale_id.1 success.data.timescale.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                  13                           2     international epochs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.1 success.data.max_age.1 success.data.min_age.1</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                         34                  538.8                      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.1 success.data.timescale_id.2 success.data.timescale.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                    13                           3    international periods</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.2 success.data.max_age.2 success.data.min_age.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                         22                   2500                      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.2 success.data.timescale_id.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                    13                           5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         success.data.timescale.3 success.data.n_intervals.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 calcareous nannoplankton zones                         88</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.max_age.3 success.data.min_age.3 success.data.ref_id.3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                  201.4                      0                     0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.timescale_id.4 success.data.timescale.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                           6         New Zealand ages</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.4 success.data.max_age.4 success.data.min_age.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                         89                  511.5                      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.4 success.data.timescale_id.5 success.data.timescale.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                     0                           7            custom COSUNA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.5 success.data.max_age.5 success.data.min_age.5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                         84                  538.8                 0.0117</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.5 success.data.timescale_id.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                     0                           9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          success.data.timescale.6 success.data.n_intervals.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 North American land mammal ages                         19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.max_age.6 success.data.min_age.6 success.data.ref_id.6</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                     66                 0.0114                     0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.timescale_id.7 success.data.timescale.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                          11  international intervals</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.7 success.data.max_age.7 success.data.min_age.7</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                        170                   4000                      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.7 success.data.timescale_id.8 success.data.timescale.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                    13                          12                   COSUNA</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.8 success.data.max_age.8 success.data.min_age.8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                         62                  538.8                      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.8 success.data.timescale_id.9 success.data.timescale.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                     0                          13       international eras</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.9 success.data.max_age.9 success.data.min_age.9</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                         10                   4000                      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.9 success.data.timescale_id.10 success.data.timescale.10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                    13                           14        international eons</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.10 success.data.max_age.10 success.data.min_age.10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                           3                    4000                       0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.10 success.data.timescale_id.11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                     13                           15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        success.data.timescale.11 success.data.n_intervals.11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Trilobite Zonation - Laurentia                          25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.max_age.11 success.data.min_age.11 success.data.ref_id.11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                     524                   484.4                     13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.timescale_id.12 success.data.timescale.12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                           16         Conodont Zonation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.12 success.data.max_age.12 success.data.min_age.12</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                         198                   485.4                   201.4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.12 success.data.timescale_id.13 success.data.timescale.13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                     13                           17   North American Regional</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.13 success.data.max_age.13 success.data.min_age.13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                          95                     850                  0.0114</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.13 success.data.timescale_id.14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                     13                           18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    success.data.timescale.14 success.data.n_intervals.14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Ammonite Zonation - Boreal                         154</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.max_age.14 success.data.min_age.14 success.data.ref_id.14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                   252.4                    97.5                     13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.timescale_id.15            success.data.timescale.15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                           19 Ammonite Zonation - Western Interior</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.15 success.data.max_age.15 success.data.min_age.15</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                          70                  100.25                   68.69</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.15 success.data.timescale_id.16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                      0                           20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   success.data.timescale.16 success.data.n_intervals.16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 international intervals covering all time                          16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.max_age.16 success.data.min_age.16 success.data.ref_id.16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                    4000                       0                     13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.timescale_id.17 success.data.timescale.17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                           21    Scotese Reconstruction</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.17 success.data.max_age.17 success.data.min_age.17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                          17                     113                       0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.17 success.data.timescale_id.18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                     28                           22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    success.data.timescale.18 success.data.n_intervals.18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Geomagnetic Polarity Chron                         101</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.max_age.18 success.data.min_age.18 success.data.ref_id.18</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                  170.76                       0                    180</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.timescale_id.19     success.data.timescale.19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                           23 Geomagnetic Polarity Subchron</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.19 success.data.max_age.19 success.data.min_age.19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                         372                  170.76                       0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.19 success.data.timescale_id.20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                    180                           24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                 success.data.timescale.20 success.data.n_intervals.20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Planktic foraminiferal Primary Biozones                          51</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.max_age.20 success.data.min_age.20 success.data.ref_id.20</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                      65                       0                    190</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.timescale_id.21                 success.data.timescale.21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                           25 Planktic foraminiferal Secondary Biozones</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.21 success.data.max_age.21 success.data.min_age.21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                          39                    40.8                       0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.21 success.data.timescale_id.22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                    190                           26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       success.data.timescale.22 success.data.n_intervals.22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Planktic foraminiferal datums                           2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.max_age.22 success.data.min_age.22 success.data.ref_id.22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                    59.2                    56.3                    190</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.timescale_id.23 success.data.timescale.23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                           27           Martian Periods</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.23 success.data.max_age.23 success.data.min_age.23</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                           4                    4600                       0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.23 success.data.timescale_id.24 success.data.timescale.24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                    204                           28            Martian Epochs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.24 success.data.max_age.24 success.data.min_age.24</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                           8                    4180                       0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.24 success.data.timescale_id.25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                    204                           29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                   success.data.timescale.25 success.data.n_intervals.25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Cretaceous Planktic foraminifer zonations                          31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.max_age.25 success.data.min_age.25 success.data.ref_id.25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                   141.6                      65                    219</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.timescale_id.26         success.data.timescale.26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                           30 Low latitude radiolarian zonation</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.26 success.data.max_age.26 success.data.min_age.26</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                          34                    60.2                       0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.26 success.data.timescale_id.27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                    220                           31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                    success.data.timescale.27 success.data.n_intervals.27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Neogene North Pacific Diatom Biochronology                          11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.max_age.27 success.data.min_age.27 success.data.ref_id.27</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                      24                       0                    221</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.timescale_id.28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                           32</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                             success.data.timescale.28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Neogene North Pacific Diatom Biochronology Subzones</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.28 success.data.max_age.28 success.data.min_age.28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                          22                      24                       0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.28 success.data.timescale_id.29 success.data.timescale.29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                    221                           33         Siberian Regional</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.29 success.data.max_age.29 success.data.min_age.29</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                          22                     600                     297</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.29 success.data.timescale_id.30 success.data.timescale.30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                    222                           34       Australian Regional</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.30 success.data.max_age.30 success.data.min_age.30</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                          21                   511.5                     433</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.30 success.data.timescale_id.31 success.data.timescale.31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                    222                           35   Western Europe Regional</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.31 success.data.max_age.31 success.data.min_age.31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                          21                     362                  274.37</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.31 success.data.timescale_id.32</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                    222                           36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>          success.data.timescale.32 success.data.n_intervals.32</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1 Russian Platform Regional Stages                          51</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.max_age.32 success.data.min_age.32 success.data.ref_id.32</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                     360                 251.902                    222</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.timescale_id.33 success.data.timescale.33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                           37  Russian Precambrian Eras</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.33 success.data.max_age.33 success.data.min_age.33</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                           8                    3200                     600</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.33 success.data.timescale_id.34 success.data.timescale.34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                    224                           38  Russian Precambrian Eons</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.34 success.data.max_age.34 success.data.min_age.34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                           4                    4000                     600</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.34 success.data.timescale_id.35 success.data.timescale.35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                    224                           39            Russian Epochs</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.35 success.data.max_age.35 success.data.min_age.35</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                          36                     600                       0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.35 success.data.timescale_id.36 success.data.timescale.36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                    224                           40            Russian Stages</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.n_intervals.36 success.data.max_age.36 success.data.min_age.36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                          97                   538.8                  0.0117</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   success.data.ref_id.36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1                    224</span>
+<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Coercing LHS to a list</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    timescale_id                                           timescale n_intervals</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1             1                                  international ages         102</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2             2                                international epochs          34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3             3                               international periods          22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4             5                      calcareous nannoplankton zones          88</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5             6                                    New Zealand ages          89</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6             7                                       custom COSUNA          84</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7             9                     North American land mammal ages          19</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8            11                             international intervals         170</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9            12                                              COSUNA          62</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10           13                                  international eras          10</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11           14                                  international eons           3</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12           15                      Trilobite Zonation - Laurentia          25</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13           16                                   Conodont Zonation         198</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14           17                             North American Regional          95</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15           18                          Ammonite Zonation - Boreal         154</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16           19                Ammonite Zonation - Western Interior          70</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17           20           international intervals covering all time          16</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18           21                              Scotese Reconstruction          17</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19           22                          Geomagnetic Polarity Chron         101</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20           23                       Geomagnetic Polarity Subchron         372</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21           24             Planktic foraminiferal Primary Biozones          51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22           25           Planktic foraminiferal Secondary Biozones          39</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23           26                       Planktic foraminiferal datums           2</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24           27                                     Martian Periods           4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25           28                                      Martian Epochs           8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26           29           Cretaceous Planktic foraminifer zonations          31</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27           30                   Low latitude radiolarian zonation          34</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28           31          Neogene North Pacific Diatom Biochronology          11</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29           32 Neogene North Pacific Diatom Biochronology Subzones          22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30           33                                   Siberian Regional          22</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31           34                                 Australian Regional          21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32           35                             Western Europe Regional          21</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33           36                    Russian Platform Regional Stages          51</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34           37                            Russian Precambrian Eras           8</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35           38                            Russian Precambrian Eons           4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36           39                                      Russian Epochs          36</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37           40                                      Russian Stages          97</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    max_age  min_age ref_id</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1   538.80   0.0000     13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2   538.80   0.0000     13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  2500.00   0.0000     13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4   201.40   0.0000      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5   511.50   0.0000      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6   538.80   0.0117      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7    66.00   0.0114      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8  4000.00   0.0000     13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9   538.80   0.0000      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 4000.00   0.0000     13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 11 4000.00   0.0000     13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 12  524.00 484.4000     13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 13  485.40 201.4000     13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 14  850.00   0.0114     13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 15  252.40  97.5000     13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 16  100.25  68.6900      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 17 4000.00   0.0000     13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 18  113.00   0.0000     28</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 19  170.76   0.0000    180</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 20  170.76   0.0000    180</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 21   65.00   0.0000    190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 22   40.80   0.0000    190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 23   59.20  56.3000    190</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 24 4600.00   0.0000    204</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 25 4180.00   0.0000    204</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 26  141.60  65.0000    219</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 27   60.20   0.0000    220</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 28   24.00   0.0000    221</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 29   24.00   0.0000    221</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 30  600.00 297.0000    222</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 31  511.50 433.0000    222</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 32  362.00 274.3700    222</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 33  360.00 251.9020    222</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 34 3200.00 600.0000    224</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 35 4000.00 600.0000    224</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 36  600.00   0.0000    224</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 37  538.80   0.0117    224</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
