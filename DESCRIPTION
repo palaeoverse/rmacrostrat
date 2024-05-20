@@ -23,7 +23,6 @@ Imports:
     geojsonsf,
     httr,
     jsonlite,
-    readr,
     sinew,
     utils,
     sf
