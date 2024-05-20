@@ -34,6 +34,7 @@ api_version <- function() {
 #' @importFrom curl nslookup
 #' @importFrom geojsonsf geojson_sf
 #' @importFrom sf st_sf
+#' @importFrom readr read_csv
 GET_macrostrat <- function(endpoint, query = list(), format = "json",
                            output = "df") {
   # Is Macrostrat and the user online?
@@ -59,16 +60,13 @@ GET_macrostrat <- function(endpoint, query = list(), format = "json",
     stop("Content not found. Check your request.")
   }
   # Extract content
+  cont <- content(res, as = "text", encoding = "UTF-8")
   if (format == "csv") {
-    dat <- data.frame(content(res,
-      as = "parsed", encoding = "UTF-8",
-      show_col_types = FALSE
-    ))
-    if ("error.v" %in% colnames(dat)) {
+    suppressWarnings(dat <- read_csv(cont, show_col_types = FALSE))
+    if (ncol(dat) == 1) {
       stop("Error when trying query. Check your request.")
     }
   } else if (format == "json") {
-    cont <- content(res, as = "text", encoding = "UTF-8")
     lst <- fromJSON(cont)
     if ("error" %in% names(lst)) {
       stop("Error when trying query. Check your request.")
@@ -79,7 +77,6 @@ GET_macrostrat <- function(endpoint, query = list(), format = "json",
       dat <- lst$success
     }
   } else if (format == "geojson_bare") {
-    cont <- content(res, as = "text", encoding = "UTF-8")
     lst <- fromJSON(cont)
     if ("error" %in% names(lst)) {
       stop("Error when trying query. Check your request.")
