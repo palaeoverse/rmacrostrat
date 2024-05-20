@@ -4,7 +4,7 @@
 \alias{GET_macrostrat}
 \title{Fetch data from Macrostrat}
 \usage{
-GET_macrostrat(endpoint, query = list(), format = "csv")
+GET_macrostrat(endpoint, query = list(), format = "csv", output = "list")
 }
 \arguments{
 \item{endpoint}{\code{character}. The API endpoint to retrieve data from
@@ -13,14 +13,19 @@ Macrostrat.}
 \item{query}{\code{character}. The API query to retrieve data from
 Macrostrat.}
 
-\item{format}{\code{character}. The format that data should be downloaded
-in. Either: "csv", "json", or "geojson".}
+\item{format}{\code{character}. The format that data should be downloaded in.
+Either: "csv", "json", or "geojson".}
+
+\item{output}{\code{character}. If \code{format} is "json", what format
+should the output be in? Valid options are "list" (the default) or "df"
+(data.frame). If "df" is chosen, all metadata will be lost.}
 }
 \value{
-A \code{data.frame} of user-requested data.
+A \code{data.frame} (if \code{format} is "csv" or "json") or
+\code{sf} object (if \code{format} is "geo) of user-requested data.
 }
 \description{
-This function fetches data from \href{https://macrostrat.org}{Macrostrat}
-via the Application Programming Interface (API). This is the core
-function for handling user requests.
+This function fetches data from \href{https://macrostrat.org}{Macrostrat} via the
+Application Programming Interface (API). This is the core function for
+handling user requests.
 }
