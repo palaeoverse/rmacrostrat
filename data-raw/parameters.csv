@@ -1,0 +1,320 @@
+endpoint,argument,class,definition,url
+/columns,unit_id,integer,"integer, a valid unit id",https://macrostrat.org/api/columns
+/columns,section_id,integer,"integer, a valid section id",https://macrostrat.org/api/columns
+/columns,col_id,integer,"integer, a valid column id",https://macrostrat.org/api/columns
+/columns,col_type,character,"string, a column type",https://macrostrat.org/api/columns
+/columns,interval_name,character,"string, chronostratigraphic time interval name",https://macrostrat.org/api/columns
+/columns,int_id,integer,"integer, a chronostratigraphic time interval ID from /defs/intervals",https://macrostrat.org/api/columns
+/columns,age,numeric,numerical age in millions of years before present,https://macrostrat.org/api/columns
+/columns,age_top,numeric,numerical age (Ma) - must be used with age_bottom and be less than age_bottom,https://macrostrat.org/api/columns
+/columns,age_bottom,numeric,numerical age (Ma) - must be used with age_top and be greater than age_top,https://macrostrat.org/api/columns
+/columns,lith_id,integer,"integer, ID of a lithology from /defs/lithologies",https://macrostrat.org/api/columns
+/columns,lith,character,"string, specific lithology name (e.g., shale, sandstone)",https://macrostrat.org/api/columns
+/columns,lith_type,character,"string, groups of lithologies (e.g., carbonate, siliciclastic)",https://macrostrat.org/api/columns
+/columns,lith_class,character,"string, general lithologies (sedimentary, igneous, metamorphic)",https://macrostrat.org/api/columns
+/columns,lith_att_id,integer,"integer, ID of a lithology attribute from /defs/lithology_attributes",https://macrostrat.org/api/columns
+/columns,lith_att,character,"string, specific lithology attribute name (e.g. fine, olivine, poorly washed)",https://macrostrat.org/api/columns
+/columns,lith_att_type,character,"string, specific category of lithology attribute (e.g. grains, lithology, bedform)",https://macrostrat.org/api/columns
+/columns,environ_id,integer,"integer, specific environment ID from /defs/environments",https://macrostrat.org/api/columns
+/columns,environ,character,"string, specific environment",https://macrostrat.org/api/columns
+/columns,environ_type,character,"string, groups of environments",https://macrostrat.org/api/columns
+/columns,environ_class,character,"string, general environments",https://macrostrat.org/api/columns
+/columns,econ_id,integer,"integer, ID of an economic attribute from /defs/econs",https://macrostrat.org/api/columns
+/columns,econ,character,"string, name of an economic attribute",https://macrostrat.org/api/columns
+/columns,econ_type,character,"string, name of an economic attribute type",https://macrostrat.org/api/columns
+/columns,econ_class,character,"string, name of an economic attribute class",https://macrostrat.org/api/columns
+/columns,cltn_id,integer,"integer, one or more Paleobiology Database collection IDs",https://macrostrat.org/api/columns
+/columns,strat_name,character,a fuzzy stratigraphic name to match units to,https://macrostrat.org/api/columns
+/columns,strat_name_id,integer,"integer, a single or comma-separated list of stratigraphic IDs from /defs/strat_names",https://macrostrat.org/api/columns
+/columns,lat,numeric,"number, decimal degree latitude, WGS84",https://macrostrat.org/api/columns
+/columns,lng,numeric,"number, decimal degree longitude, WGS84",https://macrostrat.org/api/columns
+/columns,adjacents,logical,"boolean, if lat/lng or col_id is specified, optionally return all units in columns that touch the polygon containing the supplied lat/lng",https://macrostrat.org/api/columns
+/columns,project_id,integer,a Macrostrat project ID,https://macrostrat.org/api/columns
+/columns,response,character,Any available response_type. Default is short.,https://macrostrat.org/api/columns
+/columns,sf,logical,"Should the results be returned as an `sf` object (defaults to TRUE)?If `FALSE`, a `data.frame` is returned.",https://macrostrat.org/api/columns
+/sections,unit_id,integer,"integer, a valid unit id",https://macrostrat.org/api/sections
+/sections,section_id,integer,"integer, a valid section id",https://macrostrat.org/api/sections
+/sections,col_id,integer,"integer, a valid column id",https://macrostrat.org/api/sections
+/sections,interval_name,character,"string, chronostratigraphic time interval name",https://macrostrat.org/api/sections
+/sections,int_id,integer,"integer, a chronostratigraphic time interval ID from /defs/intervals",https://macrostrat.org/api/sections
+/sections,age,numeric,numerical age in millions of years before present,https://macrostrat.org/api/sections
+/sections,age_top,numeric,numerical age (Ma) - must be used with age_bottom and be less than age_bottom,https://macrostrat.org/api/sections
+/sections,age_bottom,numeric,numerical age (Ma) - must be used with age_top and be greater than age_top,https://macrostrat.org/api/sections
+/sections,lith_id,integer,"integer, ID of a lithology from /defs/lithologies",https://macrostrat.org/api/sections
+/sections,lith,character,"string, specific lithology name (e.g., shale, sandstone)",https://macrostrat.org/api/sections
+/sections,lith_group,character,"string, group of lithologies (e.g., unconsolidated)",https://macrostrat.org/api/sections
+/sections,lith_type,NA,"string, type of lithologies (e.g., carbonate, siliciclastic)",https://macrostrat.org/api/sections
+/sections,lith_class,character,"string, general lithologies (sedimentary, igneous, metamorphic)",https://macrostrat.org/api/sections
+/sections,lith_att_id,integer,"integer, ID of a lithology attribute from /defs/lithology_attributes",https://macrostrat.org/api/sections
+/sections,lith_att,character,"string, specific lithology attribute name (e.g. fine, olivine, poorly washed)",https://macrostrat.org/api/sections
+/sections,lith_att_type,character,"string, specific category of lithology attribute (e.g. grains, lithology, bedform)",https://macrostrat.org/api/sections
+/sections,environ_id,integer,"integer, specific environment ID from /defs/environments",https://macrostrat.org/api/sections
+/sections,environ,character,"string, specific environment",https://macrostrat.org/api/sections
+/sections,environ_type,character,"string, groups of environments",https://macrostrat.org/api/sections
+/sections,environ_class,character,"string, general environments",https://macrostrat.org/api/sections
+/sections,econ_id,integer,"integer, ID of an economic attribute from /defs/econs",https://macrostrat.org/api/sections
+/sections,econ,character,"string, name of an economic attribute",https://macrostrat.org/api/sections
+/sections,econ_type,character,"string, name of an economic attribute type",https://macrostrat.org/api/sections
+/sections,econ_class,character,"string, name of an economic attribute class",https://macrostrat.org/api/sections
+/sections,cltn_id,integer,"integer, one or more Paleobiology Database collection IDs",https://macrostrat.org/api/sections
+/sections,strat_name,character,a fuzzy stratigraphic name to match units to,https://macrostrat.org/api/sections
+/sections,strat_name_id,integer,"integer, a single or comma-separated list of stratigraphic IDs from /defs/strat_names",https://macrostrat.org/api/sections
+/sections,lat,numeric,"number, decimal degree latitude, WGS84",https://macrostrat.org/api/sections
+/sections,lng,numeric,"number, decimal degree longitude, WGS84",https://macrostrat.org/api/sections
+/sections,adjacents,logical,"boolean, if lat/lng or col_id is specified, optionally return all units in columns that touch the polygon containing the supplied lat/lng",https://macrostrat.org/api/sections
+/sections,project_id,integer,a Macrostrat project ID,https://macrostrat.org/api/sections
+/sections,response,character,Any available response_type. Default is short.,https://macrostrat.org/api/sections
+/units,unit_id,NA,"integer, a valid unit id",https://macrostrat.org/api/units
+/units,section_id,NA,"integer, a valid section id",https://macrostrat.org/api/units
+/units,col_id,NA,"integer, a valid column id",https://macrostrat.org/api/units
+/units,col_type,NA,"string, a column type",https://macrostrat.org/api/units
+/units,interval_name,NA,"string, chronostratigraphic time interval name",https://macrostrat.org/api/units
+/units,int_id,NA,"integer, a chronostratigraphic time interval ID from /defs/intervals",https://macrostrat.org/api/units
+/units,age,NA,numerical age in millions of years before present,https://macrostrat.org/api/units
+/units,age_top,NA,numerical age (Ma) - must be used with age_bottom and be less than age_bottom,https://macrostrat.org/api/units
+/units,age_bottom,NA,"numerical age (Ma) - must be used with age_top and be greater than age_top; note that returned units may not be entirely contained by age_top and age_bottom, but they will intersect that age range in whole or in part",https://macrostrat.org/api/units
+/units,lith_id,NA,"integer, ID of a lithology from /defs/lithologies",https://macrostrat.org/api/units
+/units,lith,NA,"string, specific lithology name (e.g., shale, sandstone)",https://macrostrat.org/api/units
+/units,lith_group,NA,"string, groups of lithologies (e.g., sandstones, mudrocks, unconsolidated)",https://macrostrat.org/api/units
+/units,lith_type,NA,"string, types of lithologies (e.g., carbonate, siliciclastic)",https://macrostrat.org/api/units
+/units,lith_class,NA,"string, general lithologies (sedimentary, igneous, metamorphic)",https://macrostrat.org/api/units
+/units,lith_att_id,NA,"integer, ID of a lithology attribute from /defs/lithology_attributes",https://macrostrat.org/api/units
+/units,lith_att,NA,"string, specific lithology attribute name (e.g. fine, olivine, poorly washed)",https://macrostrat.org/api/units
+/units,lith_att_type,NA,"string, specific category of lithology attribute (e.g. grains, lithology, bedform)",https://macrostrat.org/api/units
+/units,environ_id,NA,"integer, specific environment ID from /defs/environments",https://macrostrat.org/api/units
+/units,environ,NA,"string, specific environment",https://macrostrat.org/api/units
+/units,environ_type,NA,"string, groups of environments",https://macrostrat.org/api/units
+/units,environ_class,NA,"string, general environments",https://macrostrat.org/api/units
+/units,econ_id,NA,"integer, ID of an economic attribute from /defs/econs",https://macrostrat.org/api/units
+/units,econ,NA,"string, name of an economic attribute",https://macrostrat.org/api/units
+/units,econ_type,NA,"string, name of an economic attribute type",https://macrostrat.org/api/units
+/units,econ_class,NA,"string, name of an economic attribute class",https://macrostrat.org/api/units
+/units,cltn_id,NA,"integer, one or more Paleobiology Database collection IDs",https://macrostrat.org/api/units
+/units,strat_name,NA,a fuzzy stratigraphic name to match units to,https://macrostrat.org/api/units
+/units,strat_name_id,NA,"integer, a single or comma-separated list of stratigraphic IDs from /defs/strat_names",https://macrostrat.org/api/units
+/units,lat,NA,"number, decimal degree latitude, WGS84",https://macrostrat.org/api/units
+/units,lng,NA,"number, decimal degree longitude, WGS84",https://macrostrat.org/api/units
+/units,adjacents,NA,"boolean, if lat/lng or col_id is specified, optionally return all units in columns that touch the polygon containing the supplied lat/lng",https://macrostrat.org/api/units
+/units,project_id,NA,a Macrostrat project ID,https://macrostrat.org/api/units
+/units,response,NA,Any available response_type. Default is short.,https://macrostrat.org/api/units
+/units,geom_age,NA,"If requesting a geographic format, specifies which age to use for the primary coordinates. Accepted parameters are 'modern' (clat, clng), 'top' (t_plat, t_plng) and 'bottom' (b_plat, b_plng). Default is 'modern'",https://macrostrat.org/api/units
+/units,summarize_measures,NA,"If present, returns summary statistics about the measurements associated with each unit",https://macrostrat.org/api/units
+/units,show_position,NA,"If present, return the unit top and bottom position in section",https://macrostrat.org/api/units
+/units,sf,NA,"Should the results be returned as an `sf` object (defaults to TRUE)?If `FALSE`, a `data.frame` is returned.",https://macrostrat.org/api/units
+/fossils,interval_name,NA,"string, chronostratigraphic time interval name",https://macrostrat.org/api/fossils
+/fossils,age,NA,numerical age in millions of years before present,https://macrostrat.org/api/fossils
+/fossils,age_top,NA,numerical age (Ma) - must be used with age_bottom and be less than age_bottom,https://macrostrat.org/api/fossils
+/fossils,age_bottom,NA,numerical age (Ma) - must be used with age_top and be greater than age_top,https://macrostrat.org/api/fossils
+/fossils,lith_id,NA,"integer, ID of a lithology from /defs/lithologies",https://macrostrat.org/api/fossils
+/fossils,lith,NA,"string, specific lithology name (e.g., shale, sandstone)",https://macrostrat.org/api/fossils
+/fossils,lith_type,NA,"string, groups of lithologies (e.g., carbonate, siliciclastic)",https://macrostrat.org/api/fossils
+/fossils,lith_class,NA,"string, general lithologies (sedimentary, igneous, metamorphic)",https://macrostrat.org/api/fossils
+/fossils,environ_id,NA,"integer, specific environment ID from /defs/environments",https://macrostrat.org/api/fossils
+/fossils,environ,NA,"string, specific environment",https://macrostrat.org/api/fossils
+/fossils,environ_type,NA,"string, groups of environments",https://macrostrat.org/api/fossils
+/fossils,environ_class,NA,"string, general environments",https://macrostrat.org/api/fossils
+/fossils,econ_id,NA,"integer, ID of an economic attribute from /defs/econs",https://macrostrat.org/api/fossils
+/fossils,econ,NA,"string, name of an economic attribute",https://macrostrat.org/api/fossils
+/fossils,econ_type,NA,"string, name of an economic attribute type",https://macrostrat.org/api/fossils
+/fossils,econ_class,NA,"string, name of an economic attribute class",https://macrostrat.org/api/fossils
+/fossils,unit_id,NA,One or more comma-separated valid unit IDs,https://macrostrat.org/api/fossils
+/fossils,col_id,NA,One or more comma-separated valid column IDs,https://macrostrat.org/api/fossils
+/fossils,project_id,NA,One or more comma-separated valid project IDs,https://macrostrat.org/api/fossils
+/fossils,strat_name_id,NA,One or more comma-separted valid strat_name_ids from /defs/strat_names,https://macrostrat.org/api/fossils
+/fossils,strat_name_concept_id,NA,One or more stratigraphic name concepts from /defs/strat_name_concepts,https://macrostrat.org/api/fossils
+/fossils,sf,NA,"Should the results be returned as an `sf` object (defaults to TRUE)?If `FALSE`, a `data.frame` is returned.",https://macrostrat.org/api/fossils
+/stats,all,NA,Show all results,https://macrostrat.org/api/stats
+/paleogeography,age,NA,Can be between 0 and 550,https://macrostrat.org/api/paleogeography
+/paleogeography,interval_name,NA,A named time interval,https://macrostrat.org/api/paleogeography
+/paleogeography,sf,NA,"Should the results be returned as an `sf` object (defaults to TRUE)?If `FALSE`, a `data.frame` is returned.",https://macrostrat.org/api/paleogeography
+/geologic_units/map,scale,NA,"Can be 'small', 'medium', or 'large'",https://macrostrat.org/api/geologic_units/map
+/geologic_units/map,map_id,NA,"integer, one or more polygon map_ids to search for",https://macrostrat.org/api/geologic_units/map
+/geologic_units/map,lat,NA,A valid latitude in decimal degrees,https://macrostrat.org/api/geologic_units/map
+/geologic_units/map,lng,NA,A valid longitude in decimal degrees,https://macrostrat.org/api/geologic_units/map
+/geologic_units/map,strat_name_id,NA,"integer, one or more valid strat_name_ids from /defs/strat_names",https://macrostrat.org/api/geologic_units/map
+/geologic_units/map,unit_id,NA,"integer, one or more valid unit_ids from /units",https://macrostrat.org/api/geologic_units/map
+/geologic_units/map,sf,NA,"Should the results be returned as an `sf` object (defaults to TRUE)?If `FALSE`, a `data.frame` is returned.",https://macrostrat.org/api/geologic_units/map
+/geologic_units/map/points,point_id,NA,One or more comma-separated valid point_ids,https://macrostrat.org/api/geologic_units/map/points
+/geologic_units/map/points,point_type,NA,One or more comma-separated point_types,https://macrostrat.org/api/geologic_units/map/points
+/geologic_units/map/points,certainty,NA,A string to search the certainty field for (fuzzy),https://macrostrat.org/api/geologic_units/map/points
+/geologic_units/map/points,comments,NA,A string to search the comments field for (fuzzy),https://macrostrat.org/api/geologic_units/map/points
+/geologic_units/map/points,source_id,NA,One or more comma-separated source_ids,https://macrostrat.org/api/geologic_units/map/points
+/geologic_units/map/points,minlat,NA,"A minimum latitude that represents the southwest corner of a bounding box (requires minlng, maxlat, and maxlng)",https://macrostrat.org/api/geologic_units/map/points
+/geologic_units/map/points,minlng,NA,"A minimum longitude that represents the southwest corner of a bounding box (requires minlat, maxlat, and maxlng)",https://macrostrat.org/api/geologic_units/map/points
+/geologic_units/map/points,maxlat,NA,"A maximum latitude that represents the northeast corner of a bounding box (requires minlat, minlng, and maxlng)",https://macrostrat.org/api/geologic_units/map/points
+/geologic_units/map/points,maxlng,NA,"A maximum longitude that represents the northeast corner of a bounding box (requires minlat, minlng, and maxlat)",https://macrostrat.org/api/geologic_units/map/points
+/geologic_units/map/points,sample,NA,Return a sample of data,https://macrostrat.org/api/geologic_units/map/points
+/geologic_units/map/points,sf,NA,"Should the results be returned as an `sf` object (defaults to TRUE)?If `FALSE`, a `data.frame` is returned.",https://macrostrat.org/api/geologic_units/map/points
+/geologic_units/map/legend,scale,NA,"Restrict results to maps of a specific scale(s) in Macrostrat's system, can be tiny, small, medium, or large",https://macrostrat.org/api/geologic_units/map/legend
+/geologic_units/map/legend,carto,NA,"Restrict results to map components present in one of Macrostrat's map harmonized scales: tiny, small, medium, large",https://macrostrat.org/api/geologic_units/map/legend
+/geologic_units/map/legend,source_id,NA,"Integer(s), one or more comma-separated integers identifying map sources",https://macrostrat.org/api/geologic_units/map/legend
+/geologic_units/map/legend,description,NA,A string to search for in the map unit description,https://macrostrat.org/api/geologic_units/map/legend
+/geologic_units/map/legend,comments,NA,A string to search for in the map unit comments,https://macrostrat.org/api/geologic_units/map/legend
+/geologic_units/map/legend,lith_type,NA,"String, one or more comma-separated lithology types",https://macrostrat.org/api/geologic_units/map/legend
+/geologic_units/map/legend,lith_class,NA,"String, one or more comma-separated lithology classes",https://macrostrat.org/api/geologic_units/map/legend
+/geologic_units/map/legend,lith_id,NA,"Integer(s), one or more comma-separated integers identifying specific lithologies",https://macrostrat.org/api/geologic_units/map/legend
+/geologic_units/map/legend,sample,NA,Return a sample of data,https://macrostrat.org/api/geologic_units/map/legend
+/measurements,measurement,NA,"string, measurement definition name",https://macrostrat.org/api/measurements
+/measurements,measurement_type,NA,"string, measurement definition type",https://macrostrat.org/api/measurements
+/measurements,measurement_class,NA,"string, measurement definition class",https://macrostrat.org/api/measurements
+/measurements,measurement_id,NA,"integer, measurement definition unique identifier",https://macrostrat.org/api/measurements
+/measurements,measure_id,NA,"integer, specific measurement id",https://macrostrat.org/api/measurements
+/measurements,measuremeta_id,NA,"integer, specific id for measurment metadata (generally a sample)",https://macrostrat.org/api/measurements
+/measurements,unit_id,NA,"integer, one or more ids for unit containing measurements",https://macrostrat.org/api/measurements
+/measurements,interval_name,NA,"string, an interval name to restrict measurements matched to units touching given age",https://macrostrat.org/api/measurements
+/measurements,lith_id,NA,"integer, one or more ids for lith (see /defs/lithologies)",https://macrostrat.org/api/measurements
+/measurements,lith_type,NA,"string, one or more lithology types",https://macrostrat.org/api/measurements
+/measurements,lith_class,NA,"string, one or more lithology classes",https://macrostrat.org/api/measurements
+/measurements,section_id,NA,"integer, id for section containing measurements",https://macrostrat.org/api/measurements
+/measurements,col_id,NA,"integer, id for column containing measurements",https://macrostrat.org/api/measurements
+/measurements,project_id,NA,"integer, id for project",https://macrostrat.org/api/measurements
+/measurements,measure_phase,NA,"string, phase from which measurement was taken (e.g., 'zircon')",https://macrostrat.org/api/measurements
+/measurements,response,NA,Any available response_type. Default is short. Use 'light' for effecient return of measurements with little metadata,https://macrostrat.org/api/measurements
+/measurements,sample,NA,"if present, show a subset of the data",https://macrostrat.org/api/measurements
+/measurements,show_values,NA,"if present, show measurements as arrays, grouped by measuremeta_id and measurement_id",https://macrostrat.org/api/measurements
+/measurements,sf,NA,"Should the results be returned as an `sf` object (defaults to TRUE)?If `FALSE`, a `data.frame` is returned.",https://macrostrat.org/api/measurements
+/age_model,col_id,NA,A valid col_id,https://macrostrat.org/api/age_model
+/age_model,section_id,NA,A valid section_id,https://macrostrat.org/api/age_model
+/eodp,epoch,NA,"string, drilling 'epoch'; only three valid values (DSDP, ODP and IODP), but note that Baggage Stipper limited to IODP",https://macrostrat.org/api/eodp
+/eodp,leg,NA,"string, drilling leg (or expedition for IODP, e.g., leg=317)",https://macrostrat.org/api/eodp
+/eodp,site,NA,"string, drilling site (e.g., U1351)",https://macrostrat.org/api/eodp
+/eodp,col_id,NA,"integer, one or more Macrostrat column ids",https://macrostrat.org/api/eodp
+/eodp,col_group_id,NA,"integer, one or more Macrostrat column group ids; corresponds to legs/expeditions",https://macrostrat.org/api/eodp
+/eodp,all,NA,return all drilling expeditions and sites,https://macrostrat.org/api/eodp
+/eodp,sample,NA,"if present, get a selection of data",https://macrostrat.org/api/eodp
+/eodp,sf,NA,"Should the results be returned as an `sf` object (defaults to TRUE)?If `FALSE`, a `data.frame` is returned.",https://macrostrat.org/api/eodp
+/defs/autocomplete,query,NA,The search term,https://macrostrat.org/api/defs/autocomplete
+/defs/autocomplete,include,NA,Definitions to include,https://macrostrat.org/api/defs/autocomplete
+/defs/autocomplete,exclude,NA,Definitions to exclude,https://macrostrat.org/api/defs/autocomplete
+/defs/define,col_id,NA,columns,https://macrostrat.org/api/defs/define
+/defs/define,econ_id,NA,econs,https://macrostrat.org/api/defs/define
+/defs/define,econ_type,NA,econs,https://macrostrat.org/api/defs/define
+/defs/define,econ_class,NA,econs,https://macrostrat.org/api/defs/define
+/defs/define,environ_id,NA,environments,https://macrostrat.org/api/defs/define
+/defs/define,environ_type,NA,environments,https://macrostrat.org/api/defs/define
+/defs/define,environ_class,NA,environments,https://macrostrat.org/api/defs/define
+/defs/define,col_group_id,NA,groups,https://macrostrat.org/api/defs/define
+/defs/define,int_id,NA,intervals,https://macrostrat.org/api/defs/define
+/defs/define,lith_id,NA,lithologies,https://macrostrat.org/api/defs/define
+/defs/define,lith_type,NA,lithologies,https://macrostrat.org/api/defs/define
+/defs/define,lith_class,NA,lithologies,https://macrostrat.org/api/defs/define
+/defs/define,lith_att_id,NA,lithology_attributes,https://macrostrat.org/api/defs/define
+/defs/define,strat_name_id,NA,strat_names,https://macrostrat.org/api/defs/define
+/defs/define,strat_name_concept_id,NA,strat_name_concepts,https://macrostrat.org/api/defs/define
+/defs/define,timescale_id,NA,timescales,https://macrostrat.org/api/defs/define
+/defs/languages,name,NA,"string, the name of a language",https://macrostrat.org/api/defs/languages
+/defs/languages,code,NA,"string, an ISO 639-3 or ISO 639-1 language code",https://macrostrat.org/api/defs/languages
+/defs/languages,all,NA,return all language definitions,https://macrostrat.org/api/defs/languages
+/defs/lithologies,lith_id,NA,"integer, one or more lithology ids",https://macrostrat.org/api/defs/lithologies
+/defs/lithologies,lith,NA,"string, lithology",https://macrostrat.org/api/defs/lithologies
+/defs/lithologies,lith_group,NA,"string, lithology group",https://macrostrat.org/api/defs/lithologies
+/defs/lithologies,lith_class,NA,"string, lithology class",https://macrostrat.org/api/defs/lithologies
+/defs/lithologies,lith_type,NA,"string, lithology type",https://macrostrat.org/api/defs/lithologies
+/defs/lithologies,all,NA,return all lithology definitions,https://macrostrat.org/api/defs/lithologies
+/defs/lithology_attributes,lith_att_id,NA,"integer, one or more lithology attribute ids",https://macrostrat.org/api/defs/lithology_attributes
+/defs/lithology_attributes,att_type,NA,"string, lithology attribute type",https://macrostrat.org/api/defs/lithology_attributes
+/defs/lithology_attributes,lith_att,NA,"string, lithology attribute",https://macrostrat.org/api/defs/lithology_attributes
+/defs/lithology_attributes,all,NA,return all lithology attribute definitions,https://macrostrat.org/api/defs/lithology_attributes
+/defs/structures,structure_id,NA,"integer, one or more structure ids",https://macrostrat.org/api/defs/structures
+/defs/structures,structure,NA,"string, structure",https://macrostrat.org/api/defs/structures
+/defs/structures,structure_like,NA,"string, loose match to structure",https://macrostrat.org/api/defs/structures
+/defs/structures,structure_group,NA,"string, structure group",https://macrostrat.org/api/defs/structures
+/defs/structures,structure_class,NA,"string, structure class",https://macrostrat.org/api/defs/structures
+/defs/structures,structure_type,NA,"string, structure type",https://macrostrat.org/api/defs/structures
+/defs/structures,all,NA,return all structure definitions,https://macrostrat.org/api/defs/structures
+/defs/columns,col_id,NA,"integer, one or more column ids",https://macrostrat.org/api/defs/columns
+/defs/columns,col_group_id,NA,"integer, one or more column group ids",https://macrostrat.org/api/defs/columns
+/defs/columns,col_name,NA,"string, column name",https://macrostrat.org/api/defs/columns
+/defs/columns,project_id,NA,"integer, one or more project ids",https://macrostrat.org/api/defs/columns
+/defs/columns,status,NA,"string, status of column, values 'active','in process','obsolete'",https://macrostrat.org/api/defs/columns
+/defs/columns,all,NA,Return all column definitions,https://macrostrat.org/api/defs/columns
+/defs/econs,econ_id,NA,econ identifier,https://macrostrat.org/api/defs/econs
+/defs/econs,econ,NA,name of an econ,https://macrostrat.org/api/defs/econs
+/defs/econs,econ_type,NA,econ type,https://macrostrat.org/api/defs/econs
+/defs/econs,econ_class,NA,an econ class,https://macrostrat.org/api/defs/econs
+/defs/econs,all,NA,return all environment definitions,https://macrostrat.org/api/defs/econs
+/defs/environments,environ_class,NA,environment class,https://macrostrat.org/api/defs/environments
+/defs/environments,environ_type,NA,environment type,https://macrostrat.org/api/defs/environments
+/defs/environments,environ,NA,environment,https://macrostrat.org/api/defs/environments
+/defs/environments,id,NA,an environment id,https://macrostrat.org/api/defs/environments
+/defs/environments,all,NA,return all environment definitions,https://macrostrat.org/api/defs/environments
+/defs/intervals,int_id,integer,"integer, one or more comma-separated interval IDs",https://macrostrat.org/api/defs/intervals
+/defs/intervals,all,logical,return all interval definitions,https://macrostrat.org/api/defs/intervals
+/defs/intervals,t_age,numeric,"number, a late age in Ma",https://macrostrat.org/api/defs/intervals
+/defs/intervals,b_age,numeric,"number, an early age in Ma",https://macrostrat.org/api/defs/intervals
+/defs/intervals,name,character,"string, interval name",https://macrostrat.org/api/defs/intervals
+/defs/intervals,true_colors,logical,"boolean, returns original international time scale colors",https://macrostrat.org/api/defs/intervals
+/defs/intervals,rule,character,"used with t_age and b_age to determine how intersecting intervals are identified: 'contains' returns intervals that fall entirely within t_age and b_age, 'exact' returns intervals with boundaries equal to t_age,b_age. Default is 'loose', returns any interval touching the range of t_age and b_age",https://macrostrat.org/api/defs/intervals
+/defs/intervals,age,integer,"integer, an age in Ma - will find all intervals that overlap with this age",https://macrostrat.org/api/defs/intervals
+/defs/intervals,timescale,character,"string, a valid timescale name as defined in /api/v2/defs/timescales",https://macrostrat.org/api/defs/intervals
+/defs/intervals,timescale_id,integer,"integer, a valid timescale_id as defined in /api/v2/defs/timescales",https://macrostrat.org/api/defs/intervals
+/defs/sources,source_id,NA,"integer, one or more comma-separated source IDs",https://macrostrat.org/api/defs/sources
+/defs/sources,scale,NA,"string, one or more comma-separated Burwell scales (tiny, small, medium, large)",https://macrostrat.org/api/defs/sources
+/defs/sources,lat,NA,A valid latitude,https://macrostrat.org/api/defs/sources
+/defs/sources,lng,NA,A valid longitude,https://macrostrat.org/api/defs/sources
+/defs/sources,shape,NA,"string, a WKT geometry that can be used to filter sources",https://macrostrat.org/api/defs/sources
+/defs/sources,buffer,NA,"integer, buffer in meters that should be applied to a provided shape",https://macrostrat.org/api/defs/sources
+/defs/sources,all,NA,return all source definitions,https://macrostrat.org/api/defs/sources
+/defs/sources,sf,NA,"Should the results be returned as an `sf` object (defaults to TRUE)?If `FALSE`, a `data.frame` is returned.",https://macrostrat.org/api/defs/sources
+/defs/strat_names,strat_name_id,NA,unique id,https://macrostrat.org/api/defs/strat_names
+/defs/strat_names,strat_name,NA,"lithostratigraphic name, exact match",https://macrostrat.org/api/defs/strat_names
+/defs/strat_names,strat_name_like,NA,"lithostratigraphic name, with open-ended string matching",https://macrostrat.org/api/defs/strat_names
+/defs/strat_names,concept_id,NA,uniqe id for stratigraphic concepts,https://macrostrat.org/api/defs/strat_names
+/defs/strat_names,rank,NA,lithostratigraphic rank,https://macrostrat.org/api/defs/strat_names
+/defs/strat_names,rule,NA,"Can be 'all' or 'down'. Down will return any children of the requested stratigraphic name, and all will return the entire stratigraphic name hierarchy that the request name belongs to",https://macrostrat.org/api/defs/strat_names
+/defs/strat_names,interval_name,NA,chronostratigrpahic interval name (see /defs/intervals); this will return only strat_names with a declared age in Macrostrat,https://macrostrat.org/api/defs/strat_names
+/defs/strat_names,ref_id,NA,retrieve only stratigraphic names linked the specified reference_id (see /defs/refs),https://macrostrat.org/api/defs/strat_names
+/defs/strat_names,all,NA,return all lithostratigraphic names,https://macrostrat.org/api/defs/strat_names
+/defs/strat_name_concepts,concept_id,NA,unique id,https://macrostrat.org/api/defs/strat_name_concepts
+/defs/strat_name_concepts,concept_name,NA,string specifying concept name,https://macrostrat.org/api/defs/strat_name_concepts
+/defs/strat_name_concepts,all,NA,return all lithostratigraphic names,https://macrostrat.org/api/defs/strat_name_concepts
+/defs/timescales,all,logical,return all available timescales,https://macrostrat.org/api/defs/timescales
+/defs/minerals,all,NA,return all available minerals,https://macrostrat.org/api/defs/minerals
+/defs/minerals,mineral,NA,"string, name of mineral",https://macrostrat.org/api/defs/minerals
+/defs/minerals,mineral_type,NA,"string, type of mineral (e.g., feldspar)",https://macrostrat.org/api/defs/minerals
+/defs/minerals,element,NA,"string, chemical element abbreviation, case sensitive (e.g., Co)",https://macrostrat.org/api/defs/minerals
+/defs/projects,all,NA,return all available projects,https://macrostrat.org/api/defs/projects
+/defs/projects,project_id,NA,"integer identifying project(s), separate multiple values with commas",https://macrostrat.org/api/defs/projects
+/defs/plates,all,NA,return all available projects,https://macrostrat.org/api/defs/plates
+/defs/plates,plate_id,NA,One or more plate_ids to query,https://macrostrat.org/api/defs/plates
+/defs/measurements,measure_id,NA,"integer, one or more comma-separted measurement IDs",https://macrostrat.org/api/defs/measurements
+/defs/measurements,measurement_class,NA,"string, measurement_class",https://macrostrat.org/api/defs/measurements
+/defs/measurements,measurement_type,NA,"string, measurement_type",https://macrostrat.org/api/defs/measurements
+/defs/measurements,all,NA,return all measurement definitions,https://macrostrat.org/api/defs/measurements
+/defs/groups,all,NA,return all column groups,https://macrostrat.org/api/defs/groups
+/defs/groups,project_id,NA,limit results to specific project,https://macrostrat.org/api/defs/groups
+/defs/groups,col_id,NA,get col_group data for specific column,https://macrostrat.org/api/defs/groups
+/defs/groups,col_group_id,NA,get col_group data for specific col_group_id,https://macrostrat.org/api/defs/groups
+/defs/grainsizes,grain_id,NA,Unique grain ID,https://macrostrat.org/api/defs/grainsizes
+/defs/grainsizes,grain_symbol,NA,The grain symbol for display purposes,https://macrostrat.org/api/defs/grainsizes
+/defs/grainsizes,grain_name,NA,The name of the grain,https://macrostrat.org/api/defs/grainsizes
+/defs/grainsizes,grain_group,NA,The family of grains the grain belongs to,https://macrostrat.org/api/defs/grainsizes
+/defs/grainsizes,soil_group,NA,The family of soils the grain belongs to,https://macrostrat.org/api/defs/grainsizes
+/defs/grainsizes,classification,NA,The classification scheme the given grain belongs to,https://macrostrat.org/api/defs/grainsizes
+/defs/grainsizes,all,NA,Return all grain sizes,https://macrostrat.org/api/defs/grainsizes
+/defs/refs,ref_id,NA,"integer, one or more comma-separted reference ids",https://macrostrat.org/api/defs/refs
+/defs/refs,all,NA,return all references,https://macrostrat.org/api/defs/refs
+/defs/drilling_sites,epoch,NA,"string, drilling 'epoch'; only three valid values. DSDP, ODP and IODP",https://macrostrat.org/api/defs/drilling_sites
+/defs/drilling_sites,leg,NA,"string, drilling leg (or expedition for IODP)",https://macrostrat.org/api/defs/drilling_sites
+/defs/drilling_sites,site,NA,"string, drilling site",https://macrostrat.org/api/defs/drilling_sites
+/defs/drilling_sites,col_id,NA,"integer, one or more Macrostrat column ids",https://macrostrat.org/api/defs/drilling_sites
+/defs/drilling_sites,col_group_id,NA,"integer, one or more Macrostrat column group ids; corresponds to legs/expeditions",https://macrostrat.org/api/defs/drilling_sites
+/defs/drilling_sites,all,NA,return all drilling expeditions and sites,https://macrostrat.org/api/defs/drilling_sites
+/defs/drilling_sites,sample,NA,"if present, get a selection of data",https://macrostrat.org/api/defs/drilling_sites
+/defs/drilling_sites,sf,NA,"Should the results be returned as an `sf` object (defaults to TRUE)?If `FALSE`, a `data.frame` is returned.",https://macrostrat.org/api/defs/drilling_sites
+/carto/small,sample,NA,Get a sample response,https://macrostrat.org/api/carto/small
+/carto/small,lat,NA,A valid latitude in decimal degrees,https://macrostrat.org/api/carto/small
+/carto/small,lng,NA,A valid longitude in decimal degrees,https://macrostrat.org/api/carto/small
+/carto/small,shape,NA,A valid WKT geometry,https://macrostrat.org/api/carto/small
+/carto/small,sf,NA,"Should the results be returned as an `sf` object (defaults to TRUE)?If `FALSE`, a `data.frame` is returned.",https://macrostrat.org/api/carto/small
+/grids/latitude,lngSpacing,NA,divide bands of latitude by x degrees of longitude,https://macrostrat.org/api/grids/latitude
+/grids/latitude,latSpacing,NA,the number of times a hemisphere should be cut,https://macrostrat.org/api/grids/latitude
+/grids/latitude,sf,NA,"Should the results be returned as an `sf` object (defaults to TRUE)?If `FALSE`, a `data.frame` is returned.",https://macrostrat.org/api/grids/latitude
+/grids/longitude,latSpacing,NA,the number of degrees between bands of latitude,https://macrostrat.org/api/grids/longitude
+/grids/longitude,cellArea,NA,target cell area in km^2,https://macrostrat.org/api/grids/longitude
+/grids/longitude,sf,NA,"Should the results be returned as an `sf` object (defaults to TRUE)?If `FALSE`, a `data.frame` is returned.",https://macrostrat.org/api/grids/longitude
+/grids/lithologies,latSpacing,NA,the number of degrees between bands of latitude,https://macrostrat.org/api/grids/lithologies
+/grids/lithologies,lngSpacing,NA,the number of degrees between bands of longitude,https://macrostrat.org/api/grids/lithologies
+/grids/lithologies,originLat,NA,An optional origin latitude,https://macrostrat.org/api/grids/lithologies
+/grids/lithologies,originLng,NA,An option origin longitude,https://macrostrat.org/api/grids/lithologies
+/grids/lithologies,sf,NA,"Should the results be returned as an `sf` object (defaults to TRUE)?If `FALSE`, a `data.frame` is returned.",https://macrostrat.org/api/grids/lithologies

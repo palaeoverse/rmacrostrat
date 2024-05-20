@@ -52,7 +52,6 @@ tests/testthat/*.pdf
 docs
 
 # Raw data
-data-raw/
 inst/doc
 /doc/
 /Meta/

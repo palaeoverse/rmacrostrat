@@ -20,10 +20,12 @@ Depends:
     R (>= 4.0)
 Imports: 
     curl,
+    geojsonsf,
     httr,
     jsonlite,
-    geojsonsf,
-    readr
+    readr,
+    sinew,
+    utils
 Suggests:
     rmarkdown,
     knitr,
