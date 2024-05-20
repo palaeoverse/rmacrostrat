@@ -77,82 +77,20 @@ is based on.</p></li>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Get available time scales</span></span></span>
 <span class="r-in"><span><span class="fu">macrostrat_timescales</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>Coercing LHS to a list</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    timescale_id                                           timescale n_intervals</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1             1                                  international ages         102</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2             2                                international epochs          34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3             3                               international periods          22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4             5                      calcareous nannoplankton zones          88</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5             6                                    New Zealand ages          89</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6             7                                       custom COSUNA          84</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7             9                     North American land mammal ages          19</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8            11                             international intervals         170</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9            12                                              COSUNA          62</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10           13                                  international eras          10</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11           14                                  international eons           3</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12           15                      Trilobite Zonation - Laurentia          25</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13           16                                   Conodont Zonation         198</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14           17                             North American Regional          95</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15           18                          Ammonite Zonation - Boreal         154</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16           19                Ammonite Zonation - Western Interior          70</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17           20           international intervals covering all time          16</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18           21                              Scotese Reconstruction          17</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19           22                          Geomagnetic Polarity Chron         101</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20           23                       Geomagnetic Polarity Subchron         372</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21           24             Planktic foraminiferal Primary Biozones          51</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22           25           Planktic foraminiferal Secondary Biozones          39</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23           26                       Planktic foraminiferal datums           2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24           27                                     Martian Periods           4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25           28                                      Martian Epochs           8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26           29           Cretaceous Planktic foraminifer zonations          31</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27           30                   Low latitude radiolarian zonation          34</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28           31          Neogene North Pacific Diatom Biochronology          11</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29           32 Neogene North Pacific Diatom Biochronology Subzones          22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30           33                                   Siberian Regional          22</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31           34                                 Australian Regional          21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32           35                             Western Europe Regional          21</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33           36                    Russian Platform Regional Stages          51</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34           37                            Russian Precambrian Eras           8</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35           38                            Russian Precambrian Eons           4</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36           39                                      Russian Epochs          36</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37           40                                      Russian Stages          97</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    max_age  min_age ref_id</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1   538.80   0.0000     13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2   538.80   0.0000     13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  2500.00   0.0000     13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4   201.40   0.0000      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5   511.50   0.0000      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6   538.80   0.0117      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7    66.00   0.0114      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  4000.00   0.0000     13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9   538.80   0.0000      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 4000.00   0.0000     13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 11 4000.00   0.0000     13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 12  524.00 484.4000     13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 13  485.40 201.4000     13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 14  850.00   0.0114     13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 15  252.40  97.5000     13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 16  100.25  68.6900      0</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 17 4000.00   0.0000     13</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 18  113.00   0.0000     28</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 19  170.76   0.0000    180</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 20  170.76   0.0000    180</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 21   65.00   0.0000    190</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 22   40.80   0.0000    190</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 23   59.20  56.3000    190</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 24 4600.00   0.0000    204</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 25 4180.00   0.0000    204</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 26  141.60  65.0000    219</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 27   60.20   0.0000    220</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 28   24.00   0.0000    221</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 29   24.00   0.0000    221</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 30  600.00 297.0000    222</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 31  511.50 433.0000    222</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 32  362.00 274.3700    222</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 33  360.00 251.9020    222</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 34 3200.00 600.0000    224</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 35 4000.00 600.0000    224</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 36  600.00   0.0000    224</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 37  538.80   0.0117    224</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 37 × 6</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    timescale_id timescale                     n_intervals max_age min_age ref_id</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                               <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>            1 international ages                    102    539.  0          13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>            2 international epochs                   34    539.  0          13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>            3 international periods                  22   <span style="text-decoration: underline;">2</span>500   0          13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>            5 calcareous nannoplankton zon…          88    201.  0           0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>            6 New Zealand ages                       89    512.  0           0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>            7 custom COSUNA                          84    539.  0.011<span style="text-decoration: underline;">7</span>      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>            9 North American land mammal a…          19     66   0.011<span style="text-decoration: underline;">4</span>      0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>           11 international intervals               170   <span style="text-decoration: underline;">4</span>000   0          13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>           12 COSUNA                                 62    539.  0           0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>           13 international eras                     10   <span style="text-decoration: underline;">4</span>000   0          13</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 27 more rows</span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
