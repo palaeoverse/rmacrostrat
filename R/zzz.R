@@ -4,11 +4,10 @@ root <- function() "https://macrostrat.org/"
 #' Get API version
 #' @importFrom jsonlite fromJSON
 #' @importFrom httr GET content
-api_ver <- function() {
+api_version <- function() {
   res <- GET(url = root(), path = "api")
   cont <- content(res, as = "text", encoding = "UTF-8")
   ver <- fromJSON(cont)$success$v
-  ver <- paste0("/api/v", ver, "/")
   return(ver)
 }
 
@@ -23,20 +22,20 @@ api_ver <- function() {
 #' @param query \code{character}. The API query to retrieve data from
 #'   Macrostrat.
 #' @param format \code{character}. The format that data should be downloaded in.
-#'   Either: "csv", "json", or "geojson".
+#'   Either: "csv", "json" (the default), or "geojson".
 #' @param output \code{character}. If \code{format} is "json", what format
 #'   should the output be in? Valid options are "list" (the default) or "df"
 #'   (data.frame). If "df" is chosen, all metadata will be lost.
 #'
-#' @return A \code{data.frame} (if \code{format} is "csv" or "json") or
-#'   \code{sf} object (if \code{format} is "geo) of user-requested data.
+#' @return A \code{data.frame} (if \code{format} is "csv" or "json" and \code{output} is "df"), a \code{list} (if \code{format} is "json" and \code{output} is "list"), or
+#'   \code{sf} object (if \code{format} is "geojson").
 #' @importFrom jsonlite fromJSON
 #' @importFrom httr GET content http_error
 #' @importFrom curl nslookup
-#' @importFrom readr read_csv
 #' @importFrom geojsonsf geojson_sf
-GET_macrostrat <- function(endpoint, query = list(), format = "csv",
-                           output = "list") {
+#' @importFrom sf st_sf
+GET_macrostrat <- function(endpoint, query = list(), format = "json",
+                           output = "df") {
   # Is Macrostrat and the user online?
   tryCatch(
     {
@@ -46,32 +45,48 @@ GET_macrostrat <- function(endpoint, query = list(), format = "csv",
       stop("Macrostrat is unavailable or you have no internet connection.")
     }
   )
-  # Add format to query
-  query <- c(query, format = format)
+  if (format == "geojson") format <- "geojson_bare"
+  # Update query
+  full_query <- c(query, format = format)
+  full_query$response <- "long"
   # Build path route
   path <- paste0("api/", endpoint)
   # Fetch data
-  res <- GET(url = root(), path = path, query = query)
+  res <- GET(url = root(), path = path, query = full_query)
   # Check for error
   e <- http_error(res)
   if (e) {
     stop("Content not found. Check your request.")
   }
   # Extract content
-  if (query["format"] == "csv") {
+  if (format == "csv") {
     dat <- data.frame(content(res,
       as = "parsed", encoding = "UTF-8",
       show_col_types = FALSE
     ))
-  } else if (query["format"] == "json") {
-    cont <- content(res, as = "text", encoding = "UTF-8")
-    dat <- fromJSON(cont)$success
-    if (output == "df") {
-      dat <- as.data.frame(dat$success$data)
+    if ("error.v" %in% colnames(dat)) {
+      stop("Error when trying query. Check your request.")
     }
-  } else if (query["format"] == "geojson") {
+  } else if (format == "json") {
     cont <- content(res, as = "text", encoding = "UTF-8")
-    dat <- geojson_sf(cont)
+    lst <- fromJSON(cont)
+    if ("error" %in% names(lst)) {
+      stop("Error when trying query. Check your request.")
+    }
+    if (output == "df") {
+      dat <- lst$success$data
+    } else {
+      dat <- lst$success
+    }
+  } else if (format == "geojson_bare") {
+    cont <- content(res, as = "text", encoding = "UTF-8")
+    lst <- fromJSON(cont)
+    if ("error" %in% names(lst)) {
+      stop("Error when trying query. Check your request.")
+    }
+    dat <- lst$features$properties
+    dat$geometry <- geojson_sf(cont)$geometry
+    dat <- st_sf(dat)
   }
   # Return data
   return(dat)
