@@ -25,7 +25,8 @@ Imports:
     jsonlite,
     readr,
     sinew,
-    utils
+    utils,
+    sf
 Suggests:
     rmarkdown,
     knitr,
