@@ -1,3 +1,3 @@
-#' @param name \code{NA}. string, the name of a language
-#' @param code \code{NA}. string, an ISO 639-3 or ISO 639-1 language code
-#' @param all \code{NA}. return all language definitions
+#' @param name \code{character}. The name of a language (e.g. "Spanish").
+#' @param code \code{character}. The ISO 639-3 (e.g. "spa") or ISO639-1 (e.g. "es") language code.
+#' @param all \code{logical}. return all language definitions

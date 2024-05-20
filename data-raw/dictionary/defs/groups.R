@@ -1,4 +1,4 @@
-#' @param all \code{NA}. return all column groups
-#' @param project_id \code{NA}. limit results to specific project
-#' @param col_id \code{NA}. get col_group data for specific column
-#' @param col_group_id \code{NA}. get col_group data for specific col_group_id
+#' @param project_id \code{integer}. The unique identification number(s) of the desired project(s).
+#' @param col_id \code{integer}. The unique identification number(s) of the desired column(s).
+#' @param col_group_id \code{integer}. The unique identification number(s) of the desired column group(s).
+#' @param all \code{logical}. return all column groups

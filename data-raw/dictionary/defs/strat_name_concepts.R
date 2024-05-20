@@ -1,3 +1,3 @@
-#' @param concept_id \code{NA}. unique id
-#' @param concept_name \code{NA}. string specifying concept name
-#' @param all \code{NA}. return all lithostratigraphic names
+#' @param concept_id \code{integer}. The unique identification number(s) of the desired stratigraphic name concept(s).
+#' @param concept_name \code{character}. The name(s) of the desired stratigraphic name concept(s).
+#' @param all \code{logical}. Should all stratigraphic name concepts be returned?

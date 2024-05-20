@@ -1,16 +1,16 @@
-#' @param col_id \code{NA}. columns
-#' @param econ_id \code{NA}. econs
-#' @param econ_type \code{NA}. econs
-#' @param econ_class \code{NA}. econs
-#' @param environ_id \code{NA}. environments
-#' @param environ_type \code{NA}. environments
-#' @param environ_class \code{NA}. environments
-#' @param col_group_id \code{NA}. groups
-#' @param int_id \code{NA}. intervals
-#' @param lith_id \code{NA}. lithologies
-#' @param lith_type \code{NA}. lithologies
-#' @param lith_class \code{NA}. lithologies
-#' @param lith_att_id \code{NA}. lithology_attributes
-#' @param strat_name_id \code{NA}. strat_names
-#' @param strat_name_concept_id \code{NA}. strat_name_concepts
-#' @param timescale_id \code{NA}. timescales
+#' @param lith_id \code{integer}. The unique identification number(s) of one or more lithologies.
+#' @param lith_type \code{character}. The name of a lithological type (e.g. "siliciclastic").
+#' @param lith_class \code{character}. The name of a lithological class (e.g. "sedimentary").
+#' @param lith_att_id \code{integer}. The unique identification number(s) of lithology attribute(s).
+#' @param col_id \code{integer}. The unique identification number(s) of the desired column(s).
+#' @param col_group_id \code{integer}. The unique identification number(s) of the desired column group(s).
+#' @param strat_name_id \code{integer}. The unique identification number(s) of the desired stratigraphic name.
+#' @param strat_name_concept_id \code{character}. The unique identification number(s) of the desired stratigraphic name concept.
+#' @param environ_id \code{integer}. The unique identification number(s) of the desired environment(s).
+#' @param environ_type \code{character}. The name of a type of environment (e.g. carbonate).
+#' @param environ_class \code{character}. The name of a class of envrionment (e.g. marine).
+#' @param int_id \code{integer}. The identification number of the desired interval.
+#' @param timescale_id \code{integer}. The identification number of the desired timescale.
+#' @param econ_id \code{integer}. The unique idenfication number(s) of the economic resource(s).
+#' @param econ_type \code{character}. The type of economic resource.
+#' @param econ_class \code{character}. The class of economic resource.

@@ -1,9 +1,9 @@
-#' @param scale \code{NA}. Restrict results to maps of a specific scale(s) in Macrostrat's system, can be tiny, small, medium, or large
-#' @param carto \code{NA}. Restrict results to map components present in one of Macrostrat's map harmonized scales: tiny, small, medium, large
-#' @param source_id \code{NA}. Integer(s), one or more comma-separated integers identifying map sources
-#' @param description \code{NA}. A string to search for in the map unit description
-#' @param comments \code{NA}. A string to search for in the map unit comments
-#' @param lith_type \code{NA}. String, one or more comma-separated lithology types
-#' @param lith_class \code{NA}. String, one or more comma-separated lithology classes
-#' @param lith_id \code{NA}. Integer(s), one or more comma-separated integers identifying specific lithologies
-#' @param sample \code{NA}. Return a sample of data
+#' @param source_id \code{integer}. The unique identification number(s) of the source(s) to filter the results by.
+#' @param lith_id \code{integer}. The unique identification number(s) of the lithology(ies) to filter the results by.
+#' @param lith_type \code{character}. Filter results to those of one or more lithology type(s).
+#' @param lith_class \code{character}. Filter results to those of one or more lithology class(es).
+#' @param description \code{character}. Filter results by a match to the map unit description field.
+#' @param comments \code{character}. Filter results by a match to the map unit comments field.
+#' @param scale \code{character}. Restrict results to maps of a specific scale(s) in Macrostrat's system. Options are "tiny" (locality), "small" (regional), "medium" (continental), or "large" (global).
+#' @param carto \code{character}. Restrict results to map components present in one of Macrostrat's map harmonized scales. Options are "tiny" (locality), "small" (regional), "medium" (continental), or "large" (global).
+#' @param sample \code{logical}. Return a sample of data.

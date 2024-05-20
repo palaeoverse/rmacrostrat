@@ -1,1 +1,1 @@
-#' @param all \code{NA}. Show all results
+#' @param all \code{logical}. Show all results

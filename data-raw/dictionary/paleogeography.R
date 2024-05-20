@@ -1,3 +1,3 @@
-#' @param age \code{NA}. Can be between 0 and 550
-#' @param interval_name \code{NA}. A named time interval
-#' @param sf \code{NA}. Should the results be returned as an `sf` object (defaults to TRUE)?If `FALSE`, a `data.frame` is returned.
+#' @param age \code{numeric}. Return a paleogeographic reconstruction based on a numerical age in millions of years (between 0 and 550).
+#' @param interval_name \code{character}. Return a paleogeographic reconstruction based on a named time interval. Ignored if `age` is supplied.
+#' @param sf \code{logical}. Should the results be returned as an `sf` object (defaults to `TRUE`)? If `FALSE`, a `data.frame` is returned.

@@ -1,2 +1,2 @@
-#' @param ref_id \code{NA}. integer, one or more comma-separted reference ids
-#' @param all \code{NA}. return all references
+#' @param ref_id \code{integer}. The unique identification number(s) of the desired reference(s). If `NULL` (default), all references are returned.
+#' @param all \code{logical}. return all references

@@ -1,37 +1,37 @@
-#' @param unit_id \code{NA}. integer, a valid unit id
-#' @param section_id \code{NA}. integer, a valid section id
-#' @param col_id \code{NA}. integer, a valid column id
-#' @param col_type \code{NA}. string, a column type
-#' @param interval_name \code{NA}. string, chronostratigraphic time interval name
-#' @param int_id \code{NA}. integer, a chronostratigraphic time interval ID from /defs/intervals
-#' @param age \code{NA}. numerical age in millions of years before present
-#' @param age_top \code{NA}. numerical age (Ma) - must be used with age_bottom and be less than age_bottom
-#' @param age_bottom \code{NA}. numerical age (Ma) - must be used with age_top and be greater than age_top; note that returned units may not be entirely contained by age_top and age_bottom, but they will intersect that age range in whole or in part
-#' @param lith_id \code{NA}. integer, ID of a lithology from /defs/lithologies
-#' @param lith \code{NA}. string, specific lithology name (e.g., shale, sandstone)
-#' @param lith_group \code{NA}. string, groups of lithologies (e.g., sandstones, mudrocks, unconsolidated)
-#' @param lith_type \code{NA}. string, types of lithologies (e.g., carbonate, siliciclastic)
-#' @param lith_class \code{NA}. string, general lithologies (sedimentary, igneous, metamorphic)
-#' @param lith_att_id \code{NA}. integer, ID of a lithology attribute from /defs/lithology_attributes
-#' @param lith_att \code{NA}. string, specific lithology attribute name (e.g. fine, olivine, poorly washed)
-#' @param lith_att_type \code{NA}. string, specific category of lithology attribute (e.g. grains, lithology, bedform)
-#' @param environ_id \code{NA}. integer, specific environment ID from /defs/environments
-#' @param environ \code{NA}. string, specific environment
-#' @param environ_type \code{NA}. string, groups of environments
-#' @param environ_class \code{NA}. string, general environments
-#' @param econ_id \code{NA}. integer, ID of an economic attribute from /defs/econs
-#' @param econ \code{NA}. string, name of an economic attribute
-#' @param econ_type \code{NA}. string, name of an economic attribute type
-#' @param econ_class \code{NA}. string, name of an economic attribute class
-#' @param cltn_id \code{NA}. integer, one or more Paleobiology Database collection IDs
-#' @param strat_name \code{NA}. a fuzzy stratigraphic name to match units to
-#' @param strat_name_id \code{NA}. integer, a single or comma-separated list of stratigraphic IDs from /defs/strat_names
-#' @param lat \code{NA}. number, decimal degree latitude, WGS84
-#' @param lng \code{NA}. number, decimal degree longitude, WGS84
-#' @param adjacents \code{NA}. boolean, if lat/lng or col_id is specified, optionally return all units in columns that touch the polygon containing the supplied lat/lng
-#' @param project_id \code{NA}. a Macrostrat project ID
-#' @param response \code{NA}. Any available response_type. Default is short.
-#' @param geom_age \code{NA}. If requesting a geographic format, specifies which age to use for the primary coordinates. Accepted parameters are 'modern' (clat, clng), 'top' (t_plat, t_plng) and 'bottom' (b_plat, b_plng). Default is 'modern'
-#' @param summarize_measures \code{NA}. If present, returns summary statistics about the measurements associated with each unit
-#' @param show_position \code{NA}. If present, return the unit top and bottom position in section
-#' @param sf \code{NA}. Should the results be returned as an `sf` object (defaults to TRUE)?If `FALSE`, a `data.frame` is returned.
+#' @param col_type \code{character}. The type of column(s) to return. Currently, "column" appears to be the only valid value.
+#' @param summarize_measures \code{logical}. Returns summary statistics about the measurements associated with each unit.
+#' @param show_position \code{logical}. If present, return the unit top and bottom position in section
+#' @param unit_id \code{integer}. The unique identification number(s) of the unit(s) to return.
+#' @param lith_id \code{integer}. Filter units to those containing a lithology identified by its unique identification number.
+#' @param lith_group \code{character}. Filter units to those containing a named lithology group (e.g., sandstones, mudrocks, unconsolidated)
+#' @param lith_type \code{character}. Filter units to those containing a named lithology type (e.g., carbonate, siliciclastic).
+#' @param lith_class \code{character}. Filter units to those containing a named lithology class (e.g., sedimentary, igneous, metamorphic).
+#' @param lith_att \code{character}. Filter units to those containing a named lithology attribute (e.g. fine, olivine, poorly washed).
+#' @param lith_att_id \code{integer}. Filter units to those containing a lithology attribute identified by its unique identification number.
+#' @param lith_att_type \code{character}. Filter units to those containing a named category of lithology attribute (e.g. grains, lithology, bedform).
+#' @param environ \code{character}. Filter units to those containing a named environment.
+#' @param environ_id \code{integer}. Filter units to those containing an environment identified by its unique identification number.
+#' @param environ_type \code{character}. Filter units to those containing a named type of environments.
+#' @param section_id \code{integer}. The unique identification number(s) of the section(s) to return.
+#' @param environ_class \code{character}. Filter units to those containing a named class of environments.
+#' @param econ \code{character}. Filter units to those containing a named economic attribute.
+#' @param econ_id \code{integer}. Filter units to those containing an economic attribute identified by its unique identification number.
+#' @param econ_type \code{character}. Filter units to those containing a named economic attribute type.
+#' @param econ_class \code{character}. Filter units to those containing a named economic attribute class.
+#' @param cltn_id \code{integer}. Filter units to those containing one or more Paleobiology Database collections identified by their unique identification numbers.
+#' @param strat_name \code{character}. Filter units to those that fuzzy match a stratigraphic name.
+#' @param strat_name_id \code{integer}. Filter units by a single or comma-separated list of stratigraphic IDs.
+#' @param lat \code{numeric}. Return the unit at a particular decimal degree latitude (WGS84). Must also specify `lng`.
+#' @param lng \code{numeric}. Return the unit at a particular decimal degree longitude (WGS84). Must also specify `lat`.
+#' @param col_id \code{integer}. The unique identification number(s) of the columns(s) to return.
+#' @param adjacents \code{logical}. If lat/lng or unit_id is specified, should all columns that touch the specified column be returned?
+#' @param project_id \code{integer}. Filter units to those contained within a Macrostrat project identified by its unique identification number.
+#' @param geom_age \code{character}. If requesting a geographic format, specifies which age to use for the primary coordinates. Accepted parameters are 'modern' (clat, clng), 'top' (t_plat, t_plng) and 'bottom' (b_plat, b_plng). Default is 'modern'
+#' @param sf \code{logical}. Should the results be returned as an `sf` object (defaults to `TRUE`)? If `FALSE`, a `data.frame` is returned.
+#' @param interval_name \code{character}. Filter by the chronostratigraphic interval name (i.e. intervals returned by `macrostrat_intervals`). Used to return all units with age ranges within interval age range.
+#' @param int_id \code{integer}. The unique identification number(s) of a chronostratigraphic time interval to filter the results by.
+#' @param age \code{numeric}. Filter units to those that overlap this numerical age in millions of years before present.
+#' @param age_top \code{numeric}. Filter units to those that overlap with the age range between this and age_bottom. Should be in millions of years before present and less than age_bottom.
+#' @param age_bottom \code{numeric}. Filter units to those that overlap with the age range between this and age_top. Should be in millions of years before present and greater than age_top.
+#' @param lith \code{character}. Filter units to those containing a named lithology (e.g., shale, sandstone).
+#' @param response \code{character}. How much metadata should be returned? Options (in increasing amount of metadata) are "short" and "long".

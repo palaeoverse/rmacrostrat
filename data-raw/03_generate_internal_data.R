@@ -9,7 +9,7 @@ endpoints <- unique(dat$endpoint)
 # Construct parameter list
 params <- lapply(endpoints, function(x) {
   tmp <- subset(dat, endpoint == x)
-  tmp <- tmp[order(tmp$order), ]
+  tmp <- tmp[order(unlist(tmp$order)), ]
   l <- as.list(tmp$class)
   names(l) <- tmp$argument
   return(l)

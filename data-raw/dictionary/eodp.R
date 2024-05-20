@@ -1,8 +1,8 @@
-#' @param epoch \code{NA}. string, drilling 'epoch'; only three valid values (DSDP, ODP and IODP), but note that Baggage Stipper limited to IODP
-#' @param leg \code{NA}. string, drilling leg (or expedition for IODP, e.g., leg=317)
-#' @param site \code{NA}. string, drilling site (e.g., U1351)
-#' @param col_id \code{NA}. integer, one or more Macrostrat column ids
-#' @param col_group_id \code{NA}. integer, one or more Macrostrat column group ids; corresponds to legs/expeditions
-#' @param all \code{NA}. return all drilling expeditions and sites
-#' @param sample \code{NA}. if present, get a selection of data
-#' @param sf \code{NA}. Should the results be returned as an `sf` object (defaults to TRUE)?If `FALSE`, a `data.frame` is returned.
+#' @param col_id \code{integer}. The unique identification number(s) of the column(s) to return.
+#' @param site \code{character}. Filter results to those of a particular drilling site (e.g., "U1351").
+#' @param leg \code{character}. Filter results to those of a particular drilling leg (or expedition for IODP, e.g., "317").
+#' @param epoch \code{character}. Filter results to those of a particular drilling 'epoch' ("DSDP", "ODP", or "IODP").
+#' @param col_group_id \code{integer}. The unique identification number(s) of the column group(s) to filter the results by. Corresponds to legs/expeditions.
+#' @param sf \code{logical}. Should the results be returned as an `sf` object (defaults to `TRUE`)? If `FALSE`, a `data.frame` is returned.
+#' @param all \code{logical}. return all drilling expeditions and sites
+#' @param sample \code{logical}. if present, get a selection of data

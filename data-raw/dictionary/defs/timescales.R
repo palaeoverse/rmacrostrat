@@ -1,1 +1,1 @@
-#' @param all \code{logical}. return all available timescales
+#' @param all \code{logical}. Should all available timescales be returned?

@@ -1,4 +1,4 @@
-#' @param measure_id \code{NA}. integer, one or more comma-separted measurement IDs
-#' @param measurement_class \code{NA}. string, measurement_class
-#' @param measurement_type \code{NA}. string, measurement_type
-#' @param all \code{NA}. return all measurement definitions
+#' @param measure_id \code{integer}. The unique identification number(s) of the desired measurement definition(s).
+#' @param measurement_type \code{character}. The type of measurement definitions (e.g., geochronological), a less inclusive grouping than `class`.
+#' @param measurement_class \code{character}. The class of measurement definitions (e.g., geochemical), a more inclusive grouping than `type`.
+#' @param all \code{logical}. return all measurement definitions

@@ -1,6 +1,6 @@
-#' @param lith_id \code{NA}. integer, one or more lithology ids
-#' @param lith \code{NA}. string, lithology
-#' @param lith_group \code{NA}. string, lithology group
-#' @param lith_class \code{NA}. string, lithology class
-#' @param lith_type \code{NA}. string, lithology type
-#' @param all \code{NA}. return all lithology definitions
+#' @param lith \code{character}. The name of a lithology (e.g. "limestone").
+#' @param lith_group \code{character}. The name of a lithological group (e.g. "unconsolidated").
+#' @param lith_class \code{character}. The name of a lithological class (e.g. "sedimentary").
+#' @param lith_type \code{character}. The name of a lithological type (e.g. "siliciclastic").
+#' @param lith_id \code{integer}. The unique identification number(s) of one or more lithologies.
+#' @param all \code{logical}. return all lithology definitions

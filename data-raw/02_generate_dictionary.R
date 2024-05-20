@@ -13,7 +13,7 @@ saveRDS(dat, paste0("./data-raw/ver/definitions-", Sys.Date(), ".RDS"), compress
 sapply(endpoints, function(x) {
   # Subset by endpoint
   defs <- subset(dat, endpoint == x)
-  defs <- defs[order(defs$order), ]
+  defs <- defs[order(unlist(defs$order)), ]
   # Create file name
   file_name <- paste0("./data-raw/dictionary", x,  ".R")
   # Create file
@@ -25,6 +25,7 @@ sapply(endpoints, function(x) {
                        defs$class,
                        "}. ",
                        defs$definition)
+  print(x)
   # Add text to file
   writeLines(text = dictionary, con = file_name)
 })

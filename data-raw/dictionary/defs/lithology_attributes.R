@@ -1,4 +1,4 @@
-#' @param lith_att_id \code{NA}. integer, one or more lithology attribute ids
-#' @param att_type \code{NA}. string, lithology attribute type
-#' @param lith_att \code{NA}. string, lithology attribute
-#' @param all \code{NA}. return all lithology attribute definitions
+#' @param lith_att \code{character}. The name of the lithology attribute (e.g. "cross-bedded").
+#' @param att_type \code{character}. The type of lithology attribute (e.g. "sed structure").
+#' @param lith_att_id \code{integer}. The unique identification number(s) of lithology attribute(s).
+#' @param all \code{logical}. return all lithology attribute definitions
