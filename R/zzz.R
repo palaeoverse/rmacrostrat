@@ -37,6 +37,8 @@ api_version <- function() {
 #' @importFrom readr read_csv
 GET_macrostrat <- function(endpoint, query = list(), format = "json",
                            output = "df") {
+  # Remove NULL arguments
+  query_clean <- filter_null(query)
   # Is Macrostrat and the user online?
   tryCatch(
     {
@@ -49,7 +51,7 @@ GET_macrostrat <- function(endpoint, query = list(), format = "json",
   )
   if (format == "geojson") format <- "geojson_bare"
   # Update query
-  full_query <- c(query, format = format)
+  full_query <- c(query_clean, format = format)
   full_query$response <- "long"
   # Build path route
   path <- paste0("api/", endpoint)
