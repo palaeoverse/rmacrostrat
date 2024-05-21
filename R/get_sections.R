@@ -76,7 +76,7 @@
 #'   should all sections that touch the specified column be returned? Defaults
 #'   to `FALSE`.
 #' @return A \code{dataframe} containing the following columns:
-#' \describe{
+#' \itemize{
 #'   \item {col_id}{The unique Macrostrat column ID.}
 #'   \item {col_area}{The area of the Macrostrat column in km^2^.}
 #'   \item {section_id}{The unique ID of the Macrostrat section.}
