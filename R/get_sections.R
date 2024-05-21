@@ -77,51 +77,53 @@
 #'   to `FALSE`.
 #' @return A \code{dataframe} containing the following columns:
 #' \itemize{
-#'   \item {col_id}{The unique Macrostrat column ID.}
-#'   \item {col_area}{The area of the Macrostrat column in km^2^.}
-#'   \item {section_id}{The unique ID of the Macrostrat section.}
-#'   \item {project_id}{The unique ID of the Macrostrat project.}
-#'   \item {max_thick}{The maximum thickness within the focal region.}
-#'   \item {min_thick}{The minimum thickness within the focal region.}
-#'   \item {t_age}{The top age of the section, in millions of years before
-#'   present.}
-#'   \item {b_age}{The bottom age of the section, in millions of years before
-#'   present.}
-#'   \item {pbdb_collections}{The number of PBDB collections contained within
-#'   the section.}
-#'   \item {lith}{a \code{dataframe} containing the lithologies present
+#'   \item \code{col_id}: The unique Macrostrat column ID.
+#'   \item \code{col_area}: The area of the Macrostrat column in km^2^.
+#'   \item \code{section_id}: The unique ID of the Macrostrat section.
+#'   \item \code{project_id}: The unique ID of the Macrostrat project.
+#'   \item \code{max_thick}: The maximum thickness within the focal region.
+#'   \item \code{min_thick}: The minimum thickness within the focal region.
+#'   \item \code{t_age}: The top age of the section, in millions of years before
+#'   present.
+#'   \item \code{b_age}: The bottom age of the section, in millions of years before
+#'   present.
+#'   \item \code{pbdb_collections}: The number of PBDB collections contained within
+#'   the section.
+#'   \item \code{lith}: a \code{dataframe} containing the lithologies present
 #'   within the section, with the following columns:
 #'   \itemize{
-#'      \item {name}: The named lithology (e.g., "sandstone").
-#'      \item {type}: The named lithology type (e.g., "siliciclastic").
-#'      \item {class}: The named lithology class (e.g., "sedimentary").
-#'      \item {prop}: The proportion of the lithology within the section,
+#'      \item \code{name}: The named lithology (e.g., "sandstone").
+#'      \item \code{type}: The named lithology type (e.g., "siliciclastic").
+#'      \item \code{class}: The named lithology class (e.g., "sedimentary").
+#'      \item \code{prop}: The proportion of the lithology within the section,
 #'      calculated from the individual Macrostrat units within the section.
-#'      \item {lith_id}: The unique identification number of the lithology.
+#'      \item \code{lith_id}: The unique identification number of the lithology.
 #'   }}
-#'   \item {environ}{a \code{dataframe} containing the environments present
+#'   \itemize{
+#'   \item \code{environ}: a \code{dataframe} containing the environments present
 #'   within the section, with the following columns:
 #'   \itemize{
-#'      \item {name}: The named environment (e.g., "delta plain").
-#'      \item {type}: The named environment type (e.g., "siliciclastic").
-#'      \item {class}: The named environment class (e.g., "marine").
-#'      \item {prop}: The proportion of the environment within the section,
+#'      \item \code{name}: The named environment (e.g., "delta plain").
+#'      \item \code{type}: The named environment type (e.g., "siliciclastic").
+#'      \item \code{class}: The named environment class (e.g., "marine").
+#'      \item \code{prop}: The proportion of the environment within the section,
 #'      calculated from the individual Macrostrat units within the section.
-#'      \item {environ_id}: The unique identification number of the environment.
+#'      \item \code{environ_id}: The unique identification number of the environment.
 #'   }}
-#'   #'   \item {econ}{a \code{dataframe} containing the economic attributes
+#'   \itemize{
+#'   \item \code{econ}: a \code{dataframe} containing the economic attributes
 #'   present within the section, with the following columns:
 #'   \itemize{
-#'      \item {name}: The named economic attribute (e.g., "gold").
-#'      \item {type}: The named economic attribute type (e.g., "mineral").
-#'      \item {class}: The named economic attribute class (e.g., "precious
+#'      \item \code{name}: The named economic attribute (e.g., "gold").
+#'      \item \code{type}: The named economic attribute type (e.g., "mineral").
+#'      \item \code{class}: The named economic attribute class (e.g., "precious
 #'      commodity").
-#'      \item {prop}: The proportion of the economic attribute out of potential
+#'      \item \code{prop}: The proportion of the economic attribute out of potential
 #'      economic attributes contained within the section, calculated from the
 #'      individual Macrostrat units within the section.
-#'      \item {econ_id}: The unique identification number of the economic
+#'      \item \code{econ_id}: The unique identification number of the economic
 #'      attribute.
-#'   }}
+#'   }
 #' }
 #'
 #' @author Christopher D. Dean [AUTHOR_2]
@@ -129,7 +131,6 @@
 #' using the definition functions (beginning with \code{defs_}).
 #' @examples
 #' \dontrun{
-#' if (interactive()) {
 #'   # get_sections(section_id = 1)
 #'   # get_sections(column_id = 10)
 #'   # head(get_sections(age = 73))
@@ -138,7 +139,6 @@
 #'   # head(get_sections(lithology = "sandstone"))
 #'   # head(get_sections(environ_type = "siliciclastic"))
 #'   # head(get_sections(pbdb_collection_no = c(1000:5000)))
-#' }
 #' }
 #' @export
 
