@@ -2,8 +2,8 @@
 # rmacrostrat
 
 <!-- badges: start -->
-[![R-CMD-check](https://github.com/palaeoverse-community/rmacrostrat/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/palaeoverse-community/rmacrostrat/actions/workflows/R-CMD-check.yaml)
-[![Codecov test coverage](https://codecov.io/gh/palaeoverse-community/rmacrostrat/branch/main/graph/badge.svg)](https://app.codecov.io/gh/palaeoverse-community/rmacrostrat?branch=main)
+[![R-CMD-check](https://github.com/palaeoverse/rmacrostrat/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/palaeoverse/rmacrostrat/actions/workflows/R-CMD-check.yaml)
+[![Codecov test coverage](https://codecov.io/gh/palaeoverse/rmacrostrat/branch/main/graph/badge.svg)](https://app.codecov.io/gh/palaeoverse/rmacrostrat?branch=main)
 <!-- badges: end -->
 
 The goal of rmacrostrat is to ...
@@ -14,7 +14,7 @@ You can install the development version of rmacrostrat from [GitHub](https://git
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("palaeoverse-community/rmacrostrat")
+devtools::install_github("palaeoverse/rmacrostrat")
 ```
 
 ## Example
