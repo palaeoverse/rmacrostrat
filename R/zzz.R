@@ -53,10 +53,12 @@ GET_macrostrat <- function(endpoint, query = list(), format = "json",
   # Update query
   full_query <- c(query_clean, format = format)
   full_query$response <- "long"
-  # Switch vectors to comma-separated strings
+  # Switch vectors to comma-separated strings and booleans to strings
   full_query <- lapply(full_query, function(x) {
     if (length(x) > 1) {
       return(paste0(x, collapse = ","))
+    } else if (is.logical(x)) {
+      return(tolower(x))
     }
     return(x)
   })
