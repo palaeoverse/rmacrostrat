@@ -53,6 +53,13 @@ GET_macrostrat <- function(endpoint, query = list(), format = "json",
   # Update query
   full_query <- c(query_clean, format = format)
   full_query$response <- "long"
+  # Switch vectors to comma-separated strings
+  full_query <- lapply(full_query, function(x) {
+    if (length(x) > 1) {
+      return(paste0(x, collapse = ","))
+    }
+    return(x)
+  })
   # Build path route
   path <- paste0("api/", endpoint)
   # Fetch data
