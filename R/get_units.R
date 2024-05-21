@@ -84,56 +84,92 @@
 #'   Defaults to `FALSE`.
 #'
 #' @return A \code{data.frame} containing, for each retrieved core:
-#' \describe{
-#'  \item{unit_id}{}
-#'  \item{section_id}{}
-#'  \item{col_id}{}
-#'  \item{project_id}{}
-#'  \item{col_area}{}
-#'  \item{unit_name}{}
-#'  \item{strat_name_id}{}
-#'  \item{Mbr}{}
-#'  \item{Fm}{}
-#'  \item{Gp}{}
-#'  \item{SGp}{}
-#'  \item{t_age}{}
-#'  \item{b_age}{}
-#'  \item{max_thick}{}
-#'  \item{min_thick}{}
-#'  \item{outcrop}{}
-#'  \item{pbdb_collections}{}
-#'  \item{pbdb_occurrences}{}
-#'  \item{lith}{}
-#'  \item{environ}{}
-#'  \item{econ}{}
-#'  \item{measure}{}
-#'  \item{notes}{}
-#'  \item{color}{}
-#'  \item{text_color}{}
-#'  \item{t_int_id}{}
-#'  \item{t_int_name}{}
-#'  \item{t_int_age}{}
-#'  \item{t_prop}{}
-#'  \item{units_above}{}
-#'  \item{b_int_id}{}
-#'  \item{b_int_name}{}
-#'  \item{b_int_age}{}
-#'  \item{b_prop}{}
-#'  \item{units_below}{}
-#'  \item{clat}{}
-#'  \item{clng}{}
-#'  \item{t_plat}{}
-#'  \item{t_plng}{}
-#'  \item{b_plat}{}
-#'  \item{b_plng}{}
-#'  \item{t_pos}{}
-#'  \item{b_pos}{}
+#' \itemize{
+#'    \item \code{unit_id}: The unique ID of the Macrostrat unit.
+#'    \item \code{section_id}: The unique ID of the Macrostrat section.
+#'    \item \code{col_id}: The unique Macrostrat column ID.
+#'    \item \code{project_id}: The unique ID of the Macrostrat project.
+#'    \item \code{col_area}: The area of the Macrostrat column in
+#'    km<sup>2</sup>.
+#'    \item \code{unit_name}: The name of the Macrostrat unit.
+#'    \item \code{strat_name_id}: The unique ID of the Macrostrat stratigraphic name.
+#'    \item \code{Mbr}: The lithostratigraphic member.
+#'    \item \code{Fm}: The lithostratigraphic formation.
+#'    \item \code{Gp}: The lithostratigraphic group.
+#'    \item \code{SGp}: The lithostratigraphic supergroup.
+#'    \item \code{t_age}: Estimated top age based on continuous time age model in millions of years before present.
+#'    \item \code{b_age}: Estimated bottom age based on continuous time age model in millions of years before present.
+#'    \item \code{max_thick}: Maximum unit thickness in meters.
+#'    \item \code{min_thick}: Minimum unit thickness in meters.
+#'    \item \code{outcrop}: Type of exposure ('outcrop', 'subsurface', or 'both').
+#'    \item \code{pbdb_collections}: Count of Paleobiology Database collections in units.
+#'    \item \code{pbdb_occurrences}: Count of Paleobiology Database occurrences in units.
+#'    \item \code{lith}: a \code{dataframe} containing the lithologies present
+#'    within the unit, with the following columns:
+#'    \itemize{
+#'      \item \code{name}: The named lithology (e.g., "sandstone").
+#'      \item \code{type}: The named lithology type (e.g., "siliciclastic").
+#'      \item \code{class}: The named lithology class (e.g., "sedimentary").
+#'      \item \code{prop}: The proportion of the lithology within the unit,
+#'      calculated from the individual Macrostrat units within the unit.
+#'      \item \code{lith_id}: The unique identification number of the lithology.
+#'   }}
+#'    \itemize{
+#'      \item \code{environ}: a \code{dataframe} containing the environments present
+#'       within the unit, with the following columns:
+#'   \itemize{
+#'      \item \code{name}: The named environment (e.g., "delta plain").
+#'      \item \code{type}: The named environment type (e.g., "siliciclastic").
+#'      \item \code{class}: The named environment class (e.g., "marine").
+#'      \item \code{prop}: The proportion of the environment within the unit.
+#'      \item \code{environ_id}: The unique identification number of the environment.
+#'   }}
+#'   \itemize{
+#'      \item \code{econ}: a \code{dataframe} containing the economic attributes
+#'       present within the unit, with the following columns:
+#'   \itemize{
+#'      \item \code{name}: The named economic attribute (e.g., "gold").
+#'      \item \code{type}: The named economic attribute type (e.g., "mineral").
+#'      \item \code{class}: The named economic attribute class (e.g., "precious
+#'      commodity").
+#'      \item \code{prop}: The proportion of the economic attribute out of
+#'      potential economic attributes contained within the unit, calculated
+#'      from the individual Macrostrat units within the unit.
+#'      \item \code{econ_id}: The unique identification number of the economic
+#'      attribute.
+#'   }}
+#'   \itemize{
+#'      \item \code{measure}: a \code{dataframe} containing the measure attributes
+#'       present within the unit, with the following columns:
+#'   \itemize{
+#'      \item \code{measure_class}: The class of measures (e.g. "goechemical").
+#'      \item \code{measure_type}: the type of measures (e.g. "minor elements").
+#'   }}
+#'    \item \code{notes}: Unit related notes.
+#'    \item \code{color}: Recommended coloring for units based on dominant lithology.
+#'    \item \code{text_color}:
+#'    \item \code{t_int_id}:
+#'    \item \code{t_int_name}:
+#'    \item \code{t_int_age}:
+#'    \item \code{t_prop}:
+#'    \item \code{units_above}:
+#'    \item \code{b_int_id}:
+#'    \item \code{b_int_name}:
+#'    \item \code{b_int_age}:
+#'    \item \code{b_prop}:
+#'    \item \code{units_below}:
+#'    \item \code{clat}:
+#'    \item \code{clng}:
+#'    \item \code{t_plat}:
+#'    \item \code{t_plng}:
+#'    \item \code{b_plat}:
+#'    \item \code{b_plng}:
+#'    \item \code{t_pos}:
+#'    \item \code{b_pos}:
 #'  }
 #'  If sf = TRUE, an `sf` object is returned instead.
 #'
 #' @author Lewis A. Jones
-#'
-#' @reviewer NA
 #'
 #' @details DETAILS
 #'
