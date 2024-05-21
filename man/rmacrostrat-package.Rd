@@ -14,8 +14,8 @@ Useful links:
   \item \url{https://rmacrostrat.palaeoverse.org}
   \item \url{https://palaeoverse.org}
   \item \url{https://macrostrat.org}
-  \item \url{https://palaeoverse-community.github.io/rmacrostrat/}
-  \item Report bugs at \url{https://github.com/palaeoverse-community/rmacrostrat/issues}
+  \item \url{https://palaeoverse.github.io/rmacrostrat/}
+  \item Report bugs at \url{https://github.com/palaeoverse/rmacrostrat/issues}
 }
 
 }
@@ -25,6 +25,8 @@ Useful links:
 Authors:
 \itemize{
   \item William Gearty \email{willgearty@gmail.com} (\href{https://orcid.org/0000-0003-0076-3262}{ORCID})
+  \item Bethany Allen \email{bethany.allen@bsse.ethz.ch} (\href{https://orcid.org/0000-0003-0282-6407}{ORCID})
+  \item Christopher D. Dean \email{christopherdaviddean@gmail.com} (\href{https://orcid.org/0000-0001-6471-6903}{ORCID})
 }
 
 }

@@ -43,7 +43,8 @@ GET_macrostrat <- function(endpoint, query = list(), format = "json",
       nslookup("macrostrat.org")
     },
     error = function(e) {
-      stop("Macrostrat is unavailable or you have no internet connection.")
+      stop("Macrostrat is unavailable or you have no internet connection.",
+           call. = FALSE)
     }
   )
   if (format == "geojson") format <- "geojson_bare"
@@ -64,12 +65,12 @@ GET_macrostrat <- function(endpoint, query = list(), format = "json",
   if (format == "csv") {
     suppressWarnings(dat <- read_csv(cont, show_col_types = FALSE))
     if (ncol(dat) == 1) {
-      stop("Error when trying query. Check your request.")
+      stop("Error when trying query. Check your request.", call. = FALSE)
     }
   } else if (format == "json") {
     lst <- fromJSON(cont)
     if ("error" %in% names(lst)) {
-      stop("Error when trying query. Check your request.")
+      stop("Error when trying query. Check your request.", call. = FALSE)
     }
     if (output == "df") {
       dat <- lst$success$data
@@ -79,11 +80,15 @@ GET_macrostrat <- function(endpoint, query = list(), format = "json",
   } else if (format == "geojson_bare") {
     lst <- fromJSON(cont)
     if ("error" %in% names(lst)) {
-      stop("Error when trying query. Check your request.")
+      stop("Error when trying query. Check your request.", call. = FALSE)
     }
     dat <- lst$features$properties
     dat$geometry <- geojson_sf(cont)$geometry
     dat <- st_sf(dat)
+  }
+  if ((is.list(dat) && length(dat) == 0) ||
+      (is.data.frame(dat) && nrow(dat) == 0)) {
+    warning("No results returned for query.", call. = FALSE)
   }
   # Return data
   return(dat)
