@@ -78,7 +78,8 @@
 #' @return A \code{dataframe} containing the following columns:
 #' \itemize{
 #'   \item \code{col_id}: The unique Macrostrat column ID.
-#'   \item \code{col_area}: The area of the Macrostrat column in km^2^.
+#'   \item \code{col_area}: The area of the Macrostrat column in
+#'   km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}}.
 #'   \item \code{section_id}: The unique ID of the Macrostrat section.
 #'   \item \code{project_id}: The unique ID of the Macrostrat project.
 #'   \item \code{max_thick}: The maximum thickness within the focal region.
