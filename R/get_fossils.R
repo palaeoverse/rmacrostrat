@@ -24,70 +24,69 @@
 #' @return OUTPUT_DESCRIPTION
 #' @author AUTHOR [AUTHOR_2]
 #' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
+#' if (interactive()) {
+#'   # EXAMPLE1
 #' }
-#' @export 
+#' }
+#' @export
 
-get_fossils <- function (
-   unit_id = NULL,
-   column_id = NULL,
-   interval_name = NULL,
-   age = NULL,
-   age_top = NULL,
-   age_bottom = NULL,
-   lithology = NULL,
-   lithology_id = NULL,
-   lithology_type = NULL,
-   lithology_class = NULL,
-   environ = NULL,
-   environ_id = NULL,
-   environ_type = NULL,
-   environ_class = NULL,
-   econ = NULL,
-   econ_id = NULL,
-   econ_type = NULL,
-   econ_class = NULL,
-   project_id = NULL,
-   strat_name_id = NULL,
-   sf = NULL) {
-
+get_fossils <- function(
+    unit_id = NULL,
+    column_id = NULL,
+    interval_name = NULL,
+    age = NULL,
+    age_top = NULL,
+    age_bottom = NULL,
+    lithology = NULL,
+    lithology_id = NULL,
+    lithology_type = NULL,
+    lithology_class = NULL,
+    environ = NULL,
+    environ_id = NULL,
+    environ_type = NULL,
+    environ_class = NULL,
+    econ = NULL,
+    econ_id = NULL,
+    econ_type = NULL,
+    econ_class = NULL,
+    project_id = NULL,
+    strat_name_id = NULL,
+    sf = NULL) {
   # Error handling
   # Collect input arguments as a list
   args <- as.list(environment())
   # Check whether class of arguments is valid
   ref <- list(
-    unit_id = 'integer', 
-    column_id = 'integer', 
-    interval_name = 'character', 
-    age = 'numeric', 
-    age_top = 'numeric', 
-    age_bottom = 'numeric', 
-    lithology = 'character', 
-    lithology_id = 'integer', 
-    lithology_type = 'character', 
-    lithology_class = 'character', 
-    environ = 'character', 
-    environ_id = 'integer', 
-    environ_type = 'character', 
-    environ_class = 'character', 
-    econ = 'character', 
-    econ_id = 'integer', 
-    econ_type = 'character', 
-    econ_class = 'character', 
-    project_id = 'integer', 
-    strat_name_id = 'integer', 
-    sf = 'logical')
+    unit_id = "integer",
+    column_id = "integer",
+    interval_name = "character",
+    age = "numeric",
+    age_top = "numeric",
+    age_bottom = "numeric",
+    lithology = "character",
+    lithology_id = "integer",
+    lithology_type = "character",
+    lithology_class = "character",
+    environ = "character",
+    environ_id = "integer",
+    environ_type = "character",
+    environ_class = "character",
+    econ = "character",
+    econ_id = "integer",
+    econ_type = "character",
+    econ_class = "character",
+    project_id = "integer",
+    strat_name_id = "integer",
+    sf = "logical"
+  )
   check_arguments(x = args, ref = ref)
   # Set default for format
-  format <- 'json'
+  format <- "json"
   # Get request
-  dat <- GET_macrostrat(endpoint = 'INSERT ENDPOINT', query = args, format = format)
+  dat <- GET_macrostrat(endpoint = "INSERT ENDPOINT", query = args, format = format)
 
   # Return data
   return(dat)
 }
-

@@ -11,44 +11,43 @@
 #' @return OUTPUT_DESCRIPTION
 #' @author AUTHOR [AUTHOR_2]
 #' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
+#' if (interactive()) {
+#'   # EXAMPLE1
 #' }
-#' @export 
+#' }
+#' @export
 
-get_map_points <- function (
-   point_id = NULL,
-   point_type = NULL,
-   min_lat = NULL,
-   min_lng = NULL,
-   max_lat = NULL,
-   max_lng = NULL,
-   source_id = NULL,
-   sf = NULL) {
-
+get_map_points <- function(
+    point_id = NULL,
+    point_type = NULL,
+    min_lat = NULL,
+    min_lng = NULL,
+    max_lat = NULL,
+    max_lng = NULL,
+    source_id = NULL,
+    sf = NULL) {
   # Error handling
   # Collect input arguments as a list
   args <- as.list(environment())
   # Check whether class of arguments is valid
   ref <- list(
-    point_id = 'integer', 
-    point_type = 'character', 
-    min_lat = 'integer', 
-    min_lng = 'integer', 
-    max_lat = 'integer', 
-    max_lng = 'integer', 
-    source_id = 'integer', 
-    sf = 'logical')
+    point_id = "integer",
+    point_type = "character",
+    min_lat = "integer",
+    min_lng = "integer",
+    max_lat = "integer",
+    max_lng = "integer",
+    source_id = "integer",
+    sf = "logical"
+  )
   check_arguments(x = args, ref = ref)
   # Set default for format
-  format <- 'json'
+  format <- "json"
   # Get request
-  dat <- GET_macrostrat(endpoint = 'INSERT ENDPOINT', query = args, format = format)
+  dat <- GET_macrostrat(endpoint = "INSERT ENDPOINT", query = args, format = format)
 
   # Return data
   return(dat)
 }
-

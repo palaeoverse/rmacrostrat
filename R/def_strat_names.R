@@ -10,42 +10,41 @@
 #' @return OUTPUT_DESCRIPTION
 #' @author AUTHOR [AUTHOR_2]
 #' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
+#' if (interactive()) {
+#'   # EXAMPLE1
 #' }
-#' @export 
+#' }
+#' @export
 
-def_strat_names <- function (
-   strat_name = NULL,
-   interval_name = NULL,
-   rank = NULL,
-   concept_id = NULL,
-   ref_id = NULL,
-   strat_name_id = NULL,
-   rule = NULL) {
-
+def_strat_names <- function(
+    strat_name = NULL,
+    interval_name = NULL,
+    rank = NULL,
+    concept_id = NULL,
+    ref_id = NULL,
+    strat_name_id = NULL,
+    rule = NULL) {
   # Error handling
   # Collect input arguments as a list
   args <- as.list(environment())
   # Check whether class of arguments is valid
   ref <- list(
-    strat_name = 'character', 
-    interval_name = 'character', 
-    rank = 'character', 
-    concept_id = 'integer', 
-    ref_id = 'character', 
-    strat_name_id = 'integer', 
-    rule = 'character')
+    strat_name = "character",
+    interval_name = "character",
+    rank = "character",
+    concept_id = "integer",
+    ref_id = "character",
+    strat_name_id = "integer",
+    rule = "character"
+  )
   check_arguments(x = args, ref = ref)
   # Set default for format
-  format <- 'json'
+  format <- "json"
   # Get request
-  dat <- GET_macrostrat(endpoint = 'INSERT ENDPOINT', query = args, format = format)
+  dat <- GET_macrostrat(endpoint = "INSERT ENDPOINT", query = args, format = format)
 
   # Return data
   return(dat)
 }
-

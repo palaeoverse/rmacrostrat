@@ -19,60 +19,59 @@
 #' @return OUTPUT_DESCRIPTION
 #' @author AUTHOR [AUTHOR_2]
 #' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
+#' if (interactive()) {
+#'   # EXAMPLE1
 #' }
-#' @export 
+#' }
+#' @export
 
-get_measurements <- function (
-   measure_id = NULL,
-   measurement_id = NULL,
-   measurement = NULL,
-   measurement_type = NULL,
-   measurement_class = NULL,
-   measuremeta_id = NULL,
-   measure_phase = NULL,
-   column_id = NULL,
-   section_id = NULL,
-   unit_id = NULL,
-   interval_name = NULL,
-   lithology_id = NULL,
-   lithology_type = NULL,
-   lithology_class = NULL,
-   project_id = NULL,
-   sf = NULL) {
-
+get_measurements <- function(
+    measure_id = NULL,
+    measurement_id = NULL,
+    measurement = NULL,
+    measurement_type = NULL,
+    measurement_class = NULL,
+    measuremeta_id = NULL,
+    measure_phase = NULL,
+    column_id = NULL,
+    section_id = NULL,
+    unit_id = NULL,
+    interval_name = NULL,
+    lithology_id = NULL,
+    lithology_type = NULL,
+    lithology_class = NULL,
+    project_id = NULL,
+    sf = NULL) {
   # Error handling
   # Collect input arguments as a list
   args <- as.list(environment())
   # Check whether class of arguments is valid
   ref <- list(
-    measure_id = 'integer', 
-    measurement_id = 'integer', 
-    measurement = 'character', 
-    measurement_type = 'character', 
-    measurement_class = 'character', 
-    measuremeta_id = 'integer', 
-    measure_phase = 'character', 
-    column_id = 'integer', 
-    section_id = 'integer', 
-    unit_id = 'integer', 
-    interval_name = 'character', 
-    lithology_id = 'integer', 
-    lithology_type = 'character', 
-    lithology_class = 'character', 
-    project_id = 'integer', 
-    sf = 'logical')
+    measure_id = "integer",
+    measurement_id = "integer",
+    measurement = "character",
+    measurement_type = "character",
+    measurement_class = "character",
+    measuremeta_id = "integer",
+    measure_phase = "character",
+    column_id = "integer",
+    section_id = "integer",
+    unit_id = "integer",
+    interval_name = "character",
+    lithology_id = "integer",
+    lithology_type = "character",
+    lithology_class = "character",
+    project_id = "integer",
+    sf = "logical"
+  )
   check_arguments(x = args, ref = ref)
   # Set default for format
-  format <- 'json'
+  format <- "json"
   # Get request
-  dat <- GET_macrostrat(endpoint = 'INSERT ENDPOINT', query = args, format = format)
+  dat <- GET_macrostrat(endpoint = "INSERT ENDPOINT", query = args, format = format)
 
   # Return data
   return(dat)
 }
-

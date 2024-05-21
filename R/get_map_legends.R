@@ -11,44 +11,43 @@
 #' @return OUTPUT_DESCRIPTION
 #' @author AUTHOR [AUTHOR_2]
 #' @details DETAILS
-#' @examples 
+#' @examples
 #' \dontrun{
-#' if(interactive()){
-#'  #EXAMPLE1
-#'  }
+#' if (interactive()) {
+#'   # EXAMPLE1
 #' }
-#' @export 
+#' }
+#' @export
 
-get_map_legends <- function (
-   source_id = NULL,
-   lithology_id = NULL,
-   lithology_type = NULL,
-   lithology_class = NULL,
-   description = NULL,
-   comments = NULL,
-   scale = NULL,
-   carto = NULL) {
-
+get_map_legends <- function(
+    source_id = NULL,
+    lithology_id = NULL,
+    lithology_type = NULL,
+    lithology_class = NULL,
+    description = NULL,
+    comments = NULL,
+    scale = NULL,
+    carto = NULL) {
   # Error handling
   # Collect input arguments as a list
   args <- as.list(environment())
   # Check whether class of arguments is valid
   ref <- list(
-    source_id = 'integer', 
-    lithology_id = 'integer', 
-    lithology_type = 'character', 
-    lithology_class = 'character', 
-    description = 'character', 
-    comments = 'character', 
-    scale = 'character', 
-    carto = 'character')
+    source_id = "integer",
+    lithology_id = "integer",
+    lithology_type = "character",
+    lithology_class = "character",
+    description = "character",
+    comments = "character",
+    scale = "character",
+    carto = "character"
+  )
   check_arguments(x = args, ref = ref)
   # Set default for format
-  format <- 'json'
+  format <- "json"
   # Get request
-  dat <- GET_macrostrat(endpoint = 'INSERT ENDPOINT', query = args, format = format)
+  dat <- GET_macrostrat(endpoint = "INSERT ENDPOINT", query = args, format = format)
 
   # Return data
   return(dat)
 }
-
