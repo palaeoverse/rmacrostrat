@@ -1,9 +1,8 @@
-#' @param source_id \code{integer}. The unique identification number(s) of the source(s) to filter the results by.
-#' @param lith_id \code{integer}. The unique identification number(s) of the lithology(ies) to filter the results by.
-#' @param lith_type \code{character}. Filter results to those of one or more lithology type(s).
-#' @param lith_class \code{character}. Filter results to those of one or more lithology class(es).
-#' @param description \code{character}. Filter results by a match to the map unit description field.
-#' @param comments \code{character}. Filter results by a match to the map unit comments field.
-#' @param scale \code{character}. Restrict results to maps of a specific scale(s) in Macrostrat's system. Options are "tiny" (locality), "small" (regional), "medium" (continental), or "large" (global).
-#' @param carto \code{character}. Restrict results to map components present in one of Macrostrat's map harmonized scales. Options are "tiny" (locality), "small" (regional), "medium" (continental), or "large" (global).
-#' @param sample \code{logical}. Return a sample of data.
+#' @param source_id \code{integer}. Filter legend components to those in sources specified by their unique identification number(s).
+#' @param lithology_id \code{integer}. Filter legend components to those containing one or more lithology(ies) as specified by their unique identification number(s).
+#' @param lithology_type \code{character}. Filter legend components to those containing one or more named lithology type(s) (e.g., "carbonate", "siliciclastic").
+#' @param lithology_class \code{character}. Filter legend components to those containing one or more named lithology class(es) (e.g., "sedimentary", "igneous", "metamorphic").
+#' @param description \code{character}. Filter legend components to those containing the given character string in the map unit description field.
+#' @param comments \code{character}. Filter legend components to those containing the given character string in the map unit comments field.
+#' @param scale \code{character}. Filter legend components to those from maps of specific scale(s) in Macrostrat's system. Options are "tiny" (global), "small" (continental), "medium" (regional), or "large" (local).
+#' @param carto \code{character}. Filter legend components to those of specific scale(s) in Macrostrat's system. Options are "tiny" (global), "small" (continental), "medium" (regional), or "large" (local).

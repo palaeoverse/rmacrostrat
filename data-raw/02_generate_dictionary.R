@@ -7,6 +7,8 @@ load_all()
 endpoints <- readRDS("./data-raw/endpoints.RDS")
 # Load parameter data
 dat <- read_sheet("https://docs.google.com/spreadsheets/d/1sW8cWNkEd3RfKS0CDSzbg2fO3pFUkc07-RBhxXnUa9c/edit?usp=sharing")
+# filter unused parameters
+dat <- dat[which(dat$order != 999), ]
 # Version control
 saveRDS(dat, paste0("./data-raw/ver/definitions-", Sys.Date(), ".RDS"), compress = "xz")
 # Generate dictionaries

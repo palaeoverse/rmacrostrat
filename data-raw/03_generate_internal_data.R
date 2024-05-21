@@ -4,6 +4,8 @@ library(googlesheets4)
 load_all()
 # Load parameter data
 dat <- read_sheet("https://docs.google.com/spreadsheets/d/1sW8cWNkEd3RfKS0CDSzbg2fO3pFUkc07-RBhxXnUa9c/edit?usp=sharing")
+# filter unused parameters
+dat <- dat[which(dat$order != 999), ]
 # Unique endpoints
 endpoints <- unique(dat$endpoint)
 # Construct parameter list
