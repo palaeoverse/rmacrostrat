@@ -1,9 +1,9 @@
 #' @title FUNCTION_TITLE
 #' @description FUNCTION_DESCRIPTION
-#' @param structure \code{character}. The name of a geological structure (e.g., "syncline") to return a definition for., Default: NULL
-#' @param structure_class \code{character}. The name of the geological structure class (e.g., "sedimentology") to return a definition for., Default: NULL
-#' @param structure_type \code{character}. The name of the geological structure type (e.g., "fault") to return a definition for., Default: NULL
-#' @param structure_id \code{integer}. The unique idenfication number(s) of geological structures(s) to return a definition for., Default: NULL
+#' @param structure \code{character}. The name of a geological structure (e.g., "syncline") to return a definition for.
+#' @param structure_class \code{character}. The name of the geological structure class (e.g., "sedimentology") to return a definition for.
+#' @param structure_type \code{character}. The name of the geological structure type (e.g., "fault") to return a definition for.
+#' @param structure_id \code{integer}. The unique idenfication number(s) of geological structures(s) to return a definition for.
 #' @return OUTPUT_DESCRIPTION
 #' @author AUTHOR [AUTHOR_2]
 #' @details DETAILS
@@ -32,7 +32,7 @@ def_structures <- function (
     structure_id = 'integer')
   check_arguments(x = args, ref = ref)
   # Set default for format
-  format <- c('json')
+  format <- 'json'
   # Get request
   dat <- GET_macrostrat(endpoint = 'INSERT ENDPOINT', query = args, format = format)
 

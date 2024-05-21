@@ -1,9 +1,9 @@
 #' @title FUNCTION_TITLE
 #' @description FUNCTION_DESCRIPTION
-#' @param econ \code{character}. The name of the economic resource (e.g., "gas reservoir") to return a definition for., Default: NULL
-#' @param econ_type \code{character}. The type of economic resource (e.g., "hydrocarbon") to return a definition for., Default: NULL
-#' @param econ_class \code{character}. The class of economic resource (e.g., "energy") to return a definition for., Default: NULL
-#' @param econ_id \code{integer}. The unique idenfication number(s) of the economic resource(s) to return a definition for., Default: NULL
+#' @param econ \code{character}. The name of the economic resource (e.g., "gas reservoir") to return a definition for.
+#' @param econ_type \code{character}. The type of economic resource (e.g., "hydrocarbon") to return a definition for.
+#' @param econ_class \code{character}. The class of economic resource (e.g., "energy") to return a definition for.
+#' @param econ_id \code{integer}. The unique idenfication number(s) of the economic resource(s) to return a definition for.
 #' @return OUTPUT_DESCRIPTION
 #' @author AUTHOR [AUTHOR_2]
 #' @details DETAILS
@@ -32,7 +32,7 @@ def_econs <- function (
     econ_id = 'integer')
   check_arguments(x = args, ref = ref)
   # Set default for format
-  format <- c('json')
+  format <- 'json'
   # Get request
   dat <- GET_macrostrat(endpoint = 'INSERT ENDPOINT', query = args, format = format)
 

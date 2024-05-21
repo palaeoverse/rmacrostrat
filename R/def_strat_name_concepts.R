@@ -1,7 +1,7 @@
 #' @title FUNCTION_TITLE
 #' @description FUNCTION_DESCRIPTION
-#' @param strat_concept_name \code{character}. The name(s) of the desired stratigraphic name concept(s) to return a definition for (e.g., "Hell Creek")., Default: NULL
-#' @param strat_concept_id \code{integer}. The unique identification number(s) of the desired stratigraphic name concept(s) to return a definition for., Default: NULL
+#' @param strat_concept_name \code{character}. The name(s) of the desired stratigraphic name concept(s) to return a definition for (e.g., "Hell Creek").
+#' @param strat_concept_id \code{integer}. The unique identification number(s) of the desired stratigraphic name concept(s) to return a definition for.
 #' @return OUTPUT_DESCRIPTION
 #' @author AUTHOR [AUTHOR_2]
 #' @details DETAILS
@@ -26,7 +26,7 @@ def_strat_name_concepts <- function (
     strat_concept_id = 'integer')
   check_arguments(x = args, ref = ref)
   # Set default for format
-  format <- c('json')
+  format <- 'json'
   # Get request
   dat <- GET_macrostrat(endpoint = 'INSERT ENDPOINT', query = args, format = format)
 

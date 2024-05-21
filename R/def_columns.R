@@ -1,10 +1,10 @@
 #' @title FUNCTION_TITLE
 #' @description FUNCTION_DESCRIPTION
-#' @param column_id \code{integer}. The unique identification number(s) of the desired column(s) to return a definition for., Default: NULL
-#' @param column_group_id \code{integer}. The unique identification number(s) of the desired column group(s) to return a definition for., Default: NULL
-#' @param column_name \code{character}. The name of the desired column to return a definition for., Default: NULL
-#' @param project_id \code{integer}. The unique identification number(s) of the desired Macrostrat project(s) to return a definition for., Default: NULL
-#' @param status \code{character}. The status of the column to return a definition for. Either "active", "in process", or "obsolete"., Default: NULL
+#' @param column_id \code{integer}. The unique identification number(s) of the desired column(s) to return a definition for.
+#' @param column_group_id \code{integer}. The unique identification number(s) of the desired column group(s) to return a definition for.
+#' @param column_name \code{character}. The name of the desired column to return a definition for.
+#' @param project_id \code{integer}. The unique identification number(s) of the desired Macrostrat project(s) to return a definition for.
+#' @param status \code{character}. The status of the column to return a definition for. Either "active", "in process", or "obsolete".
 #' @return OUTPUT_DESCRIPTION
 #' @author AUTHOR [AUTHOR_2]
 #' @details DETAILS
@@ -35,7 +35,7 @@ def_columns <- function (
     status = 'character')
   check_arguments(x = args, ref = ref)
   # Set default for format
-  format <- c('json')
+  format <- 'json'
   # Get request
   dat <- GET_macrostrat(endpoint = 'INSERT ENDPOINT', query = args, format = format)
 

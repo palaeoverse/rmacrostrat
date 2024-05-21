@@ -1,7 +1,7 @@
 #' @title FUNCTION_TITLE
 #' @description FUNCTION_DESCRIPTION
-#' @param column_id \code{integer}. Filter age models to those associated with column(s) as specified by their unique identification number(s)., Default: NULL
-#' @param section_id \code{integer}. Filter age models to those associated with section(s) as specified by their unique identification number(s)., Default: NULL
+#' @param column_id \code{integer}. Filter age models to those associated with column(s) as specified by their unique identification number(s).
+#' @param section_id \code{integer}. Filter age models to those associated with section(s) as specified by their unique identification number(s).
 #' @return OUTPUT_DESCRIPTION
 #' @author AUTHOR [AUTHOR_2]
 #' @details DETAILS
@@ -26,7 +26,7 @@ get_age_model <- function (
     section_id = 'integer')
   check_arguments(x = args, ref = ref)
   # Set default for format
-  format <- c('json')
+  format <- 'json'
   # Get request
   dat <- GET_macrostrat(endpoint = 'INSERT ENDPOINT', query = args, format = format)
 

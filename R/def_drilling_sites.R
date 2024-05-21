@@ -1,9 +1,9 @@
 #' @title FUNCTION_TITLE
 #' @description FUNCTION_DESCRIPTION
-#' @param program \code{character}. The name of a drilling program (i.e., "DSDP", "ODP", or "IODP") to return a definiton for., Default: NULL
-#' @param leg \code{integer}. The unique identification number(s) of drilling leg(s) to return a definition for., Default: NULL
-#' @param site \code{integer}. The unique identification number(s) of drilling site(s) to return a definition for., Default: NULL
-#' @param sf \code{logical}. Should the results be returned as an `sf` object (defaults to `TRUE`)? If `FALSE`, a `data.frame` is returned., Default: NULL
+#' @param program \code{character}. The name of a drilling program (i.e., "DSDP", "ODP", or "IODP") to return a definiton for.
+#' @param leg \code{integer}. The unique identification number(s) of drilling leg(s) to return a definition for.
+#' @param site \code{integer}. The unique identification number(s) of drilling site(s) to return a definition for.
+#' @param sf \code{logical}. Should the results be returned as an `sf` object (defaults to `TRUE`)? If `FALSE`, a `data.frame` is returned.
 #' @return OUTPUT_DESCRIPTION
 #' @author AUTHOR [AUTHOR_2]
 #' @details DETAILS
@@ -32,7 +32,7 @@ def_drilling_sites <- function (
     sf = 'logical')
   check_arguments(x = args, ref = ref)
   # Set default for format
-  format <- c('json')
+  format <- 'json'
   # Get request
   dat <- GET_macrostrat(endpoint = 'INSERT ENDPOINT', query = args, format = format)
 

@@ -1,6 +1,6 @@
 #' @title FUNCTION_TITLE
 #' @description FUNCTION_DESCRIPTION
-#' @param project_id \code{integer}. The unique identification number(s) of the desired project(s) to return a definition for. If NULL (default), all projects are returned., Default: NULL
+#' @param project_id \code{integer}. The unique identification number(s) of the desired project(s) to return a definition for. If NULL (default), all projects are returned.
 #' @return OUTPUT_DESCRIPTION
 #' @author AUTHOR [AUTHOR_2]
 #' @details DETAILS
@@ -23,7 +23,7 @@ def_projects <- function (
     project_id = 'integer')
   check_arguments(x = args, ref = ref)
   # Set default for format
-  format <- c('json')
+  format <- 'json'
   # Get request
   dat <- GET_macrostrat(endpoint = 'INSERT ENDPOINT', query = args, format = format)
 

@@ -1,11 +1,11 @@
 #' @title FUNCTION_TITLE
 #' @description FUNCTION_DESCRIPTION
-#' @param grain_name \code{character}. The name of the specific grain (e.g., "Coarse Gravel") to return a definition for., Default: NULL
-#' @param grain_group \code{character}. The name of the group the grain belongs to (e.g., "Gravel") to return a definition for., Default: NULL
-#' @param soil_group \code{character}. The name of the family of soils the grain belongs to (e.g., "Coarse Soil") to return a definition for., Default: NULL
-#' @param grain_id \code{integer}. The unique identification number(s) of the desired grain definitions(s) to return a definition for., Default: NULL
-#' @param grain_symbol \code{character}. The abbreviation of the desired grain definition(s) (e.g., "CGr") to return a definition for., Default: NULL
-#' @param grain_classification \code{character}. The classification scheme the given grain belongs to (e.g., "Wentworth") to return a definition for., Default: NULL
+#' @param grain_name \code{character}. The name of the specific grain (e.g., "Coarse Gravel") to return a definition for.
+#' @param grain_group \code{character}. The name of the group the grain belongs to (e.g., "Gravel") to return a definition for.
+#' @param soil_group \code{character}. The name of the family of soils the grain belongs to (e.g., "Coarse Soil") to return a definition for.
+#' @param grain_id \code{integer}. The unique identification number(s) of the desired grain definitions(s) to return a definition for.
+#' @param grain_symbol \code{character}. The abbreviation of the desired grain definition(s) (e.g., "CGr") to return a definition for.
+#' @param grain_classification \code{character}. The classification scheme the given grain belongs to (e.g., "Wentworth") to return a definition for.
 #' @return OUTPUT_DESCRIPTION
 #' @author AUTHOR [AUTHOR_2]
 #' @details DETAILS
@@ -38,7 +38,7 @@ def_grain_sizes <- function (
     grain_classification = 'character')
   check_arguments(x = args, ref = ref)
   # Set default for format
-  format <- c('json')
+  format <- 'json'
   # Get request
   dat <- GET_macrostrat(endpoint = 'INSERT ENDPOINT', query = args, format = format)
 

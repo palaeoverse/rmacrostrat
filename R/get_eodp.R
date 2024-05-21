@@ -1,10 +1,10 @@
 #' @title FUNCTION_TITLE
 #' @description FUNCTION_DESCRIPTION
-#' @param column_id \code{integer}. Filter cores by unique identification number(s) of column(s)., Default: NULL
-#' @param site \code{character}. Filter cores to those of a particular drilling site (e.g., "U1351")., Default: NULL
-#' @param leg \code{character}. Filter cores to those of a particular drilling leg (or expedition for IODP, e.g., "317")., Default: NULL
-#' @param program \code{character}. Filter cores to those of a particular drilling program ("DSDP", "ODP", or "IODP")., Default: NULL
-#' @param sf \code{logical}. Should the results be returned as an `sf` object? Defaults to `FALSE`., Default: NULL
+#' @param column_id \code{integer}. Filter cores by unique identification number(s) of column(s).
+#' @param site \code{character}. Filter cores to those of a particular drilling site (e.g., "U1351").
+#' @param leg \code{character}. Filter cores to those of a particular drilling leg (or expedition for IODP, e.g., "317").
+#' @param program \code{character}. Filter cores to those of a particular drilling program ("DSDP", "ODP", or "IODP").
+#' @param sf \code{logical}. Should the results be returned as an `sf` object? Defaults to `FALSE`.
 #' @return OUTPUT_DESCRIPTION
 #' @author AUTHOR [AUTHOR_2]
 #' @details DETAILS
@@ -35,7 +35,7 @@ get_eodp <- function (
     sf = 'logical')
   check_arguments(x = args, ref = ref)
   # Set default for format
-  format <- c('json')
+  format <- 'json'
   # Get request
   dat <- GET_macrostrat(endpoint = 'INSERT ENDPOINT', query = args, format = format)
 
