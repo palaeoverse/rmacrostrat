@@ -52,6 +52,10 @@ create_function <- function(name,
   } else {
     # Create file
     file.create(paste0("./R/", name, ".R"))
+    # Refs
+    ref <- toString(paste0("\n    ", names(rmacrostrat:::params[[endpoint]]),
+                           " = ",
+                           paste0("'", rmacrostrat:::params[[endpoint]], "'")))
     # Create function
     func <- paste0(name, " <- function (\n   ",
                    args,
@@ -60,9 +64,12 @@ create_function <- function(name,
                    "  # Collect input arguments as a list\n",
                    "  args <- as.list(environment())\n",
                    "  # Check whether class of arguments is valid\n",
-                   "  check_arguments(x = args, ref = 'INSERT ENDPOINT')\n\n",
+                   "  ref <- list(", ref, ")\n",
+                   "  check_arguments(x = args, ref = ref)\n",
+                   "  # Set default for format\n",
+                   "  format <- c('json')\n",
                    "  # Get request\n",
-                   "  dat <- GET_macrostrat(endpoint = 'INSERT ENDPOINT', query = args, format = 'INSERT FORMAT')\n\n",
+                   "  dat <- GET_macrostrat(endpoint = 'INSERT ENDPOINT', query = args, format = format)\n\n",
                    "  # Return data\n",
                    "  return(dat)\n",
                    "}")
@@ -192,6 +199,10 @@ filter_null <- function(x) {
 #'
 #' @return Error messages or \code{TRUE} if all arguments are valid.
 check_arguments <- function(x, ref) {
+  x <- filter_null(x)
+  if (length(x) == 0) {
+    return(TRUE)
+  }
   chk <- names(x) %in% names(ref)
   if (!all(chk)) {
     invalid <- toString(names(x)[!chk])
@@ -202,8 +213,13 @@ check_arguments <- function(x, ref) {
   ref <- ref[names(ref) %in% names(x)]
   # reorder by ref
   x <- x[names(ref)]
+  # Convert integer class to numeric
+  ref_upd <- ref
+  ref_upd[which(ref_upd == "integer")] <- "numeric"
+  # Convert integer class to numeric
+  x[unlist(lapply(x, is.integer))] <- lapply(x[unlist(lapply(x, is.integer))], as.numeric)
   # Evaluate class
-  chk <- unlist(lapply(x, class)) == unlist(ref)
+  chk <- unlist(lapply(x, class)) == unlist(ref_upd)
   if (!all(chk)) {
     invalid <- toString(names(x)[!chk])
     invalid <- sapply(invalid, function(x) {
