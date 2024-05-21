@@ -11,7 +11,7 @@ Authors@R: c(
     person(given = "William", family = "Gearty", email = "willgearty@gmail.com",
       role = c("aut"), comment = c(ORCID = "0000-0003-0076-3262")),
     person(given = "Bethany", family = "Allen", email = "bethany.allen@bsse.ethz.ch",
-      role = c("aut"), comment =c(ORCID = "0000-0003-0282-6407")))
+      role = c("aut"), comment =c(ORCID = "0000-0003-0282-6407")),
     person(given = "Christopher D.", family = "Dean", email = "christopherdaviddean@gmail.com",
       role = c("aut"), comment =c(ORCID = "0000-0001-6471-6903")))
 License: GPL (>= 3)
