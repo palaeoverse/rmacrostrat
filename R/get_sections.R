@@ -77,19 +77,21 @@
 #'   to `FALSE`.
 #' @return A \code{dataframe} containing the following columns:
 #' \itemize{
-#'   \item \code{col_id}: The unique Macrostrat column ID.
+#'   \item \code{col_id}: The unique Macrostrat column identification number.
 #'   \item \code{col_area}: The area of the Macrostrat column in
 #'   km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}}.
-#'   \item \code{section_id}: The unique ID of the Macrostrat section.
-#'   \item \code{project_id}: The unique ID of the Macrostrat project.
+#'   \item \code{section_id}: The unique identification number of the Macrostrat
+#'   section.
+#'   \item \code{project_id}: The unique identification number of the Macrostrat
+#'   project.
 #'   \item \code{max_thick}: The maximum thickness within the focal region.
 #'   \item \code{min_thick}: The minimum thickness within the focal region.
-#'   \item \code{t_age}: The top age of the section, in millions of years before
-#'   present.
-#'   \item \code{b_age}: The bottom age of the section, in millions of years before
-#'   present.
-#'   \item \code{pbdb_collections}: The number of PBDB collections contained within
-#'   the section.
+#'   \item \code{t_age}: The top age of the section, estimated using the
+#'   continuous time age model, in millions of years before present.
+#'   \item \code{b_age}: The bottom age of the section, estimated using the
+#'   continuous time age model, in millions of years before present.
+#'   \item \code{pbdb_collections}: The number of PBDB collections contained
+#'   within the section.
 #'   \item \code{lith}: a \code{dataframe} containing the lithologies present
 #'   within the section, with the following columns:
 #'   \itemize{
