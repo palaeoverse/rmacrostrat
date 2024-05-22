@@ -227,7 +227,7 @@ which contain Macrostrat units.
 }
 \details{
 More information can be found for the inputs for this function using
-the definition functions (beginning with \code{defs_}).
+the definition functions (beginning with \code{def_}).
 }
 \examples{
 \dontrun{

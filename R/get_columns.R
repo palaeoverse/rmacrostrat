@@ -152,7 +152,7 @@
 #'   columns plus a "geometry" column that contains the spatial data.
 #' @author William Gearty
 #' @details More information can be found for the inputs for this function using
-#'   the definition functions (beginning with \code{defs_}).
+#'   the definition functions (beginning with \code{def_}).
 #' @examples
 #' \dontrun{
 #' ex1 <- get_columns(interval_name = "Permian")
