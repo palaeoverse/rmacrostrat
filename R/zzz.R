@@ -63,7 +63,7 @@ GET_macrostrat <- function(endpoint, query = list(), format = "json",
     return(x)
   })
   # Build path route
-  path <- paste0("api/", endpoint)
+  path <- paste0("api/v2/", endpoint)
   # Fetch data
   res <- GET(url = root(), path = path, query = full_query)
   # Check for error
