@@ -83,7 +83,7 @@
 #' @param sf \code{logical}. Should the results be returned as an `sf` object?
 #'   Defaults to `FALSE`.
 #'
-#' @return A \code{data.frame} containing, for each retrieved core:
+#' @return A \code{data.frame} or an `sf` object (if sf = `TRUE`) containing:
 #' \itemize{
 #'    \item \code{unit_id}: The unique ID of the Macrostrat unit.
 #'    \item \code{section_id}: The unique ID of the Macrostrat section.
@@ -145,33 +145,53 @@
 #'      \item \code{measure_class}: The class of measures (e.g. "goechemical").
 #'      \item \code{measure_type}: the type of measures (e.g. "minor elements").
 #'   }}
-#'    \item \code{notes}: Unit related notes.
-#'    \item \code{color}: Recommended coloring for units based on dominant lithology.
-#'    \item \code{text_color}:
-#'    \item \code{t_int_id}:
-#'    \item \code{t_int_name}:
-#'    \item \code{t_int_age}:
-#'    \item \code{t_prop}:
-#'    \item \code{units_above}:
-#'    \item \code{b_int_id}:
-#'    \item \code{b_int_name}:
-#'    \item \code{b_int_age}:
-#'    \item \code{b_prop}:
-#'    \item \code{units_below}:
-#'    \item \code{clat}:
-#'    \item \code{clng}:
-#'    \item \code{t_plat}:
-#'    \item \code{t_plng}:
-#'    \item \code{b_plat}:
-#'    \item \code{b_plng}:
-#'    \item \code{t_pos}:
-#'    \item \code{b_pos}:
-#'  }
-#'  If sf = TRUE, an `sf` object is returned instead.
+#'   \itemize{
+#'    \item \code{notes}: Unit specific notes.
+#'    \item \code{color}: Recommended coloring for units based on dominant
+#'    lithology.
+#'    \item \code{text_color}: Recommended coloring for text based on color.
+#'    \item \code{t_int_id}: The ID of the chronostratigraphic interval
+#'    containing the top boundary of the unit.
+#'    \item \code{t_int_name}: The name of the time interval represented at
+#'    the top of the unit.
+#'    \item \code{t_int_age}: The age of the chronostratigraphic interval
+#'    containing the top boundary of the unit.
+#'    \item \code{t_prop}: Position of continuous time age model top boundary,
+#'    proportional to reference time interval (t_interval).
+#'    \item \code{units_above}: The unit_ids of the units contacting the top
+#'    of the unit.
+#'    \item \code{b_int_id}: The ID of the chronostratigraphic interval
+#'    containing the bottom boundary of the unit.
+#'    \item \code{b_int_name}: The name of the time interval represented at the
+#'    bottom of the unit.
+#'    \item \code{b_int_age}: The age of the chronostratigraphic interval
+#'    containing the bottom boundary of the unit.
+#'    \item \code{b_prop}: Position of continuous time age model bottom
+#'    boundary, proportional to reference time interval (b_interval).
+#'    \item \code{units_below}: The unit_ids of the units contacting the
+#'    bottom of the unit.
+#'    \item \code{clat}: The present day latitude of the centroid of the
+#'    column to which the unit belongs.
+#'    \item \code{clng}: The present day longitude of the centroid of the
+#'    column to which the unit belongs.
+#'    \item \code{t_plat}: The paleolatitude of the centroid of the column
+#'    which the unit belongs to at top age (clat rotated to t_age).
+#'    \item \code{t_plng}: The paleolongitude of the centroid of the column
+#'    which the unit belongs to at top age (clng rotated to t_age) .
+#'    \item \code{b_plat}: The paleolatitude of the centroid of the column
+#'    which the unit belongs to at bottom age (clat rotated to b_age).
+#'    \item \code{b_plng}: The paleolongitude of the the centroid of the
+#'    column which the unit belongs to at bottom age (clng rotated to b_age) .
+#'    \item \code{t_pos}: The position of unit top in ordering of units in
+#'    section, optionally in units of m for some columns (e.g., EODP project).
+#'    \item \code{b_pos}: The position of unit bottom in ordering of units in
+#'    section, optionally in units of m for some columns (e.g., EODP project).
+#'    }
 #'
 #' @author Lewis A. Jones
 #'
-#' @details DETAILS
+#' @details More information can be found for the inputs for this function
+#' using the definition functions (beginning with \code{defs_}).
 #'
 #' @examples
 #' \dontrun{
