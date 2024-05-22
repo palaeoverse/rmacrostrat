@@ -1,31 +1,33 @@
-#' @title FUNCTION_TITLE
-#' @description FUNCTION_DESCRIPTION
-#' @param all \code{logical}. Show all results, Default: NULL
-#' @return OUTPUT_DESCRIPTION
-#' @author AUTHOR [AUTHOR_2]
-#' @details DETAILS
+#' @title Retrieve Macrostrat database statistics
+#' @description A function to retrieve various statistics about each Macrostrat
+#'   project in the Macrostrat database.
+#' @return A `data.frame` containing the following columns:
+#' \itemize{
+#'   \item \code{project_id}: Unique ID of the Macrostrat project.
+#'   \item \code{project}: The name of the Macrostrat project.
+#'   \item \code{columns}: The number of Macrostrat columns associated with the
+#'     project.
+#'   \item \code{packages}: The number of Macrostrat packages/sections
+#'     associated with the project.
+#'   \item \code{units}: The number of Macrostrat units associated with the
+#'     project.
+#'   \item \code{pbdb_collections}: The number of Paleobiology Database
+#'     collections associated with the project.
+#'   \item \code{measurements}: The number of measurements associated with the
+#'     project.
+#'   \item \code{t_polys}: The number of spatial polygons associated with the
+#'     project.
+#' }
+#' @author William Gearty
 #' @examples
 #' \dontrun{
-#' if (interactive()) {
-#'   # EXAMPLE1
-#' }
+#' get_stats()
 #' }
 #' @export
-
-get_stats <- function(
-    all = NULL) {
-  # Error handling
-  # Collect input arguments as a list
-  args <- as.list(environment())
-  # Check whether class of arguments is valid
-  ref <- list(
-    all = "logical"
-  )
-  check_arguments(x = args, ref = ref)
-  # Set default for format
-  format <- "json"
+get_stats <- function() {
   # Get request
-  dat <- GET_macrostrat(endpoint = "INSERT ENDPOINT", query = args, format = format)
+  dat <- GET_macrostrat(endpoint = "stats", query = list(all = TRUE),
+                        format = "json")
 
   # Return data
   return(dat)
