@@ -2,7 +2,7 @@
 % Please edit documentation in R/def_sources.R
 \name{def_sources}
 \alias{def_sources}
-\title{Retrieve source definitions}
+\title{Retrieve geologic map source definitions}
 \usage{
 def_sources(
   source_id = NULL,
@@ -56,6 +56,8 @@ and point elements) associated with the geologic map source.
 \item \code{area}: The total geographic area of the geologic map source
 in km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}}.
 }
+If \code{sf} is \code{TRUE} (the default), an \code{sf} object is returned instead, with
+the same columns plus a "geometry" column that contains the spatial data.
 }
 \description{
 A function to retrieve the definitions for one or more geologic
@@ -64,7 +66,16 @@ are returned.
 }
 \examples{
 \dontrun{
-#
+# get all sources
+ex1 <- def_sources()
+# get subset of sources
+ex2 <- def_sources(source_id = c(1,2,4))
+ex3 <- def_sources(lat = 43.03, lng = -89.4, scale = "large")
+# use WKT representation
+library(sf)
+line <- st_linestring(x = matrix(c(-122.3438, 37,-89.3527, 43.0582),
+                                 byrow = TRUE, ncol = 2))
+ex4 <- def_sources(shape = st_as_text(line), buffer = 100)
 }
 }
 \author{

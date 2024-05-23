@@ -1,4 +1,4 @@
-#' @title Retrieve source definitions
+#' @title Retrieve geologic map source definitions
 #' @description A function to retrieve the definitions for one or more geologic
 #'   map sources in the Macrostrat database. By default, all source definitions
 #'   are returned.
