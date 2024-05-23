@@ -1,6 +1,6 @@
 #' @title Retrieve collections from the Paleobiology Database
-#' @description A function to retrieve collections from the Paleobiology
-#' Database (\href{http://paleobiodb.org}), matched to Macrostrat units.
+#' @description A function to retrieve collections from the [Paleobiology
+#' Database](http://paleobiodb.org), matched to Macrostrat units.
 #' @param unit_id \code{integer}. Filter PBDB collections to those within one or
 #'   more unit(s) as specified by their unique identification number(s).
 #' @param column_id \code{integer}. Filter PBDB collections to those within one
@@ -85,8 +85,8 @@
 #' @author Christopher D. Dean [AUTHOR_2]
 #' @section Reviewer: N/A
 #' @details More information can be found for the inputs for this function
-#' using the definition functions (beginning with \code{defs_}). Terminology
-#' related to the PBDB can be found at \href{http://paleobiodb.org} or in the
+#' using the definition functions (beginning with \code{def_}). Terminology
+#' related to the PBDB can be found at \url{http://paleobiodb.org} or in the
 #' suggested references below.
 #' @section References:
 #' Peters, S.E. and McClennen, M. (2016). The Paleobiology Database application

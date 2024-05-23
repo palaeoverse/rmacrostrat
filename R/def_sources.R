@@ -19,7 +19,7 @@
 #'   Defaults to `TRUE`. If `FALSE`, a `data.frame` is returned.
 #' @return A \code{data.frame} containing the following columns:
 #' \itemize{
-#'   \item \code{source_id:} Identification number of the geologic map source.
+#'   \item \code{source_id}: Identification number of the geologic map source.
 #'   \item \code{name}: Name of the geologic map source.
 #'   \item \code{url}: URL where additional information, the source, or
 #'     contributing publication can be found.
