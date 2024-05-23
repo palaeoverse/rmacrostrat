@@ -110,19 +110,22 @@ Defaults to <code>TRUE</code>. If <code>FALSE</code>, a <code>data.frame</code> 
 element.</p></li>
 <li><p><code>source_id</code>: The identification number of the source geologic
 map.</p></li>
-<li><p><code>name</code>: The formal name of the outcrop shape element.</p></li>
-<li><p><code>strat_name</code>: The informal name of the outcrop shape element.</p></li>
+<li><p><code>name</code>: The name of the outcrop shape element in the original
+(or modified) source geologic map.</p></li>
+<li><p><code>strat_name</code>: The geologic name(s) of the outcrop shape element.</p></li>
 <li><p><code>lith</code>: The lithology of the outcrop shape element as defined in
 the geologic map source in plain text.</p></li>
 <li><p><code>descrip</code>: Description of the outcrop shape element in plain
 text.</p></li>
 <li><p><code>comments</code>: Notes assigned to the outcrop shape element.</p></li>
-<li><p><code>macro_units</code>: A vector of identification numbers of the
-Macrostrat units matched to the outcrop shape element.</p></li>
-<li><p><code>strat_names</code>: A vector of identification numbers of the
-stratigraphic names matched to the outcrop shape element.</p></li>
-<li><p><code>liths</code>: A vector of the identification numbers of the
-lithologies represented within the outcrop shape element (see
+<li><p><code>macro_units</code>: A vector containing the unique identification
+number(s) for known Macrostrat unit(s) matched to the outcrop shape
+element.</p></li>
+<li><p><code>strat_names</code>: A vector containing the unique identification
+number(s) for known stratigraphic unit name(s) matched to the outcrop
+shape element (see <code>def_strat_names()</code>).</p></li>
+<li><p><code>liths</code>: A vector containing the unique identification number(s)
+of the lithology(ies) represented within the outcrop shape element (see
 <code><a href="def_lithologies.html">def_lithologies()</a></code>).</p></li>
 <li><p><code>t_int_id</code>: The identification number of the chronostratigraphic
 interval containing the top boundary of the outcrop shape element.</p></li>
@@ -151,6 +154,10 @@ the same columns plus a "geometry" column that contains the spatial data.</p>
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>More information can be found for the inputs for this function using
 the definition functions (beginning with <code>def_</code>).</p>
+    </div>
+    <div class="section level2">
+    <h2 id="reviewer">Reviewer<a class="anchor" aria-label="anchor" href="#reviewer"></a></h2>
+    <p>N/A</p>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
