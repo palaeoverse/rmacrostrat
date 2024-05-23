@@ -45,8 +45,9 @@ each unit}
 If sf = TRUE, an \code{sf} object is outputted instead.
 }
 \description{
-Call data from the \link{Extending Ocean Drilling Pursuits (eODP)}
-(https://eodp.github.io) project, a collation of sedimentary description data
+Call data from the
+\href{https://eodp.github.io}{Extending Ocean Drilling Pursuits (eODP)}
+project, a collation of sedimentary description data
 from ocean drilling cores. This includes cores from the Deep Sea Drilling
 Project (DSDP), Integrated Ocean Drilling Program (IODP), and Ocean Drilling
 Program (ODP).

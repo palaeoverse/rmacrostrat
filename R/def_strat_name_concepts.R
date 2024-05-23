@@ -32,13 +32,13 @@
 #'   \item \code{province}: The provinces where the stratigraphic name concept
 #'   appears, in plain text.
 #'   \item \code{refs}: The unique identification number of the reference from
-#'   which the stratigraphic name concept was sourced (see [def_refs()]).
+#'   which the stratigraphic name concept was sourced (see [def_references()]).
 #'   \item \code{url}: The URL associated with the stratigraphic name concept,
 #'   where additional information, the source or contributing publication can be
 #'   found.
 #'   \item \code{author}: The authors of the source reference.
 #'   }
-#' @author Christopher D. Dean [AUTHOR_2]
+#' @author Christopher D. Dean
 #' @section Reviewer: N/A
 #' @details Stratigraphic name concepts consist of grouped `strat_name`s which
 #' represent the same geologic entity. This may be due to stratigraphic names

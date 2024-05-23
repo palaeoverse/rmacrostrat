@@ -75,7 +75,7 @@
 #'   \item \code{t_units}: The total number of Macrostrat units that are
 #'   associated with the stratigraphic name.
 #'   \item \code{ref_id}: The unique identification number of the reference from
-#'   which the stratigraphic name was sourced (see [def_refs()]).
+#'   which the stratigraphic name was sourced (see [def_references()]).
 #' }
 #' @author Christopher D. Dean
 #' @section Reviewer: N/A

@@ -40,7 +40,7 @@ concept, in plain text.
 \item \code{province}: The provinces where the stratigraphic name concept
 appears, in plain text.
 \item \code{refs}: The unique identification number of the reference from
-which the stratigraphic name concept was sourced (see \code{\link[=def_refs]{def_refs()}}).
+which the stratigraphic name concept was sourced (see \code{\link[=def_references]{def_references()}}).
 \item \code{url}: The URL associated with the stratigraphic name concept,
 where additional information, the source or contributing publication can be
 found.
@@ -71,5 +71,5 @@ ex1 <- def_strat_name_concepts(strat_concept_id = 8212)
 }
 }
 \author{
-Christopher D. Dean \link{AUTHOR_2}
+Christopher D. Dean
 }

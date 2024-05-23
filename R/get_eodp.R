@@ -1,6 +1,7 @@
 #' @title Retrieve core data from ocean drilling programs
-#' @description Call data from the [Extending Ocean Drilling Pursuits (eODP)]
-#' (https://eodp.github.io) project, a collation of sedimentary description data
+#' @description Call data from the
+#' [Extending Ocean Drilling Pursuits (eODP)](https://eodp.github.io)
+#' project, a collation of sedimentary description data
 #' from ocean drilling cores. This includes cores from the Deep Sea Drilling
 #' Project (DSDP), Integrated Ocean Drilling Program (IODP), and Ocean Drilling
 #' Program (ODP).
