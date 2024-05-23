@@ -160,8 +160,9 @@ corresponds to geologic provinces.
 km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}}.
 \item \code{project_id}: Unique identifier for project, corresponds to
 general geographic region.
-\item \code{col_type}: The minimum thickness within the focal region.
-\item \code{refs}: The minimum thickness within the focal region.
+\item \code{col_type}: The type of column.
+\item \code{refs}: Unique identification number(s) for the reference(s)
+associated with the column.
 \item \code{max_thick}: Maximum unit thickness in meters.
 \item \code{max_min_thick}: The maximum possible minimum thickness in
 meters.
