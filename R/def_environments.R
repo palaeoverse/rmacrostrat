@@ -22,7 +22,7 @@
 #'     partially or entirely composed of the environment.
 #' }
 #' @author Christopher D. Dean [AUTHOR_2]
-#' @reviewer N/A
+#' @section Reviewer: N/A
 #' @examples
 #' \dontrun{
 #' if (interactive()) {

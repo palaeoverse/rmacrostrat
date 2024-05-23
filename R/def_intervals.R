@@ -79,6 +79,13 @@ def_intervals <- function(timescale = NULL,
     true_colors = "logical"
   )
   check_arguments(x = args, ref = ref)
+  # Recode names
+  api_names <- list(interval_name = "name", interval_id = "int_id",
+                    age_top = "t_age", age_bottom = "b_age")
+  # Match names
+  rpl <- match(x = names(api_names), table = names(args))
+  # Replace names
+  names(args)[rpl] <- as.vector(unlist(api_names))
   # Get request
   dat <- GET_macrostrat(endpoint = "defs/intervals",
                         query = args, format = "json")
