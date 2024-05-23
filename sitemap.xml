@@ -37,6 +37,9 @@
     <loc>https://rmacrostrat.palaeoverse.org/reference/def_lithology_att.html</loc>
   </url>
   <url>
+    <loc>https://rmacrostrat.palaeoverse.org/reference/def_measurements.html</loc>
+  </url>
+  <url>
     <loc>https://rmacrostrat.palaeoverse.org/reference/def_references.html</loc>
   </url>
   <url>
@@ -56,6 +59,9 @@
   </url>
   <url>
     <loc>https://rmacrostrat.palaeoverse.org/reference/get_map_outcrop.html</loc>
+  </url>
+  <url>
+    <loc>https://rmacrostrat.palaeoverse.org/reference/get_measurements.html</loc>
   </url>
   <url>
     <loc>https://rmacrostrat.palaeoverse.org/reference/get_options.html</loc>
