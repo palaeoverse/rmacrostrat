@@ -16,3 +16,4 @@ A \code{NULL} filtered list of \code{x}.
 This function checks whether any elements in a list are
 NULL and removes them.
 }
+\keyword{internal}

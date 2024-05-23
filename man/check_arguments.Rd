@@ -19,3 +19,4 @@ This function checks whether user arguments are valid
 in terms of being an available argument or of the correct
 class.
 }
+\keyword{internal}

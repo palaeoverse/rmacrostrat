@@ -9,3 +9,4 @@ api_version()
 \description{
 Get API version
 }
+\keyword{internal}

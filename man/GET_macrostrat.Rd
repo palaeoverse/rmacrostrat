@@ -29,3 +29,4 @@ This function fetches data from \href{https://macrostrat.org}{Macrostrat} via th
 Application Programming Interface (API). This is the core function for
 handling user requests.
 }
+\keyword{internal}

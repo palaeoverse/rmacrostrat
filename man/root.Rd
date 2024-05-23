@@ -9,3 +9,4 @@ root()
 \description{
 API root (base URL)
 }
+\keyword{internal}

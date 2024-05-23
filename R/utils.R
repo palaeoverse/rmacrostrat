@@ -6,6 +6,7 @@
 #' @param x \code{list}. The user-query list
 #'
 #' @return A `NULL` filtered list of `x`.
+#' @keywords internal
 filter_null <- function(x) {
   x <- x[!unlist(lapply(x, is.null))]
   return(x)
@@ -21,6 +22,7 @@ filter_null <- function(x) {
 #' @param ref \code{list}. The reference list to compare `x` against.
 #'
 #' @return Error messages or \code{TRUE} if all arguments are valid.
+#' @keywords internal
 check_arguments <- function(x, ref) {
   x <- filter_null(x)
   if (length(x) == 0) {

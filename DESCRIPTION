@@ -28,7 +28,6 @@ Imports:
     httr,
     jsonlite,
     readr,
-    sinew,
     utils,
     sf
 Suggests:

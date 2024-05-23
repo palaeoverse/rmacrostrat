@@ -1,9 +1,11 @@
 #' API root (base URL)
+#' @keywords internal
 root <- function() "https://macrostrat.org/"
 
 #' Get API version
 #' @importFrom jsonlite fromJSON
 #' @importFrom httr GET content
+#' @keywords internal
 api_version <- function() {
   res <- GET(url = root(), path = "api")
   cont <- content(res, as = "text", encoding = "UTF-8")
@@ -35,6 +37,7 @@ api_version <- function() {
 #' @importFrom geojsonsf geojson_sf
 #' @importFrom sf st_sf
 #' @importFrom readr read_csv
+#' @keywords internal
 GET_macrostrat <- function(endpoint, query = list(), format = "json",
                            output = "df") {
   # Remove NULL arguments
