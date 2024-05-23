@@ -2,6 +2,7 @@
 ^\.Rproj\.user$
 ^\.DS_Store$
 ^data-raw$
+^setup$
 ^\.github$
 cran-comments.md
 ^CRAN-RELEASE$
