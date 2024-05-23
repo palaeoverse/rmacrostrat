@@ -1,32 +1,37 @@
-#' @title FUNCTION_TITLE
-#' @description FUNCTION_DESCRIPTION
-#' @param all \code{logical}. Should all available timescales be returned?, Default: NULL
-#' @return OUTPUT_DESCRIPTION
-#' @author AUTHOR [AUTHOR_2]
-#' @details DETAILS
-#' @examples
-#' \dontrun{
-#' if (interactive()) {
-#'   # EXAMPLE1
+#' @title Retrieve timescale definitions
+#'
+#' @description A function to retrieve all timescale definitions from the
+#'   Macrostrat database. Function is called without user-specified arguments.
+#'
+#' @return A \code{data.frame} containing the following columns:
+#' \itemize{
+#'   \item \code{timescale_id}: The unique identification number of the
+#'   timescale.
+#'   \item \code{timescale}: The name of the timescale.
+#'   \item \code{max_age}: The maximum age coverage of the timescale in
+#'   millions of years before present.
+#'   \item \code{min_age}: The minimum age coverage of the timescale in
+#'   millions of years before present.
+#'   \item \code{n_intervals}: The number of intervals within the timescale.
+#'   \item \code{ref_id}: The unique identification number of the associated
+#'   reference.
 #' }
+#'
+#' @author Lewis A. Jones
+#'
+#' @examples
+#'
+#' \dontrun{
+#'  # Retrieve all timescale definitions
+#'  ex1 <- def_timescales()
 #' }
 #' @export
-
-def_timescales <- function(
-    all = NULL) {
-  # Error handling
+def_timescales <- function() {
   # Collect input arguments as a list
-  args <- as.list(environment())
-  # Check whether class of arguments is valid
-  ref <- list(
-    all = "logical"
-  )
-  check_arguments(x = args, ref = ref)
-  # Set default for format
-  format <- "json"
+  args <- list(all = "all")
   # Get request
-  dat <- GET_macrostrat(endpoint = "INSERT ENDPOINT", query = args, format = format)
-
+  dat <- GET_macrostrat(endpoint = "defs/timescales",
+                        query = args, format = "json")
   # Return data
   return(dat)
 }
