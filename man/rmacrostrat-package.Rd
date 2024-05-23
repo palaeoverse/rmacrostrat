@@ -6,6 +6,8 @@
 \alias{rmacrostrat-package}
 \title{rmacrostrat: Fetch Data from the Macrostrat Platform}
 \description{
+\if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
+
 Work with the Macrostrat Web Service (\url{https://macrostrat.org/}) to fetch geological data relevant to the spatial and temporal distribution of sedimentary, igneous, and metamorphic rocks as well as data extracted from them.
 }
 \seealso{
@@ -15,6 +17,7 @@ Useful links:
   \item \url{https://palaeoverse.org}
   \item \url{https://macrostrat.org}
   \item \url{https://palaeoverse.github.io/rmacrostrat/}
+  \item \url{https://github.com/UW-Macrostrat/macrostrat/issues}
   \item Report bugs at \url{https://github.com/palaeoverse/rmacrostrat/issues}
 }
 
