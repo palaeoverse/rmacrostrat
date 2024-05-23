@@ -51,6 +51,29 @@
 #'  \item{measure_phase}{The phase from which the measurement was taken}
 #'  \item{method}{The method used to generate the measurement}
 #'  \item{n}{The number of observations or measurements}
+#'  \item{ref_id}{The unique identifier of the reference}
+#'  \item{sample_name}{Name of the sample for the measurement}
+#'  \item{geo_unit}{The Macrostrat unit from which the measurement was
+#'  taken}
+#'  \item{samp_lith}{A lithological description of the rock from which the
+#'  measurement was taken}
+#'  \item{samp_lith_id}{The unique identifier of the lithological description of
+#'  the rock from which the measurement was taken}
+#'  \item{samp_desc}{A description of the sample used to generate the
+#'  measurement}
+#'  \item{samp_age}{The geological time interval assigned to the measurement}
+#'  \item{lat}{Decimal degree latitude of the measurement}
+#'  \item{lng}{Decimal degree longitude of the measurement}
+#'  \item{unit_id}{The unique identifier of the Macrostrat unit from which the
+#'  measurement was taken}
+#'  \item{unit_rel_pos}{The relative positive of the sample or measurement
+#'  within the unit}
+#'  \item{col_id}{The unique identifier of the Macrostrat column from which the
+#'  measurement was taken}
+#'  \item{strat_name_id}{The unique identifier of the stratigraphic name}
+#'  \item{match_basis}{A terse descriptor of how the measuremeta data was linked
+#'  to the Macrostrat unit}
+#'  \item{ref}{The name of the reference}
 #'  \item{measure_value}{The value of the measurement}
 #'  \item{measure_error}{The reported error on the measurement value}
 #'  \item{measure_position}{The position of the measurement in the Macrostrat
@@ -58,25 +81,8 @@
 #'  \item{measure_n}{The number of measurements used to generate the
 #'  measure_value; if greater than one, usually used to produce the
 #'  measure_error}
+#'  \item{sample_no}{The sample number for the measurement}
 #'  \item{error_units}{The units of the error}
-#'  \item{lat}{Decimal degree latitude of the measurement}
-#'  \item{lng}{Decimal degree longitude of the measurement}
-#'  \item{samp_geo_unit}{The Macrostrat unit from which the measurement was
-#'  taken}
-#'  \item{samp_lith}{A lithological description of the rock from which the
-#'  measurement was taken}
-#'  \item{samp_desc}{A description of the sample used to generate the
-#'  measurement}
-#'  \item{samp_age}{The geological time interval assigned to the measurement}
-#'  \item{ref_id}{The unique identifier of the reference}
-#'  \item{unit_id}{The unique identifier of the Macrostrat unit from which the
-#'  measurement was taken}
-#'  \item{col_id}{The unique identifier of the Macrostrat column from which the
-#'  measurement was taken}
-#'  \item{strat_name_id}{The unique identifier of the stratigraphic name}
-#'  \item{match_basis}{A terse descriptor of how the measuremeta data was linked
-#'  to the Macrostrat unit}
-#'  \item{ref}{The name of the reference}
 #'  }
 #'  If sf = TRUE, an `sf` object is outputted instead.
 #'
@@ -110,7 +116,7 @@ get_measurements <- function(
     lithology_type = NULL,
     lithology_class = NULL,
     project_id = NULL,
-    sf = NULL) {
+    sf = FALSE) {
 
   # Error handling
   # Collect input arguments as a list
@@ -138,17 +144,22 @@ get_measurements <- function(
 
   # Recode names
   api_names <- list(column_id = "col_id", lithology_id = "lith_id",
-                    lithology_class = "lith_class", lithology_type = "lith_type")
+                    lithology_class = "lith_class",
+                    lithology_type = "lith_type")
   # Match names
   rpl <- match(x = names(api_names), table = names(args))
   # Replace names
   names(args)[rpl] <- as.vector(unlist(api_names))
 
+  # Always retrieve measurement values
+  args$show_values = TRUE
+
   # Set default for format
-  format <- "json"
+  if (sf) format <- "geojson" else format <- "json"
 
   # Get request
-  dat <- GET_macrostrat(endpoint = "measurements", query = args, format = format)
+  dat <- GET_macrostrat(endpoint = "measurements", query = args,
+                        format = format)
 
   # Return data
   return(dat)
