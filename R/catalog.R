@@ -55,6 +55,7 @@
 #'   ex2 <- catalog(type = "grain_sizes")
 #' }
 #' @export
+#' @family defs
 catalog <- function(type = NULL) {
   if (!is.character(type)) stop("`type` must be of class character.")
   dat <- get(paste0("def_", type))()

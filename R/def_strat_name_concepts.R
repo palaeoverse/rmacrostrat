@@ -52,7 +52,7 @@
 #' ex1 <- def_strat_name_concepts(strat_concept_id = 8212)
 #' }
 #' @export
-
+#' @family defs_strat
 def_strat_name_concepts <- function(strat_concept_name = NULL,
                                     strat_concept_id = NULL) {
   # Error handling

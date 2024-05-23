@@ -120,6 +120,13 @@ Potential Macrostrat map scales are "tiny" (global), "small"
  ex3 <- head(get_map_legends(comments = "breccia"))
 }
 }
+\seealso{
+Geologic maps:
+\code{\link{def_sources}()},
+\code{\link{get_map_outcrop}()},
+\code{\link{get_map_points}()}
+}
 \author{
 Christopher D. Dean
 }
+\concept{maps}

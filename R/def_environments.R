@@ -36,7 +36,7 @@
 #' }
 #' }
 #' @export
-
+#' @family defs_feat
 def_environments <- function(environ = NULL, environ_type = NULL,
     environ_class = NULL, environ_id = NULL) {
   # Error handling

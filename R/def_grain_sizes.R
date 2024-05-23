@@ -43,6 +43,7 @@
 #'  ex2 <- def_grain_sizes(grain_group = "Gravel")
 #' }
 #' @export
+#' @family defs_feat
 def_grain_sizes <- function(grain_name = NULL, grain_group = NULL,
                             soil_group = NULL, grain_id = NULL,
                             grain_symbol = NULL,

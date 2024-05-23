@@ -48,6 +48,17 @@ ex2 <- def_structures(structure_id = c(1, 3))
 ex3 <- def_structures(structure_class = "igneous")
 }
 }
+\seealso{
+Geologic features and attributes:
+\code{\link{def_econs}()},
+\code{\link{def_environments}()},
+\code{\link{def_grain_sizes}()},
+\code{\link{def_lithologies}()},
+\code{\link{def_lithology_att}()},
+\code{\link{def_measurements}()},
+\code{\link{def_minerals}()}
+}
 \author{
 William Gearty
 }
+\concept{defs_feat}

@@ -141,6 +141,14 @@ if (interactive()) {
 }
 }
 }
+\seealso{
+External data:
+\code{\link{def_drilling_sites}()},
+\code{\link{def_measurements}()},
+\code{\link{get_eodp}()},
+\code{\link{get_fossils}()}
+}
 \author{
 Bethany Allen
 }
+\concept{external}

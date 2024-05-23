@@ -55,6 +55,14 @@ if (interactive()) {
 }
 }
 }
+\seealso{
+Macrostrat data entities:
+\code{\link{def_columns}()},
+\code{\link{get_columns}()},
+\code{\link{get_sections}()},
+\code{\link{get_units}()}
+}
 \author{
 Bethany Allen
 }
+\concept{macrostrat}

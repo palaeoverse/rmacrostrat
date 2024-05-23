@@ -273,6 +273,14 @@ hell_creek <- get_units(strat_name = "Hell Creek")
 units <- get_units(lng = -110.9, lat = 48.4)
 }
 }
+\seealso{
+Macrostrat data entities:
+\code{\link{def_columns}()},
+\code{\link{get_age_model}()},
+\code{\link{get_columns}()},
+\code{\link{get_sections}()}
+}
 \author{
 Lewis A. Jones
 }
+\concept{macrostrat}

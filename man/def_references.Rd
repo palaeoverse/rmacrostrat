@@ -37,6 +37,13 @@ ex1 <- def_references()
 ex2 <- def_references(ref_id = c(1, 2, 3))
 }
 }
+\seealso{
+Macrostrat database metadata:
+\code{\link{def_projects}()},
+\code{\link{def_sources}()},
+\code{\link{get_stats}()}
+}
 \author{
 William Gearty
 }
+\concept{meta}

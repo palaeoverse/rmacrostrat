@@ -61,6 +61,14 @@ ex2 <- def_columns(column_group_id = 17)
 ex3 <- def_columns(column_name = "Eastern Kentucky")
 }
 }
+\seealso{
+Macrostrat data entities:
+\code{\link{get_age_model}()},
+\code{\link{get_columns}()},
+\code{\link{get_sections}()},
+\code{\link{get_units}()}
+}
 \author{
 William Gearty
 }
+\concept{macrostrat}

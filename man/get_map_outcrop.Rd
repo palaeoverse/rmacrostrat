@@ -105,6 +105,13 @@ ex1 <- get_map_outcrop(lat = 43, lng = -89.3)
 ex2 <- get_map_outcrop(lat = 43, lng = -89.3, scale = "tiny")
 }
 }
+\seealso{
+Geologic maps:
+\code{\link{def_sources}()},
+\code{\link{get_map_legends}()},
+\code{\link{get_map_points}()}
+}
 \author{
 William Gearty
 }
+\concept{maps}

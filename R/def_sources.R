@@ -52,6 +52,8 @@
 #' ex4 <- def_sources(shape = st_as_text(line), buffer = 100)
 #' }
 #' @export
+#' @family maps
+#' @family meta
 def_sources <- function(source_id = NULL, lat = NULL, lng = NULL,
                         shape = NULL, buffer = NULL, scale = NULL, sf = TRUE) {
   # Error handling

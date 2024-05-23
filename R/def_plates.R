@@ -27,6 +27,7 @@
 #'  ex2 <- def_plates(plate_id = 604)
 #' }
 #' @export
+#' @family paleogeo
 def_plates <- function(plate_id = NULL) {
   # Error handling
   # Collect input arguments as a list

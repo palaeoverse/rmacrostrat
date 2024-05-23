@@ -34,7 +34,7 @@
 #' }
 #' }
 #' @export
-
+#' @family defs_feat
 def_econs <- function(
     econ = NULL,
     econ_type = NULL,

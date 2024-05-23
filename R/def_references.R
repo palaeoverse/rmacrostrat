@@ -25,6 +25,7 @@
 #' ex2 <- def_references(ref_id = c(1, 2, 3))
 #' }
 #' @export
+#' @family meta
 def_references <- function(ref_id = NULL) {
   # Error handling
   # Collect input arguments as a list

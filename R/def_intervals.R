@@ -60,6 +60,7 @@
 #' ex3 <- def_intervals(timescale = "international ages", age = 70)
 #' }
 #' @export
+#' @family defs_time
 def_intervals <- function(timescale = NULL,
                           interval_name = NULL, interval_id = NULL,
                           age = NULL, age_top = NULL, age_bottom = NULL,

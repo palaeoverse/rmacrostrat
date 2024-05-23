@@ -39,6 +39,7 @@
 #' ex3 <- def_columns(column_name = "Eastern Kentucky")
 #' }
 #' @export
+#' @family macrostrat
 def_columns <- function(column_id = NULL, column_group_id = NULL,
                         column_name = NULL, project_id = NULL, status = NULL) {
   # Error handling

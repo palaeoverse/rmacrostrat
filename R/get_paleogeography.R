@@ -31,6 +31,7 @@
 #   ex2 <- get_paleogeography(interval_name = "Campanian")
 #' }
 #' @export
+#' @family paleogeo
 get_paleogeography <- function(age = NULL, interval_name = NULL, sf = TRUE) {
   # Error handling
   # Collect input arguments as a list

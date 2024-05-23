@@ -120,6 +120,11 @@ and lithostratigraphic rank
 ex3 <- head(def_strat_names(interval_name = "Campanian", rank = "Fm"))
 }
 }
+\seealso{
+Stratigraphic names:
+\code{\link{def_strat_name_concepts}()}
+}
 \author{
 Christopher D. Dean
 }
+\concept{defs_strat}

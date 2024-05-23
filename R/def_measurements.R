@@ -30,7 +30,8 @@
 #' ex3 <- def_measurements(measurement_class = "geochemical")
 #' }
 #' @export
-
+#' @family external
+#' @family defs_feat
 def_measurements <- function(measure_id = NULL, measurement_type = NULL,
                              measurement_class = NULL) {
   # Error handling

@@ -70,6 +70,11 @@ ex1 <- def_strat_name_concepts(strat_concept_name = "Dakota")
 ex1 <- def_strat_name_concepts(strat_concept_id = 8212)
 }
 }
+\seealso{
+Stratigraphic names:
+\code{\link{def_strat_names}()}
+}
 \author{
 Christopher D. Dean
 }
+\concept{defs_strat}

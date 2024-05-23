@@ -34,6 +34,13 @@ project in the Macrostrat database.
 get_stats()
 }
 }
+\seealso{
+Macrostrat database metadata:
+\code{\link{def_projects}()},
+\code{\link{def_references}()},
+\code{\link{def_sources}()}
+}
 \author{
 William Gearty
 }
+\concept{meta}

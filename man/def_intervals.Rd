@@ -83,6 +83,11 @@ ex2 <- def_intervals(timescale = "international ages")
 ex3 <- def_intervals(timescale = "international ages", age = 70)
 }
 }
+\seealso{
+Timescales and time intervals:
+\code{\link{def_timescales}()}
+}
 \author{
 Lewis A. Jones
 }
+\concept{defs_time}

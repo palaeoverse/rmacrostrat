@@ -219,6 +219,14 @@ using the definition functions (beginning with \code{defs_}).
   # head(get_sections(pbdb_collection_no = c(1000:5000)))
 }
 }
+\seealso{
+Macrostrat data entities:
+\code{\link{def_columns}()},
+\code{\link{get_age_model}()},
+\code{\link{get_columns}()},
+\code{\link{get_units}()}
+}
 \author{
 Christopher D. Dean
 }
+\concept{macrostrat}

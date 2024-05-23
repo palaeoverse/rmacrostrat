@@ -91,7 +91,7 @@
 #' ex3 <- head(def_strat_names(interval_name = "Campanian", rank = "Fm"))
 #' }
 #' @export
-
+#' @family defs_strat
 def_strat_names <- function(strat_name = NULL, interval_name = NULL,
     rank = NULL, concept_id = NULL, ref_id = NULL, strat_name_id = NULL,
     rule = NULL) {

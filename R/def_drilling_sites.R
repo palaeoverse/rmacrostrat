@@ -51,7 +51,7 @@
 #' }
 #' }
 #' @export
-
+#' @family external
 def_drilling_sites <- function(
     program = NULL,
     leg = NULL,

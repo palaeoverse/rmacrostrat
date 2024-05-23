@@ -45,6 +45,17 @@ if (interactive()) {
 }
 }
 }
+\seealso{
+Geologic features and attributes:
+\code{\link{def_environments}()},
+\code{\link{def_grain_sizes}()},
+\code{\link{def_lithologies}()},
+\code{\link{def_lithology_att}()},
+\code{\link{def_measurements}()},
+\code{\link{def_minerals}()},
+\code{\link{def_structures}()}
+}
 \author{
 Bethany Allen
 }
+\concept{defs_feat}

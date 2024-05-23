@@ -48,6 +48,24 @@ ex2 <- def_measurements(measure_id = c(1, 2, 4))
 ex3 <- def_measurements(measurement_class = "geochemical")
 }
 }
+\seealso{
+External data:
+\code{\link{def_drilling_sites}()},
+\code{\link{get_eodp}()},
+\code{\link{get_fossils}()},
+\code{\link{get_measurements}()}
+
+Geologic features and attributes:
+\code{\link{def_econs}()},
+\code{\link{def_environments}()},
+\code{\link{def_grain_sizes}()},
+\code{\link{def_lithologies}()},
+\code{\link{def_lithology_att}()},
+\code{\link{def_minerals}()},
+\code{\link{def_structures}()}
+}
 \author{
 William Gearty
 }
+\concept{defs_feat}
+\concept{external}

@@ -38,6 +38,7 @@
 #' ex4 <- def_lithologies(lithology_id = c(1,5))
 #' }
 #' @export
+#' @family defs_feat
 def_lithologies <- function(lithology = NULL, lithology_group = NULL,
                             lithology_class = NULL, lithology_type = NULL,
                             lithology_id = NULL) {

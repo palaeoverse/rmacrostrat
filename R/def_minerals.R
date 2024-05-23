@@ -41,6 +41,7 @@
 #'   ex2 <- def_minerals(mineral_type = "element")
 #' }
 #' @export
+#' @family defs_feat
 def_minerals <- function(mineral = NULL,
                          mineral_type = NULL,
                          element = NULL) {

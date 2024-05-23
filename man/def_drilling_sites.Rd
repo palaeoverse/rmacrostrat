@@ -65,6 +65,14 @@ if (interactive()) {
 }
 }
 }
+\seealso{
+External data:
+\code{\link{def_measurements}()},
+\code{\link{get_eodp}()},
+\code{\link{get_fossils}()},
+\code{\link{get_measurements}()}
+}
 \author{
 Bethany Allen
 }
+\concept{external}

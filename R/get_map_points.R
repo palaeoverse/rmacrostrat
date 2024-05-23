@@ -54,6 +54,7 @@
 #'                       max_lng = -90, max_lat = 50)
 #' }
 #' @export
+#' @family maps
 get_map_points <- function(point_id = NULL, point_type = NULL,
                            min_lat = NULL, min_lng = NULL,
                            max_lat = NULL, max_lng = NULL,

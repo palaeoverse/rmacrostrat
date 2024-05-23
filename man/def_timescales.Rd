@@ -32,6 +32,11 @@ Macrostrat database. Function is called without user-specified arguments.
  ex1 <- def_timescales()
 }
 }
+\seealso{
+Timescales and time intervals:
+\code{\link{def_intervals}()}
+}
 \author{
 Lewis A. Jones
 }
+\concept{defs_time}

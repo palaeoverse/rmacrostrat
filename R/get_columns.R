@@ -162,6 +162,7 @@
 #' ex4 <- get_columns(lat = 43, lng = -89, adjacents = TRUE)
 #' }
 #' @export
+#' @family macrostrat
 get_columns <- function(
     column_id = NULL, section_id = NULL, unit_id = NULL,
     strat_name = NULL, strat_name_id = NULL,

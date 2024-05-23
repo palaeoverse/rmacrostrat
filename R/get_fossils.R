@@ -103,7 +103,7 @@
 #'   # head(get_fossils(environ_type = "fluvial", age =  253))
 #' }
 #' @export
-
+#' @family external
 get_fossils <- function(
     unit_id = NULL,column_id = NULL,
     interval_name = NULL,age = NULL,age_top = NULL,age_bottom = NULL,

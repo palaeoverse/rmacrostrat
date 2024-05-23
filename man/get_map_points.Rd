@@ -79,6 +79,13 @@ ex2 <- get_map_points(min_lng = -80, min_lat = 40,
                       max_lng = -90, max_lat = 50)
 }
 }
+\seealso{
+Geologic maps:
+\code{\link{def_sources}()},
+\code{\link{get_map_legends}()},
+\code{\link{get_map_outcrop}()}
+}
 \author{
 Lewis A. Jones
 }
+\concept{maps}

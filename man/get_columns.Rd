@@ -238,6 +238,14 @@ ex3 <- get_columns(strat_name = mancos, sf = TRUE)
 ex4 <- get_columns(lat = 43, lng = -89, adjacents = TRUE)
 }
 }
+\seealso{
+Macrostrat data entities:
+\code{\link{def_columns}()},
+\code{\link{get_age_model}()},
+\code{\link{get_sections}()},
+\code{\link{get_units}()}
+}
 \author{
 William Gearty
 }
+\concept{macrostrat}

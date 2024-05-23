@@ -62,6 +62,17 @@ are specified, all definitions are returned.
  ex2 <- def_grain_sizes(grain_group = "Gravel")
 }
 }
+\seealso{
+Geologic features and attributes:
+\code{\link{def_econs}()},
+\code{\link{def_environments}()},
+\code{\link{def_lithologies}()},
+\code{\link{def_lithology_att}()},
+\code{\link{def_measurements}()},
+\code{\link{def_minerals}()},
+\code{\link{def_structures}()}
+}
 \author{
 Lewis A. Jones
 }
+\concept{defs_feat}

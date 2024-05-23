@@ -28,6 +28,7 @@
 #' ex3 <- def_structures(structure_class = "igneous")
 #' }
 #' @export
+#' @family defs_feat
 def_structures <- function(structure = NULL, structure_class = NULL,
                            structure_type = NULL, structure_id = NULL) {
   # Error handling

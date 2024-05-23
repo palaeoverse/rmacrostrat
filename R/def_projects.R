@@ -33,7 +33,7 @@
 #' }
 #' }
 #' @export
-
+#' @family meta
 def_projects <- function(
     project_id = NULL) {
 

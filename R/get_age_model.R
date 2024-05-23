@@ -44,7 +44,7 @@
 #' }
 #' }
 #' @export
-
+#' @family macrostrat
 get_age_model <- function(
     column_id = NULL,
     section_id = NULL) {

@@ -164,6 +164,14 @@ C. (2023). Paleobiology Database User Guide Version 1.0. PaleoBios, 40(11).
   # head(get_fossils(environ_type = "fluvial", age =  253))
 }
 }
+\seealso{
+External data:
+\code{\link{def_drilling_sites}()},
+\code{\link{def_measurements}()},
+\code{\link{get_eodp}()},
+\code{\link{get_measurements}()}
+}
 \author{
 Christopher D. Dean
 }
+\concept{external}

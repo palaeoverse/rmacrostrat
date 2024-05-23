@@ -56,7 +56,7 @@
 #' }
 #' }
 #' @export
-
+#' @family external
 get_eodp <- function(
     column_id = NULL,
     site = NULL,

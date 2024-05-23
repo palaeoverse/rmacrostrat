@@ -41,6 +41,13 @@ if (interactive()) {
 }
 }
 }
+\seealso{
+Macrostrat database metadata:
+\code{\link{def_references}()},
+\code{\link{def_sources}()},
+\code{\link{get_stats}()}
+}
 \author{
 Bethany Allen
 }
+\concept{meta}

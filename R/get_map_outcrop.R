@@ -74,6 +74,7 @@
 #' ex2 <- get_map_outcrop(lat = 43, lng = -89.3, scale = "tiny")
 #' }
 #' @export
+#' @family maps
 get_map_outcrop <- function(map_id = NULL, unit_id = NULL, strat_name_id = NULL,
                             lat = NULL, lng = NULL, scale = NULL, sf = TRUE) {
   # Error handling

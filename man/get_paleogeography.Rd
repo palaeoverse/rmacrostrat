@@ -41,6 +41,11 @@ tectonics. Biogeosciences, 10, 1529--1541. \doi{10.5194/bg-10-1529-2013}.
  # Get paleogeographic map via interval name
 }
 }
+\seealso{
+Paleogeography:
+\code{\link{def_plates}()}
+}
 \author{
 Lewis A. Jones
 }
+\concept{paleogeo}

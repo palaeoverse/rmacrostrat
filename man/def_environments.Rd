@@ -59,6 +59,17 @@ ex4 <- def_environments(environ_class = "marine")
 }
 }
 }
+\seealso{
+Geologic features and attributes:
+\code{\link{def_econs}()},
+\code{\link{def_grain_sizes}()},
+\code{\link{def_lithologies}()},
+\code{\link{def_lithology_att}()},
+\code{\link{def_measurements}()},
+\code{\link{def_minerals}()},
+\code{\link{def_structures}()}
+}
 \author{
 Christopher D. Dean
 }
+\concept{defs_feat}

@@ -36,6 +36,11 @@ tectonics. Biogeosciences, 10, 1529--1541. \doi{10.5194/bg-10-1529-2013}.
  ex2 <- def_plates(plate_id = 604)
 }
 }
+\seealso{
+Paleogeography:
+\code{\link{get_paleogeography}()}
+}
 \author{
 Lewis A. Jones
 }
+\concept{paleogeo}

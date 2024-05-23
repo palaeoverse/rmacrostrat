@@ -24,6 +24,7 @@
 #' get_stats()
 #' }
 #' @export
+#' @family meta
 get_stats <- function() {
   # Get request
   dat <- GET_macrostrat(endpoint = "stats", query = list(all = TRUE),

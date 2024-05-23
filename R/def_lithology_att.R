@@ -29,7 +29,7 @@
 #' }
 #' }
 #' @export
-
+#' @family defs_feat
 def_lithology_att <- function(
     lithology_att = NULL,
     att_type = NULL,

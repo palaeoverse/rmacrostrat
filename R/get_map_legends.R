@@ -87,7 +87,7 @@
 #'  ex3 <- head(get_map_legends(comments = "breccia"))
 #' }
 #' @export
-
+#' @family maps
 get_map_legends <- function(source_id = NULL,
     lithology_id = NULL, lithology_type = NULL, lithology_class = NULL,
     description = NULL, comments = NULL, scale = NULL, carto = NULL) {

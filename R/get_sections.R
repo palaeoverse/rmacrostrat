@@ -144,7 +144,7 @@
 #'   # head(get_sections(pbdb_collection_no = c(1000:5000)))
 #' }
 #' @export
-
+#' @family macrostrat
 get_sections <- function(section_id = NULL, column_id = NULL, unit_id = NULL,
     strat_name = NULL, strat_name_id = NULL,
     interval_name = NULL, interval_id = NULL,

@@ -26,6 +26,7 @@
 #'  ex1 <- def_timescales()
 #' }
 #' @export
+#' @family defs_time
 def_timescales <- function() {
   # Collect input arguments as a list
   args <- list(all = "all")

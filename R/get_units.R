@@ -201,6 +201,7 @@
 #' units <- get_units(lng = -110.9, lat = 48.4)
 #' }
 #' @export
+#' @family macrostrat
 get_units <- function(unit_id = NULL, section_id = NULL, column_id = NULL,
                       strat_name = NULL, strat_name_id = NULL,
                       interval_name = NULL, interval_id = NULL,

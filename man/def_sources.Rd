@@ -78,6 +78,19 @@ line <- st_linestring(x = matrix(c(-122.3438, 37,-89.3527, 43.0582),
 ex4 <- def_sources(shape = st_as_text(line), buffer = 100)
 }
 }
+\seealso{
+Geologic maps:
+\code{\link{get_map_legends}()},
+\code{\link{get_map_outcrop}()},
+\code{\link{get_map_points}()}
+
+Macrostrat database metadata:
+\code{\link{def_projects}()},
+\code{\link{def_references}()},
+\code{\link{get_stats}()}
+}
 \author{
 William Gearty
 }
+\concept{maps}
+\concept{meta}
