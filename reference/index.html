@@ -41,9 +41,133 @@
     </div>
 
     <div class="section level2">
-      <h2 id="all-functions">All functions<a class="anchor" aria-label="anchor" href="#all-functions"></a></h2>
+      <h2 id="macrostrat-data-entities">Macrostrat data entities<a class="anchor" aria-label="anchor" href="#macrostrat-data-entities"></a></h2>
+      
+      <div class="section-desc"><p>Functions for retrieving entities that exist as part of the Macrostrat data hierarchy (i.e., units, sections/packages, and columns).</p></div>
+
+      
+    </div><div id="" class="section level2">
       
       
+      
+
+      <dl><dt>
+          
+          <code><a href="get_units.html">get_units()</a></code> 
+        </dt>
+        <dd>Retrieve Macrostrat unit data</dd>
+      </dl><dl><dt>
+          
+          <code><a href="get_sections.html">get_sections()</a></code> 
+        </dt>
+        <dd>Retrieve Macrostrat section data</dd>
+      </dl><dl><dt>
+          
+          <code><a href="get_columns.html">get_columns()</a></code> 
+        </dt>
+        <dd>Retrieve Macrostrat column data</dd>
+      </dl><dl><dt>
+          
+          <code><a href="def_columns.html">def_columns()</a></code> 
+        </dt>
+        <dd>Retrieve definitions for Macrostrat columns</dd>
+      </dl><dl><dt>
+          
+          <code><a href="get_age_model.html">get_age_model()</a></code> 
+        </dt>
+        <dd>Retrieve column age models</dd>
+      </dl></div><div class="section level2">
+      <h2 id="geologic-map-elements-and-sources">Geologic map elements and sources<a class="anchor" aria-label="anchor" href="#geologic-map-elements-and-sources"></a></h2>
+      
+      <div class="section-desc"><p>Functions for retrieving various elements (e.g., shapes, points, and legends) and metadata of geologic maps that have been ingested into the Macrostrat database.</p></div>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="get_map_outcrop.html">get_map_outcrop()</a></code> 
+        </dt>
+        <dd>Retrieve geologic map outcrop shape element data</dd>
+      </dl><dl><dt>
+          
+          <code><a href="get_map_points.html">get_map_points()</a></code> 
+        </dt>
+        <dd>Retrieve geologic map point shape element data</dd>
+      </dl><dl><dt>
+          
+          <code><a href="get_map_legends.html">get_map_legends()</a></code> 
+        </dt>
+        <dd>Retrieve geologic map legend data</dd>
+      </dl><dl><dt>
+          
+          <code><a href="def_sources.html">def_sources()</a></code> 
+        </dt>
+        <dd>Retrieve geologic map source definitions</dd>
+      </dl></div><div class="section level2">
+      <h2 id="external-data-linked-to-macrostrat-entities">External data linked to Macrostrat entities<a class="anchor" aria-label="anchor" href="#external-data-linked-to-macrostrat-entities"></a></h2>
+      
+      <div class="section-desc"><p>Functions for retrieving various external data (e.g., Paleobiology Database fossil occurrences, rock sample measurements) that have been linked to Macrostrat entities.</p></div>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="get_fossils.html">get_fossils()</a></code> 
+        </dt>
+        <dd>Retrieve collections from the Paleobiology Database</dd>
+      </dl><dl><dt>
+          
+          <code><a href="get_eodp.html">get_eodp()</a></code> 
+        </dt>
+        <dd>Retrieve core data from ocean drilling programs</dd>
+      </dl><dl><dt>
+          
+          <code><a href="def_drilling_sites.html">def_drilling_sites()</a></code> 
+        </dt>
+        <dd>Retrieve metadata associated with eODP</dd>
+      </dl><dl><dt>
+          
+          <code><a href="get_measurements.html">get_measurements()</a></code> 
+        </dt>
+        <dd>Obtain geological measurements</dd>
+      </dl><dl><dt>
+          
+          <code><a href="def_measurements.html">def_measurements()</a></code> 
+        </dt>
+        <dd>Retrieve measurement definitions</dd>
+      </dl></div><div class="section level2">
+      <h2 id="paleogeography">Paleogeography<a class="anchor" aria-label="anchor" href="#paleogeography"></a></h2>
+      
+      <div class="section-desc"><p>Functions for returning paleogeographic reconstructions and associated plate definitions.</p></div>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="get_paleogeography.html">get_paleogeography()</a></code> 
+        </dt>
+        <dd>Retrieve paleogeographic geometries</dd>
+      </dl><dl><dt>
+          
+          <code><a href="def_plates.html">def_plates()</a></code> 
+        </dt>
+        <dd>Retrieve tectonic plate definition</dd>
+      </dl></div><div class="section level2">
+      <h2 id="macrostrat-database-definitions">Macrostrat database definitions<a class="anchor" aria-label="anchor" href="#macrostrat-database-definitions"></a></h2>
+      
+      <div class="section-desc"><p>Retrieve definitions for various data types stored within the Macrostrat database.</p></div>
 
       
     </div><div id="" class="section level2">
@@ -56,36 +180,22 @@
           <code><a href="catalog.html">catalog()</a></code> 
         </dt>
         <dd>Retrieve a complete set of definitions</dd>
-      </dl><dl><dt>
-          
-          <code><a href="def_columns.html">def_columns()</a></code> 
-        </dt>
-        <dd>Retrieve definitions for Macrostrat columns</dd>
-      </dl><dl><dt>
-          
-          <code><a href="def_drilling_sites.html">def_drilling_sites()</a></code> 
-        </dt>
-        <dd>Retrieve metadata associated with eODP</dd>
-      </dl><dl><dt>
-          
-          <code><a href="def_econs.html">def_econs()</a></code> 
-        </dt>
-        <dd>Retrieve economic definitions</dd>
-      </dl><dl><dt>
+      </dl></div><div class="section level2">
+      
+      <h3 id="geologic-features-and-attributes">Geologic features and attributes<a class="anchor" aria-label="anchor" href="#geologic-features-and-attributes"></a></h3>
+      
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
           
           <code><a href="def_environments.html">def_environments()</a></code> 
         </dt>
         <dd>Retrieve environment definitions</dd>
-      </dl><dl><dt>
-          
-          <code><a href="def_grain_sizes.html">def_grain_sizes()</a></code> 
-        </dt>
-        <dd>Retrieve grain size definitions</dd>
-      </dl><dl><dt>
-          
-          <code><a href="def_intervals.html">def_intervals()</a></code> 
-        </dt>
-        <dd>Retrieve Macrostrat time interval definitions</dd>
       </dl><dl><dt>
           
           <code><a href="def_lithologies.html">def_lithologies()</a></code> 
@@ -98,9 +208,14 @@
         <dd>Retrieve lithology attribute definitions</dd>
       </dl><dl><dt>
           
-          <code><a href="def_measurements.html">def_measurements()</a></code> 
+          <code><a href="def_econs.html">def_econs()</a></code> 
         </dt>
-        <dd>Retrieve measurement definitions</dd>
+        <dd>Retrieve economic definitions</dd>
+      </dl><dl><dt>
+          
+          <code><a href="def_grain_sizes.html">def_grain_sizes()</a></code> 
+        </dt>
+        <dd>Retrieve grain size definitions</dd>
       </dl><dl><dt>
           
           <code><a href="def_minerals.html">def_minerals()</a></code> 
@@ -108,9 +223,98 @@
         <dd>Retrieve mineral definitions</dd>
       </dl><dl><dt>
           
+          <code><a href="def_structures.html">def_structures()</a></code> 
+        </dt>
+        <dd>Retrieve geological structure definitions</dd>
+      </dl><dl><dt>
+          
+          <code><a href="def_measurements.html">def_measurements()</a></code> 
+        </dt>
+        <dd>Retrieve measurement definitions</dd>
+      </dl></div><div class="section level2">
+      
+      <h3 id="stratigraphic-names">Stratigraphic names<a class="anchor" aria-label="anchor" href="#stratigraphic-names"></a></h3>
+      
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="def_strat_names.html">def_strat_names()</a></code> 
+        </dt>
+        <dd>Retrieve stratigraphic name definitions</dd>
+      </dl><dl><dt>
+          
+          <code><a href="def_strat_name_concepts.html">def_strat_name_concepts()</a></code> 
+        </dt>
+        <dd>Retrieve stratigraphic name concept definitions</dd>
+      </dl></div><div class="section level2">
+      
+      <h3 id="timescales-and-time-intervals">Timescales and time intervals<a class="anchor" aria-label="anchor" href="#timescales-and-time-intervals"></a></h3>
+      
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="def_timescales.html">def_timescales()</a></code> 
+        </dt>
+        <dd>Retrieve timescale definitions</dd>
+      </dl><dl><dt>
+          
+          <code><a href="def_intervals.html">def_intervals()</a></code> 
+        </dt>
+        <dd>Retrieve Macrostrat time interval definitions</dd>
+      </dl></div><div class="section level2">
+      
+      <h3 id="miscellany">Miscellany<a class="anchor" aria-label="anchor" href="#miscellany"></a></h3>
+      
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="def_columns.html">def_columns()</a></code> 
+        </dt>
+        <dd>Retrieve definitions for Macrostrat columns</dd>
+      </dl><dl><dt>
+          
+          <code><a href="def_drilling_sites.html">def_drilling_sites()</a></code> 
+        </dt>
+        <dd>Retrieve metadata associated with eODP</dd>
+      </dl><dl><dt>
+          
           <code><a href="def_plates.html">def_plates()</a></code> 
         </dt>
         <dd>Retrieve tectonic plate definition</dd>
+      </dl></div><div class="section level2">
+      <h2 id="macrostrat-database-metadata">Macrostrat database metadata<a class="anchor" aria-label="anchor" href="#macrostrat-database-metadata"></a></h2>
+      
+      <div class="section-desc"><p>Functions for retrieving various metadata about the overall Macrostrat database.</p></div>
+
+      
+    </div><div id="" class="section level2">
+      
+      
+      
+
+      <dl><dt>
+          
+          <code><a href="get_stats.html">get_stats()</a></code> 
+        </dt>
+        <dd>Retrieve Macrostrat database statistics</dd>
       </dl><dl><dt>
           
           <code><a href="def_projects.html">def_projects()</a></code> 
@@ -118,96 +322,17 @@
         <dd>Retrieve metadata for Macrostrat projects</dd>
       </dl><dl><dt>
           
-          <code><a href="def_references.html">def_references()</a></code> 
-        </dt>
-        <dd>Retrieve reference definitions</dd>
-      </dl><dl><dt>
-          
           <code><a href="def_sources.html">def_sources()</a></code> 
         </dt>
         <dd>Retrieve geologic map source definitions</dd>
       </dl><dl><dt>
           
-          <code><a href="def_strat_name_concepts.html">def_strat_name_concepts()</a></code> 
+          <code><a href="def_references.html">def_references()</a></code> 
         </dt>
-        <dd>Retrieve stratigraphic name concept definitions</dd>
-      </dl><dl><dt>
-          
-          <code><a href="def_strat_names.html">def_strat_names()</a></code> 
-        </dt>
-        <dd>Retrieve stratigraphic name definitions</dd>
-      </dl><dl><dt>
-          
-          <code><a href="def_structures.html">def_structures()</a></code> 
-        </dt>
-        <dd>Retrieve geological structure definitions</dd>
-      </dl><dl><dt>
-          
-          <code><a href="def_timescales.html">def_timescales()</a></code> 
-        </dt>
-        <dd>Retrieve timescale definitions</dd>
-      </dl><dl><dt>
-          
-          <code><a href="get_age_model.html">get_age_model()</a></code> 
-        </dt>
-        <dd>Retrieve column age models</dd>
-      </dl><dl><dt>
-          
-          <code><a href="get_columns.html">get_columns()</a></code> 
-        </dt>
-        <dd>Retrieve Macrostrat column data</dd>
-      </dl><dl><dt>
-          
-          <code><a href="get_eodp.html">get_eodp()</a></code> 
-        </dt>
-        <dd>Retrieve core data from ocean drilling programs</dd>
-      </dl><dl><dt>
-          
-          <code><a href="get_fossils.html">get_fossils()</a></code> 
-        </dt>
-        <dd>Retrieve collections from the Paleobiology Database</dd>
-      </dl><dl><dt>
-          
-          <code><a href="get_map_legends.html">get_map_legends()</a></code> 
-        </dt>
-        <dd>Retrieve geologic map legend data</dd>
-      </dl><dl><dt>
-          
-          <code><a href="get_map_outcrop.html">get_map_outcrop()</a></code> 
-        </dt>
-        <dd>Retrieve geologic map outcrop shape element data</dd>
-      </dl><dl><dt>
-          
-          <code><a href="get_map_points.html">get_map_points()</a></code> 
-        </dt>
-        <dd>Retrieve geologic map point shape element data</dd>
-      </dl><dl><dt>
-          
-          <code><a href="get_measurements.html">get_measurements()</a></code> 
-        </dt>
-        <dd>Obtain geological measurements</dd>
-      </dl><dl><dt>
-          
-          <code><a href="get_paleogeography.html">get_paleogeography()</a></code> 
-        </dt>
-        <dd>Retrieve paleogeographic geometries</dd>
-      </dl><dl><dt>
-          
-          <code><a href="get_sections.html">get_sections()</a></code> 
-        </dt>
-        <dd>Retrieve Macrostrat section data</dd>
-      </dl><dl><dt>
-          
-          <code><a href="get_stats.html">get_stats()</a></code> 
-        </dt>
-        <dd>Retrieve Macrostrat database statistics</dd>
-      </dl><dl><dt>
-          
-          <code><a href="get_units.html">get_units()</a></code> 
-        </dt>
-        <dd>Retrieve Macrostrat unit data</dd>
+        <dd>Retrieve reference definitions</dd>
       </dl></div>
-  </main></div>
+  </main><aside class="col-md-3"><nav id="toc"><h2>On this page</h2>
+    </nav></aside></div>
 
 
     <footer><div class="pkgdown-footer-left">
