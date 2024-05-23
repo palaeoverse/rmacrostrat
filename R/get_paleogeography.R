@@ -18,8 +18,8 @@
 #'
 #' @author Lewis A. Jones
 #'
-#' @section References: Sessa JA, Fraass AJ, LeVay LJ, Jamson KM, and Peters
-#'   SE. (2023). Towards community-driven paleogeographic reconstructions:
+#' @section References: Wright, N., Zahirovic, S., Müller, R.D., Seton, M.
+#'   (2013). Towards community-driven paleogeographic reconstructions:
 #'   integrating open-access paleogeographic and paleobiology data with plate
 #'   tectonics. Biogeosciences, 10, 1529--1541. \doi{10.5194/bg-10-1529-2013}.
 #'
