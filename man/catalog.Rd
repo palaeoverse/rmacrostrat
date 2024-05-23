@@ -37,7 +37,7 @@ Options are:
 \item{strat_name_concepts}{Metadata on stratigraphic name concepts. See also
 \code{\link[=def_strat_name_concepts]{def_strat_name_concepts()}}.}
 \item{strat_names}{Metadata on stratigraphic names. See also
-\code{\link[=def_strat_name]{def_strat_name()}}.}
+\code{\link[=def_strat_names]{def_strat_names()}}.}
 \item{structures}{Definitions of geological structures. See also
 \code{\link[=def_structures]{def_structures()}}.}
 \item{timescales}{Metadata on timescales. See also \code{\link[=def_timescales]{def_timescales()}}.}

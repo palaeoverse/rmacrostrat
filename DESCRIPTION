@@ -28,7 +28,6 @@ Imports:
     httr,
     jsonlite,
     readr,
-    utils,
     sf
 Suggests:
     rmarkdown,

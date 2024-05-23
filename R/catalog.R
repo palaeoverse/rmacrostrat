@@ -34,7 +34,7 @@
 #'  \item{strat_name_concepts}{Metadata on stratigraphic name concepts. See also
 #'  [def_strat_name_concepts()].}
 #'  \item{strat_names}{Metadata on stratigraphic names. See also
-#'  [def_strat_name()].}
+#'  [def_strat_names()].}
 #'  \item{structures}{Definitions of geological structures. See also
 #'  [def_structures()].}
 #'  \item{timescales}{Metadata on timescales. See also [def_timescales()].}
