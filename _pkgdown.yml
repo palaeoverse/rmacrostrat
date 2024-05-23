@@ -21,3 +21,85 @@ home:
     href: https://twitter.com/ThePalaeoverse
   - text: Palaeoverse website
     href: https://palaeoverse.org
+
+reference:
+- title: Macrostrat data entities
+  desc: >
+    Functions for retrieving entities that exist as part of the Macrostrat data
+    hierarchy (i.e., units, sections/packages, and columns).
+  contents:
+  - get_units
+  - get_sections
+  - get_columns
+  - def_columns
+  - get_age_model
+
+- title: Geologic map elements and sources
+  desc: >
+    Functions for retrieving various elements (e.g., shapes, points, and legends)
+    and metadata of geologic maps that have been ingested into the Macrostrat database.
+  contents:
+  - get_map_outcrop
+  - get_map_points
+  - get_map_legends
+  - def_sources
+
+- title: External data linked to Macrostrat entities
+  desc: >
+    Functions for retrieving various external data (e.g., Paleobiology Database
+    fossil occurrences, rock sample measurements) that have been linked to Macrostrat entities.
+  contents:
+  - get_fossils
+  - get_eodp
+  - def_drilling_sites
+  - get_measurements
+  - def_measurements
+
+- title: Paleogeography
+  desc: >
+    Functions for returning paleogeographic reconstructions and associated plate definitions.
+  contents:
+  - get_paleogeography
+  - def_plates
+
+- title: Macrostrat database definitions
+  desc: >
+    Retrieve definitions for various data types stored within the Macrostrat database.
+  contents:
+  - catalog
+
+- subtitle: Geologic features and attributes
+  contents:
+  - def_environments
+  - def_lithologies
+  - def_lithology_att
+  - def_econs
+  - def_grain_sizes
+  - def_minerals
+  - def_structures
+  - def_measurements
+
+- subtitle: Stratigraphic names
+  contents:
+  - def_strat_names
+  - def_strat_name_concepts
+
+- subtitle: Timescales and time intervals
+  contents:
+  - def_timescales
+  - def_intervals
+
+- subtitle: Miscellany
+  contents:
+  - def_columns
+  - def_drilling_sites
+  - def_plates
+
+- title: Macrostrat database metadata
+  desc: >
+    Functions for retrieving various metadata about the overall Macrostrat database.
+  contents:
+  - get_stats
+  - def_projects
+  - def_sources
+  - def_references
