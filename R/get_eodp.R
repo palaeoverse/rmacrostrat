@@ -36,7 +36,7 @@
 #'    each unit}
 #'  }
 #'  If sf = TRUE, an `sf` object is outputted instead.
-#' @author Bethany Allen [AUTHOR_2]
+#' @author Bethany Allen
 #' @details More information can be found about the inputs for this function by
 #'  using [def_drilling_sites()].
 #' @section References:

@@ -82,7 +82,7 @@
 #'   stratigraphic name concept containing the specified PBDB collection.
 #'   }
 #'   If \code{sf = TRUE}, an `sf` object is returned instead.
-#' @author Christopher D. Dean [AUTHOR_2]
+#' @author Christopher D. Dean
 #' @section Reviewer: N/A
 #' @details More information can be found for the inputs for this function
 #' using the definition functions (beginning with \code{def_}). Terminology

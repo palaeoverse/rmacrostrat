@@ -220,5 +220,5 @@ using the definition functions (beginning with \code{defs_}).
 }
 }
 \author{
-Christopher D. Dean \link{AUTHOR_2}
+Christopher D. Dean
 }

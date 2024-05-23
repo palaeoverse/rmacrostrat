@@ -129,7 +129,7 @@
 #'   }
 #' }
 #'
-#' @author Christopher D. Dean [AUTHOR_2]
+#' @author Christopher D. Dean
 #' @details More information can be found for the inputs for this function
 #' using the definition functions (beginning with \code{defs_}).
 #' @examples

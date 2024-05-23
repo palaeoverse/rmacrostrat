@@ -165,5 +165,5 @@ C. (2023). Paleobiology Database User Guide Version 1.0. PaleoBios, 40(11).
 }
 }
 \author{
-Christopher D. Dean \link{AUTHOR_2}
+Christopher D. Dean
 }

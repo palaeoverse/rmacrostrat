@@ -121,5 +121,5 @@ Potential Macrostrat map scales are "tiny" (global), "small"
 }
 }
 \author{
-Christopher D. Dean \link{AUTHOR_2}
+Christopher D. Dean
 }

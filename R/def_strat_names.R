@@ -77,7 +77,7 @@
 #'   \item \code{ref_id}: The unique identification number of the reference from
 #'   which the stratigraphic name was sourced (see [def_refs()]).
 #' }
-#' @author Christopher D. Dean [AUTHOR_2]
+#' @author Christopher D. Dean
 #' @section Reviewer: N/A
 #' @examples
 #' \dontrun{

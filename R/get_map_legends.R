@@ -76,7 +76,7 @@
 #'   km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}} at "large" Macrostrat map
 #'   scale.
 #'   }
-#' @author Christopher D. Dean [AUTHOR_2]
+#' @author Christopher D. Dean
 #' @section Reviewer: N/A
 #' @details Potential Macrostrat map scales are "tiny" (global), "small"
 #'   (continental), "medium" (regional), or "large" (local).

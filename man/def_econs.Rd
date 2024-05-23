@@ -46,5 +46,5 @@ if (interactive()) {
 }
 }
 \author{
-Bethany Allen \link{AUTHOR_2}
+Bethany Allen
 }

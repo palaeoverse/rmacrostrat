@@ -2,7 +2,7 @@
 % Please edit documentation in R/def_lithology_att.R
 \name{def_lithology_att}
 \alias{def_lithology_att}
-\title{FUNCTION_TITLE}
+\title{Retrieve lithology attribute definitions}
 \usage{
 def_lithology_att(
   lithology_att = NULL,
@@ -11,28 +11,38 @@ def_lithology_att(
 )
 }
 \arguments{
-\item{lithology_att}{\code{character}. The name of the lithology attribute (e.g., "cross-bedded") to return a definition for.}
+\item{lithology_att}{\code{character}. The name of the lithology attribute
+(e.g., "cross-bedded") to return a definition for.}
 
-\item{att_type}{\code{character}. The type of lithology attribute (e.g., "sed structure") to return a definition for.}
+\item{att_type}{\code{character}. The type of lithology attribute (e.g., "sed
+structure") to return a definition for.}
 
-\item{lithology_att_id}{\code{integer}. The unique identification number(s) of lithology attribute(s) to return a definition for.}
+\item{lithology_att_id}{\code{integer}. The unique identification number(s)
+of lithology attribute(s) to return a definition for.}
 }
 \value{
-OUTPUT_DESCRIPTION
+A \code{dataframe} containing, for each retrieved core:
+\describe{
+\item{lith_att_id}{The unique identifier of the lithology attribute}
+\item{name}{The name of the lithology attribute}
+\item{type}{The type of lithology attribute}
+\item{t_units}{The total number of Macrostrat units to which the lithology
+attribute is attached}
+}
 }
 \description{
-FUNCTION_DESCRIPTION
-}
-\details{
-DETAILS
+A function to retrieve the definitions for one or more
+lithology attributes in the Macrostrat database. By default, all lithology
+attribute definitions are returned.
 }
 \examples{
 \dontrun{
 if (interactive()) {
-  # EXAMPLE1
+  # lithology_attributes <- def_lithology_att()
+  # lithology_attributes <- def_lithology_att(att_type = "sed structure")
 }
 }
 }
 \author{
-AUTHOR \link{AUTHOR_2}
+Bethany Allen
 }

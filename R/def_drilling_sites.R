@@ -36,7 +36,7 @@
 #'  }
 #'  If sf = FALSE, a \code{dataframe} is outputted instead.
 #'
-#' @author Bethany Allen [AUTHOR_2]
+#' @author Bethany Allen
 #' @section References:
 #' Sessa JA, Fraass AJ, LeVay LJ, Jamson KM, and Peters SE. (2023). The
 #' Extending Ocean Drilling Pursuits (eODP) Project: Synthesizing Scientific

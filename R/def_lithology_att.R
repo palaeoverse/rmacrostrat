@@ -19,7 +19,7 @@
 #'  attribute is attached}
 #'  }
 #'
-#' @author Bethany Allen [AUTHOR_2]
+#' @author Bethany Allen
 #'
 #' @examples
 #' \dontrun{

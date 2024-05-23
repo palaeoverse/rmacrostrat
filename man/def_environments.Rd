@@ -27,7 +27,8 @@ desired environment to return a definition for.}
 \value{
 A \code{data.frame} containing the following columns:
 \itemize{
-\item \code{environ_id}: The unique identification number of the environment.
+\item \code{environ_id}: The unique identification number of the
+environment.
 \item \code{name}: The name of the environment.
 \item \code{type}: Environment type, less inclusive than class.
 \item \code{class}: Environment class, more inclusive than type.
@@ -49,9 +50,9 @@ definitions are returned.
 \examples{
 \dontrun{
 if (interactive()) {
-# return all environment definitions
+# Return all environment definitions
 ex1 <- def_environments()
-# return subsets of environment definitions
+# Return subsets of environment definitions
 ex2 <- def_environments(environ = "reef")
 ex3 <- def_environments(environ_type = "carbonate")
 ex4 <- def_environments(environ_class = "marine")
@@ -59,5 +60,5 @@ ex4 <- def_environments(environ_class = "marine")
 }
 }
 \author{
-Christopher D. Dean \link{AUTHOR_2}
+Christopher D. Dean
 }

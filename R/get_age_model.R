@@ -31,7 +31,7 @@
 #'  \item{ref_id}{The unique identifier of the reference}
 #'  }
 #'
-#' @author Bethany Allen [AUTHOR_2]
+#' @author Bethany Allen
 #' @details The Macrostrat age models are used to determine the ages of the
 #'  boundaries between units in an internally consistent manner, allowing each
 #'  boundary to be dated with respect to all age information available for the

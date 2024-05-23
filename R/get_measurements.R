@@ -86,7 +86,7 @@
 #'  }
 #'  If sf = TRUE, an `sf` object is outputted instead.
 #'
-#' @author Bethany Allen [AUTHOR_2]
+#' @author Bethany Allen
 #' @details More information can be found about the inputs and outputs for this
 #'  function by using [def_measurements()].
 #'

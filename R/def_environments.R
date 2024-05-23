@@ -22,7 +22,7 @@
 #'   \item \code{t_units}: The total number of Macrostrat units that are
 #'     partially or entirely composed of the environment.
 #' }
-#' @author Christopher D. Dean [AUTHOR_2]
+#' @author Christopher D. Dean
 #' @section Reviewer: N/A
 #' @examples
 #' \dontrun{

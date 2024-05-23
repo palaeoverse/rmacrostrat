@@ -23,7 +23,7 @@
 #'  \item{area}{The area covered by the Macrostrat project}
 #'  }
 #'
-#' @author Bethany Allen [AUTHOR_2]
+#' @author Bethany Allen
 #'
 #' @examples
 #' \dontrun{

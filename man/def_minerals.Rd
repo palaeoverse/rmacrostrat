@@ -2,33 +2,54 @@
 % Please edit documentation in R/def_minerals.R
 \name{def_minerals}
 \alias{def_minerals}
-\title{FUNCTION_TITLE}
+\title{Retrieve mineral definitions}
 \usage{
 def_minerals(mineral = NULL, mineral_type = NULL, element = NULL)
 }
 \arguments{
-\item{mineral}{\code{character}. The name of a mineral (e.g., "calcite") to return a definition for.}
+\item{mineral}{\code{character}. The name of a mineral (e.g., "calcite") to
+return a definition for.}
 
-\item{mineral_type}{\code{character}. The type of mineral (e.g., "feldspar") to return a definition for.}
+\item{mineral_type}{\code{character}. The type of mineral (e.g.,
+"feldspar") to return a definition for.}
 
-\item{element}{\code{character}. The chemical element abbreviation of a mineral to return a definition for (e.g., "CaCO3"). Note: abbreviations are case sensitive.}
+\item{element}{\code{character}. The chemical element abbreviation of a
+mineral to return a definition for (e.g., "CaCO3"). Note: abbreviations
+are case sensitive.}
 }
 \value{
-OUTPUT_DESCRIPTION
+A \code{data.frame} containing the following columns:
+\itemize{
+\item \code{mineral_id}: The unique identification number of the mineral.
+\item \code{mineral}: The name of the mineral.
+\item \code{mineral_type}: The name of the type of mineral.
+\item \code{hardness_min}: The minimum hardness value (Moh's hardness
+scale) of the mineral.
+\item \code{hardness_max}: The maximum hardness value (Moh's hardness
+scale) of the mineral.
+\item \code{mineral_color}: The color description of the mineral.
+\item \code{lustre}: The lustre description of the mineral.
+\item \code{crystal_form}: The crystal form of the mineral.
+\item \code{formula}: The chemical formula of the mineral.
+\item \code{formula_tags}: The chemical formula of the mineral with
+appropriate sub/superscript html tags.
+\item \code{url}: A link to where additional information on the mineral
+can be found.
+}
 }
 \description{
-FUNCTION_DESCRIPTION
-}
-\details{
-DETAILS
+A function to retrieve mineral definitions from the Macrostrat
+database based on user-specified arguments. If no arguments are provided,
+all definitions are returned.
 }
 \examples{
 \dontrun{
-if (interactive()) {
-  # EXAMPLE1
-}
+  # Get all defintions
+  ex1 <- def_minerals()
+  # Get mineral by type
+  ex2 <- def_minerals(mineral_type = "element")
 }
 }
 \author{
-AUTHOR \link{AUTHOR_2}
+Lewis A. Jones
 }
