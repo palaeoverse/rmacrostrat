@@ -24,19 +24,22 @@
 #'     element.
 #'   \item \code{source_id}: The identification number of the source geologic
 #'     map.
-#'   \item \code{name}: The formal name of the outcrop shape element.
-#'   \item \code{strat_name}: The informal name of the outcrop shape element.
+#'   \item \code{name}: The name of the outcrop shape element in the original
+#'   (or modified) source geologic map.
+#'   \item \code{strat_name}: The geologic name(s) of the outcrop shape element.
 #'   \item \code{lith}: The lithology of the outcrop shape element as defined in
 #'     the geologic map source in plain text.
 #'   \item \code{descrip}: Description of the outcrop shape element in plain
 #'     text.
 #'   \item \code{comments}: Notes assigned to the outcrop shape element.
-#'   \item \code{macro_units}: A vector of identification numbers of the
-#'     Macrostrat units matched to the outcrop shape element.
-#'   \item \code{strat_names}: A vector of identification numbers of the
-#'     stratigraphic names matched to the outcrop shape element.
-#'   \item \code{liths}: A vector of the identification numbers of the
-#'     lithologies represented within the outcrop shape element (see
+#'   \item \code{macro_units}: A vector containing the unique identification
+#'     number(s) for known Macrostrat unit(s) matched to the outcrop shape
+#'     element.
+#'   \item \code{strat_names}: A vector containing the unique identification
+#'     number(s) for known stratigraphic unit name(s) matched to the outcrop
+#'     shape element (see [def_strat_names()]).
+#'   \item \code{liths}: A vector containing the unique identification number(s)
+#'     of the lithology(ies) represented within the outcrop shape element (see
 #'     [def_lithologies()]).
 #'   \item \code{t_int_id}: The identification number of the chronostratigraphic
 #'     interval containing the top boundary of the outcrop shape element.
@@ -62,6 +65,7 @@
 #'   If `sf` is `TRUE` (the default), an `sf` object is returned instead, with
 #'   the same columns plus a "geometry" column that contains the spatial data.
 #' @author William Gearty
+#' @section Reviewer: N/A
 #' @details More information can be found for the inputs for this function using
 #'   the definition functions (beginning with \code{def_}).
 #' @examples
