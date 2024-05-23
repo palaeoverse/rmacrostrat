@@ -88,7 +88,8 @@ desired environment to return a definition for.</p></dd>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A <code>data.frame</code> containing the following columns:</p><ul><li><p><code>environ_id</code>: The unique identification number of the environment.</p></li>
+<p>A <code>data.frame</code> containing the following columns:</p><ul><li><p><code>environ_id</code>: The unique identification number of the
+environment.</p></li>
 <li><p><code>name</code>: The name of the environment.</p></li>
 <li><p><code>type</code>: Environment type, less inclusive than class.</p></li>
 <li><p><code>class</code>: Environment class, more inclusive than type.</p></li>
@@ -103,16 +104,16 @@ partially or entirely composed of the environment.</p></li>
     </div>
     <div class="section level2">
     <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
-    <p>Christopher D. Dean AUTHOR_2</p>
+    <p>Christopher D. Dean</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span><span class="co"># return all environment definitions</span></span></span>
+<span class="r-in"><span><span class="co"># Return all environment definitions</span></span></span>
 <span class="r-in"><span><span class="va">ex1</span> <span class="op">&lt;-</span> <span class="fu">def_environments</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="co"># return subsets of environment definitions</span></span></span>
+<span class="r-in"><span><span class="co"># Return subsets of environment definitions</span></span></span>
 <span class="r-in"><span><span class="va">ex2</span> <span class="op">&lt;-</span> <span class="fu">def_environments</span><span class="op">(</span>environ <span class="op">=</span> <span class="st">"reef"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">ex3</span> <span class="op">&lt;-</span> <span class="fu">def_environments</span><span class="op">(</span>environ_type <span class="op">=</span> <span class="st">"carbonate"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">ex4</span> <span class="op">&lt;-</span> <span class="fu">def_environments</span><span class="op">(</span>environ_class <span class="op">=</span> <span class="st">"marine"</span><span class="op">)</span></span></span>
