@@ -84,7 +84,9 @@ GET_macrostrat <- function(endpoint, query = list(), format = "json",
   } else if (format == "json") {
     lst <- fromJSON(cont)
     if ("error" %in% names(lst)) {
-      stop("Error when trying query. Check your request.", call. = FALSE)
+      stop(paste("Error when trying query. Error message from the Macrostrat",
+                 "API:", lst$error$message),
+           call. = FALSE)
     }
     if (output == "df") {
       dat <- lst$success$data
@@ -94,7 +96,9 @@ GET_macrostrat <- function(endpoint, query = list(), format = "json",
   } else if (format == "geojson_bare") {
     lst <- fromJSON(cont)
     if ("error" %in% names(lst)) {
-      stop("Error when trying query. Check your request.", call. = FALSE)
+      stop(paste("Error when trying query. Error message from the Macrostrat
+                 API:", lst$error$message),
+           call. = FALSE)
     }
     dat <- lst$features$properties
     dat$geometry <- geojson_sf(cont)$geometry
