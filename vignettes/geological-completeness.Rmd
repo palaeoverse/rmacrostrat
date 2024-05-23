@@ -1,0 +1,36 @@
+---
+title: "The Geological Completeness of Paleontological Sampling in North America"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{The Geological Completeness of Paleontological Sampling in North America}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+**Authors:** [The Palaeoverse Development Team](https://palaeoverse.org/#about-us)
+
+**Last updated:** `r Sys.Date()`
+
+```{r setup, include = FALSE, eval = TRUE}
+knitr::opts_chunk$set(echo = TRUE, include = TRUE, eval = TRUE,
+                      out.width = "100%", fig.width = 7.2, fig.height = 6, dpi = 200,
+                      fig.path = "")
+library(devtools)
+load_all()
+```
+
+<div style="text-align: justify">
+
+# Introduction
+
+# Installation
+
+```{r setup}
+library(rmacrostrat)
+```
+
+# References
+
+Peters, S.E. and Heim, N.A. 2010. The Geological Completeness of Paleontological Sampling in North America. *Paleobiology* 36(10), pp61--79.
+
+</style>
