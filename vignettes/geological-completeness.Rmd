@@ -7,7 +7,7 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-**Authors:** [The Palaeoverse Development Team](https://palaeoverse.org/#about-us)
+**Authors:** [Palaeoverse Development Team](https://palaeoverse.org/#about-us)
 
 **Last updated:** `r Sys.Date()`
 
@@ -23,11 +23,44 @@ load_all()
 
 # Introduction
 
+`rmacrostrat` is an R package that allows users to easily retrieve geological data from the [Macrostrat](https://macrostrat.org) database and facilitate analyses within the R environment. This vignette (or tutorial if you prefer) is provided to guide you through the installation process and some of the functionality available within `rmacrostrat`. To do so, we will focus on reconstructing a classical figure from Peters & Heim (2010), which visualizes the changing number, and proportion, of different lithostratigraphic units throughout the Phanerozoic, the last 540 million years.
+
 # Installation
 
-```{r setup}
+The `rmacrostrat` package can be installed via CRAN or its dedicated [GitHub repository](https://github.com/palaeoverse/rmacrostrat) if the development version is preferred. To install via the CRAN, simply use:
+
+```{r install, eval = FALSE}
+install.packages("rmacrostrat")
+```
+
+To install the development version, first install the `devtools` package, and then use `install_github` to install `rmacrostrat`` directly from GitHub.
+
+```{r install-dev, eval = FALSE}
+install.packages("devtools")
+devtools::install_github("palaeoverse/rmacrostrat")
+```
+
+You can now load `rmacrostrat` using the default `library` function:
+
+```{r load-library, eval = FALSE}
 library(rmacrostrat)
 ```
+
+**Before we get onto the good stuff, the development team has a small request**. If you use `rmacrostrat`` in your research, please cite the associated publication. This will help us to continue our work in supporting you to do yours. You can access the appropriate citation via:
+
+```{r eval = FALSE}
+citation("rmacrostrat")
+```
+
+# Context
+
+
+
+# Fetching
+
+# Summarisation
+
+# Visualisation
 
 # References
 
