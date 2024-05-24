@@ -9,12 +9,8 @@
 #' @param interval_name \code{character}. Return a paleogeographic
 #'   reconstruction based on a specified time interval. Ignored if `age` is
 #'   supplied.
-#' @param sf \code{logical}. Should the results be returned as an `sf` object?
-#'   Defaults to `TRUE`. If `FALSE`, a `data.frame` is returned.
 #'
-#' @return If `sf` = `TRUE` (default), returns an `sf` object containing the
-#'   geometries of the paleogeographic map. If `sf` = `FALSE`, returns a
-#'   `list` of the paleogeographic map geometries.
+#' @return An `sf` object containing the geometries of the paleogeographic map.
 #'
 #' @author Lewis A. Jones
 #'
@@ -32,22 +28,20 @@
 #' }
 #' @export
 #' @family paleogeo
-get_paleogeography <- function(age = NULL, interval_name = NULL, sf = TRUE) {
+get_paleogeography <- function(age = NULL, interval_name = NULL) {
   # Error handling
   # Collect input arguments as a list
   args <- as.list(environment())
   # Check whether class of arguments is valid
-  ref <- list(age = "numeric", interval_name = "character", sf = "logical")
+  ref <- list(age = "numeric", interval_name = "character")
   check_arguments(x = args, ref = ref)
   # Check user inputs
   if (is.null(age) && is.null(interval_name)) {
     stop("Either `age` or `interval_name` must be provided.")
   }
-  # Set default for format
-  if (sf) format <- "geojson" else format <- "json"
   # Get request
   dat <- GET_macrostrat(endpoint = "paleogeography",
-                        query = args, format = format)
+                        query = args, format = "geojson")
   # Return data
   return(dat)
 }

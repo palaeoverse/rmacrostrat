@@ -1,20 +1,26 @@
 test_that("get_measurements works", {
   rmacrostrat_test_checks(fn = get_measurements,
-                          check_args = list(interval_name = "Permian",
-                                            strat_name = "mancos",
-                                            list(lat = 43, lng = -89),
-                                            list(age_top = 100,
-                                                 age_bottom = 150)),
-                          fail_args = list(lat = 43, # needs lng
-                                           age_top = 50, # needs age_bottom
-                                           # invalid longitude value
-                                           list(lat = 43, lng = -300),
-                                           # age_top must be less
-                                           list(age_top = 100, age_bottom = 50),
-                                           # wrong argument
-                                           lithology_set = "sedimentary",
+                          def_args = list(sf = TRUE),
+                          check_args = list(measure_id = c(353, 354),
+                                            measurement_id = 42,
+                                            list(column_id = 84,
+                                                 measurement = "SiO2")),
+                          fail_args = list(# wrong argument
+                                           measurement_group = "sedimentary",
                                            # wrong type
-                                           column_id = "test"),
-                          warn_args = list(lithology_class = "sedigneous"),
-                          col_no = 24, check_sf = TRUE)
+                                           measure_id = "test"),
+                          warn_args = list(measure_id = -10),
+                          col_no = 27)
+  rmacrostrat_test_checks(fn = get_measurements,
+                          def_args = list(sf = FALSE),
+                          check_args = list(measure_id = c(353, 354),
+                                            measurement_id = 42,
+                                            list(column_id = 84,
+                                                 measurement = "SiO2")),
+                          fail_args = list(# wrong argument
+                            measurement_group = "sedimentary",
+                            # wrong type
+                            measure_id = "test"),
+                          warn_args = list(measure_id = -10),
+                          col_no = 28)
 })
