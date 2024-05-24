@@ -60,7 +60,7 @@ generic_checks <- function(fn, col_no, args, check_args, fail_args, warn_args,
   }
   # check individual passing arguments
   for (i in seq_along(check_args)) {
-    full_args <- c(args, unlist(check_args[i]))
+    full_args <- comb_lists(args, check_args, i)
     dat <- do.call(fn, full_args)
     for (cls in clss) {
       expect_true(is(dat, cls),
@@ -90,7 +90,7 @@ generic_checks <- function(fn, col_no, args, check_args, fail_args, warn_args,
   }
   # check individual failing arguments
   for (i in seq_along(fail_args)) {
-    full_args <- c(args, unlist(fail_args[i]))
+    full_args <- comb_lists(args, fail_args, i)
     suppressMessages(expect_error(
       do.call(fn, full_args),
       label = paste0("Using the specified args (",
@@ -99,7 +99,7 @@ generic_checks <- function(fn, col_no, args, check_args, fail_args, warn_args,
     ))
   }
   for (i in seq_along(warn_args)) {
-    full_args <- c(args, unlist(warn_args[i]))
+    full_args <- comb_lists(args, warn_args, i)
     expect_warning(do.call(fn, full_args),
                    label = paste0(
                      "Using the specified args (",
@@ -107,5 +107,13 @@ generic_checks <- function(fn, col_no, args, check_args, fail_args, warn_args,
                             full_args, collapse = "; "),
                      ")"
                    ))
+  }
+}
+
+comb_lists <- function(lst1, lst2, i) {
+  if (is.list(lst2[[i]])) {
+    return(c(lst1, lst2[[i]]))
+  } else {
+    return(c(lst1, lst2[i]))
   }
 }
