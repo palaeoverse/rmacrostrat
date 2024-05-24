@@ -1,0 +1,76 @@
+---
+title: "Making a geological outcrop map with rmacrostrat"
+author: "Christopher D. Dean"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Making a geological outcrop map with rmacrostrat}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+**Authors:** [The Palaeoverse Development Team](https://palaeoverse.org/#about-us)
+
+**Last updated:** `r Sys.Date()`
+
+```{r setup, include = FALSE, eval = TRUE}
+knitr::opts_chunk$set(echo = TRUE, include = TRUE, eval = TRUE,
+                      out.width = "100%", fig.width = 7.2, fig.height = 6, dpi = 200,
+                      fig.path = "")
+library(devtools)     
+load_all()
+```
+
+<div style="text-align: justify">
+
+# Introduction
+
+`rmacrostrat` is an R package that allows users to easily retrieve geological data from the [Macrostrat](https://macrostrat.org) database and facilitate analyses within the R environment. This vignette (or tutorial if you prefer) is provided to guide you through the installation process and some of the functionality available within `rmacrostrat`. To do so, we will focus on making a geographic map of a specific geological formation, a commonly required (and very important) figure within a variety of papers across the geosciences. 
+
+# Installation
+
+The `rmacrostrat` package can be installed via CRAN or its dedicated [GitHub repository](https://github.com/palaeoverse/rmacrostrat) if the development version is preferred. To install via the CRAN, simply use:
+
+```{r install, eval = FALSE}
+install.packages("rmacrostrat")
+```
+
+To install the development version, first install the `devtools` package, and then use `install_github` to install `rmacrostrat` directly from GitHub.
+
+```{r install-dev, eval = FALSE}
+install.packages("devtools")
+devtools::install_github("palaeoverse/rmacrostrat")
+```
+
+You can now load `rmacrostrat` using the default `library` function:
+
+```{r load-library, eval = FALSE}
+library(rmacrostrat)
+```
+
+**Before we get onto the good stuff, the development team has a small request**. If you use `rmacrostrat`` in your research, please cite the associated publication. This will help us to continue our work in supporting you to do yours. You can access the appropriate citation via:
+
+```{r eval = FALSE}
+citation("rmacrostrat")
+```
+
+# Context
+
+The Hell Creek is a geological formation from the late Cretaceous and early Paleogene of North America, which is  found cropping out across Montana, North and South Dakota, and Wyoming in the United States. It consists of both freshwater and brackish clays, mudstones, and sandstones, representing a fluvial system on the shoreline of the Western Interior Seaway. The Hell Creek is famous for its preservation of an extensive array of both terrestrial and marginal marine fossils, including widely recognisable dinosaurs such as *Edmontosaurus*, *Triceratops* and *Tyrannosaurus rex*. In this vignette, we will show you how to use `rmacrostrat` to find the outcrop of the Hell Creek Formation, and use this to create a map which could be used in a potential publication. Whilst we have chosen a specific formation, this methodology could be applied to any number of geological units of interest. So let's dive in!
+
+# Fetching
+
+First, we want to find the `strat_name_id`s that are associated with the Hell Creek, so we can grab all the available outcrop for the formation. We can do this by using some of the `def_` functions. These functions provide information about the information stored in the Macrostrat database. Let's have a look at the information associated with the hell creek, using `def_strat_names()`:
+
+```{r setup, include = FALSE, eval = TRUE}
+# Get definitions for the chosen formation
+def_strat_names("hell creek")
+
+```
+
+
+# Visualisation
+
+# References
+
+
+</style>
