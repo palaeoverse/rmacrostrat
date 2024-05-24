@@ -1,3 +1,12 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+test_that("def_strat_names works", {
+  rmacrostrat_test_checks(fn = def_strat_names,
+                          check_args = list(strat_name = "Hell Creek",
+                                            list(interval_name = "Campanian",
+                                                 rank = "Fm")),
+                          fail_args = list(# wrong argument
+                                           strat_group = 70,
+                                           # wrong type
+                                           strat_name = 1),
+                          warn_args = list(strat_name = "test"),
+                          col_no = 24, check_null = TRUE)
 })

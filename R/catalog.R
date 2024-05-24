@@ -10,7 +10,7 @@
 #' \describe{
 #'  \item{columns}{Definitions of Macrostrat columns. See also
 #'  [def_columns()].}
-#'  \item{drilling_sites}{Metadata on eODP drilling cores. See also
+#'  \item{drilling_sites}{Definitions of eODP drilling cores. See also
 #'  [def_drilling_sites()].}
 #'  \item{econs}{Definitions of economic resources. See also [def_econs()].}
 #'  \item{environments}{Definitions of environments. See also
@@ -27,17 +27,17 @@
 #'  [def_measurements()].}
 #'  \item{minerals}{Defintions of minerals. See also [def_minerals()].}
 #'  \item{plates}{Definitions of tectonic plates. See also [def_plates()].}
-#'  \item{projects}{Metadata on Macrostrat projects. See also
+#'  \item{projects}{Definitions of Macrostrat projects. See also
 #'  [def_projects()].}
-#'  \item{references}{Metadata on references. See also [def_references()].}
-#'  \item{sources}{Metadata on geological maps. See also [def_sources()].}
-#'  \item{strat_name_concepts}{Metadata on stratigraphic name concepts. See also
-#'  [def_strat_name_concepts()].}
-#'  \item{strat_names}{Metadata on stratigraphic names. See also
+#'  \item{references}{Definitions of references. See also [def_references()].}
+#'  \item{sources}{Definitions of geological maps. See also [def_sources()].}
+#'  \item{strat_name_concepts}{Definitions of stratigraphic name concepts. See
+#'  also [def_strat_name_concepts()].}
+#'  \item{strat_names}{Definitions of stratigraphic names. See also
 #'  [def_strat_names()].}
 #'  \item{structures}{Definitions of geological structures. See also
 #'  [def_structures()].}
-#'  \item{timescales}{Metadata on timescales. See also [def_timescales()].}
+#'  \item{timescales}{Definitions of timescales. See also [def_timescales()].}
 #'  }
 #'
 #' @return A \code{data.frame} containing an exhaustive list of the

@@ -1,3 +1,3 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+test_that("def_timescales works", {
+  rmacrostrat_test_checks(fn = def_timescales, col_no = 6, check_null = TRUE)
 })

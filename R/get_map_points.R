@@ -22,10 +22,8 @@
 #'   `min_lat`, `min_lng`, and `max_lat`. Ignored if `point_id` is supplied.
 #' @param source_id \code{integer}. The unique identification number(s) of the
 #'   source(s) to filter the points by. Ignored if `point_id` is supplied.
-#' @param sf \code{logical}. Should the results be returned as an `sf` object?
-#'   Defaults to `TRUE`. If `FALSE`, a `data.frame` is returned.
 #'
-#' @return A \code{data.frame} containing the following columns:
+#' @return An \code{sf} object containing the following columns:
 #' \itemize{
 #'   \item \code{point_id}: The identification number of the outcrop point
 #'     element.
@@ -39,6 +37,7 @@
 #'   \item \code{comments}: Notes assigned to the outcrop point element.
 #'   \item \code{source_id}: The unique identification number of the source
 #'   for the outcrop point element.
+#'   \item \code{geometry}: The point spatial data.
 #' }
 #'   If `sf` is `TRUE` (the default), an `sf` object is returned instead, with
 #'   the same columns plus a "geometry" column that contains the spatial data.
@@ -58,8 +57,7 @@
 get_map_points <- function(point_id = NULL, point_type = NULL,
                            min_lat = NULL, min_lng = NULL,
                            max_lat = NULL, max_lng = NULL,
-                           source_id = NULL,
-                           sf = TRUE) {
+                           source_id = NULL) {
   # Error handling
   # Collect input arguments as a list
   args <- as.list(environment())
@@ -71,8 +69,7 @@ get_map_points <- function(point_id = NULL, point_type = NULL,
     min_lng = "integer",
     max_lat = "integer",
     max_lng = "integer",
-    source_id = "integer",
-    sf = "logical"
+    source_id = "integer"
   )
   check_arguments(x = args, ref = ref)
   # Check geographic extents
@@ -104,11 +101,9 @@ get_map_points <- function(point_id = NULL, point_type = NULL,
   rpl <- match(x = names(api_names), table = names(args))
   # Replace names
   names(args)[rpl] <- as.vector(unlist(api_names))
-  # Set default for format
-  if (sf) format <- "geojson" else format <- "json"
   # Get request
   dat <- GET_macrostrat(endpoint = "geologic_units/map/points",
-                        query = args, format = format)
+                        query = args, format = "geojson")
   # Return data
   return(dat)
 }

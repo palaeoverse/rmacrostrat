@@ -1,3 +1,12 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+test_that("get_map_legends works", {
+  rmacrostrat_test_checks(fn = get_map_legends,
+                          check_args = list(source_id = 1,
+                                            lithology_type = "sedimentary",
+                                            comments = "breccia"),
+                          fail_args = list(# wrong argument
+                                           lithology_set = "sedimentary",
+                                           # wrong type
+                                           source_id = "test"),
+                          warn_args = list(source_id = -1),
+                          col_no = 24)
 })
