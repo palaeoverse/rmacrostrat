@@ -1,6 +1,5 @@
 test_that("get_columns works", {
   rmacrostrat_test_checks(fn = get_columns,
-                          def_args = list(),
                           check_args = list(interval_name = "Permian",
                                             strat_name = "mancos",
                                             list(lat = 43, lng = -89),
