@@ -5,7 +5,7 @@
 #'
 #' @param program \code{character}. The name of a drilling program (i.e.,
 #'   "DSDP", "ODP", or "IODP") to return a definition for.
-#' @param leg \code{character}. The unique identification number(s) of drilling
+#' @param exp \code{character}. The unique identification number(s) of drilling
 #'   leg(s) to return a definition for.
 #' @param site \code{character}. The unique identification number(s) of drilling
 #'   site(s) to return a definition for.
@@ -15,7 +15,7 @@
 #' @return An `sf` object containing, for each retrieved core:
 #' \describe{
 #'  \item{epoch}{The name of the drilling program}
-#'  \item{leg}{The name of the leg/expedition}
+#'  \item{exp}{The name of the leg/expedition}
 #'  \item{site}{The name of the drilling site}
 #'  \item{hole}{The name of the drilling hole}
 #'  \item{lat}{Decimal degree latitude of the core}
@@ -47,16 +47,16 @@
 #' \dontrun{
 #' if (interactive()) {
 #'   # core_info <- def_drilling_sites(site = "U1547")
-#'   # core_info <- def_drilling_sites(leg = "385")
+#'   # core_info <- def_drilling_sites(exp = "385")
 #' }
 #' }
 #' @export
 #' @family external
 def_drilling_sites <- function(
     program = NULL,
-    leg = NULL,
+    exp = NULL,
     site = NULL,
-    sf = NULL) {
+    sf = TRUE) {
 
   # Error handling
   # Collect input arguments as a list
@@ -64,7 +64,7 @@ def_drilling_sites <- function(
   # Check whether class of arguments is valid
   ref <- list(
     program = "character",
-    leg = "character",
+    exp = "character",
     site = "character",
     sf = "logical"
   )
@@ -83,7 +83,7 @@ def_drilling_sites <- function(
   names(args)[rpl] <- as.vector(unlist(api_names))
 
   # Set default for format
-  format <- "geojson"
+  if (sf) format <- "geojson" else format <- "json"
 
   # Get request
   dat <- GET_macrostrat(endpoint = "defs/drilling_sites", query = args,

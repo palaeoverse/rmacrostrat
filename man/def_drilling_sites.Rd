@@ -4,13 +4,13 @@
 \alias{def_drilling_sites}
 \title{Retrieve metadata associated with eODP}
 \usage{
-def_drilling_sites(program = NULL, leg = NULL, site = NULL, sf = NULL)
+def_drilling_sites(program = NULL, exp = NULL, site = NULL, sf = TRUE)
 }
 \arguments{
 \item{program}{\code{character}. The name of a drilling program (i.e.,
 "DSDP", "ODP", or "IODP") to return a definition for.}
 
-\item{leg}{\code{character}. The unique identification number(s) of drilling
+\item{exp}{\code{character}. The unique identification number(s) of drilling
 leg(s) to return a definition for.}
 
 \item{site}{\code{character}. The unique identification number(s) of drilling
@@ -23,7 +23,7 @@ site(s) to return a definition for.}
 An \code{sf} object containing, for each retrieved core:
 \describe{
 \item{epoch}{The name of the drilling program}
-\item{leg}{The name of the leg/expedition}
+\item{exp}{The name of the leg/expedition}
 \item{site}{The name of the drilling site}
 \item{hole}{The name of the drilling hole}
 \item{lat}{Decimal degree latitude of the core}
@@ -61,7 +61,7 @@ e2022GC010655. \doi{10.1029/2022GC010655}.
 \dontrun{
 if (interactive()) {
   # core_info <- def_drilling_sites(site = "U1547")
-  # core_info <- def_drilling_sites(leg = "385")
+  # core_info <- def_drilling_sites(exp = "385")
 }
 }
 }
