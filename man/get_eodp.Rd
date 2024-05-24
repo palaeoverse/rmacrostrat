@@ -4,7 +4,7 @@
 \alias{get_eodp}
 \title{Retrieve core data from ocean drilling programs}
 \usage{
-get_eodp(column_id = NULL, site = NULL, leg = NULL, program = NULL, sf = NULL)
+get_eodp(column_id = NULL, site = NULL, leg = NULL, program = NULL, sf = FALSE)
 }
 \arguments{
 \item{column_id}{\code{integer}. Filter cores by their unique identification

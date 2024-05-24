@@ -11,8 +11,7 @@ get_map_points(
   min_lng = NULL,
   max_lat = NULL,
   max_lng = NULL,
-  source_id = NULL,
-  sf = TRUE
+  source_id = NULL
 )
 }
 \arguments{
@@ -41,12 +40,9 @@ northeast corner of a bounding box of the points to return. Requires
 
 \item{source_id}{\code{integer}. The unique identification number(s) of the
 source(s) to filter the points by. Ignored if \code{point_id} is supplied.}
-
-\item{sf}{\code{logical}. Should the results be returned as an \code{sf} object?
-Defaults to \code{TRUE}. If \code{FALSE}, a \code{data.frame} is returned.}
 }
 \value{
-A \code{data.frame} containing the following columns:
+An \code{sf} object containing the following columns:
 \itemize{
 \item \code{point_id}: The identification number of the outcrop point
 element.
@@ -60,6 +56,7 @@ bedding).
 \item \code{comments}: Notes assigned to the outcrop point element.
 \item \code{source_id}: The unique identification number of the source
 for the outcrop point element.
+\item \code{geometry}: The point spatial data.
 }
 If \code{sf} is \code{TRUE} (the default), an \code{sf} object is returned instead, with
 the same columns plus a "geometry" column that contains the spatial data.

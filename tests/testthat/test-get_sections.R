@@ -1,10 +1,13 @@
-test_that("get_columns works", {
-  rmacrostrat_test_checks(fn = get_columns,
-                          check_args = list(interval_name = "Permian",
-                                            strat_name = "mancos",
-                                            list(lat = 43, lng = -89),
-                                            list(age_top = 100,
-                                                 age_bottom = 150)),
+test_that("get_sections works", {
+  rmacrostrat_test_checks(fn = get_sections,
+                          check_args = list(section_id = 1,
+                                            column_id = 10,
+                                            age = 73,
+                                            list(lat = 45, lng = -100),
+                                            list(age_top = 70,
+                                                 age_bottom = 75),
+                                            lithology = "sandstone",
+                                            environ_type = "siliciclastic"),
                           fail_args = list(lat = 43, # needs lng
                                            age_top = 50, # needs age_bottom
                                            # invalid longitude value
@@ -14,7 +17,7 @@ test_that("get_columns works", {
                                            # wrong argument
                                            lithology_set = "sedimentary",
                                            # wrong type
-                                           column_id = "test"),
-                          warn_args = list(lithology_class = "sedigneous"),
-                          col_no = 24, check_sf = TRUE)
+                                           section_id = "test"),
+                          warn_args = list(section_id = -50),
+                          col_no = 12)
 })

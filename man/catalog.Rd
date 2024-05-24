@@ -13,7 +13,7 @@ Options are:
 \describe{
 \item{columns}{Definitions of Macrostrat columns. See also
 \code{\link[=def_columns]{def_columns()}}.}
-\item{drilling_sites}{Metadata on eODP drilling cores. See also
+\item{drilling_sites}{Definitions of eODP drilling cores. See also
 \code{\link[=def_drilling_sites]{def_drilling_sites()}}.}
 \item{econs}{Definitions of economic resources. See also \code{\link[=def_econs]{def_econs()}}.}
 \item{environments}{Definitions of environments. See also
@@ -30,17 +30,17 @@ Options are:
 \code{\link[=def_measurements]{def_measurements()}}.}
 \item{minerals}{Defintions of minerals. See also \code{\link[=def_minerals]{def_minerals()}}.}
 \item{plates}{Definitions of tectonic plates. See also \code{\link[=def_plates]{def_plates()}}.}
-\item{projects}{Metadata on Macrostrat projects. See also
+\item{projects}{Definitions of Macrostrat projects. See also
 \code{\link[=def_projects]{def_projects()}}.}
-\item{references}{Metadata on references. See also \code{\link[=def_references]{def_references()}}.}
-\item{sources}{Metadata on geological maps. See also \code{\link[=def_sources]{def_sources()}}.}
-\item{strat_name_concepts}{Metadata on stratigraphic name concepts. See also
-\code{\link[=def_strat_name_concepts]{def_strat_name_concepts()}}.}
-\item{strat_names}{Metadata on stratigraphic names. See also
+\item{references}{Definitions of references. See also \code{\link[=def_references]{def_references()}}.}
+\item{sources}{Definitions of geological maps. See also \code{\link[=def_sources]{def_sources()}}.}
+\item{strat_name_concepts}{Definitions of stratigraphic name concepts. See
+also \code{\link[=def_strat_name_concepts]{def_strat_name_concepts()}}.}
+\item{strat_names}{Definitions of stratigraphic names. See also
 \code{\link[=def_strat_names]{def_strat_names()}}.}
 \item{structures}{Definitions of geological structures. See also
 \code{\link[=def_structures]{def_structures()}}.}
-\item{timescales}{Metadata on timescales. See also \code{\link[=def_timescales]{def_timescales()}}.}
+\item{timescales}{Definitions of timescales. See also \code{\link[=def_timescales]{def_timescales()}}.}
 }}
 }
 \value{

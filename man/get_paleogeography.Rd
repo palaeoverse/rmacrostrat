@@ -4,7 +4,7 @@
 \alias{get_paleogeography}
 \title{Retrieve paleogeographic geometries}
 \usage{
-get_paleogeography(age = NULL, interval_name = NULL, sf = TRUE)
+get_paleogeography(age = NULL, interval_name = NULL)
 }
 \arguments{
 \item{age}{\code{numeric}. Return a paleogeographic reconstruction based on
@@ -13,14 +13,9 @@ a numerical age in millions of years (between 0 and 550).}
 \item{interval_name}{\code{character}. Return a paleogeographic
 reconstruction based on a specified time interval. Ignored if \code{age} is
 supplied.}
-
-\item{sf}{\code{logical}. Should the results be returned as an \code{sf} object?
-Defaults to \code{TRUE}. If \code{FALSE}, a \code{data.frame} is returned.}
 }
 \value{
-If \code{sf} = \code{TRUE} (default), returns an \code{sf} object containing the
-geometries of the paleogeographic map. If \code{sf} = \code{FALSE}, returns a
-\code{list} of the paleogeographic map geometries.
+An \code{sf} object containing the geometries of the paleogeographic map.
 }
 \description{
 A function to retrieve paleogeographic geometries

@@ -177,11 +177,13 @@ get_sections <- function(section_id = NULL, column_id = NULL, unit_id = NULL,
   if (is.null(lng) && !is.null(lat)) {
     stop("`lng` required if `lat` specified.")
   }
-  if (lng >= 180 || lng <= -180) {
-    stop("`lng` should be less than 180 and more than -180.")
-  }
-  if (lat >= 90 || lat <= -90) {
-    stop("`lat` should be less than 90 and more than -90.")
+  if (!is.null(lng) && !is.null(lat)) {
+    if (lng >= 180 || lng <= -180) {
+      stop("`lng` should be less than 180 and more than -180.")
+    }
+    if (lat >= 90 || lat <= -90) {
+      stop("`lat` should be less than 90 and more than -90.")
+    }
   }
 
   # Collect input arguments as a list
