@@ -62,7 +62,7 @@ get_eodp <- function(
     site = NULL,
     leg = NULL,
     program = NULL,
-    sf = NULL) {
+    sf = FALSE) {
 
   # Error handling
   # Collect input arguments as a list
@@ -90,7 +90,7 @@ get_eodp <- function(
   names(args)[rpl] <- as.vector(unlist(api_names))
 
   # Set default for format
-  format <- "json"
+  if (sf) format <- "geojson" else format <- "json"
 
   # Get request
   dat <- GET_macrostrat(endpoint = "eodp", query = args, format = format)
