@@ -158,7 +158,7 @@
 #' \dontrun{
 #' ex1 <- get_columns(interval_name = "Permian")
 #' ex2 <- get_columns(age_top = 200, age_bottom = 250)
-#' ex3 <- get_columns(strat_name = mancos, sf = TRUE)
+#' ex3 <- get_columns(strat_name = "mancos", sf = TRUE)
 #' ex4 <- get_columns(lat = 43, lng = -89, adjacents = TRUE)
 #' }
 #' @export
