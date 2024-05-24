@@ -48,15 +48,64 @@ library(rmacrostrat)
 
 **Before we get onto the good stuff, the development team has a small request**. If you use `rmacrostrat`` in your research, please cite the associated publication. This will help us to continue our work in supporting you to do yours. You can access the appropriate citation via:
 
-```{r eval = FALSE}
+```{r citation, eval = FALSE}
 citation("rmacrostrat")
 ```
 
 # Context
 
-
+Quantifying the number and type of lithostratigraphic units through time and space is fundamental to understanding how environments and biodiversity have evolved and responded to Earth history events throughout the Phanerozoic. For instance, how does the proportion of different palaeoenvironment lithostratigraphic unit types (e.g. marine, marginal, mixed, terrestrial) vary through time, and how might it influence the preservation of different organisms? To begin investigating this question, we will examine how the number and proportion of different lithostratigraphic units, grouped by palaeoenvironment type, change throughout the Phanerozoic. To do so, we will make use of the `rmacrostrat` package to fetch data from the [Macrostrat](https://macrostrat.org) database. Let's begin!
 
 # Fetching
+
+To quantify how the number and proportion of different lithostraphic units change through time we will focus on the following four palaeoenvironmental groupings: marine, marginal, terrestrial, and mixed (combinations of marine, marginal, and/or terrestrial). The first step to establish these groupings is to see what different environments are available:
+
+```{r environments, eval = FALSE}
+# What environments are available?
+# Hint: Defining no arguments returns all environments
+environments <- def_environments()
+head(environments)
+```
+
+From this call, we can see a whole suite of environments are available, which are conveniently group into type (e.g. carbonate, fluvial, lacustrine) and class (marine and non-marine). Class seems helpful for defining between marine and non-marine environments, but we also want a marginal class, so we need to re-classify some of these environments! 
+
+After some deliberation, we go with defining which palaeoenvironments are marginal using the additional information available in the name column of `environments`. For this definition, let's consider that any environment that is classified as a delta, beach, barrier island, estuarine, lagoonal, and tidal flat as a marginal environment. From our available environments (*n* = 87), we pick 22 as marginal environments. This can be a little subjective, but this vectors provides a good representation of marginal environments:
+
+```{r marginal, eval = FALSE}
+# Define an object classifying marginal palaeoenvironments
+marginal <- c("shallow subtidal", "open shallow subtidal", 
+              "lagoonal/restricted shallow subtidal", "paralic indet.", 
+              "lagoonal", "coastal indet.", "foreshore", "shoreface",
+              "transition zone/lower shoreface", "barrier bar",
+              "deltaic indet.", "delta plain", "interdistributary bay",
+              "delta front", "prodelta", "marginal marine",
+              "deltaic indet.", "delta plain", "lacustrine deltaic indet.",
+              "lacustrine delta plain", "lacustrine prodelta", "playa")
+```
+
+Now we've classified our marginal palaeoenvironments, we can identify the unique identification numbers of the different palaeoenvironments that represent marine, marginal, and terrestrial. We don't need to worry about mixed at this stage, as this will be units which contain a combination of these palaeoenvironments.
+
+```{r classes, eval = FALSE}
+# Update class to be marginal
+environments$class[which(environments$name %in% marginal)] <- "marginal"
+# Which environment IDs represent marine environments?
+marine <- environments[which(environments$class == "marine"), ]
+# Which environment IDs represent marginal environments?
+marginal <- environments[which(environments$name %in% marginal), ]
+# Which environment IDs represent terrestrial environments?
+terrestrial <- environments[which(environments$class == "non-marine"), ]
+# Remember to remove our marginal environments from marine and terrestrial!
+marine <- marine[!marine$environ_id %in% marginal$environ_id, ]
+terrestrial <- terrestrial[!terrestrial$environ_id %in% marginal$environ_id, ]
+```
+
+Now we have our `environ_id` from `environments` of marine, marginal, and terrestrial environments, we can make use of the `t_units` column to make a quick estimate of the total number of units belonging to each of these categories:
+
+```{r t_units, eval = FALSE}
+
+```
+
+
 
 # Summarisation
 
