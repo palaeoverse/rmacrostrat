@@ -4,7 +4,7 @@
 \name{rmacrostrat-package}
 \alias{rmacrostrat}
 \alias{rmacrostrat-package}
-\title{rmacrostrat: Fetch Data from the Macrostrat Platform}
+\title{rmacrostrat: Fetch Geologic Data from the Macrostrat Platform}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
