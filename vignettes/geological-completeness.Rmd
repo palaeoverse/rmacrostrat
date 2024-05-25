@@ -23,7 +23,7 @@ load_all()
 
 # Introduction
 
-`rmacrostrat` is an R package that allows users to easily retrieve geological data from the [Macrostrat](https://macrostrat.org) database and facilitate analyses within the R environment. This vignette (or tutorial if you prefer) is provided to guide you through the installation process and some of the functionality available within `rmacrostrat`. To do so, we will focus on reconstructing a classical figure (i.e., Fig. 14) from Peters & Heim (2010), which visualizes the changing number, and proportion, of different lithostratigraphic units throughout the Phanerozoic, the last 540 million years. Let's get started!
+`rmacrostrat` is an R package which allows users to easily retrieve geological data from the [Macrostrat](https://macrostrat.org) database and facilitate analyses within the R environment. This vignette (or tutorial if you prefer) is provided to guide you through the installation process and some of the functionality available within `rmacrostrat`. To do so, we will focus on reproducing a classical figure (i.e., Fig. 14) from [Peters & Heim (2010)](https://www.jstor.org/stable/25609444), which visualizes the changing number, and proportion, of different paleoenvironment lithostratigraphic units throughout the Phanerozoic (the last 541 million years). Let's get started!
 
 # Installation
 
@@ -33,7 +33,7 @@ The `rmacrostrat` package can be installed via CRAN or its dedicated [GitHub rep
 install.packages("rmacrostrat")
 ```
 
-To install the development version, first install the `devtools` package, and then use `install_github` to install `rmacrostrat`` directly from GitHub.
+To install the development version, first install the `devtools` package, and then use `install_github` to install `rmacrostrat` directly from GitHub.
 
 ```{r install-dev, eval = FALSE}
 install.packages("devtools")
@@ -54,9 +54,9 @@ citation("rmacrostrat")
 
 # Context
 
-Quantifying the number and type of lithostratigraphic units through time and space is fundamental to understanding how environments and biodiversity have evolved and responded to Earth history events throughout the Phanerozoic. For instance, how does the proportion of different paleoenvironment lithostratigraphic unit types (e.g., marine, marginal, terrestrial) vary through time, and how might it influence the preservation of different organisms? To begin investigating this question, we will examine how the number and proportion of different lithostratigraphic units, grouped by paleoenvironment type, change throughout the Phanerozoic. To do so, we will make use of the `rmacrostrat` package to fetch data from the [Macrostrat](https://macrostrat.org) database.
+Quantifying the spatiotemporal distribution of lithostratigraphic units is fundamental to understanding how environments, and their associated biodiversity, have evolved throughout Earth's geological history. Previous work by [Peters & Heim (2010)](https://www.jstor.org/stable/25609444) focused on *"the geological completeness of paleontological sampling in North America"* with the aim of recognizing and overcoming geologically controlled sampling biases. One theme this article focused on was quantifying how the number and proportion of different paleoenvironment lithostratigraphic unit types (e.g., marine, marginal, terrestrial) vary through time. In this vignette, we will revisit this theme and examine how the number and proportion of different lithostratigraphic units--grouped by paleoenvironment type--change throughout the Phanerozoic. To do so, we will make use of the `rmacrostrat` package to fetch data from the [Macrostrat](https://macrostrat.org) database.
 
-# Fetch
+# Retrieving data
 
 To quantify how the number and proportion of different lithostraphic units change through time we will focus on the following paleoenvironmental groupings: marine, marginal, and terrestrial. The first step to establish these groupings is to see what different environments are available:
 
@@ -66,12 +66,13 @@ To quantify how the number and proportion of different lithostraphic units chang
 # What environments are available?
 # Hint: Defining no arguments returns all environments
 environments <- def_environments()
+# See the first few rows
 head(environments)
 ```
 
-From this call, we can see a whole suite of inferred paleoenvironments are available, which are conveniently group into type (e.g., carbonate, fluvial, lacustrine) and class (i.e., marine and non-marine). Class seems helpful for defining between marine and non-marine environments, but we also want a marginal class, so we need to re-classify some of these environment definitions! 
+From this call, we can see a whole suite of inferred paleoenvironments are available, which are conveniently grouped into a type (e.g., carbonate, fluvial, lacustrine) and class (i.e., marine and non-marine). Class seems helpful for defining between marine and non-marine environments, but we also want a marginal class, so we need to re-classify some of these environment definitions! 
 
-After some deliberation, we go with defining which paleoenvironments are marginal using the additional information available in the `name` column of `environments`. For this definition, let's consider that any environment that is classified as a delta, beach, barrier island, estuary, lagoon, and tidal flat as a marginal environment. From our available environments (*n* = 87), we pick 22 as marginal environments. This can be a little subjective, but this vector provides a good enough representation of marginal environments for this example here:
+We can define which paleoenvironments are marginal using the additional information available in the `name` column of `environments`. For this definition, let's consider that any environment that is classified as a delta, beach, barrier island, estuary, lagoon, and tidal flat as a marginal environment. From our available environments (*n* = 87), we identify 22 as marginal environments. Our classification is perhaps a little subjective, but for this vignette it provides a good enough representation of marginal environments for this example here:
 
 ```{r marginal, eval = TRUE}
 # Define an object classifying marginal palaeoenvironments
@@ -85,7 +86,7 @@ marginal <- c("shallow subtidal", "open shallow subtidal",
               "lacustrine delta plain", "lacustrine prodelta", "playa")
 ```
 
-Now we've classified our marginal paleoenvironments, we can re-classify the `class` column in `environments` so that we have three categories. We can also replace non-marine environments with terrestrial:
+Now we've classified our marginal paleoenvironments, we can re-classify the `class` column in `environments` so that we have three categories. We can also replace non-marine environments with terrestrial for clarity (this is all units, for all time):
 
 ```{r recode, eval = TRUE}
 # Update class to be marginal
@@ -94,7 +95,7 @@ environments$class[which(environments$name %in% marginal)] <- "marginal"
 environments$class[which(environments$class == "non-marine")] <- "terrestrial"
 ```
 
-Hmmmm our lines of code are getting a little long and hard to read, let's make this simpler and create three `data.frame`s, one for each paleonvironment.
+Hmmmm our lines of code are getting a little long and hard to read, let's make this simpler and create three `data.frame`s, one for each paleoenvironment.
 
 ```{r classes, eval = TRUE}
 # Subset dataframe
@@ -103,7 +104,7 @@ marginal <- subset(environments, class == "marginal")
 terrestrial <- subset(environments, class == "terrestrial")
 ```
 
-Now we have three dataframes, one for each class of paleoenvironments. Using the `t_units` column in these dataframes, we can make use of the `t_units` column to make a quick estimate of the total number of units belonging to each of these categories:
+Now we have three `data.frame`s, one for each class of paleoenvironments. Using the `t_units` column in these dataframes, we can make use of the `t_units` column to make a quick estimate of the total number of units belonging to each of these categories:
 
 ```{r t_units, eval = TRUE}
 # How many units are marine?
@@ -114,9 +115,9 @@ sum(marginal$t_units)
 sum(terrestrial$t_units)
 ```
 
-From this quick summary, we can see that most lithostratigraphic units throughout the Phanerozoic are marine palaeoenvironments, followed by terrestrial, and then marginal. However, if we want to investigate how this changes through time, we need a little more information. Specifically, we need to know the inferred palaeoenvironment and age of specific lithostratigraphic units. We can retrieve such information about lithostratigraphic units using the `get_units` function. Conveniently, we can request such data for each paleoenvironment class using the `environ_id` column. 
+From this quick summary, we can see that most lithostratigraphic units throughout the Phanerozoic are marine palaeoenvironments, followed by terrestrial, and then marginal. However, if we want to investigate how this changes through time, we need a little more information. Specifically, we need to know the inferred paleoenvironment and age of specific lithostratigraphic units. We can retrieve such information about lithostratigraphic units using the `get_units` function. Conveniently, we can request such data for each paleoenvironment class using the `environ_id` column. 
 
-*Hint: Remember that to retrieve data stored in [Macrostrat](https://macrostrat.org) (e.g. Macrostrat columns, sections, and units), the `get_` suite of functions must be used.*
+*Hint: Remember that to retrieve data stored in [Macrostrat](https://macrostrat.org) (e.g., Macrostrat columns, sections, and units), the `get_` suite of functions must be used.*
 
 ```{r get_units, eval = TRUE}
 # Retrieve marine units
@@ -125,24 +126,24 @@ marine <- get_units(environ_id = marine$environ_id)
 marginal <- get_units(environ_id = marginal$environ_id)
 # Retrieve terrestrial units
 terrestrial <- get_units(environ_id = terrestrial$environ_id)
-# Let's also update the environment class in these dataframes for consistency
+# Let's also add the environment class in these data.frames for consistency
 marine$environ_class <- "Marine"
 marginal$environ_class <- "Marginal"
 terrestrial$environ_class <- "Terrestrial"
 ```
 
-Nice! That was pretty straight forward. However, something weird has happened. If we go back, we see that we had a total of X units (marine = X, marginal = X, terrestrial = X), but we notice the sum of the number of rows across our units dataframes is higher (each row in the dataframe represents one unit).
+Nice! That was pretty straight forward. However, we notice something weird. Some `unit_id` values in the `marine` dataframe are also present in the marginal and terrestrial dataframes, and vice versa:
 
-```{r sum_rows, eval = TRUE}
-# Sum rows
-sum(nrow(marine), nrow(marginal), nrow(terrestrial))
+```{r duplicate_ids, eval = TRUE}
+# How many marine unit IDs are also in terrestrial?
+length(which(marine$unit_id %in% terrestrial$unit_id))
 ```
 
-On investigation, we notice that some lithostratigraphic units are composed of multiple paleoenvironments (various combinations of marine, marginal, and terrestrial). Interesting! Let's treat these differently and make a new unit class called "mixed", and remove these units from the other dataframes.
+On investigation, we notice that some lithostratigraphic units are composed of multiple paleoenvironments (various combinations of marine, marginal, and terrestrial). Interesting and expected given transgression and regression cycles! We should treat these differently to our pre-existing groupings as they clump together different paleoenvironments which could capture broader information (e.g., terrestrial and marine organisms). Let's make a new unit palaeoenvironment class called "mixed", and update the environment class accordingly.
 
 ```{r create_mixed, eval = TRUE}
 # Marine 
-# What unit IDs are shared between marine, terrestrial and marginal?
+# What unit IDs are shared between marine, terrestrial, and marginal?
 shared_id <- c(
   # Marine
   marine$unit_id[which(marine$unit_id %in% terrestrial$unit_id)],
@@ -156,7 +157,7 @@ shared_id <- c(
 )
 # Get unique IDs
 shared_id <- unique(shared_id)
-# Combine all dataframes
+# Combine pre-existing dataframes
 litho_units <- rbind.data.frame(marine, marginal, terrestrial)
 # Recode environment class
 litho_units$environ_class[which(litho_units$unit_id %in% shared_id)] <- "Mixed"
@@ -164,37 +165,45 @@ litho_units$environ_class[which(litho_units$unit_id %in% shared_id)] <- "Mixed"
 litho_units <- unique(litho_units)
 ```
 
-Great, we can now see that we have the correct number of lithostratigraphic units and we don't have a duplicate units in our dataset anymore. Now we've got our data and done a bit of wrangling, let's get on with summarising our data.
+Great, we can now see that we have the correct number of lithostratigraphic units and we don't have any duplicate units in our dataset anymore. 
 
-# Summarize
+```{r check_units, eval = TRUE}
+# Check if any units appear more than once
+any(table(litho_units$unit_id) > 1)
+```
 
-We are interested in how the number and proportion of lithostratigraphic units representing different paleoenvironments changes through time. Conveniently, lithostratigraphic units in [Macrostrat](https://macrostrat.org) have age information associated with them, specifically the minimum (`t_age`) and maximum (`b_age`) age in millions of years before present. Using this data, with some handy functions from the `palaeoverse` R package, we can count the number of lithographic units within each group within each time bin. We will use international stratigraphic stages as our time bins for this:
+Now we've got our data and done a bit of wrangling, let's get on with summarizing our data.
+
+# Summarizing data
+
+We are interested in how the number and proportion of lithostratigraphic units representing different paleoenvironments changes through time. Conveniently, lithostratigraphic units in [Macrostrat](https://macrostrat.org) have age information associated with them, specifically the minimum (`t_age`) and maximum (`b_age`) age in millions of years before present. Using this data, with some handy support functions from the `palaeoverse` R package, we can count the number of lithographic units within each group, and within each time bin, through time. We will use international stratigraphic stage bins as our time bins for this:
 
 ```{r counts, eval = TRUE}
 # Load palaeoverse R package
 library(palaeoverse)
-# Generate time bins
+# Generate stage-level time bins
 bins <- time_bins(rank = "stage")
-# Rename age columns to be consistent
+# Rename age columns in litho_units to be consistent with our bins
 colnames(litho_units)[which(colnames(litho_units) == "b_age")] <- "max_ma"
 colnames(litho_units)[which(colnames(litho_units) == "t_age")] <- "min_ma"
-# As we are only interested in the Phanerozoic, let's remove 
+# As we are only interested in the Phanerozoic, let's remove any
 # data that has a minimum age of more than 541 Ma 
 litho_units <- subset(litho_units, min_ma <= 541)
 # In case the maximum age of units exceeds 541, but the minimum 
-# age is less than 541, let's set it to 541 to still count it in 
-# the Fortunian
+# age is less than 541, let's set max_ma to 541 to still count it 
+# if it appears at any point in the Fortunian
 litho_units$max_ma[which(litho_units$max_ma > 541)] <- 541
-# Bin data using the bin_time function from palaeoverse with
-# the "all" method. This will bin units into all bins the
-# unit overlaps with
+# Bin data using the bin_time function with the "all"
+# method. This will bin units into all bins the unit
+# overlaps with generating additional rows for each time 
+# bin (expect an increase in the number of rows)
 litho_units <- bin_time(occdf = litho_units,
                         bins = bins,
                         min_ma = "min_ma", 
                         max_ma = "max_ma",
                         method = "all")
-# Let's calculate the number of environment classes per bin midpoint age
-# Remember, each row is a unit within a time bin
+# Calculate the number of environment classes per bin assignment
+# Remember, each row is a unique instance of a unit within a bin
 counts <- group_apply(occdf = litho_units, 
             group = c("environ_class", "bin_assignment"),
             fun = nrow)
@@ -204,19 +213,18 @@ colnames(counts) <- c("count", "environment", "bin")
 counts <- merge(x = bins, y = counts, by = "bin")
 ```
 
-# Visualize
+# Visualizing data
 
-Now we have our summary of the lithostratigraphic units, we can visualise this data. Let's make two plots, one of the number of units within each paleoenvironment group through time, and another of the proportion of units within each paleoenvironment group through time. To support this data visualization, we will use the `ggplot2` (plotting) and `deeptime` (adding a geological timescale axis) R packages.
+Now we have our summary of the lithostratigraphic units, we can visualise this data. Let's make two plots, one of the number of units within each paleoenvironment group through time, and another of the proportion of units within each paleoenvironment group through time. To support this data visualization, we will make use of the `ggplot2` (plotting) and `deeptime` (adding a geological timescale axis) R packages.
 
 ```{r visualize, eval = TRUE}
 # Load data visualization packages
 library(ggplot2)
 library(deeptime)
- 
 # Generate a plot of raw counts of lithostratigraphic units through time
 # grouped by paleoenvironment
 ggplot(counts, aes(fill = environment, y = count, x = mid_ma)) + 
-  # Stacked bar chart with bar width of determined by interval duration
+  # Stacked bar chart with bar width specified by interval duration
   geom_bar(position = "stack", stat = "identity", width = counts$duration_myr,
            color = "black", linewidth = 0.1) +
   # Label y-axis
@@ -235,7 +243,7 @@ ggplot(counts, aes(fill = environment, y = count, x = mid_ma)) +
 # Generate a plot of lithostratigraphic units through time grouped by
 # paleoenvironment as proportions
 ggplot(counts, aes(fill = environment, y = count, x = mid_ma)) + 
-  # Proportional bar chart with bar width of determined by interval duration
+  # Proportional bar chart with bar width specified by interval duration
   geom_bar(position = "fill", stat = "identity", width = counts$duration_myr,
            color = "black", linewidth = 0.1) +
   # Label y-axis
@@ -252,8 +260,18 @@ ggplot(counts, aes(fill = environment, y = count, x = mid_ma)) +
   coord_geo()
 ```
 
+And that's it! Not too bad, right? There are some clear differences between our generated plots, and those from the original [Peters & Heim (2010)](https://www.jstor.org/stable/25609444) paper (Fig. 14), which is to be expected given that substantially more data is now available in [Macrostrat](https://macrostrat.org), and there may be differences in what we define as "marginal" environments. Despite some differences, the broad-scale patterns are largely consistent, such as the increasing number of terrestrial lithostratigraphic units in younger geological intervals.
+
+If you're interested in learning more about `rmacrostrat`, don't forget to check out our other vignettes! You can check which ones are available by calling `vignette(package = "rmacrostrat")`.
+
 # References
 
+Gearty, W. 2024. deeptime: Plotting Tools for Anyone Working in Deep Time. R package version 1.1.1, <https://CRAN.R-project.org/package=deeptime>.
+
+Jones, L.A., Gearty, W., Allen, B.J., Eichenseer, K., Dean, C.D., Galván S., Kouvari, M., Godoy, P.L., Nicholl, C.S.C., Dillon, E.M., Flannery-Sutherland, J.T., Chiarenza, A.A. 2022. palaeoverse: A community-driven R package to support palaeobiological analysis. *Methods in Ecology and Evolution*, 14(9), 2205--2215. doi: 10.1111/2041-210X.14099.
+
 Peters, S.E. and Heim, N.A. 2010. The Geological Completeness of Paleontological Sampling in North America. *Paleobiology* 36(10), pp61--79.
+
+Wickham, H. 2016. ggplot2: Elegant Graphics for Data Analysis. *Springer-Verlag New York*.
 
 </style>
