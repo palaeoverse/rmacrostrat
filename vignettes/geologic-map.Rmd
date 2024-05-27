@@ -61,7 +61,7 @@ The Hell Creek is a geological formation from the late Cretaceous and early Pale
 
 First, we want to find the `strat_name_id`s that are associated with the Hell Creek, so we can grab all the available outcrop for the formation. We can do this by using some of the `def_` functions. These functions provide information about the information stored in the Macrostrat database. Let's have a look at the information associated with the hell creek, using `def_strat_names()`:
 
-```{r setup, include = FALSE, eval = TRUE}
+```{r strat_names, include = FALSE, eval = TRUE}
 # Get definitions for the chosen formation
 def_strat_names("hell creek")
 
