@@ -152,67 +152,71 @@ identification number(s).}
 Defaults to \code{FALSE}.}
 }
 \value{
-A \code{data.frame} or an \code{sf} object (if sf = \code{TRUE}) containing:
+A \code{data.frame} containing the following columns:
 \itemize{
-\item \code{unit_id}: The unique ID of the Macrostrat unit.
-\item \code{section_id}: The unique ID of the Macrostrat section.
+\item \code{unit_id}: The unique Macrostrat unit ID.
+\item \code{section_id}: The unique Macrostrat section ID.
 \item \code{col_id}: The unique Macrostrat column ID.
-\item \code{project_id}: The unique ID of the Macrostrat project.
+\item \code{project_id}: The unique Macrostrat project ID.
 \item \code{col_area}: The area of the Macrostrat column in
-km\if{html}{\out{<sup>}}2\if{html}{\out{</sup>}}.
+km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}}.
 \item \code{unit_name}: The name of the Macrostrat unit.
-\item \code{strat_name_id}: The unique ID of the Macrostrat stratigraphic name.
+\item \code{strat_name_id}: The unique Macrostrat stratigraphic name ID.
 \item \code{Mbr}: The lithostratigraphic member.
 \item \code{Fm}: The lithostratigraphic formation.
 \item \code{Gp}: The lithostratigraphic group.
 \item \code{SGp}: The lithostratigraphic supergroup.
-\item \code{t_age}: Estimated top age based on continuous time age model in millions of years before present.
-\item \code{b_age}: Estimated bottom age based on continuous time age model in millions of years before present.
+\item \code{t_age}: Estimated top age based on continuous time age model
+in millions of years before present.
+\item \code{b_age}: Estimated bottom age based on continuous time age
+model in millions of years before present.
 \item \code{max_thick}: Maximum unit thickness in meters.
 \item \code{min_thick}: Minimum unit thickness in meters.
-\item \code{outcrop}: Type of exposure ('outcrop', 'subsurface', or 'both').
-\item \code{pbdb_collections}: Count of Paleobiology Database collections in units.
-\item \code{pbdb_occurrences}: Count of Paleobiology Database occurrences in units.
+\item \code{outcrop}: Type of exposure ('outcrop', 'subsurface', or
+'both').
+\item \code{pbdb_collections}: Count of Paleobiology Database
+collections within the unit.
+\item \code{pbdb_occurrences}: Count of Paleobiology Database
+occurrences within the unit.
 \item \code{lith}: a \code{dataframe} containing the lithologies present
 within the unit, with the following columns:
 \itemize{
 \item \code{name}: The named lithology (e.g., "sandstone").
+\item \code{prop}: The proportion of the lithology within the unit,
+calculated from the individual Macrostrat sub-units within the unit.
+\item \code{lith_id}: The unique identification number of the
+lithology.
 \item \code{type}: The named lithology type (e.g., "siliciclastic").
 \item \code{class}: The named lithology class (e.g., "sedimentary").
-\item \code{prop}: The proportion of the lithology within the unit,
-calculated from the individual Macrostrat units within the unit.
-\item \code{lith_id}: The unique identification number of the lithology.
 }}
 \itemize{
-\item \code{environ}: a \code{dataframe} containing the environments present
-within the unit, with the following columns:
-\itemize{
-\item \code{name}: The named environment (e.g., "delta plain").
-\item \code{type}: The named environment type (e.g., "siliciclastic").
-\item \code{class}: The named environment class (e.g., "marine").
-\item \code{prop}: The proportion of the environment within the unit.
-\item \code{environ_id}: The unique identification number of the environment.
-}}
-\itemize{
-\item \code{econ}: a \code{dataframe} containing the economic attributes
+\item \code{environ}: a \code{dataframe} containing the environments
 present within the unit, with the following columns:
 \itemize{
-\item \code{name}: The named economic attribute (e.g., "gold").
+\item \code{class}: The named environment class (e.g., "marine").
+\item \code{type}: The named environment type (e.g., "siliciclastic").
+\item \code{name}: The named environment (e.g., "delta plain").
+\item \code{environ_id}: The unique identification number of the
+environment.
+}}
+\itemize{
+\item \code{econ}: a \code{dataframe} containing the economic
+attributes present within the unit, with the following columns:
+\itemize{
 \item \code{type}: The named economic attribute type (e.g., "mineral").
-\item \code{class}: The named economic attribute class (e.g., "precious
-commodity").
-\item \code{prop}: The proportion of the economic attribute out of
-potential economic attributes contained within the unit, calculated
-from the individual Macrostrat units within the unit.
+\item \code{name}: The named economic attribute (e.g., "gold").
 \item \code{econ_id}: The unique identification number of the economic
 attribute.
+\item \code{class}: The named economic attribute class (e.g., "precious
+commodity").
 }}
 \itemize{
-\item \code{measure}: a \code{dataframe} containing the measure attributes
-present within the unit, with the following columns:
+\item \code{measure}: a \code{dataframe} containing the measure
+attributes present within the unit, with the following columns:
 \itemize{
-\item \code{measure_class}: The class of measures (e.g. "goechemical").
-\item \code{measure_type}: the type of measures (e.g. "minor elements").
+\item \code{measure_class}: The class of measures (e.g. "geochemical").
+\item \code{measure_type}: the type of measures (e.g. "minor
+elements").
 }}
 \itemize{
 \item \code{notes}: Unit specific notes.
@@ -231,7 +235,8 @@ proportional to reference time interval (t_interval).
 of the unit.
 \item \code{b_int_id}: The ID of the chronostratigraphic interval
 containing the bottom boundary of the unit.
-\item \code{b_int_name}: The name of the time interval represented at the
+\item \code{b_int_name}: The name of the time interval represented at
+the
 bottom of the unit.
 \item \code{b_int_age}: The age of the chronostratigraphic interval
 containing the bottom boundary of the unit.
@@ -239,6 +244,9 @@ containing the bottom boundary of the unit.
 boundary, proportional to reference time interval (b_interval).
 \item \code{units_below}: The unit_ids of the units contacting the
 bottom of the unit.
+\item \code{strat_name_long}: The stratigraphic name associated with
+the unit (e.g. "Coal Valley Formation").
+\item \code{refs}: The number of references associated with the unit.
 \item \code{clat}: The present day latitude of the centroid of the
 column to which the unit belongs.
 \item \code{clng}: The present day longitude of the centroid of the
@@ -250,16 +258,14 @@ which the unit belongs to at top age (clng rotated to t_age) .
 \item \code{b_plat}: The paleolatitude of the centroid of the column
 which the unit belongs to at bottom age (clat rotated to b_age).
 \item \code{b_plng}: The paleolongitude of the the centroid of the
-column which the unit belongs to at bottom age (clng rotated to b_age) .
-\item \code{t_pos}: The position of unit top in ordering of units in
-section, optionally in units of m for some columns (e.g., EODP project).
-\item \code{b_pos}: The position of unit bottom in ordering of units in
-section, optionally in units of m for some columns (e.g., EODP project).
+column which the unit belongs to at bottom age (clng rotated to b_age).
 }
+If \code{sf} is \code{TRUE}, an \code{sf} object is returned instead, with the same
+columns plus a "geometry" column that contains the spatial data.
 }
 \description{
 A function to retrieve Macrostrat unit data matching a
-user-specific search criteria.
+user-specified search criteria.
 }
 \details{
 More information can be found for the inputs for this function
@@ -268,9 +274,9 @@ using the definition functions (beginning with \code{defs_}).
 \examples{
 \dontrun{
 # Get units by stratigraphic name
-hell_creek <- get_units(strat_name = "Hell Creek")
+ex1 <- get_units(strat_name = "Hell Creek")
 # Get units by geographic coordinates
-units <- get_units(lng = -110.9, lat = 48.4)
+ex2 <- get_units(lng = -110.9, lat = 48.4)
 }
 }
 \seealso{
