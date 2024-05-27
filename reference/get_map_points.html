@@ -23,6 +23,13 @@ elements from various sources."><meta property="og:image" content="https://rmacr
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/geologic-map.html">Making a geological outcrop map with rmacrostrat</a>
+    <a class="dropdown-item" href="../articles/geological-completeness.html">The Geological Completeness of Paleontological Sampling in North America</a>
+  </div>
+</li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -58,8 +65,7 @@ elements from various sources.</p>
 <span>  min_lng <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  max_lat <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  max_lng <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  source_id <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  sf <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span>  source_id <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -104,17 +110,12 @@ northeast corner of a bounding box of the points to return. Requires
 <dd><p><code>integer</code>. The unique identification number(s) of the
 source(s) to filter the points by. Ignored if <code>point_id</code> is supplied.</p></dd>
 
-
-<dt>sf</dt>
-<dd><p><code>logical</code>. Should the results be returned as an <code>sf</code> object?
-Defaults to <code>TRUE</code>. If <code>FALSE</code>, a <code>data.frame</code> is returned.</p></dd>
-
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>A <code>data.frame</code> containing the following columns:</p><ul><li><p><code>point_id</code>: The identification number of the outcrop point
+<p>An <code>sf</code> object containing the following columns:</p><ul><li><p><code>point_id</code>: The identification number of the outcrop point
 element.</p></li>
 <li><p><code>strike</code>: The strike value of the outcrop point element.</p></li>
 <li><p><code>dip</code>: The dip value of the outcrop point element.</p></li>
@@ -126,6 +127,7 @@ bedding).</p></li>
 <li><p><code>comments</code>: Notes assigned to the outcrop point element.</p></li>
 <li><p><code>source_id</code>: The unique identification number of the source
 for the outcrop point element.</p></li>
+<li><p><code>geometry</code>: The point spatial data.</p></li>
 </ul><p>If <code>sf</code> is <code>TRUE</code> (the default), an <code>sf</code> object is returned instead, with
 the same columns plus a "geometry" column that contains the spatial data.</p>
     </div>

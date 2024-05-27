@@ -1,8 +1,10 @@
 pandoc: 3.1.11
 pkgdown: 2.0.9
 pkgdown_sha: ~
-articles: {}
-last_built: 2024-05-23T15:52Z
+articles:
+  geologic-map: geologic-map.html
+  geological-completeness: geological-completeness.html
+last_built: 2024-05-27T18:38Z
 urls:
   reference: https://rmacrostrat.palaeoverse.org/reference
   article: https://rmacrostrat.palaeoverse.org/articles

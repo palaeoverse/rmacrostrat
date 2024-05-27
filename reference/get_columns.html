@@ -23,6 +23,13 @@ which contain Macrostrat units."><meta property="og:image" content="https://rmac
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/geologic-map.html">Making a geological outcrop map with rmacrostrat</a>
+    <a class="dropdown-item" href="../articles/geological-completeness.html">The Geological Completeness of Paleontological Sampling in North America</a>
+  </div>
+</li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -348,7 +355,7 @@ the definition functions (beginning with <code>def_</code>).</p>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="va">ex1</span> <span class="op">&lt;-</span> <span class="fu">get_columns</span><span class="op">(</span>interval_name <span class="op">=</span> <span class="st">"Permian"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">ex2</span> <span class="op">&lt;-</span> <span class="fu">get_columns</span><span class="op">(</span>age_top <span class="op">=</span> <span class="fl">200</span>, age_bottom <span class="op">=</span> <span class="fl">250</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">ex3</span> <span class="op">&lt;-</span> <span class="fu">get_columns</span><span class="op">(</span>strat_name <span class="op">=</span> <span class="va">mancos</span>, sf <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">ex3</span> <span class="op">&lt;-</span> <span class="fu">get_columns</span><span class="op">(</span>strat_name <span class="op">=</span> <span class="st">"mancos"</span>, sf <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">ex4</span> <span class="op">&lt;-</span> <span class="fu">get_columns</span><span class="op">(</span>lat <span class="op">=</span> <span class="fl">43</span>, lng <span class="op">=</span> <span class="op">-</span><span class="fl">89</span>, adjacents <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>

@@ -25,6 +25,13 @@ Global Plate Model."><meta property="og:image" content="https://rmacrostrat.pala
       <ul class="navbar-nav me-auto"><li class="active nav-item">
   <a class="nav-link" href="../reference/index.html">Reference</a>
 </li>
+<li class="nav-item dropdown">
+  <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" id="dropdown-articles">Articles</a>
+  <div class="dropdown-menu" aria-labelledby="dropdown-articles">
+    <a class="dropdown-item" href="../articles/geologic-map.html">Making a geological outcrop map with rmacrostrat</a>
+    <a class="dropdown-item" href="../articles/geological-completeness.html">The Geological Completeness of Paleontological Sampling in North America</a>
+  </div>
+</li>
       </ul><form class="form-inline my-2 my-lg-0" role="search">
         <input type="search" class="form-control me-sm-2" aria-label="Toggle navigation" name="search-input" data-search-index="../search.json" id="search-input" placeholder="Search for" autocomplete="off"></form>
 
@@ -54,7 +61,7 @@ Global Plate Model.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_paleogeography</span><span class="op">(</span>age <span class="op">=</span> <span class="cn">NULL</span>, interval_name <span class="op">=</span> <span class="cn">NULL</span>, sf <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_paleogeography</span><span class="op">(</span>age <span class="op">=</span> <span class="cn">NULL</span>, interval_name <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -69,19 +76,12 @@ a numerical age in millions of years (between 0 and 550).</p></dd>
 reconstruction based on a specified time interval. Ignored if <code>age</code> is
 supplied.</p></dd>
 
-
-<dt>sf</dt>
-<dd><p><code>logical</code>. Should the results be returned as an <code>sf</code> object?
-Defaults to <code>TRUE</code>. If <code>FALSE</code>, a <code>data.frame</code> is returned.</p></dd>
-
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>If <code>sf</code> = <code>TRUE</code> (default), returns an <code>sf</code> object containing the
-geometries of the paleogeographic map. If <code>sf</code> = <code>FALSE</code>, returns a
-<code>list</code> of the paleogeographic map geometries.</p>
+<p>An <code>sf</code> object containing the geometries of the paleogeographic map.</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
