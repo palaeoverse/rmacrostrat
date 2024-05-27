@@ -128,7 +128,7 @@ Nice! That was pretty straight forward. However, we notice something weird. Some
 length(which(marine$unit_id %in% terrestrial$unit_id))
 ```
 
-On investigation, we notice that some lithostratigraphic units are composed of multiple paleoenvironments (various combinations of marine, marginal, and terrestrial). Interesting, but to be expected given transgression and regression cycles! We should treat these differently to our pre-existing groupings as they clump together different paleoenvironments which could capture broader information (e.g., terrestrial and marine organisms). Let's make a new palaeoenvironment class called "mixed", and update the environment class accordingly.
+On investigation, we notice that some lithostratigraphic units are composed of multiple paleoenvironments (various combinations of marine, marginal, and terrestrial). Interesting, but to be expected given transgression and regression cycles! We should treat these differently to our pre-existing groupings as they clump together different paleoenvironments which could capture broader information (e.g., terrestrial and marine organisms). Let's make a new paleoenvironment class called "mixed", and update the environment class accordingly.
 
 ```{r create_mixed, eval = TRUE}
 # What unit IDs are shared between marine, terrestrial, and marginal?
@@ -193,11 +193,11 @@ litho_units <- bin_time(occdf = litho_units,
 # Calculate the number of environment classes per bin assignment
 # Remember, each row is a unique instance of a unit within a bin
 counts <- group_apply(occdf = litho_units, 
-            group = c("environ_class", "bin_assignment"),
-            fun = nrow)
+                      group = c("environ_class", "bin_assignment"),
+                      fun = nrow)
 # Rename columns to ease reading and merging
 colnames(counts) <- c("count", "environment", "bin")
-# Merge datasets
+# Merge datasets by bin number
 counts <- merge(x = bins, y = counts, by = "bin")
 ```
 
@@ -252,7 +252,7 @@ And that's it! Not too bad, right? There are some clear differences between our 
 
 Hopefully this vignette has shown you the potential uses for `rmacrostrat` functions and helped provide a workflow for your own analyses. If you have any questions about the package or its functionality, please feel free to join our [Palaeoverse Google group](https://groups.google.com/g/palaeoverse) and leave a question; we'll aim to answer it as soon as possible!
 
-If you're interested in learning more about `rmacrostrat`, don't forget to check out our other vignettes! You can check which ones are available by calling `vignette(package = "rmacrostrat")`.
+If you're interested in learning more about `rmacrostrat`, don't forget to check out our other vignettes! You can see which ones are available by calling `vignette(package = "rmacrostrat")`.
 
 # References
 
