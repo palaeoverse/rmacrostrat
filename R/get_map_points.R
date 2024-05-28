@@ -50,7 +50,7 @@
 #' \dontrun{
 #' ex1 <- get_map_points(point_id = 1)
 #' ex2 <- get_map_points(min_lng = -80, min_lat = 40,
-#'                       max_lng = -90, max_lat = 50)
+#'                       max_lng = -70, max_lat = 50)
 #' }
 #' @export
 #' @family maps
@@ -80,6 +80,12 @@ get_map_points <- function(point_id = NULL, point_type = NULL,
     if (is.null(min_lng) || is.null(max_lng) ||
         is.null(min_lat) || is.null(max_lat)) {
       stop("`min_lng`, `max_lng`, `min_lat` and `max_lat` must be specified.")
+    }
+    if (min_lat >= max_lat) {
+      stop("`min_lat` should be less than `max_lat`.")
+    }
+    if (min_lng >= max_lng) {
+      stop("`min_lng` should be less than `max_lng`.")
     }
     if (min_lat <= -90) {
       stop("`min_lat` should be more than -90.")

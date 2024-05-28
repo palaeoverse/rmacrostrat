@@ -96,8 +96,8 @@ GET_macrostrat <- function(endpoint, query = list(), format = "json",
   } else if (format == "geojson_bare") {
     lst <- fromJSON(cont)
     if ("error" %in% names(lst)) {
-      stop(paste("Error when trying query. Error message from the Macrostrat
-                 API:", lst$error$message),
+      stop(paste("Error when trying query. Error message from the Macrostrat",
+                 "API:", lst$error$message),
            call. = FALSE)
     }
     dat <- lst$features$properties
