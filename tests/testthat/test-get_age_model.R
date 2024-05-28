@@ -7,4 +7,6 @@ test_that("get_age_model works", {
                                            column_id = "test"),
                           warn_args = list(column_id = -503),
                           col_no = 15)
+  # No args provided
+  expect_error(get_age_model())
 })
