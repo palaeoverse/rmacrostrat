@@ -5,6 +5,8 @@
 # fail_args: sets of arguments to check, all of which should FAIL
 # warn_args: sets of arguments to check, all of which should throw warnings
 # check_sf: whether to check the function with both sf = FALSE and sf = TRUE
+#   note that some endpoints return different numbers of columns depending on
+#   the format, so you may need to run the checks separately using `def_args`
 # check_null: whether to check the function with ONLY the default arguments
 rmacrostrat_test_checks <- function(fn, col_no, def_args = list(),
                                     check_args = list(), fail_args = list(),
