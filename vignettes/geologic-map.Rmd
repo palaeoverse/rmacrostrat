@@ -73,4 +73,10 @@ def_strat_names("hell creek")
 # References
 
 
-</style>
+</div>
+
+```{css echo = FALSE}
+p.caption {
+  display: none;
+}
+```
