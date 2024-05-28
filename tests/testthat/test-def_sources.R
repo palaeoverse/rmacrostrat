@@ -6,10 +6,14 @@ test_that("def_sources works", {
                           fail_args = list(lat = 43.03, # needs lng
                                            # invalid lng
                                            list(lat = 43.03, lng = -200),
+                                           # invalid lat
+                                           list(lat = 90, lng = -50),
                                            # wrong argument
                                            source_group = 70,
                                            # wrong type
                                            source_id = "test"),
                           warn_args = list(source_id = -604),
                           col_no = 12, check_null = TRUE)
+
+  expect_true(is.data.frame(def_sources(lat = 43.03, lng = -89.4, sf = FALSE)))
 })
