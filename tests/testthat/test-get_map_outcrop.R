@@ -7,6 +7,8 @@ test_that("get_map_outcrop works", {
                           fail_args = list(lat = 43, # needs lng
                                            # invalid longitude value
                                            list(lat = 43, lng = -300),
+                                           # invalid latitude value
+                                           list(lat = 110, lng = -89.3),
                                            # wrong argument
                                            scaley = TRUE,
                                            # wrong type
@@ -21,6 +23,8 @@ test_that("get_map_outcrop works", {
                           fail_args = list(lat = 43, # needs lng
                                            # invalid longitude value
                                            list(lat = 43, lng = -300),
+                                           # invalid latitude value
+                                           list(lat = 110, lng = -89.3),
                                            # wrong argument
                                            scaley = TRUE,
                                            # wrong type

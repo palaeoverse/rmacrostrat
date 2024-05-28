@@ -9,6 +9,8 @@ test_that("get_columns works", {
                                            age_top = 50, # needs age_bottom
                                            # invalid longitude value
                                            list(lat = 43, lng = -300),
+                                           # invalid latitude value
+                                           list(lat = -100, lng = -89),
                                            # age_top must be less
                                            list(age_top = 100, age_bottom = 50),
                                            # wrong argument

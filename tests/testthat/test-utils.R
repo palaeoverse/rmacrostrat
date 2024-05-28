@@ -1,3 +1,15 @@
-test_that("multiplication works", {
-  expect_equal(2 * 2, 4)
+test_that("utils works", {
+  expect_true(check_arguments(x = list(a = 1, b = "test", c = list(y = 0)),
+                              ref = list(a = "integer", b = "character",
+                                         c = "list")))
+
+  expect_error(check_arguments(x = list(a = 1, b = "test", c = list(y = 0)),
+                               ref = list(a = "character", b = "character",
+                                          c = "list")))
+
+  expect_error(check_arguments(x = list(x = 1, b = "test", c = list(y = 0)),
+                               ref = list(a = "integer", b = "character",
+                                          c = "list")))
+
+  expect_length(filter_null(list(a = NULL, b = 1, c = NULL)), 1)
 })

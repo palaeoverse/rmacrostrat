@@ -264,4 +264,10 @@ Peters, S.E. and Heim, N.A. 2010. The Geological Completeness of Paleontological
 
 Wickham, H. 2016. ggplot2: Elegant Graphics for Data Analysis. *Springer-Verlag New York*.
 
-</style>
+</div>
+
+```{css echo = FALSE}
+p.caption {
+  display: none;
+}
+```

@@ -9,9 +9,12 @@ test_that("get_sections works", {
                                             lithology = "sandstone",
                                             environ_type = "siliciclastic"),
                           fail_args = list(lat = 43, # needs lng
+                                           lng = 43, # needs lat
                                            age_top = 50, # needs age_bottom
                                            # invalid longitude value
                                            list(lat = 43, lng = -300),
+                                           # invalid latitude value
+                                           list(lat = 110, lng = -100),
                                            # age_top must be less
                                            list(age_top = 100, age_bottom = 50),
                                            # wrong argument
