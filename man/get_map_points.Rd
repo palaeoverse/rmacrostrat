@@ -73,7 +73,7 @@ using the definition functions (beginning with \code{def_}).
 \dontrun{
 ex1 <- get_map_points(point_id = 1)
 ex2 <- get_map_points(min_lng = -80, min_lat = 40,
-                      max_lng = -90, max_lat = 50)
+                      max_lng = -70, max_lat = 50)
 }
 }
 \seealso{

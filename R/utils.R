@@ -8,8 +8,7 @@
 #' @return A `NULL` filtered list of `x`.
 #' @keywords internal
 filter_null <- function(x) {
-  x <- x[!unlist(lapply(x, is.null))]
-  return(x)
+  Filter(Negate(is.null), x)
 }
 
 #' Check if arguments are valid (internal)

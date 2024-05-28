@@ -30,6 +30,7 @@ test_that("zzz works", {
   expect_true(nrow(res4) > 1)
 
   # errors and warnings
+  expect_error(GET_macrostrat("get_columns"))
   expect_error(GET_macrostrat("columns", query = list(interval_id = "Permian")))
   expect_error(GET_macrostrat("columns", query = list(interval_id = "Permian"),
                               format = "csv"))
