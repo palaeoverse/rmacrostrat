@@ -1,9 +1,9 @@
 ---
-title: "Making a geological outcrop map with rmacrostrat"
+title: "Making a geologic outcrop map with rmacrostrat"
 author: "Christopher D. Dean"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Making a geological outcrop map with rmacrostrat}
+  %\VignetteIndexEntry{Making a geologic outcrop map with rmacrostrat}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -23,11 +23,9 @@ load_all()
 <div style="text-align: justify">
 
 # Introduction
-
-`rmacrostrat` is an R package that allows users to easily retrieve geological data from the [Macrostrat](https://macrostrat.org) database and facilitate analyses within the R environment. This vignette (or tutorial if you prefer) is provided to guide you through the installation process and some of the functionality available within `rmacrostrat`. To do so, we will focus on making a geographic map of a specific geological formation, a commonly required (and very important) figure within a variety of papers across the geosciences. 
+`rmacrostrat` is an R package that allows users to easily retrieve geologic data from the [Macrostrat](https://macrostrat.org) database and facilitate analyses within the R environment. This vignette (or tutorial if you prefer) is provided to guide you through the installation process and some of the functionality available within `rmacrostrat`. To do so, we will focus on making a geographic map of a specific geologic formation, a commonly required (and very important) figure within a variety of papers across the geosciences. 
 
 # Installation
-
 The `rmacrostrat` package can be installed via CRAN or its dedicated [GitHub repository](https://github.com/palaeoverse/rmacrostrat) if the development version is preferred. To install via the CRAN, simply use:
 
 ```{r install, eval = FALSE}
@@ -43,35 +41,210 @@ devtools::install_github("palaeoverse/rmacrostrat")
 
 You can now load `rmacrostrat` using the default `library` function:
 
-```{r load-library, eval = FALSE}
+```{r load-library, eval = TRUE}
 library(rmacrostrat)
 ```
 
-**Before we get onto the good stuff, the development team has a small request**. If you use `rmacrostrat`` in your research, please cite the associated publication. This will help us to continue our work in supporting you to do yours. You can access the appropriate citation via:
+**Before we get onto the good stuff, the development team has a small request**. If you use `rmacrostrat` in your research, please cite the associated publication. This will help us to continue our work in supporting you to do yours. You can access the appropriate citation via:
 
-```{r eval = FALSE}
+```{r eval = TRUE}
 citation("rmacrostrat")
 ```
 
 # Context
-
-The Hell Creek is a geological formation from the late Cretaceous and early Paleogene of North America, which is  found cropping out across Montana, North and South Dakota, and Wyoming in the United States. It consists of both freshwater and brackish clays, mudstones, and sandstones, representing a fluvial system on the shoreline of the Western Interior Seaway. The Hell Creek is famous for its preservation of an extensive array of both terrestrial and marginal marine fossils, including widely recognisable dinosaurs such as *Edmontosaurus*, *Triceratops* and *Tyrannosaurus rex*. In this vignette, we will show you how to use `rmacrostrat` to find the outcrop of the Hell Creek Formation, and use this to create a map which could be used in a potential publication. Whilst we have chosen a specific formation, this methodology could be applied to any number of geological units of interest. So let's dive in!
+The Hell Creek is a geologic formation from the late Cretaceous and early Paleogene of North America, which is  found cropping out across Montana, North and South Dakota, and Wyoming in the United States. It consists of both freshwater and brackish clays, mudstones, and sandstones, representing a fluvial system on the shoreline of the Western Interior Seaway. The Hell Creek is famous for its preservation of an extensive array of both terrestrial and marginal marine fossils from just prior to the K/Pg mass extinction, including widely recognisable dinosaurs such as *Edmontosaurus*, *Triceratops* and *Tyrannosaurus rex*. In this vignette, we will show you how to use `rmacrostrat` to find the outcrop of the Hell Creek Formation, and use this to create a map which could be used in a potential publication. Whilst we have chosen a specific formation, this methodology could be applied to any number of geologic units of interest. So let's dive in!
 
 # Fetching
+First, we want to find the `strat_name_id`s that are associated with the Hell Creek, so we can grab all the available outcrop for the formation. We can do this by using some of the `def_` functions. These functions provide information about the information stored in the Macrostrat database. Let's have a look at the information associated with the Hell Creek Formation, using `def_strat_names()`:
 
-First, we want to find the `strat_name_id`s that are associated with the Hell Creek, so we can grab all the available outcrop for the formation. We can do this by using some of the `def_` functions. These functions provide information about the information stored in the Macrostrat database. Let's have a look at the information associated with the hell creek, using `def_strat_names()`:
+```{r def_strat_names, eval = TRUE}
+# Get information for the chosen formation
+hc_def <- def_strat_names(strat_name = "hell creek")
+hc_def
+```
+So we can see here that there are three different `strat_name`s associated with the Hell Creek. You'll also notice that these all contain the same `concept_id`, showing that this is one group of `strat_name`s which hopefully represent the same geologic entity. We can therefore use this `concept_id` to ensure we've got all mentions of the Hell Creek:
 
-```{r strat_names, include = FALSE, eval = TRUE}
-# Get definitions for the chosen formation
-def_strat_names("hell creek")
+```{r check concept, eval = TRUE}
+# Get information for the chosen formation
+def_strat_names(concept_id = 8598)
+```
+Yup, that's all the entries for the Hell Creek. But hang on! Before going ahead and using these to pull our spatial data, you'll also notice that one of the `strat_name`s here is actually the Hell Creek Member, which belongs to the Lance formation. Let's try getting the information again, this time specifying the stratigraphic rank of "Formation":
+
+```{r strat_name with rank, eval = T}
+# Get information for the chosen formation, specifying by stratigraphic rank
+hc_def <- def_strat_names(strat_name = "hell creek", rank = "Fm")
+hc_def
+```
+That's much better. Let's go ahead and use these `strat_name_id`s to get some spatial data. To do this, we'll need to use the `get_map_outcrop()` function, which allows us to grab outcrop polygons from geological maops. Let's do that now, specifying we want the output to be returned as an sf object. 
+
+```{r get_map_outcrop, eval = TRUE}
+# Get spatial outcrop information for the chosen formation
+hc <- get_map_outcrop(strat_name_id = hc_def$strat_name_id, sf = TRUE)
+```
+Nice. Let's have a look at the first entry to see what the data looks like.
+```{r hc, eval = TRUE}
+# Look at the first entry
+head(hc, n = 1)
+```
+That looks like what we need! Now let's move on to visualizing the data. 
+
+# Visualisation
+To plot our outcrop map, we'll have to load some packages that let us handle and plot spatial data. Let's do that now. 
+
+```{r map packages, eval = TRUE}
+# Load required packages
+library(rnaturalearth)
+library(ggplot2)
+library(sf)
+```
+
+First, we can use the package `rnaturalearth` to get the outlines of the USA, Canada and Mexico to use as a background. 
+
+```{r load countries, eval = TRUE}
+# Load background information
+n_a <- ne_states(country = "united states of america", returnclass = "sf")
+ca <- ne_states(country = "canada", returnclass = "sf")
+mx <- ne_states(country = "mexico", returnclass = "sf")
+```
+
+We then have to set the coordinate system of the outcrop data we've retrieved to match that of the state outlines. The `sf` package allows us to do this with a very simple line of code:
+
+```{r coords, eval = TRUE}
+# Set coordinate system
+st_crs(hc) <- st_crs(n_a)
+```
+
+Now we're ready to plot our outcrop! We can use the classic `ggplot2` package to help us do this, in particular the `geom_sf()` function. Let's plot our background maps and outcrop now:
+
+```{r plot outcrop, eval = TRUE}
+# Plot
+ggplot() +
+  geom_sf(data = n_a) + 
+  geom_sf(data = ca) +
+  geom_sf(data = hc,
+          color = '#a75224',
+          fill = '#C7622B') +
+  coord_sf(xlim = c(-112, -97), ylim = c(44, 50), expand = FALSE)
+```
+
+Looking good! But we can take this map a bit further. A common dinosaur found in the Hell Creek is *Edmontosaurus*, a large duck-billed dinosaur. Let's combine what we've got so far with data from [the Paleobiology Database](https://paleobiodb.org) to make a map of *Edmontosaurus* occurrences in the Hell Creek. 
+
+```{r plot Edmontosaurus, eval = TRUE}
+# Access PBDB API for Edmontosaurus occurrences from the Hell Creek
+ed <- read.csv("https://paleobiodb.org/data1.2/occs/list.csv?base_name=Edmontosaurus&strat=Hell%20Creek&pgm=gplates,scotese,seton&show=full,strat,lith,ref")
+# Turn points into spatial features
+ed_sf <- st_as_sf(x = ed,                         
+           coords = c("lng", "lat"))
+# Set coordinate system
+st_crs(ed_sf) <- st_crs(n_a)
+st_crs(hc) <- st_crs(n_a)
+# Plot
+ggplot() +
+  geom_sf(data = n_a) + 
+  geom_sf(data = ca) +
+  geom_sf(data = hc,
+          color = '#a75224',
+          fill = '#C7622B') +
+  geom_sf(data = ed_sf, 
+          color = 'black', 
+          size = 0.7) +
+  coord_sf(xlim = c(-112, -97), ylim = c(44, 50), expand = FALSE)
 
 ```
 
+Those occurrences are now plotted up on the map. You can notice that there are some that don't overlay the outcrop entirely, despite apparently being from the Hell Creek. This could be due to an error in the PBDB data, potentially relating to the accuracy of the latitude and longitude co-ordinates, or it could be that we're missing outcrop data of the Hell Creek. Either way, this shows that plotting occurrences up with their respective outcrop can a good way to explore potential data issues. 
 
-# Visualisation
+Asides from those errant occurrences, it's starting to look pretty good! But we can add a few more finishing touches to really make it pop. First, let's the use package [`rphylopic`](https://rphylopic.palaeoverse.org/index.html) to add a silhouette of *Edmontosaurus* to the map. 
+
+```{r add rphylopic, eval = TRUE}
+# Load the rphylopic package
+library(rphylopic)
+# Get an appropriate silhouette for Edmontosaurus
+ed.uuid <- get_uuid(name = "Edmontosaurus", n = 3)[[3]]
+# Get the credit for the author of the image
+get_attribution(uuid = ed.uuid)
+# Setup data.frame for the silhouette
+silhouette_df <- data.frame(x = -99, y = 49.5, name = "Edmontosaurus")
+# Plot the map
+ggplot() +
+  geom_sf(data = n_a) + 
+  geom_sf(data = ca) +
+  geom_sf(data = hc,
+          color = '#a75224',
+          fill = '#C7622B',
+          lwd = 0) +
+  geom_sf(data = ed_sf, 
+          color = 'black', 
+          size = 0.7) +
+  coord_sf(xlim = c(-112, -97), ylim = c(44, 50), expand = FALSE) +
+  geom_phylopic(data = silhouette_df, aes(x = x, y = y), 
+              uuid = ed.uuid, 
+              size = 0.8, 
+              alpha = 1, 
+              color = "black") +
+  labs(x = "", y = "")
+
+```
+
+Nice! Finally, we can add a few other touches to make it a publication worthy figure, including an inlay map and a scale bar:
+
+``` {r add inlay and scale, evail = TRUE}
+# Load `ggpatial` package to add annotations, and `cowplot` to stitch final map 
+# together
+library(ggspatial)
+library(cowplot)
+# Make an inlay using the country maps we included earlier
+inset <- n_a %>% 
+  ggplot() + 
+  geom_sf() +
+  geom_sf(data = ca) + 
+  geom_sf(data = mx) +
+  geom_rect(xmin = -112, xmax = -97, ymin = 44, ymax = 50, 
+            color = "red", fill = NA) +
+  xlim(-130, -70) +
+  ylim(30, 70) +
+  labs(x = NULL, y = NULL) +
+  theme_test() + 
+  theme(axis.text = element_blank(),
+        axis.ticks = element_blank(),
+        axis.ticks.length = unit(0, "pt"),
+        axis.title=element_blank(),
+        plot.margin = margin(0, 0, 0, 0, "cm"),
+        panel.background = element_rect(fill = "lightblue"))
+# Add a scale bar and new theme to the original map and save it
+ed_hc_map <- ggplot() +
+  geom_sf(data = n_a) + 
+  geom_sf(data = ca) +
+  geom_sf(data = hc,
+          color = '#a75224',
+          fill = '#C7622B',
+          lwd = 0) +
+  geom_sf(data = ed_sf, 
+          color = 'black', 
+          size = 0.7) +
+  coord_sf(xlim = c(-112, -97), ylim = c(44, 50), expand = FALSE) +
+  annotation_scale(location = "br", width_hint = 0.3) +
+  geom_phylopic(data = silhouette_df, aes(x = x, y = y), 
+              uuid = ed.uuid, 
+              size = 0.8, 
+              alpha = 1, 
+              color = "black") +
+  labs(x = "", y = "") +
+  theme_bw()
+# Plot the two together
+ggdraw() +
+  draw_plot(ed_hc_map) +
+  draw_plot(inset, 0.08, 0.63, width = 0.2, height = 0.2)
+```
+
+And that's it! One completed map. 
+
+Hopefully this vignette has shown you the potential uses for `rmacrostrat` functions and helped provide a workflow for your own analyses. If you have any questions about the package or its functionality, please feel free to join our [Palaeoverse Google group](https://groups.google.com/g/palaeoverse) and leave a question; we'll aim to answer it as soon as possible!
+
+If you're interested in learning more about `rmacrostrat`, don't forget to check out our other vignettes! You can see which ones are available by calling `vignette(package = "rmacrostrat")`.
 
 # References
-
+Gearty, W., and Jones, L.A., 2023, rphylopic: An R package for fetching, transforming, and visualising PhyloPic silhouettes: Methods in Ecology and Evolution, v. 14, p. 2700–2708, doi:10.1111/2041-210X.14221.
 
 </div>
 
