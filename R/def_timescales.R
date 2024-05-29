@@ -8,11 +8,11 @@
 #'   \item \code{timescale_id}: The unique identification number of the
 #'   timescale.
 #'   \item \code{timescale}: The name of the timescale.
-#'   \item \code{n_intervals}: The number of intervals within the timescale.
 #'   \item \code{max_age}: The maximum age coverage of the timescale in
 #'   millions of years before present.
 #'   \item \code{min_age}: The minimum age coverage of the timescale in
 #'   millions of years before present.
+#'   \item \code{n_intervals}: The number of intervals within the timescale.
 #'   \item \code{ref_id}: The unique identification number of the associated
 #'   reference.
 #' }
