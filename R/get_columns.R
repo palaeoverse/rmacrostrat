@@ -80,78 +80,78 @@
 #' @return A \code{data.frame} containing the following columns:
 #' \itemize{
 #'   \item \code{col_id}: The unique identification number of the Macrostrat
-#'   column.
+#'     column.
 #'   \item \code{col_name}: The name of the Macrostrat column.
 #'   \item \code{col_group}: Name of the group the column belongs to. Generally
-#'   corresponds to geologic provinces.
+#'     corresponds to geologic provinces.
 #'   \item \code{col_group_id}: The unique identification number of the group to
-#'   which the column belongs.
+#'     which the column belongs.
 #'   \item \code{group_col_id}: The original column ID assigned to the column
-#'   (used in the original source).
+#'     (used in the original source).
 #'   \item \code{lat}: Decimal degree latitude of the column centroid.
 #'   \item \code{lng}: Decimal degree longitude of the column centroid.
 #'   \item \code{col_area}: The area of the Macrostrat column in
-#'   km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}}.
+#'     km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}}.
 #'   \item \code{project_id}: The unique identification number for project.
-#'   Corresponds to general geographic region.
+#'     Corresponds to general geographic region.
 #'   \item \code{col_type}: The type of column.
 #'   \item \code{refs}: The unique identification number(s) for the reference(s)
 #'     associated with the column.
 #'   \item \code{max_thick}: Maximum unit thickness in meters.
 #'   \item \code{max_min_thick}: The maximum possible minimum thickness in
-#'   meters.
+#'     meters.
 #'   \item \code{min_min_thick}: The minimum possible minimum thickness in
-#'   meters.
+#'     meters.
 #'   \item \code{b_age}: The estimated bottom age of the column, in millions of
-#'   years before present.
+#'     years before present.
 #'   \item \code{t_age}: The estimated top age of the column, in millions of
-#'   years before present.
+#'     years before present.
 #'   \item \code{b_int_name}: The name of the time interval represented at the
-#'   bottom of the column.
+#'     bottom of the column.
 #'   \item \code{t_int_name}: The name of the time interval represented at the
-#'   top of the column.
+#'     top of the column.
 #'   \item \code{pbdb_collections}: The number of PBDB collections contained
-#'   within the column.
+#'     within the column.
 #'   \item \code{lith}: a \code{data.frame} containing the lithologies present
-#'   within the column, with the following columns:
+#'     within the column, with the following columns:
 #'   \itemize{
 #'      \item \code{name}: The named lithology (e.g., "sandstone").
 #'      \item \code{type}: The named lithology type (e.g., "siliciclastic").
 #'      \item \code{class}: The named lithology class (e.g., "sedimentary").
 #'      \item \code{prop}: The proportion of the lithology within the column,
-#'      calculated from the individual Macrostrat units within the column.
+#'        calculated from the individual Macrostrat units within the column.
 #'      \item \code{lith_id}: The unique identification number of the lithology.
 #'   }}
 #'   \itemize{
 #'   \item \code{environ}: a \code{data.frame} containing the environments
-#'   present within the column, with the following columns:
+#'     present within the column, with the following columns:
 #'   \itemize{
 #'      \item \code{name}: The named environment (e.g., "delta plain").
 #'      \item \code{type}: The named environment type (e.g., "siliciclastic").
 #'      \item \code{class}: The named environment class (e.g., "marine").
 #'      \item \code{prop}: The proportion of the environment within the column,
-#'      calculated from the individual Macrostrat units within the column.
+#'        calculated from the individual Macrostrat units within the column.
 #'      \item \code{environ_id}: The unique identification number of the
-#'      environment.
+#'        environment.
 #'   }}
 #'   \itemize{
 #'   \item \code{econ}: a \code{data.frame} containing the economic attributes
-#'   present within the column, with the following columns:
+#'     present within the column, with the following columns:
 #'   \itemize{
 #'      \item \code{name}: The named economic attribute (e.g., "gold").
 #'      \item \code{type}: The named economic attribute type (e.g., "mineral").
 #'      \item \code{class}: The named economic attribute class (e.g., "precious
-#'      commodity").
+#'        commodity").
 #'      \item \code{prop}: The proportion of the economic attribute out of
-#'      potential economic attributes contained within the column, calculated
-#'      from the individual Macrostrat units within the column.
+#'        potential economic attributes contained within the column, calculated
+#'        from the individual Macrostrat units within the column.
 #'      \item \code{econ_id}: The unique identification number of the economic
-#'      attribute.
+#'        attribute.
 #'   }
 #'   \item \code{t_units}: The total number of units contained within the
-#'   column.
+#'     column.
 #'   \item \code{t_sections}: The total number of sections contained within the
-#'   column.
+#'     column.
 #' }
 #'   If `sf` is `TRUE`, an `sf` object is returned instead, with the same
 #'   columns plus a "geometry" column that contains the spatial data.
