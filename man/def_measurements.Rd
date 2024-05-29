@@ -2,7 +2,7 @@
 % Please edit documentation in R/def_measurements.R
 \name{def_measurements}
 \alias{def_measurements}
-\title{Retrieve measurement definitions}
+\title{Define measurements}
 \usage{
 def_measurements(
   measure_id = NULL,
@@ -26,11 +26,12 @@ This is a more inclusive grouping than \code{measurement_type}.}
 \value{
 A \code{data.frame} containing the following columns:
 \itemize{
-\item \code{measure_id}: Unique identification number of the measurement.
+\item \code{measure_id}: The unique identification number of the
+measurement.
 \item \code{name}: The name of the measurement.
 \item \code{type}: Measurement type, less inclusive than class
 \item \code{class}: Measurement class, more inclusive than type.
-\item \code{t_units}: Total number of Macrostrat units containing this
+\item \code{t_units}: The total number of Macrostrat units containing this
 measurement.
 }
 }
@@ -39,11 +40,21 @@ A function to retrieve the definitions of different measurements
 that are included in the Macrostrat database. By default, all definitions
 are returned.
 }
+\section{Developer(s)}{
+
+William Gearty
+}
+
+\section{Reviewer(s)}{
+
+Christopher D. Dean
+}
+
 \examples{
 \dontrun{
-# get all definitions
+# Return all definitions
 ex1 <- def_measurements()
-# get a subset of definitions
+# Return subsets of definitions
 ex2 <- def_measurements(measure_id = c(1, 2, 4))
 ex3 <- def_measurements(measurement_class = "geochemical")
 }
@@ -63,9 +74,6 @@ Geologic features and attributes:
 \code{\link{def_lithology_att}()},
 \code{\link{def_minerals}()},
 \code{\link{def_structures}()}
-}
-\author{
-William Gearty
 }
 \concept{defs_feat}
 \concept{external}
