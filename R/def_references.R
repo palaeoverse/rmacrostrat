@@ -8,7 +8,7 @@
 #' @return A \code{data.frame} containing the following columns:
 #' \itemize{
 #'   \item \code{ref_id}: The unique identification number(s) for the
-#'    reference(s).
+#'     reference(s).
 #'   \item \code{pub_year}: The year of publication of the reference.
 #'   \item \code{author}: The author(s) of the reference.
 #'   \item \code{ref}: The name of the reference.
@@ -16,12 +16,12 @@
 #'   \item \code{url}: A URL where additional information, the source, or
 #'     contributing publication can be found.
 #'   \item \code{t_units}: The total number of Macrostrat units associated with
-#'   the reference.
+#'     the reference.
 #' }
 #' @section Developer(s):
-#'  William Gearty
+#'   William Gearty
 #' @section Reviewer(s):
-#'  Bethany Allen
+#'   Bethany Allen
 #' @examples
 #' \dontrun{
 #' # Return all references
