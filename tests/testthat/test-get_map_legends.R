@@ -6,7 +6,10 @@ test_that("get_map_legends works", {
                           fail_args = list(# wrong argument
                                            lithology_set = "sedimentary",
                                            # wrong type
-                                           source_id = "test"),
+                                           source_id = "test",
+                                           # invalid values
+                                           scale = "teeny",
+                                           carto = "teeny"),
                           warn_args = list(source_id = -1),
                           col_no = 24)
 })

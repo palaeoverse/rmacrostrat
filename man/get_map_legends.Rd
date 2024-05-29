@@ -103,21 +103,28 @@ scale.
 }
 }
 \description{
-A function to retrieve legends from various geological maps.
+A function to retrieve legend components from various geological
+maps.
 }
 \details{
 Potential Macrostrat map scales are "tiny" (global), "small"
 (continental), "medium" (regional), or "large" (local).
 }
-\section{Reviewer}{
- N/A
+\section{Developer(s)}{
+
+Christopher D. Dean
+}
+
+\section{Reviewer(s)}{
+
+William Gearty
 }
 
 \examples{
 \dontrun{
- ex1 <- head(get_map_legends(source_id = 1))
- ex2 <- head(get_map_legends(lithology_type = "sedimentary"))
- ex3 <- head(get_map_legends(comments = "breccia"))
+ ex1 <- get_map_legends(source_id = 1)
+ ex2 <- get_map_legends(lithology_type = "sedimentary")
+ ex3 <- get_map_legends(comments = "breccia")
 }
 }
 \seealso{
@@ -125,8 +132,5 @@ Geologic maps:
 \code{\link{def_sources}()},
 \code{\link{get_map_outcrop}()},
 \code{\link{get_map_points}()}
-}
-\author{
-Christopher D. Dean
 }
 \concept{maps}

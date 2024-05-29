@@ -1,5 +1,8 @@
 #' @title Retrieve geologic map legend data
-#' @description A function to retrieve legends from various geological maps.
+#'
+#' @description A function to retrieve legend components from various geological
+#'   maps.
+#'
 #' @param source_id \code{integer}. Filter legend components to those in sources
 #'   specified by their unique identification number(s).
 #' @param lithology_id \code{integer}. Filter legend components to those
@@ -62,29 +65,34 @@
 #'   \item \code{color}: Recommended color for plotting the outcrop shape
 #'     element based on the dominant lithology.
 #'   \item \code{area}: The area of the outcrop shape element in
-#'   km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}}.
+#'     km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}}.
 #'   \item \code{tiny_area}: The area of the outcrop shape element in
-#'   km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}} at "tiny" Macrostrat map
-#'   scale.
+#'     km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}} at "tiny" Macrostrat map
+#'     scale.
 #'   \item \code{small_area}: The area of the outcrop shape element in
-#'   km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}} at "small" Macrostrat map
-#'   scale.
+#'     km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}} at "small" Macrostrat map
+#'     scale.
 #'   \item \code{medium_area}: The area of the outcrop shape element in
-#'   km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}} at "medium" Macrostrat map
-#'   scale.
+#'     km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}} at "medium" Macrostrat map
+#'     scale.
 #'   \item \code{large_area}: The area of the outcrop shape element in
-#'   km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}} at "large" Macrostrat map
-#'   scale.
+#'     km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}} at "large" Macrostrat map
+#'     scale.
 #'   }
-#' @author Christopher D. Dean
-#' @section Reviewer: N/A
+#'
+#' @section Developer(s):
+#'   Christopher D. Dean
+#' @section Reviewer(s):
+#'   William Gearty
+#'
 #' @details Potential Macrostrat map scales are "tiny" (global), "small"
 #'   (continental), "medium" (regional), or "large" (local).
+#'
 #' @examples
 #' \dontrun{
-#'  ex1 <- head(get_map_legends(source_id = 1))
-#'  ex2 <- head(get_map_legends(lithology_type = "sedimentary"))
-#'  ex3 <- head(get_map_legends(comments = "breccia"))
+#'  ex1 <- get_map_legends(source_id = 1)
+#'  ex2 <- get_map_legends(lithology_type = "sedimentary")
+#'  ex3 <- get_map_legends(comments = "breccia")
 #' }
 #' @export
 #' @family maps
@@ -102,6 +110,18 @@ get_map_legends <- function(source_id = NULL,
     carto = "character"
   )
   check_arguments(x = args, ref = ref)
+  if (!is.null(scale)) {
+    if (! scale %in% c("tiny", "small", "medium", "large")) {
+      stop(paste("Invalid value for `scale`. Only \"tiny\", \"small\",",
+                 "\"medium\", or \"large\" is allowed."))
+    }
+  }
+  if (!is.null(carto)) {
+    if (! carto %in% c("tiny", "small", "medium", "large")) {
+      stop(paste("Invalid value for `carto`. Only \"tiny\", \"small\",",
+                 "\"medium\", or \"large\" is allowed."))
+    }
+  }
 
   # Recode names
   api_names <- list(lithology_class = "lith_class",
@@ -112,10 +132,9 @@ get_map_legends <- function(source_id = NULL,
   # Replace names
   names(args)[rpl] <- as.vector(unlist(api_names))
 
-  # Set default for format
-  format <- "json"
   # Get request
-  dat <- GET_macrostrat(endpoint = "geologic_units/map/legend", query = args, format = format)
+  dat <- GET_macrostrat(endpoint = "geologic_units/map/legend", query = args,
+                        format = "json")
 
   # Return data
   return(dat)
