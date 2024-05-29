@@ -72,8 +72,8 @@ elements from various sources.</p>
     <div class="section level2">
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
     <dl><dt>map_id</dt>
-<dd><p><code>integer</code>. The unique identification number(s) of the map
-outcrop shape element(s) to return.</p></dd>
+<dd><p><code>integer</code>. The unique identification number(s) of the
+map outcrop shape element(s) to return.</p></dd>
 
 
 <dt>unit_id</dt>
@@ -119,9 +119,10 @@ element.</p></li>
 map.</p></li>
 <li><p><code>name</code>: The name of the outcrop shape element in the original
 (or modified) source geologic map.</p></li>
-<li><p><code>strat_name</code>: The geologic name(s) of the outcrop shape element.</p></li>
-<li><p><code>lith</code>: The lithology of the outcrop shape element as defined in
-the geologic map source in plain text.</p></li>
+<li><p><code>strat_name</code>: The geologic name(s) of the outcrop shape
+element.</p></li>
+<li><p><code>lith</code>: The lithology of the outcrop shape element as defined
+in the geologic map source in plain text.</p></li>
 <li><p><code>descrip</code>: Description of the outcrop shape element in plain
 text.</p></li>
 <li><p><code>comments</code>: Notes assigned to the outcrop shape element.</p></li>
@@ -131,40 +132,50 @@ element.</p></li>
 <li><p><code>strat_names</code>: A vector containing the unique identification
 number(s) for known stratigraphic unit name(s) matched to the outcrop
 shape element (see <code><a href="def_strat_names.html">def_strat_names()</a></code>).</p></li>
-<li><p><code>liths</code>: A vector containing the unique identification number(s)
-of the lithology(ies) represented within the outcrop shape element (see
-<code><a href="def_lithologies.html">def_lithologies()</a></code>).</p></li>
-<li><p><code>t_int_id</code>: The identification number of the chronostratigraphic
-interval containing the top boundary of the outcrop shape element.</p></li>
+<li><p><code>liths</code>: A vector containing the unique identification
+number(s) of the lithology(ies) represented within the outcrop shape
+element (see <code><a href="def_lithologies.html">def_lithologies()</a></code>).</p></li>
+<li><p><code>t_int_id</code>: The identification number of the
+chronostratigraphic interval containing the top boundary of the outcrop
+shape element.</p></li>
 <li><p><code>t_int_age</code>: The top age of the chronostratigraphic interval
 containing the top boundary of the outcrop shape element.</p></li>
 <li><p><code>t_int_name</code>: The name of the chronostratigraphic interval
 containing the top boundary of the outcrop shape element.</p></li>
-<li><p><code>b_int_id</code>: The identification number of the chronostratigraphic
+<li><p><code>b_int_id</code>: The identification number of the
+chronostratigraphic interval containing the bottom boundary of the
+outcrop shape element.</p></li>
+<li><p><code>b_int_age</code>: The bottom age of the chronostratigraphic
 interval containing the bottom boundary of the outcrop shape element.</p></li>
-<li><p><code>b_int_age</code>: The bottom age of the chronostratigraphic interval
-containing the bottom boundary of the outcrop shape element.</p></li>
 <li><p><code>b_int_name</code>: The name of the chronostratigraphic interval
 containing the bottom boundary of the outcrop shape element.</p></li>
 <li><p><code>color</code>: Recommended color for plotting the outcrop shape
 element based on the dominant lithology.</p></li>
-<li><p><code>t_age</code>: The estimated top age of the outcrop shape element, in
-millions of years before present.</p></li>
-<li><p><code>b_age</code>: The estimated bottom age of the outcrop shape element,
-in millions of years before present.</p></li>
-<li><p><code>best_int_name</code>: The best/most representative interval name for
-the outcrop shape element.</p></li>
+<li><p><code>t_age</code>: The estimated top age (minimum age) of the outcrop
+shape element, in millions of years before present.</p></li>
+<li><p><code>b_age</code>: The estimated bottom age (maximum age) of the outcrop
+shape element, in millions of years before present.</p></li>
+<li><p><code>best_int_name</code>: The best/most representative interval name
+for the outcrop shape element.</p></li>
 </ul><p>If <code>sf</code> is <code>TRUE</code> (the default), an <code>sf</code> object is returned instead, with
 the same columns plus a "geometry" column that contains the spatial data.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>More information can be found for the inputs for this function using
-the definition functions (beginning with <code>def_</code>).</p>
+    <p>More information can be found for the inputs for this function
+using the definition functions (beginning with <code>def_</code>).</p>
     </div>
     <div class="section level2">
-    <h2 id="reviewer">Reviewer<a class="anchor" aria-label="anchor" href="#reviewer"></a></h2>
-    <p>N/A</p>
+    <h2 id="developer-s-">Developer(s)<a class="anchor" aria-label="anchor" href="#developer-s-"></a></h2>
+    
+
+<p>William Gearty</p>
+    </div>
+    <div class="section level2">
+    <h2 id="reviewer-s-">Reviewer(s)<a class="anchor" aria-label="anchor" href="#reviewer-s-"></a></h2>
+    
+
+<p>Lewis A. Jones</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -172,10 +183,6 @@ the definition functions (beginning with <code>def_</code>).</p>
 <code><a href="def_sources.html">def_sources</a>()</code>,
 <code><a href="get_map_legends.html">get_map_legends</a>()</code>,
 <code><a href="get_map_points.html">get_map_points</a>()</code></p></div>
-    </div>
-    <div class="section level2">
-    <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
-    <p>William Gearty</p>
     </div>
 
     <div class="section level2">
