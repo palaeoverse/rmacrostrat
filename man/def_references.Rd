@@ -2,7 +2,7 @@
 % Please edit documentation in R/def_references.R
 \name{def_references}
 \alias{def_references}
-\title{Retrieve reference definitions}
+\title{Define references}
 \usage{
 def_references(ref_id = NULL)
 }
@@ -14,21 +14,33 @@ references are returned.}
 \value{
 A \code{data.frame} containing the following columns:
 \itemize{
-\item \code{ref_id}: Unique identification number for the reference.
-\item \code{pub_year}: The year of publication for the reference.
-\item \code{author}: The author of the reference.
+\item \code{ref_id}: The unique identification number(s) for the
+reference(s).
+\item \code{pub_year}: The year of publication of the reference.
+\item \code{author}: The author(s) of the reference.
 \item \code{ref}: The name of the reference.
 \item \code{doi}: The digital object identifier of the reference.
-\item \code{url}: URL where additional information, the source, or
+\item \code{url}: A URL where additional information, the source, or
 contributing publication can be found.
-\item \code{t_units}: Total number of Macrostrat units associated with the
-reference.
+\item \code{t_units}: The total number of Macrostrat units associated with
+the reference.
 }
 }
 \description{
 A function to retrieve the definitions for one or more published
-scientific references. By default, all reference definitions are returned.
+scientific references in the Macrostrat database. By default, all reference
+definitions are returned.
 }
+\section{Developer(s)}{
+
+William Gearty
+}
+
+\section{Reviewer(s)}{
+
+Bethany Allen
+}
+
 \examples{
 \dontrun{
 # Return all references
@@ -42,8 +54,5 @@ Macrostrat database metadata:
 \code{\link{def_projects}()},
 \code{\link{def_sources}()},
 \code{\link{get_stats}()}
-}
-\author{
-William Gearty
 }
 \concept{meta}
