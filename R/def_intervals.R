@@ -1,8 +1,8 @@
-#' @title Retrieve Macrostrat time interval definitions
+#' @title Define Macrostrat time intervals
 #'
 #' @description A function to retrieve Macrostrat time interval definitions
-#'   matching a user-specific search criteria. If no arguments are specified,
-#'   all time interval definitions are returned.
+#'   matching a user-specific search criteria. If no arguments are specified
+#'   (the default), all time interval definitions are returned.
 #'
 #' @param timescale \code{character}. The name of the desired timescale to
 #'   return a definition for (e.g., "international epochs").
@@ -34,21 +34,33 @@
 #' @return A `data.frame` containing the following columns:
 #' \itemize{
 #'   \item \code{int_id}: The unique identification number of the time
-#'   interval.
+#'     interval.
 #'   \item \code{name}: The name of the time interval.
 #'   \item \code{abbrev}: The standard abbreviation for the time interval
-#'   name.
+#'     name, if one exists.
 #'   \item \code{t_age}: The top age (minimum age) in millions of years
-#'   before present.
+#'     before present.
 #'   \item \code{b_age}: The bottom age (maximum age) in millions of years
-#'   before present.
-#'   \item \code{int_type}: The temporal rank of the interval (e.g. "age",
-#'   "epoch").
+#'     before present.
+#'   \item \code{int_type}: The temporal rank of the interval (e.g., "age",
+#'     "epoch", "chron").
+#'   \item \code{timescales}: A \code{data.frame} containing the timescale(s)
+#'     that the interval is included in (see [def_timescales()] for more
+#'     details), with the following columns:
+#'   \itemize{
+#'      \item \code{timescale_id}: The unique identification number of the
+#'        timescale.
+#'      \item \code{name}: The name of the timescale.
+#'   }
 #'   \item \code{color}: The recommended coloring for units based on dominant
-#'   lithology.
+#'     lithology.
 #' }
 #'
-#' @author Lewis A. Jones
+#' @section Developer(s):
+#'   Lewis A. Jones
+#'
+#' @section Reviewer(s):
+#'   William Gearty
 #'
 #' @examples
 #' \dontrun{
