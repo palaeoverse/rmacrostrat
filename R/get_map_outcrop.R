@@ -27,7 +27,7 @@
 #'   \item \code{source_id}: The identification number of the source geologic
 #'     map.
 #'   \item \code{name}: The name of the outcrop shape element in the original
-#'   (or modified) source geologic map.
+#'     (or modified) source geologic map.
 #'   \item \code{strat_name}: The geologic name(s) of the outcrop shape
 #'     element.
 #'   \item \code{lith}: The lithology of the outcrop shape element as defined
