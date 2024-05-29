@@ -2,7 +2,7 @@
 % Please edit documentation in R/def_columns.R
 \name{def_columns}
 \alias{def_columns}
-\title{Retrieve definitions for Macrostrat columns}
+\title{Define Macrostrat columns}
 \usage{
 def_columns(
   column_id = NULL,
@@ -31,34 +31,48 @@ definition for. Either "active", "in process", or "obsolete".}
 \value{
 A \code{data.frame} containing the following columns:
 \itemize{
-\item \code{col_id}: Unique identification number for the column.
-\item \code{col_group_id}: The identification number of the group to which
-the column belongs.
-\item \code{col_name}: Name of the column.
-\item \code{lat}: Latitude in WGS84 of the centroid of the column.
-\item \code{lng}: Longitude in WGS84 of the centroid of the column.
+\item \code{col_id}: The unique identification number for the column.
+\item \code{col_group_id}: The unique identification number of the group to
+which the column belongs.
+\item \code{col_name}: The name of the column.
+\item \code{lat}: Latitude of the centroid of the column.
+\item \code{lng}: Longitude of the centroid of the column.
 \item \code{col_area}: Area of the Macrostrat column,
 in km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}}.
-\item \code{project_id}: Unique identification number for the column's
-project, corresponds to general geographic region.
-\item \code{t_units}: Total number of Macrostrat units within the column.
-\item \code{ref_id}: Unique identification number for the reference
+\item \code{max_thick}: Maximum unit thickness in meters.
+\item \code{ref_id}: The unique identification number for the reference
 associated with the column.
 \item \code{status}: Indicates the current status of the column (values are
 'active', 'in process', and 'obsolete').
+\item \code{t_units}: Total number of Macrostrat units contained within the
+column.
+\item \code{project_id}: The unique identification number for the column's
+project. Corresponds to general geographic region.
+\item \code{notes}: Column specific notes.
 }
 }
 \description{
 A function to retrieve the definitions for Macrostrat columns.
 By default, all definitions are returned.
 }
+\section{Developer(s)}{
+
+William Gearty
+}
+
+\section{Reviewer(s)}{
+
+Christopher D. Dean
+}
+
 \examples{
 \dontrun{
-# get all column definitions
+# Return all column definitions
 ex1 <- def_columns()
-# get subset of column definitions
+# Return subsets of column definitions
 ex2 <- def_columns(column_group_id = 17)
-ex3 <- def_columns(column_name = "Eastern Kentucky")
+ex3 <- def_columns(column_id = c(22,24))
+ex4 <- def_columns(column_name = "Eastern Kentucky")
 }
 }
 \seealso{
@@ -67,8 +81,5 @@ Macrostrat data entities:
 \code{\link{get_columns}()},
 \code{\link{get_sections}()},
 \code{\link{get_units}()}
-}
-\author{
-William Gearty
 }
 \concept{macrostrat}
