@@ -6,6 +6,7 @@ test_that("def_sources works", {
                           fail_args = list(lat = 43.03, # needs lng
                                            # invalid lng
                                            list(lat = 43.03, lng = -200),
+                                           # invalid lat
                                            list(lat = 200, lng = -89.4),
                                            # wrong argument
                                            source_group = 70,

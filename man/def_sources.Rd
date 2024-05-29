@@ -64,14 +64,24 @@ A function to retrieve the definitions for one or more geologic
 map sources in the Macrostrat database. By default, all source definitions
 are returned.
 }
+\section{Developer(s)}{
+
+William Gearty
+}
+
+\section{Reviewer(s)}{
+
+Lewis A. Jones
+}
+
 \examples{
 \dontrun{
-# get all sources
+# Get all sources
 ex1 <- def_sources()
-# get subset of sources
+# Get subset of sources
 ex2 <- def_sources(source_id = c(1,2,4))
 ex3 <- def_sources(lat = 43.03, lng = -89.4, scale = "large")
-# use WKT representation
+# Use WKT representation
 library(sf)
 line <- st_linestring(x = matrix(c(-122.3438, 37,-89.3527, 43.0582),
                                  byrow = TRUE, ncol = 2))
@@ -88,9 +98,6 @@ Macrostrat database metadata:
 \code{\link{def_projects}()},
 \code{\link{def_references}()},
 \code{\link{get_stats}()}
-}
-\author{
-William Gearty
 }
 \concept{maps}
 \concept{meta}

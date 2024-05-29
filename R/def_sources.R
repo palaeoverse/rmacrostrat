@@ -1,7 +1,9 @@
 #' @title Retrieve geologic map source definitions
+#'
 #' @description A function to retrieve the definitions for one or more geologic
 #'   map sources in the Macrostrat database. By default, all source definitions
 #'   are returned.
+#'
 #' @param source_id \code{integer}. The unique identification number(s) of the
 #'   desired source(s) to return a definition for.
 #' @param lat \code{numeric}. A valid latitude in decimal degrees to return a
@@ -17,6 +19,7 @@
 #'   (global), "small" (continental), "medium" (regional), or "large" (local).
 #' @param sf \code{logical}. Should the results be returned as an `sf` object?
 #'   Defaults to `TRUE`. If `FALSE`, a `data.frame` is returned.
+#'
 #' @return A \code{data.frame} containing the following columns:
 #' \itemize{
 #'   \item \code{source_id}: Identification number of the geologic map source.
@@ -37,15 +40,21 @@
 #' }
 #'   If `sf` is `TRUE` (the default), an `sf` object is returned instead, with
 #'   the same columns plus a "geometry" column that contains the spatial data.
-#' @author William Gearty
+#'
+#' @section Developer(s):
+#'  William Gearty
+#'
+#' @section Reviewer(s):
+#'  Lewis A. Jones
+#'
 #' @examples
 #' \dontrun{
-#' # get all sources
+#' # Get all sources
 #' ex1 <- def_sources()
-#' # get subset of sources
+#' # Get subset of sources
 #' ex2 <- def_sources(source_id = c(1,2,4))
 #' ex3 <- def_sources(lat = 43.03, lng = -89.4, scale = "large")
-#' # use WKT representation
+#' # Use WKT representation
 #' library(sf)
 #' line <- st_linestring(x = matrix(c(-122.3438, 37,-89.3527, 43.0582),
 #'                                  byrow = TRUE, ncol = 2))
@@ -55,7 +64,8 @@
 #' @family maps
 #' @family meta
 def_sources <- function(source_id = NULL, lat = NULL, lng = NULL,
-                        shape = NULL, buffer = NULL, scale = NULL, sf = TRUE) {
+                        shape = NULL, buffer = NULL, scale = NULL,
+                        sf = TRUE) {
   # Error handling
   # Collect input arguments as a list
   args <- as.list(environment())
@@ -66,8 +76,7 @@ def_sources <- function(source_id = NULL, lat = NULL, lng = NULL,
   check_arguments(x = args, ref = ref)
   if (!is.null(lat) || !is.null(lng)) {
     if (is.null(lat) || is.null(lng)) {
-      stop("`lat` and `lng` must both be specified to filter by an
-           age range.")
+      stop("`lat` and `lng` must both be specified to filter by location.")
     }
     if (lng >= 180 || lng <= -180) {
       stop("`lng` should be less than 180 and more than -180.")
@@ -81,7 +90,6 @@ def_sources <- function(source_id = NULL, lat = NULL, lng = NULL,
   # Get request
   dat <- GET_macrostrat(endpoint = "defs/sources", query = args,
                         format = format)
-
   # Return data
   return(dat)
 }
