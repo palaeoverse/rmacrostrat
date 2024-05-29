@@ -18,7 +18,7 @@ def_environments(
 \item{environ_type}{\code{character}. The name of a type of environment
 (e.g., "carbonate") to return a definition for.}
 
-\item{environ_class}{\code{character}. The name of a class of envrionment
+\item{environ_class}{\code{character}. The name of a class of environment
 (e.g., "marine") to return a definition for.}
 
 \item{environ_id}{\code{integer}. The unique identification number of the
@@ -35,7 +35,7 @@ environment.
 \item \code{color}: Recommended coloring for environment, based on the
 dominant lithology.
 \item \code{t_units}: The total number of Macrostrat units that are
-partially or entirely composed of the environment.
+partially, or entirely, composed of the environment.
 }
 }
 \description{
@@ -43,20 +43,24 @@ A function to retrieve the definitions for one or more
 environments in the Macrostrat database. By default, all environment
 definitions are returned.
 }
-\section{Reviewer}{
- N/A
+\section{Developer(s)}{
+
+Christopher D. Dean
+}
+
+\section{Reviewer(s)}{
+
+Lewis A. Jones
 }
 
 \examples{
 \dontrun{
-if (interactive()) {
 # Return all environment definitions
 ex1 <- def_environments()
 # Return subsets of environment definitions
 ex2 <- def_environments(environ = "reef")
 ex3 <- def_environments(environ_type = "carbonate")
 ex4 <- def_environments(environ_class = "marine")
-}
 }
 }
 \seealso{
@@ -68,8 +72,5 @@ Geologic features and attributes:
 \code{\link{def_measurements}()},
 \code{\link{def_minerals}()},
 \code{\link{def_structures}()}
-}
-\author{
-Christopher D. Dean
 }
 \concept{defs_feat}
