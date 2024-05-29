@@ -1,4 +1,4 @@
-#' @title Retrieve environment definitions
+#' @title Define environments
 #'
 #' @description A function to retrieve the definitions for one or more
 #'   environments in the Macrostrat database. By default, all environment

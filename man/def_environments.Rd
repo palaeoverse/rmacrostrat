@@ -2,7 +2,7 @@
 % Please edit documentation in R/def_environments.R
 \name{def_environments}
 \alias{def_environments}
-\title{Retrieve environment definitions}
+\title{Define environments}
 \usage{
 def_environments(
   environ = NULL,
