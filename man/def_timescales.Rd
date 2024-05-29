@@ -2,7 +2,7 @@
 % Please edit documentation in R/def_timescales.R
 \name{def_timescales}
 \alias{def_timescales}
-\title{Retrieve timescale definitions}
+\title{Define timescales}
 \usage{
 def_timescales()
 }
@@ -12,11 +12,11 @@ A \code{data.frame} containing the following columns:
 \item \code{timescale_id}: The unique identification number of the
 timescale.
 \item \code{timescale}: The name of the timescale.
+\item \code{n_intervals}: The number of intervals within the timescale.
 \item \code{max_age}: The maximum age coverage of the timescale in
 millions of years before present.
 \item \code{min_age}: The minimum age coverage of the timescale in
 millions of years before present.
-\item \code{n_intervals}: The number of intervals within the timescale.
 \item \code{ref_id}: The unique identification number of the associated
 reference.
 }
@@ -25,8 +25,17 @@ reference.
 A function to retrieve all timescale definitions from the
 Macrostrat database. Function is called without user-specified arguments.
 }
-\examples{
+\section{Developer(s)}{
 
+Lewis A. Jones
+}
+
+\section{Reviewer(s)}{
+
+Christopher D. Dean
+}
+
+\examples{
 \dontrun{
  # Retrieve all timescale definitions
  ex1 <- def_timescales()
@@ -35,8 +44,5 @@ Macrostrat database. Function is called without user-specified arguments.
 \seealso{
 Timescales and time intervals:
 \code{\link{def_intervals}()}
-}
-\author{
-Lewis A. Jones
 }
 \concept{defs_time}
