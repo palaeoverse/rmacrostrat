@@ -14,7 +14,7 @@
 #' @return A \code{data.frame} containing the following columns:
 #' \itemize{
 #'   \item \code{measure_id}: The unique identification number of the
-#'   measurement.
+#'     measurement.
 #'   \item \code{name}: The name of the measurement.
 #'   \item \code{type}: Measurement type, less inclusive than class
 #'   \item \code{class}: Measurement class, more inclusive than type.
