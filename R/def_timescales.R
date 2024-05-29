@@ -1,4 +1,4 @@
-#' @title Retrieve timescale definitions
+#' @title Define timescales
 #'
 #' @description A function to retrieve all timescale definitions from the
 #'   Macrostrat database. Function is called without user-specified arguments.
@@ -8,19 +8,19 @@
 #'   \item \code{timescale_id}: The unique identification number of the
 #'   timescale.
 #'   \item \code{timescale}: The name of the timescale.
+#'   \item \code{n_intervals}: The number of intervals within the timescale.
 #'   \item \code{max_age}: The maximum age coverage of the timescale in
 #'   millions of years before present.
 #'   \item \code{min_age}: The minimum age coverage of the timescale in
 #'   millions of years before present.
-#'   \item \code{n_intervals}: The number of intervals within the timescale.
 #'   \item \code{ref_id}: The unique identification number of the associated
 #'   reference.
 #' }
-#'
-#' @author Lewis A. Jones
-#'
+#' @section Developer(s):
+#'  Lewis A. Jones
+#' @section Reviewer(s):
+#'  Christopher D. Dean
 #' @examples
-#'
 #' \dontrun{
 #'  # Retrieve all timescale definitions
 #'  ex1 <- def_timescales()
