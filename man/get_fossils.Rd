@@ -44,12 +44,12 @@ the specified numerical age, in millions of years before present.}
 \item{age_top}{\code{numeric}. Filter PBDB collections to those that overlap
 with the age range between the specified numerical age and \code{age_bottom}.
 Should be in millions of years before present. \code{age_bottom} must also be
-specified, and this must be younger than \code{age_bottom}.}
+specified, and this must be older than \code{age_top}.}
 
 \item{age_bottom}{\code{numeric}. Filter PBDB collections to those that
 overlap with the age range between the specified numerical age and
 \code{age_top}. Should be in millions of years before present. \code{age_top} must
-also be specified, and this must be older than \code{age_top}.}
+also be specified, and this must be younger than \code{age_bottom}.}
 
 \item{lithology}{\code{character}. Filter PBDB collections to those
 containing a named lithology (e.g., "shale", "sandstone").}
@@ -134,34 +134,46 @@ stratigraphic name concept containing the specified PBDB collection.
 If \code{sf = TRUE}, an \code{sf} object is returned instead.
 }
 \description{
-A function to retrieve collections from the \href{http://paleobiodb.org}{Paleobiology Database}, matched to Macrostrat units.
+A function to retrieve collections from the \href{https://paleobiodb.org/#/}{Paleobiology Database} (PBDB), matched to Macrostrat units.
 }
 \details{
 More information can be found for the inputs for this function
 using the definition functions (beginning with \code{def_}). Terminology
-related to the PBDB can be found at \url{http://paleobiodb.org} or in the
-suggested references below.
+related to the PBDB can be found at \url{https://paleobiodb.org/#/} or in
+the suggested references below.
 }
-\section{Reviewer}{
- N/A
+\section{Developer(s)}{
+
+Christopher D. Dean
+}
+
+\section{Reviewer(s)}{
+
+Lewis A. Jones
 }
 
 \section{References}{
 
-Peters, S.E. and McClennen, M. (2016). The Paleobiology Database application
-programming interface. Paleobiology, 42(1), pp.1-7.
+Peters, S.E. and McClennen, M. (2016). The Paleobiology Database
+application programming interface. \emph{Paleobiology}, 42(1), pp. 1--7.
+\doi{10.1017/pab.2015.39}.
 
 Uhen, M.D., Allen, B., Behboudi, N., Clapham, M.E., Dunne, E., Hendy, A.,
 Holroyd, P.A., Hopkins, M., Mannion, P., Novack-Gottshall, P. and Pimiento,
-C. (2023). Paleobiology Database User Guide Version 1.0. PaleoBios, 40(11).
+C. (2023). Paleobiology Database User Guide Version 1.0. \emph{PaleoBios},
+40(11), pp. 1--56. \doi{10.5070/P9401160531}.
 }
 
 \examples{
 \dontrun{
-  # get_fossils(column_id = 10)
-  # head(get_fossils(unit_id = 6279))
-  # head(get_fossils(lithology = "sandstone", age_top = 66, age_bottom = 73))
-  # head(get_fossils(environ_type = "fluvial", age =  253))
+ # Get fossils by Macrostrat column ID
+ ex1 <- get_fossils(column_id = 10)
+ # Get fossils by Macrostrat unit ID
+ ex2 <- get_fossils(unit_id = 6279)
+ # Get fossils by lithology and age
+ ex3 <- get_fossils(lithology = "sandstone", age_top = 66, age_bottom = 73)
+ # Get fossils by environment type and age
+ ex4 <- get_fossils(environ_type = "fluvial", age =  253)
 }
 }
 \seealso{
@@ -170,8 +182,5 @@ External data:
 \code{\link{def_measurements}()},
 \code{\link{get_eodp}()},
 \code{\link{get_measurements}()}
-}
-\author{
-Christopher D. Dean
 }
 \concept{external}
