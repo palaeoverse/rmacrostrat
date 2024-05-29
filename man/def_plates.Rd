@@ -2,7 +2,7 @@
 % Please edit documentation in R/def_plates.R
 \name{def_plates}
 \alias{def_plates}
-\title{Retrieve tectonic plate definition}
+\title{Define tectonic plates}
 \usage{
 def_plates(plate_id = NULL)
 }
@@ -21,6 +21,16 @@ user-specified plate identification number, as defined by the Wright et
 al. (2013) Global Plate Model. If no arguments are supplied, all plates
 are returned.
 }
+\section{Developer(s)}{
+
+Lewis A. Jones
+}
+
+\section{Reviewer(s)}{
+
+Christopher D. Dean
+}
+
 \section{References}{
  Wright, N., Zahirovic, S., Müller, R.D., Seton, M.
 (2013). Towards community-driven paleogeographic reconstructions:
@@ -39,8 +49,5 @@ tectonics. Biogeosciences, 10, 1529--1541. \doi{10.5194/bg-10-1529-2013}.
 \seealso{
 Paleogeography:
 \code{\link{get_paleogeography}()}
-}
-\author{
-Lewis A. Jones
 }
 \concept{paleogeo}
