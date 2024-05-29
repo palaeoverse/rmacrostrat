@@ -160,6 +160,20 @@ Great, we can now see that we don't have any duplicate units in our dataset anym
 any(table(litho_units$unit_id) > 1)
 ```
 
+However, we've just remembered that [Macrostrat](https://macrostrat.org) doesn't just cover North America, and we've pulled units from various continents - D'oh! To make our fairer reproduction of Figure 14 from [Peters & Heim (2010)](https://www.jstor.org/stable/25609444), we ought to focus just on North America. Conveniently, [Macrostrat](https://macrostrat.org) is split into different projects, which tend to cover different regions:
+
+```{r projects, eval = TRUE}
+# Check available projects
+def_projects()
+```
+
+From this call, we can see that North America has a `project_id` of 1. We can use this information to further filter `litho_units`:
+
+```{r n_am, eval = TRUE}
+# Filter to N. America
+litho_units <- subset(litho_units, project_id == 1)
+```
+
 Now we've got our data and done a bit of wrangling, let's get on with summarizing our data.
 
 # Summarizing data
@@ -209,6 +223,11 @@ Now we have our summary of the lithostratigraphic units, we can visualise this d
 # Load data visualization packages
 library(ggplot2)
 library(deeptime)
+
+# Let's first set our factor levels to replicate the original figure
+counts$environment <- factor(counts$environment, levels = c("Marine", "Marginal", 
+                                                            "Mixed", "Terrestrial"))
+
 # Generate a plot of raw counts of lithostratigraphic units through time
 # grouped by paleoenvironment
 ggplot(counts, aes(fill = environment, y = count, x = mid_ma)) + 
