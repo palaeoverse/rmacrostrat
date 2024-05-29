@@ -1,4 +1,4 @@
-#' @title Retrieve measurement definitions
+#' @title Define measurements
 #' @description A function to retrieve the definitions of different measurements
 #'   that are included in the Macrostrat database. By default, all definitions
 #'   are returned.
@@ -13,19 +13,23 @@
 #'   This is a more inclusive grouping than `measurement_type`.
 #' @return A \code{data.frame} containing the following columns:
 #' \itemize{
-#'   \item \code{measure_id}: Unique identification number of the measurement.
+#'   \item \code{measure_id}: The unique identification number of the
+#'   measurement.
 #'   \item \code{name}: The name of the measurement.
 #'   \item \code{type}: Measurement type, less inclusive than class
 #'   \item \code{class}: Measurement class, more inclusive than type.
-#'   \item \code{t_units}: Total number of Macrostrat units containing this
+#'   \item \code{t_units}: The total number of Macrostrat units containing this
 #'     measurement.
 #' }
-#' @author William Gearty
+#' @section Developer(s):
+#'  William Gearty
+#' @section Reviewer(s):
+#'  Christopher D. Dean
 #' @examples
 #' \dontrun{
-#' # get all definitions
+#' # Return all definitions
 #' ex1 <- def_measurements()
-#' # get a subset of definitions
+#' # Return subsets of definitions
 #' ex2 <- def_measurements(measure_id = c(1, 2, 4))
 #' ex3 <- def_measurements(measurement_class = "geochemical")
 #' }
@@ -44,7 +48,6 @@ def_measurements <- function(measure_id = NULL, measurement_type = NULL,
   # Get request
   dat <- GET_macrostrat(endpoint = "defs/measurements", query = args,
                         format = "json")
-
   # Return data
   return(dat)
 }
