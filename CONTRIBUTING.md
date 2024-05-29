@@ -1,6 +1,6 @@
 # Contributing to palaeoverse
 
-As part of the Palaeoverse project, we have adopted a set of [structures and standards](https://palaeoverse.org/articles/structure-and-standards.html) to follow for contributing to the development of `rmacrostrat`. If you would like to contribute to the `rmacrostrat` toolkit, we strongly advise reading this document first. If you plan to contribute a function to `rmacrostrat`, you should first raise an [issue](https://github.com/palaeoverse-community/rmacrostrat/issues) via the GitHub repository. This way the development team can assess whether the function is suitable or needed in the `rmacrostrat` toolkit prior to submission.
+As part of the Palaeoverse project, we have adopted a set of [structures and standards](https://palaeoverse.palaeoverse.org/articles/structure-and-standards.html) to follow for contributing to the development of Palaeoverse R packages, including for `rmacrostrat`. If you would like to contribute to the `rmacrostrat` toolkit, we strongly advise reading this document first. If you plan to contribute a function to `rmacrostrat`, you should first raise an [issue](https://github.com/palaeoverse/rmacrostrat/issues) via the GitHub repository. This way the development team can assess whether the function is suitable or needed in the `rmacrostrat` toolkit prior to submission.
 
 ## How to contribute
 
@@ -14,9 +14,9 @@ If you would like to make a substantial change, you should first file an issue a
 
 ### Pull request process
 
-You (the contributor) should clone the desired repository (i.e. [the rmacrostrat R package](https://github.com/palaeoverse-community/rmacrostrat)) to your personal computer. Before changes are made, you should switch to a new git branch (i.e., not the main branch). When your changes are complete, you can submit your changes for merging via a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) (“PR”) on GitHub. Note that a complete pull request should include a succinct description ([see function template](https://github.com/palaeoverse-community/rmacrostrat/blob/main/pull_request_template.md)) of what the code changes do, proper documentation (via [roxygen2](https://roxygen2.r-lib.org)), and unit tests (via `testthat`). Only the description is required for the initial pull request and code review (see below), but pull requests will not be merged until they contain complete documentation and tests.
+You (the contributor) should clone the desired repository (i.e. [the rmacrostrat R package](https://github.com/palaeoverse/rmacrostrat)) to your personal computer. Before changes are made, you should switch to a new git branch (i.e., not the main branch). When your changes are complete, you can submit your changes for merging via a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) (“PR”) on GitHub. Note that a complete pull request should include a succinct description ([see function template](https://github.com/palaeoverse/rmacrostrat/blob/main/pull_request_template.md)) of what the code changes do, proper documentation (via [roxygen2](https://roxygen2.r-lib.org)), and unit tests (via `testthat`). Only the description is required for the initial pull request and code review (see below), but pull requests will not be merged until they contain complete documentation and tests.
 
-If you don't feel comfortable implementing changes yourself, you can submit a bug report or feature request as a GitHub issue in the proper repository (e.g. [rmacrostrat issues](https://github.com/palaeoverse-community/rmacrostrat/issues)).
+If you don't feel comfortable implementing changes yourself, you can submit a bug report or feature request as a GitHub issue in the proper repository (e.g. [rmacrostrat issues](https://github.com/palaeoverse/rmacrostrat/issues)).
 
 ## Code review
 All pull requests must be reviewed by two core developers of `rmacrostrat` before merging. The review process will ensure that contributions 1) meet the standards and expectations as described above, 2) successfully perform the functions that they claim to perform, and 3) don't break any other parts of the codebase.
@@ -27,4 +27,4 @@ Reviewers may have questions while reviewing your pull request. You are expected
 
 ## Code of Conduct
 
-Please note that by contributing to `rmacrostrat` you agree to our general community [Code of Conduct](https://palaeoverse.org/CODE_OF_CONDUCT.html).
+Please note that by contributing to `rmacrostrat` you agree to our general community [Code of Conduct](https://rmacrostrat.palaeoverse.org/CODE_OF_CONDUCT.html).
