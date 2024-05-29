@@ -1,4 +1,4 @@
-#' @title Define timescales
+#' @title Retrieve timescale definitions
 #'
 #' @description A function to retrieve all timescale definitions from the
 #'   Macrostrat database. Function is called without user-specified arguments.
@@ -16,11 +16,11 @@
 #'   \item \code{ref_id}: The unique identification number of the associated
 #'   reference.
 #' }
-#' @section Developer(s):
-#'  Lewis A. Jones
-#' @section Reviewer(s):
-#'  Christopher D. Dean
+#'
+#' @author Lewis A. Jones
+#'
 #' @examples
+#'
 #' \dontrun{
 #'  # Retrieve all timescale definitions
 #'  ex1 <- def_timescales()
