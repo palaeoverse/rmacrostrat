@@ -82,7 +82,7 @@ definitions are returned.</p>
 
 
 <dt>environ_class</dt>
-<dd><p><code>character</code>. The name of a class of envrionment
+<dd><p><code>character</code>. The name of a class of environment
 (e.g., "marine") to return a definition for.</p></dd>
 
 
@@ -103,11 +103,19 @@ environment.</p></li>
 <li><p><code>color</code>: Recommended coloring for environment, based on the
 dominant lithology.</p></li>
 <li><p><code>t_units</code>: The total number of Macrostrat units that are
-partially or entirely composed of the environment.</p></li>
+partially, or entirely, composed of the environment.</p></li>
 </ul></div>
     <div class="section level2">
-    <h2 id="reviewer">Reviewer<a class="anchor" aria-label="anchor" href="#reviewer"></a></h2>
-    <p>N/A</p>
+    <h2 id="developer-s-">Developer(s)<a class="anchor" aria-label="anchor" href="#developer-s-"></a></h2>
+    
+
+<p>Christopher D. Dean</p>
+    </div>
+    <div class="section level2">
+    <h2 id="reviewer-s-">Reviewer(s)<a class="anchor" aria-label="anchor" href="#reviewer-s-"></a></h2>
+    
+
+<p>Lewis A. Jones</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -120,22 +128,16 @@ partially or entirely composed of the environment.</p></li>
 <code><a href="def_minerals.html">def_minerals</a>()</code>,
 <code><a href="def_structures.html">def_structures</a>()</code></p></div>
     </div>
-    <div class="section level2">
-    <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
-    <p>Christopher D. Dean</p>
-    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/interactive.html" class="external-link">interactive</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">{</span></span></span>
 <span class="r-in"><span><span class="co"># Return all environment definitions</span></span></span>
 <span class="r-in"><span><span class="va">ex1</span> <span class="op">&lt;-</span> <span class="fu">def_environments</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Return subsets of environment definitions</span></span></span>
 <span class="r-in"><span><span class="va">ex2</span> <span class="op">&lt;-</span> <span class="fu">def_environments</span><span class="op">(</span>environ <span class="op">=</span> <span class="st">"reef"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">ex3</span> <span class="op">&lt;-</span> <span class="fu">def_environments</span><span class="op">(</span>environ_type <span class="op">=</span> <span class="st">"carbonate"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">ex4</span> <span class="op">&lt;-</span> <span class="fu">def_environments</span><span class="op">(</span>environ_class <span class="op">=</span> <span class="st">"marine"</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="op">}</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
