@@ -11,9 +11,9 @@
 #'   supplied.
 #' @return An `sf` object containing the geometries of the paleogeographic map.
 #' @section Developer(s):
-#'  Christopher D. Dean
-#' @section Reviewer(s):
 #'  Lewis A. Jones
+#' @section Reviewer(s):
+#'  Christopher D. Dean
 #' @details More information for appropriate interval inputs for this function
 #' can be found using the \code{def_intervals()} function.
 #' @section References: Wright, N., Zahirovic, S., Müller, R.D., Seton, M.
