@@ -60,7 +60,7 @@ representative at an online or offline event.
 
 Instances of abusive, harassing, or otherwise unacceptable behavior may be
 reported to the community leaders responsible for enforcement:
-[Pedro L. Godoy](mailto:pedrolorenagodoy@gmail.com) and 
+[Lewis A. Jones](mailto:LewisA.Jones@outlook.com) and 
 [Bethany Allen](mailto:bethany.allen@bsse.ethz.ch).
 All complaints will be reviewed and investigated promptly and fairly.
 
