@@ -8,7 +8,7 @@ get_paleogeography(age = NULL, interval_name = NULL)
 }
 \arguments{
 \item{age}{\code{numeric}. Return a paleogeographic reconstruction based on
-a numerical age in millions of years (between 0 and 550).}
+a numerical age in millions of years before present (between 0 and 550).}
 
 \item{interval_name}{\code{character}. Return a paleogeographic
 reconstruction based on a specified time interval. Ignored if \code{age} is
@@ -22,6 +22,20 @@ A function to retrieve paleogeographic geometries
 reconstructed to a given a age or interval using the Wright et al. (2013)
 Global Plate Model.
 }
+\details{
+More information for appropriate interval inputs for this function
+can be found using the \code{def_intervals()} function.
+}
+\section{Developer(s)}{
+
+Lewis A. Jones
+}
+
+\section{Reviewer(s)}{
+
+Christopher D. Dean
+}
+
 \section{References}{
  Wright, N., Zahirovic, S., Müller, R.D., Seton, M.
 (2013). Towards community-driven paleogeographic reconstructions:
@@ -39,8 +53,5 @@ tectonics. Biogeosciences, 10, 1529--1541. \doi{10.5194/bg-10-1529-2013}.
 \seealso{
 Paleogeography:
 \code{\link{def_plates}()}
-}
-\author{
-Lewis A. Jones
 }
 \concept{paleogeo}
