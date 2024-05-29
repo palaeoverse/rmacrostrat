@@ -29,9 +29,9 @@
 #'   \item \code{name}: The name of the outcrop shape element in the original
 #'   (or modified) source geologic map.
 #'   \item \code{strat_name}: The geologic name(s) of the outcrop shape
-#'   element.
+#'     element.
 #'   \item \code{lith}: The lithology of the outcrop shape element as defined
-#'   in the geologic map source in plain text.
+#'     in the geologic map source in plain text.
 #'   \item \code{descrip}: Description of the outcrop shape element in plain
 #'     text.
 #'   \item \code{comments}: Notes assigned to the outcrop shape element.
@@ -42,30 +42,30 @@
 #'     number(s) for known stratigraphic unit name(s) matched to the outcrop
 #'     shape element (see [def_strat_names()]).
 #'   \item \code{liths}: A vector containing the unique identification
-#'   number(s) of the lithology(ies) represented within the outcrop shape
-#'   element (see [def_lithologies()]).
+#'     number(s) of the lithology(ies) represented within the outcrop shape
+#'     element (see [def_lithologies()]).
 #'   \item \code{t_int_id}: The identification number of the
-#'   chronostratigraphic interval containing the top boundary of the outcrop
-#'   shape element.
+#'     chronostratigraphic interval containing the top boundary of the outcrop
+#'     shape element.
 #'   \item \code{t_int_age}: The top age of the chronostratigraphic interval
 #'     containing the top boundary of the outcrop shape element.
 #'   \item \code{t_int_name}: The name of the chronostratigraphic interval
 #'     containing the top boundary of the outcrop shape element.
 #'   \item \code{b_int_id}: The identification number of the
-#'   chronostratigraphic interval containing the bottom boundary of the
-#'   outcrop shape element.
+#'     chronostratigraphic interval containing the bottom boundary of the
+#'     outcrop shape element.
 #'   \item \code{b_int_age}: The bottom age of the chronostratigraphic
-#'   interval containing the bottom boundary of the outcrop shape element.
+#'     interval containing the bottom boundary of the outcrop shape element.
 #'   \item \code{b_int_name}: The name of the chronostratigraphic interval
 #'     containing the bottom boundary of the outcrop shape element.
 #'   \item \code{color}: Recommended color for plotting the outcrop shape
 #'     element based on the dominant lithology.
 #'   \item \code{t_age}: The estimated top age (minimum age) of the outcrop
-#'   shape element, in millions of years before present.
+#'     shape element, in millions of years before present.
 #'   \item \code{b_age}: The estimated bottom age (maximum age) of the outcrop
-#'   shape element, in millions of years before present.
+#'     shape element, in millions of years before present.
 #'   \item \code{best_int_name}: The best/most representative interval name
-#'   for the outcrop shape element.
+#'     for the outcrop shape element.
 #' }
 #'   If `sf` is `TRUE` (the default), an `sf` object is returned instead, with
 #'   the same columns plus a "geometry" column that contains the spatial data.
