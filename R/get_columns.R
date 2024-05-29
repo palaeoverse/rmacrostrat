@@ -1,6 +1,8 @@
 #' @title Retrieve Macrostrat column data
+#'
 #' @description A function to retrieve independent, hexagonal, vertical columns
-#'   which contain Macrostrat units.
+#'   which contain chronostratigraphically organised Macrostrat units.
+#'
 #' @param column_id \code{integer}. Filter columns by their unique
 #'   identification number(s).
 #' @param section_id \code{integer}. Filter columns to those containing
@@ -77,21 +79,23 @@
 #'   Defaults to `FALSE`.
 #' @return A \code{data.frame} containing the following columns:
 #' \itemize{
-#'   \item \code{col_id}: The unique Macrostrat column ID.
-#'   \item \code{col_name}: The name of the column.
-#'   \item \code{col_group}: Name of group the column belongs to, generally
+#'   \item \code{col_id}: The unique identification number of the Macrostrat
+#'   column.
+#'   \item \code{col_name}: The name of the Macrostrat column.
+#'   \item \code{col_group}: Name of the group the column belongs to. Generally
 #'   corresponds to geologic provinces.
-#'   \item \code{col_group_id}: The ID of the group to which the column belongs.
+#'   \item \code{col_group_id}: The unique identification number of the group to
+#'   which the column belongs.
 #'   \item \code{group_col_id}: The original column ID assigned to the column
 #'   (used in the original source).
 #'   \item \code{lat}: Decimal degree latitude of the column centroid.
 #'   \item \code{lng}: Decimal degree longitude of the column centroid.
 #'   \item \code{col_area}: The area of the Macrostrat column in
 #'   km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}}.
-#'   \item \code{project_id}: Unique identifier for project, corresponds to
-#'   general geographic region.
+#'   \item \code{project_id}: The unique identification number for project.
+#'   Corresponds to general geographic region.
 #'   \item \code{col_type}: The type of column.
-#'   \item \code{refs}: Unique identification number(s) for the reference(s)
+#'   \item \code{refs}: The unique identification number(s) for the reference(s)
 #'     associated with the column.
 #'   \item \code{max_thick}: Maximum unit thickness in meters.
 #'   \item \code{max_min_thick}: The maximum possible minimum thickness in
@@ -151,14 +155,21 @@
 #' }
 #'   If `sf` is `TRUE`, an `sf` object is returned instead, with the same
 #'   columns plus a "geometry" column that contains the spatial data.
-#' @author William Gearty
+#' @section Developer(s):
+#'   William Gearty
+#' @section Reviewer(s):
+#'   Christopher D. Dean
 #' @details More information can be found for the inputs for this function using
 #'   the definition functions (beginning with \code{def_}).
 #' @examples
 #' \dontrun{
+#' # Return columns that overlap with a named chronostratigraphic interval
 #' ex1 <- get_columns(interval_name = "Permian")
+#' # Return columns that overlap with a specified age range
 #' ex2 <- get_columns(age_top = 200, age_bottom = 250)
+#' # Return columns that contain a specific stratigraphic unit, in `sf` format
 #' ex3 <- get_columns(strat_name = "mancos", sf = TRUE)
+#' # Return the columns surrounding a specific geographic coordinate
 #' ex4 <- get_columns(lat = 43, lng = -89, adjacents = TRUE)
 #' }
 #' @export
@@ -198,7 +209,6 @@ get_columns <- function(
   check_arguments(x = args, ref = ref)
   # Set default for format
   if (sf) format <- "geojson" else format <- "json"
-
   # Check specific argument constraints
   if (!is.null(age_top) || !is.null(age_bottom)) {
     if (is.null(age_top) || is.null(age_bottom)) {
@@ -221,7 +231,6 @@ get_columns <- function(
       stop("`lat` should be less than 90 and more than -90.")
     }
   }
-
   # Change arguments to default api names
   api_names <- c(column_id	= "col_id", interval_id = "int_id",
                  lithology = "lith", lithology_att = "lith_att",
@@ -236,7 +245,6 @@ get_columns <- function(
   names(args)[rpl] <- as.vector(unlist(api_names))
   # Get request
   dat <- GET_macrostrat(endpoint = "columns", query = args, format = format)
-
   # Return data
   return(dat)
 }
