@@ -10,13 +10,13 @@
 #'   structure") to return a definition for.
 #' @param lithology_att_id \code{integer}. The unique identification number(s)
 #'   of lithology attribute(s) to return a definition for.
-#' @return A `data.frame` containing the following columns:
+#' @return A \code{data.frame} containing the following columns:
 #' \itemize{
 #'   \item \code{lith_att_id}: The unique identifier of the lithology attribute.
 #'   \item \code{name}: The name of the lithology attribute.
 #'   \item \code{type}: The lithology attribute type.
 #'   \item \code{t_units}: The total number of Macrostrat units to which the
-#'   lithology attribute is attached.
+#'    lithology attribute is attached.
 #'  }
 #' @section Developer(s):
 #'  Bethany Allen
