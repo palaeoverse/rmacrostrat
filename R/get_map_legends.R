@@ -90,8 +90,11 @@
 #'
 #' @examples
 #' \dontrun{
+#'  # Get legend components by ID of the original source map
 #'  ex1 <- get_map_legends(source_id = 1)
+#'  # Get legend components for any sedimentary lithologies
 #'  ex2 <- get_map_legends(lithology_type = "sedimentary")
+#'  # Get any legend components that have comments with the word 'breccia'
 #'  ex3 <- get_map_legends(comments = "breccia")
 #' }
 #' @export
