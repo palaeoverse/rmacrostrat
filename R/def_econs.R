@@ -1,4 +1,5 @@
-#' @title Retrieve economic definitions
+#' @title Define economic resources
+#'
 #' @description A function to retrieve the definitions for one or more
 #'   economic resources in the Macrostrat database. By default, all economic
 #'   definitions are returned.
@@ -12,52 +13,45 @@
 #' @param econ_id \code{integer}. The unique identification number(s) of the
 #'   economic resource(s) to return a definition for.
 #'
-#' @return A \code{dataframe} containing:
-#' \describe{
-#'  \item{econ_id}{The unique identifier of the economic resource}
-#'  \item{name}{The name of the economic resource}
-#'  \item{type}{The type of economic resource}
-#'  \item{class}{The class of economic resource}
-#'  \item{color}{The recommended coloring for units based on the dominant
-#'  lithology}
-#'  \item{t_units}{The total number of Macrostrat units containing the economic
-#'  resource}
+#' @return A \code{data.frame} containing the following columns:
+#' \itemize{
+#'  \item \code{econ_id}: The unique identifier of the economic resource.
+#'  \item \code{name}: The name of the economic resource.
+#'  \item \code{type}: The type of economic resource.
+#'  \item \code{class}: The class of economic resource.
+#'  \item \code{color}: The recommended coloring for units based on the dominant
+#'    lithology.
+#'  \item \code{t_units}: The total number of Macrostrat units containing the
+#'    economic resource.
 #'  }
 #'
-#' @author Bethany Allen
+#' @section Developer(s):
+#'   Bethany Allen
+#' @section Reviewer(s):
+#'   William Gearty
 #'
 #' @examples
 #' \dontrun{
-#' if (interactive()) {
-#'   # econ_inf <- def_econs()
-#'   # econ_inf <- def_econs(econ_type = "hydrocarbon")
-#' }
+#' # Return all economic resource definitions
+#' econ_inf <- def_econs()
+#' # Return only definitions for hydrocarbon resources
+#' econ_inf <- def_econs(econ_type = "hydrocarbon")
 #' }
 #' @export
 #' @family defs_feat
-def_econs <- function(
-    econ = NULL,
-    econ_type = NULL,
-    econ_class = NULL,
-    econ_id = NULL) {
+def_econs <- function(econ = NULL, econ_type = NULL, econ_class = NULL,
+                      econ_id = NULL) {
 
   # Error handling
   # Collect input arguments as a list
   args <- as.list(environment())
   # Check whether class of arguments is valid
-  ref <- list(
-    econ = "character",
-    econ_type = "character",
-    econ_class = "character",
-    econ_id = "integer"
-  )
+  ref <- list(econ = "character", econ_type = "character",
+              econ_class = "character", econ_id = "integer")
   check_arguments(x = args, ref = ref)
 
-  # Set default for format
-  format <- "json"
-
   # Get request
-  dat <- GET_macrostrat(endpoint = "defs/econs", query = args, format = format)
+  dat <- GET_macrostrat(endpoint = "defs/econs", query = args, format = "json")
 
   # Return data
   return(dat)
