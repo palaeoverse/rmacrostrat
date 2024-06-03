@@ -23,29 +23,32 @@ drilling program ("DSDP", "IODP", or "ODP").}
 Defaults to \code{FALSE}.}
 }
 \value{
-A \code{dataframe} containing, for each retrieved core:
-\describe{
-\item{col_group}{The name of the drilling program and leg/expedition}
-\item{site_hole}{The name of the drilling site and hole}
-\item{date_started}{The date on which drilling commenced}
-\item{ref_id}{The unique identifier of the reference}
-\item{col_id}{The unique identifier of the Macrostrat column}
-\item{lat}{Decimal degree latitude of the core}
-\item{lng}{Decimal degree longitude of the core}
-\item{top_depth}{A vector describing the height of the top of each unit}
-\item{bottom_depth}{A vector describing the height of the bottom of each
-unit}
-\item{primary_lith}{A vector giving the name of the primary lithology of
-each unit}
-\item{lith_id}{A vector giving the unique identifier of the primary
-lithology of each unit}
-\item{minor_lith}{A vector giving the name of the primary lithology of
-each unit}
+A \code{data.frame} containing, for each retrieved core:
+\itemize{
+\item \code{col_group}: The name of the drilling program and
+leg/expedition.
+\item \code{site_hole}: The name of the drilling site and hole.
+\item \code{date_started}: The date on which drilling commenced.
+\item \code{ref_id}: The unique identifier of the reference.
+\item \code{col_id}: The unique identifier of the Macrostrat column.
+\item \code{lat}: Decimal degree latitude of the core.
+\item \code{lng}: Decimal degree longitude of the core.
+\item \code{top_depth}: A vector describing the height of the top of each
+unit.
+\item \code{bottom_depth}: A vector describing the height of the bottom of
+each unit.
+\item \code{primary_lith}: A vector giving the name of the primary
+lithology of each unit.
+\item \code{lith_id}: A vector giving the unique identifier of the primary
+lithology of each unit.
+\item \code{minor_lith}: A vector giving the name of the primary lithology
+of each unit.
 }
-If sf = TRUE, an \code{sf} object is outputted instead.
+If \code{sf} is \code{TRUE}, an \code{sf} object is returned instead, with a "geometry"
+column that contains the spatial data instead of the \code{lat}/\code{lng} columns.
 }
 \description{
-Call data from the
+A function to retrieve data from the
 \href{https://eodp.github.io}{Extending Ocean Drilling Pursuits (eODP)}
 project, a collation of sedimentary description data
 from ocean drilling cores. This includes cores from the Deep Sea Drilling
@@ -56,6 +59,16 @@ Program (ODP).
 More information can be found about the inputs for this function by
 using \code{\link[=def_drilling_sites]{def_drilling_sites()}}.
 }
+\section{Developer(s)}{
+
+Bethany Allen
+}
+
+\section{Reviewer(s)}{
+
+William Gearty
+}
+
 \section{References}{
 
 Sessa JA, Fraass AJ, LeVay LJ, Jamson KM, and Peters SE. (2023). The
@@ -66,12 +79,14 @@ e2022GC010655. \doi{10.1029/2022GC010655}.
 
 \examples{
 \dontrun{
-if (interactive()) {
-  # cores <- get_eodp(column_id = c(5081, 5082))
-  # cores <- get_eodp(site = "U1351")
-  # cores <- get_eodp(leg = "317")
-  # cores <- get_eodp(program = "IODP")
-}
+# Get data for specific cores
+cores <- get_eodp(column_id = c(5081, 5082))
+# Get data for all cores at a specific site
+cores <- get_eodp(site = "U1351")
+# Get data for all cores for a specific leg
+cores <- get_eodp(leg = "317")
+# Get data for all cores for a specific program
+cores <- get_eodp(program = "IODP")
 }
 }
 \seealso{
@@ -80,8 +95,5 @@ External data:
 \code{\link{def_measurements}()},
 \code{\link{get_fossils}()},
 \code{\link{get_measurements}()}
-}
-\author{
-Bethany Allen
 }
 \concept{external}
