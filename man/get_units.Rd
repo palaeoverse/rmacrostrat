@@ -69,12 +69,12 @@ specified numerical age, in millions of years before present.}
 \item{age_top}{\code{numeric}. Filter units to those that overlap with the
 age range between the specified numerical age and \code{age_bottom}. Should be
 in millions of years before present. \code{age_bottom} must also be specified,
-and this must be younger than \code{age_bottom}.}
+and \code{age_top} must be younger than \code{age_bottom}.}
 
 \item{age_bottom}{\code{numeric}. Filter units to those that overlap with
 the age range between the specified numerical age and \code{age_top}. Should
 be in millions of years before present. \code{age_top} must also be specified,
-and this must be older than \code{age_top}.}
+and \code{age_bottom} must be older than \code{age_top}.}
 
 \item{lat}{\code{numeric}. Return the units at the specified decimal degree
 latitude. Must also specify \code{lng}.}
@@ -172,8 +172,8 @@ in millions of years before present.
 model in millions of years before present.
 \item \code{max_thick}: Maximum unit thickness in meters.
 \item \code{min_thick}: Minimum unit thickness in meters.
-\item \code{outcrop}: Type of exposure ('outcrop', 'subsurface', or
-'both').
+\item \code{outcrop}: Type of exposure ("outcrop", "subsurface", or
+"both").
 \item \code{pbdb_collections}: Count of Paleobiology Database
 collections within the unit.
 \item \code{pbdb_occurrences}: Count of Paleobiology Database
@@ -188,8 +188,7 @@ calculated from the individual Macrostrat sub-units within the unit.
 lithology.
 \item \code{type}: The named lithology type (e.g., "siliciclastic").
 \item \code{class}: The named lithology class (e.g., "sedimentary").
-}}
-\itemize{
+}
 \item \code{environ}: a \code{dataframe} containing the environments
 present within the unit, with the following columns:
 \itemize{
@@ -198,27 +197,26 @@ present within the unit, with the following columns:
 \item \code{name}: The named environment (e.g., "delta plain").
 \item \code{environ_id}: The unique identification number of the
 environment.
-}}
-\itemize{
+}
 \item \code{econ}: a \code{dataframe} containing the economic
 attributes present within the unit, with the following columns:
 \itemize{
-\item \code{type}: The named economic attribute type (e.g., "mineral").
+\item \code{type}: The named economic attribute type (e.g.,
+"mineral").
 \item \code{name}: The named economic attribute (e.g., "gold").
 \item \code{econ_id}: The unique identification number of the economic
 attribute.
-\item \code{class}: The named economic attribute class (e.g., "precious
-commodity").
-}}
-\itemize{
+\item \code{class}: The named economic attribute class (e.g.,
+"precious commodity").
+}
 \item \code{measure}: a \code{dataframe} containing the measure
 attributes present within the unit, with the following columns:
 \itemize{
-\item \code{measure_class}: The class of measures (e.g. "geochemical").
-\item \code{measure_type}: the type of measures (e.g. "minor
+\item \code{measure_class}: The class of measures (e.g.,
+"geochemical").
+\item \code{measure_type}: the type of measures (e.g., "minor
 elements").
-}}
-\itemize{
+}
 \item \code{notes}: Unit specific notes.
 \item \code{color}: Recommended coloring for units based on dominant
 lithology.
@@ -230,14 +228,13 @@ the top of the unit.
 \item \code{t_int_age}: The age of the chronostratigraphic interval
 containing the top boundary of the unit.
 \item \code{t_prop}: Position of continuous time age model top boundary,
-proportional to reference time interval (t_interval).
+proportional to reference time interval (t_int_name).
 \item \code{units_above}: The unit_ids of the units contacting the top
 of the unit.
 \item \code{b_int_id}: The ID of the chronostratigraphic interval
 containing the bottom boundary of the unit.
 \item \code{b_int_name}: The name of the time interval represented at
-the
-bottom of the unit.
+the bottom of the unit.
 \item \code{b_int_age}: The age of the chronostratigraphic interval
 containing the bottom boundary of the unit.
 \item \code{b_prop}: Position of continuous time age model bottom
@@ -245,23 +242,25 @@ boundary, proportional to reference time interval (b_interval).
 \item \code{units_below}: The unit_ids of the units contacting the
 bottom of the unit.
 \item \code{strat_name_long}: The stratigraphic name associated with
-the unit (e.g. "Coal Valley Formation").
-\item \code{refs}: The number of references associated with the unit.
+the unit (e.g., "Coal Valley Formation").
+\item \code{refs}: The unique identification number(s) of the reference(s)
+associated with the unit.
 \item \code{clat}: The present day latitude of the centroid of the
 column to which the unit belongs.
 \item \code{clng}: The present day longitude of the centroid of the
 column to which the unit belongs.
 \item \code{t_plat}: The paleolatitude of the centroid of the column
-which the unit belongs to at top age (clat rotated to t_age).
+which the unit belongs to at top age (\code{clat} rotated to \code{t_age}).
 \item \code{t_plng}: The paleolongitude of the centroid of the column
-which the unit belongs to at top age (clng rotated to t_age) .
+which the unit belongs to at top age (\code{clng} rotated to \code{t_age}) .
 \item \code{b_plat}: The paleolatitude of the centroid of the column
-which the unit belongs to at bottom age (clat rotated to b_age).
+which the unit belongs to at bottom age (\code{clat} rotated to \code{b_age}).
 \item \code{b_plng}: The paleolongitude of the the centroid of the
-column which the unit belongs to at bottom age (clng rotated to b_age).
+column which the unit belongs to at bottom age (\code{clng} rotated to
+\code{b_age}).
 }
-If \code{sf} is \code{TRUE}, an \code{sf} object is returned instead, with the same
-columns plus a "geometry" column that contains the spatial data.
+If \code{sf} is \code{TRUE}, an \code{sf} object is returned instead, with a "geometry"
+column that contains the spatial data instead of the \code{clat}/\code{clng} columns.
 }
 \description{
 A function to retrieve Macrostrat unit data matching a
@@ -269,8 +268,18 @@ user-specified search criteria.
 }
 \details{
 More information can be found for the inputs for this function
-using the definition functions (beginning with \code{defs_}).
+using the definition functions (beginning with \code{def_}).
 }
+\section{Developer(s)}{
+
+Lewis A. Jones
+}
+
+\section{Reviewer(s)}{
+
+William Gearty
+}
+
 \examples{
 \dontrun{
 # Get units by stratigraphic name
@@ -285,8 +294,5 @@ Macrostrat data entities:
 \code{\link{get_age_model}()},
 \code{\link{get_columns}()},
 \code{\link{get_sections}()}
-}
-\author{
-Lewis A. Jones
 }
 \concept{macrostrat}
