@@ -174,7 +174,8 @@
 #'      bottom of the unit.
 #'    \item \code{strat_name_long}: The stratigraphic name associated with
 #'      the unit (e.g., "Coal Valley Formation").
-#'    \item \code{refs}: The IDs of the references associated with the unit.
+#'    \item \code{refs}: The unique identification number(s) of the reference(s)
+#'      associated with the unit.
 #'    \item \code{clat}: The present day latitude of the centroid of the
 #'      column to which the unit belongs.
 #'    \item \code{clng}: The present day longitude of the centroid of the
