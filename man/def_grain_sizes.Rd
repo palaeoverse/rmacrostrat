@@ -2,7 +2,7 @@
 % Please edit documentation in R/def_grain_sizes.R
 \name{def_grain_sizes}
 \alias{def_grain_sizes}
-\title{Retrieve grain size definitions}
+\title{Define grain sizes}
 \usage{
 def_grain_sizes(
   grain_name = NULL,
@@ -54,6 +54,16 @@ A function to return grain size definitions from the
 Macrostrat Database based on user-specified arguments. If no arguments
 are specified, all definitions are returned.
 }
+\section{Developer(s)}{
+
+Lewis A. Jones
+}
+
+\section{Reviewer(s)}{
+
+William Gearty
+}
+
 \examples{
 \dontrun{
  # Return all definitions
@@ -71,8 +81,5 @@ Geologic features and attributes:
 \code{\link{def_measurements}()},
 \code{\link{def_minerals}()},
 \code{\link{def_structures}()}
-}
-\author{
-Lewis A. Jones
 }
 \concept{defs_feat}

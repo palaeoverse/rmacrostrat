@@ -1,4 +1,4 @@
-#' @title Retrieve grain size definitions
+#' @title Define grain sizes
 #'
 #' @description A function to return grain size definitions from the
 #'   Macrostrat Database based on user-specified arguments. If no arguments
@@ -20,20 +20,23 @@
 #' @return A \code{data.frame} containing the following columns:
 #' \itemize{
 #'   \item \code{grain_id}: The unique identification number of the
-#'   grain.
+#'     grain.
 #'   \item \code{grain_symbol}: The grain symbol (or abbreviation) to use for
-#'   display purposes.
+#'     display purposes.
 #'   \item \code{grain_name}: The name of the grain.
 #'   \item \code{grain_group}: The name of the group the grain belongs to.
 #'   \item \code{soil_group}: The name of the soil family the grain belongs
-#'   to.
+#'     to.
 #'   \item \code{min_size}: The minimum size of the size in millimeters.
 #'   \item \code{max_size}: The maximum size of the grain in millimeters.
 #'   \item \code{classification}: The classification scheme the given grain
-#'   belongs to.
+#'     belongs to.
 #' }
 #'
-#' @author Lewis A. Jones
+#' @section Developer(s):
+#'   Lewis A. Jones
+#' @section Reviewer(s):
+#'   William Gearty
 #'
 #' @examples
 #' \dontrun{
@@ -52,14 +55,10 @@ def_grain_sizes <- function(grain_name = NULL, grain_group = NULL,
   # Collect input arguments as a list
   args <- as.list(environment())
   # Check whether class of arguments is valid
-  ref <- list(
-    grain_name = "character",
-    grain_group = "character",
-    soil_group = "character",
-    grain_id = "integer",
-    grain_symbol = "character",
-    grain_classification = "character"
-  )
+  ref <- list(grain_name = "character", grain_group = "character",
+              soil_group = "character",
+              grain_id = "integer", grain_symbol = "character",
+              grain_classification = "character")
   check_arguments(x = args, ref = ref)
   # Get request
   dat <- GET_macrostrat(endpoint = "defs/grainsizes",
