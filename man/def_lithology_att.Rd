@@ -2,7 +2,7 @@
 % Please edit documentation in R/def_lithology_att.R
 \name{def_lithology_att}
 \alias{def_lithology_att}
-\title{Retrieve lithology attribute definitions}
+\title{Define lithology attributes}
 \usage{
 def_lithology_att(
   lithology_att = NULL,
@@ -21,13 +21,13 @@ structure") to return a definition for.}
 of lithology attribute(s) to return a definition for.}
 }
 \value{
-A \code{dataframe} containing, for each retrieved core:
-\describe{
-\item{lith_att_id}{The unique identifier of the lithology attribute}
-\item{name}{The name of the lithology attribute}
-\item{type}{The type of lithology attribute}
-\item{t_units}{The total number of Macrostrat units to which the lithology
-attribute is attached}
+A \code{data.frame} containing the following columns:
+\itemize{
+\item \code{lith_att_id}: The unique identifier of the lithology attribute.
+\item \code{name}: The name of the lithology attribute.
+\item \code{type}: The lithology attribute type.
+\item \code{t_units}: The total number of Macrostrat units to which the
+lithology attribute is attached.
 }
 }
 \description{
@@ -35,12 +35,22 @@ A function to retrieve the definitions for one or more
 lithology attributes in the Macrostrat database. By default, all lithology
 attribute definitions are returned.
 }
+\section{Developer(s)}{
+
+Bethany Allen
+}
+
+\section{Reviewer(s)}{
+
+Christopher D. Dean
+}
+
 \examples{
 \dontrun{
-if (interactive()) {
-  # lithology_attributes <- def_lithology_att()
-  # lithology_attributes <- def_lithology_att(att_type = "sed structure")
-}
+# Return all lithology attribute definitions
+ex1 <- def_lithology_att()
+# Return subsets of lithology attribute definitions
+ex2 <- def_lithology_att(att_type = "sed structure")
 }
 }
 \seealso{
@@ -52,8 +62,5 @@ Geologic features and attributes:
 \code{\link{def_measurements}()},
 \code{\link{def_minerals}()},
 \code{\link{def_structures}()}
-}
-\author{
-Bethany Allen
 }
 \concept{defs_feat}
