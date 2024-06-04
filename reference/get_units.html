@@ -142,14 +142,14 @@ specified numerical age, in millions of years before present.</p></dd>
 <dd><p><code>numeric</code>. Filter units to those that overlap with the
 age range between the specified numerical age and <code>age_bottom</code>. Should be
 in millions of years before present. <code>age_bottom</code> must also be specified,
-and this must be younger than <code>age_bottom</code>.</p></dd>
+and <code>age_top</code> must be younger than <code>age_bottom</code>.</p></dd>
 
 
 <dt>age_bottom</dt>
 <dd><p><code>numeric</code>. Filter units to those that overlap with
 the age range between the specified numerical age and <code>age_top</code>. Should
 be in millions of years before present. <code>age_top</code> must also be specified,
-and this must be older than <code>age_top</code>.</p></dd>
+and <code>age_bottom</code> must be older than <code>age_top</code>.</p></dd>
 
 
 <dt>lat</dt>
@@ -293,8 +293,8 @@ in millions of years before present.</p></li>
 model in millions of years before present.</p></li>
 <li><p><code>max_thick</code>: Maximum unit thickness in meters.</p></li>
 <li><p><code>min_thick</code>: Minimum unit thickness in meters.</p></li>
-<li><p><code>outcrop</code>: Type of exposure ('outcrop', 'subsurface', or
-'both').</p></li>
+<li><p><code>outcrop</code>: Type of exposure ("outcrop", "subsurface", or
+"both").</p></li>
 <li><p><code>pbdb_collections</code>: Count of Paleobiology Database
 collections within the unit.</p></li>
 <li><p><code>pbdb_occurrences</code>: Count of Paleobiology Database
@@ -308,27 +308,29 @@ lithology.</p></li>
 <li><p><code>type</code>: The named lithology type (e.g., "siliciclastic").</p></li>
 <li><p><code>class</code>: The named lithology class (e.g., "sedimentary").</p></li>
 </ul></li>
-</ul><ul><li><p><code>environ</code>: a <code>dataframe</code> containing the environments
+<li><p><code>environ</code>: a <code>dataframe</code> containing the environments
 present within the unit, with the following columns:</p><ul><li><p><code>class</code>: The named environment class (e.g., "marine").</p></li>
 <li><p><code>type</code>: The named environment type (e.g., "siliciclastic").</p></li>
 <li><p><code>name</code>: The named environment (e.g., "delta plain").</p></li>
 <li><p><code>environ_id</code>: The unique identification number of the
 environment.</p></li>
 </ul></li>
-</ul><ul><li><p><code>econ</code>: a <code>dataframe</code> containing the economic
-attributes present within the unit, with the following columns:</p><ul><li><p><code>type</code>: The named economic attribute type (e.g., "mineral").</p></li>
+<li><p><code>econ</code>: a <code>dataframe</code> containing the economic
+attributes present within the unit, with the following columns:</p><ul><li><p><code>type</code>: The named economic attribute type (e.g.,
+"mineral").</p></li>
 <li><p><code>name</code>: The named economic attribute (e.g., "gold").</p></li>
 <li><p><code>econ_id</code>: The unique identification number of the economic
 attribute.</p></li>
-<li><p><code>class</code>: The named economic attribute class (e.g., "precious
-commodity").</p></li>
+<li><p><code>class</code>: The named economic attribute class (e.g.,
+"precious commodity").</p></li>
 </ul></li>
-</ul><ul><li><p><code>measure</code>: a <code>dataframe</code> containing the measure
-attributes present within the unit, with the following columns:</p><ul><li><p><code>measure_class</code>: The class of measures (e.g. "geochemical").</p></li>
-<li><p><code>measure_type</code>: the type of measures (e.g. "minor
+<li><p><code>measure</code>: a <code>dataframe</code> containing the measure
+attributes present within the unit, with the following columns:</p><ul><li><p><code>measure_class</code>: The class of measures (e.g.,
+"geochemical").</p></li>
+<li><p><code>measure_type</code>: the type of measures (e.g., "minor
 elements").</p></li>
 </ul></li>
-</ul><ul><li><p><code>notes</code>: Unit specific notes.</p></li>
+<li><p><code>notes</code>: Unit specific notes.</p></li>
 <li><p><code>color</code>: Recommended coloring for units based on dominant
 lithology.</p></li>
 <li><p><code>text_color</code>: Recommended coloring for text based on color.</p></li>
@@ -339,14 +341,13 @@ the top of the unit.</p></li>
 <li><p><code>t_int_age</code>: The age of the chronostratigraphic interval
 containing the top boundary of the unit.</p></li>
 <li><p><code>t_prop</code>: Position of continuous time age model top boundary,
-proportional to reference time interval (t_interval).</p></li>
+proportional to reference time interval (t_int_name).</p></li>
 <li><p><code>units_above</code>: The unit_ids of the units contacting the top
 of the unit.</p></li>
 <li><p><code>b_int_id</code>: The ID of the chronostratigraphic interval
 containing the bottom boundary of the unit.</p></li>
 <li><p><code>b_int_name</code>: The name of the time interval represented at
-the
-bottom of the unit.</p></li>
+the bottom of the unit.</p></li>
 <li><p><code>b_int_age</code>: The age of the chronostratigraphic interval
 containing the bottom boundary of the unit.</p></li>
 <li><p><code>b_prop</code>: Position of continuous time age model bottom
@@ -354,27 +355,41 @@ boundary, proportional to reference time interval (b_interval).</p></li>
 <li><p><code>units_below</code>: The unit_ids of the units contacting the
 bottom of the unit.</p></li>
 <li><p><code>strat_name_long</code>: The stratigraphic name associated with
-the unit (e.g. "Coal Valley Formation").</p></li>
-<li><p><code>refs</code>: The number of references associated with the unit.</p></li>
+the unit (e.g., "Coal Valley Formation").</p></li>
+<li><p><code>refs</code>: The unique identification number(s) of the reference(s)
+associated with the unit.</p></li>
 <li><p><code>clat</code>: The present day latitude of the centroid of the
 column to which the unit belongs.</p></li>
 <li><p><code>clng</code>: The present day longitude of the centroid of the
 column to which the unit belongs.</p></li>
 <li><p><code>t_plat</code>: The paleolatitude of the centroid of the column
-which the unit belongs to at top age (clat rotated to t_age).</p></li>
+which the unit belongs to at top age (<code>clat</code> rotated to <code>t_age</code>).</p></li>
 <li><p><code>t_plng</code>: The paleolongitude of the centroid of the column
-which the unit belongs to at top age (clng rotated to t_age) .</p></li>
+which the unit belongs to at top age (<code>clng</code> rotated to <code>t_age</code>) .</p></li>
 <li><p><code>b_plat</code>: The paleolatitude of the centroid of the column
-which the unit belongs to at bottom age (clat rotated to b_age).</p></li>
+which the unit belongs to at bottom age (<code>clat</code> rotated to <code>b_age</code>).</p></li>
 <li><p><code>b_plng</code>: The paleolongitude of the the centroid of the
-column which the unit belongs to at bottom age (clng rotated to b_age).</p></li>
-</ul><p>If <code>sf</code> is <code>TRUE</code>, an <code>sf</code> object is returned instead, with the same
-columns plus a "geometry" column that contains the spatial data.</p>
+column which the unit belongs to at bottom age (<code>clng</code> rotated to
+<code>b_age</code>).</p></li>
+</ul><p>If <code>sf</code> is <code>TRUE</code>, an <code>sf</code> object is returned instead, with a "geometry"
+column that contains the spatial data instead of the <code>clat</code>/<code>clng</code> columns.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
     <p>More information can be found for the inputs for this function
-using the definition functions (beginning with <code>defs_</code>).</p>
+using the definition functions (beginning with <code>def_</code>).</p>
+    </div>
+    <div class="section level2">
+    <h2 id="developer-s-">Developer(s)<a class="anchor" aria-label="anchor" href="#developer-s-"></a></h2>
+    
+
+<p>Lewis A. Jones</p>
+    </div>
+    <div class="section level2">
+    <h2 id="reviewer-s-">Reviewer(s)<a class="anchor" aria-label="anchor" href="#reviewer-s-"></a></h2>
+    
+
+<p>William Gearty</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -383,10 +398,6 @@ using the definition functions (beginning with <code>defs_</code>).</p>
 <code><a href="get_age_model.html">get_age_model</a>()</code>,
 <code><a href="get_columns.html">get_columns</a>()</code>,
 <code><a href="get_sections.html">get_sections</a>()</code></p></div>
-    </div>
-    <div class="section level2">
-    <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
-    <p>Lewis A. Jones</p>
     </div>
 
     <div class="section level2">
