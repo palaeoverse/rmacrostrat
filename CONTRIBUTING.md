@@ -1,4 +1,4 @@
-# Contributing to palaeoverse
+# Contributing to rmacrostrat
 
 As part of the Palaeoverse project, we have adopted a set of [structures and standards](https://palaeoverse.palaeoverse.org/articles/structure-and-standards.html) to follow for contributing to the development of Palaeoverse R packages, including for `rmacrostrat`. If you would like to contribute to the `rmacrostrat` toolkit, we strongly advise reading this document first. If you plan to contribute a function to `rmacrostrat`, you should first raise an [issue](https://github.com/palaeoverse/rmacrostrat/issues) via the GitHub repository. This way the development team can assess whether the function is suitable or needed in the `rmacrostrat` toolkit prior to submission.
 
