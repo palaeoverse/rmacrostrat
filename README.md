@@ -77,6 +77,12 @@ ggplot(units, aes(x = mid_age)) +
 ```
 ![](setup/carbonate_units.png)
 
+Extensive example usage of `rmacrostrat` is provided in the package vignettes/tutorials. These can be accessed via:
+
+```r
+browseVignettes(package = "rmacrostrat")
+```
+
 # How to contribute?
 If you are interested in contributing to the `rmacrostrat` R package, you can do so by following these [guidelines](https://rmacrostrat.palaeoverse.org/CONTRIBUTING.html). We have also adopted a set of [standards and structure](https://palaeoverse.palaeoverse.org/articles/structure-and-standards.html) to broadly follow for contributing to Palaeoverse R packages. If you would like to contribute to `rmacrostrat`, we strongly advise reading this document.
 
