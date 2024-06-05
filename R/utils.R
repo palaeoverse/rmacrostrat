@@ -1,14 +1,15 @@
-#' Filters NULL arguments from a list
+#' Filters NULL and FALSE arguments from a list
 #'
 #' This function checks whether any elements in a list are
-#' NULL and removes them.
+#' NULL or FALSE and removes them.
 #'
 #' @param x \code{list}. The user-query list
 #'
-#' @return A `NULL` filtered list of `x`.
+#' @return A `NULL` and `FALSE` filtered list of `x`.
 #' @keywords internal
-filter_null <- function(x) {
-  Filter(Negate(is.null), x)
+filter_args <- function(x) {
+  x <- Filter(Negate(is.null), x)
+  Filter(Negate(isFALSE), x)
 }
 
 #' Check if arguments are valid (internal)
@@ -23,7 +24,7 @@ filter_null <- function(x) {
 #' @return Error messages or \code{TRUE} if all arguments are valid.
 #' @keywords internal
 check_arguments <- function(x, ref) {
-  x <- filter_null(x)
+  x <- filter_args(x)
   if (length(x) == 0) {
     return(TRUE)
   }

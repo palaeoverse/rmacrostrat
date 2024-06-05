@@ -11,5 +11,5 @@ test_that("utils works", {
                                ref = list(a = "integer", b = "character",
                                           c = "list")))
 
-  expect_length(filter_null(list(a = NULL, b = 1, c = NULL)), 1)
+  expect_length(filter_args(list(a = NULL, b = 1, c = NULL)), 1)
 })

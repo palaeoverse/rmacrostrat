@@ -41,7 +41,7 @@ api_version <- function() {
 GET_macrostrat <- function(endpoint, query = list(), format = "json",
                            output = "df") {
   # Remove NULL arguments
-  query_clean <- filter_null(query)
+  query_clean <- filter_args(query)
   # Is Macrostrat and the user online?
   tryCatch(
     {
