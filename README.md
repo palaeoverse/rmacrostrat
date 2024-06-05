@@ -7,7 +7,7 @@
 [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/ThePalaeoverse.svg?style=social&label=Follow%20%40ThePalaeoverse)](https://twitter.com/ThePalaeoverse)
 <!-- badges: end -->
 
-The goal of rmacrostrat is to streamline and improve accessibility to the geological database Macrostrat. The package provides functionality for querying the database via the dedicated application programming interface (API) and retrieving various geological data (e.g. lithostratigraphic units) and definitions/metadata associated with those data and Macrostrat more broadly.
+The goal of rmacrostrat is to streamline and improve accessibility to the geological database [Macrostrat](https://macrostrat.org). The package provides functionality for querying the database via the dedicated application programming interface (API) and retrieving various geological data (e.g. lithostratigraphic units) and definitions/metadata associated with those data and Macrostrat more broadly.
 
 ## Development team
 - [Lewis A. Jones](mailto:LewisAlan.Jones@uvigo.es), Universidade de Vigo
