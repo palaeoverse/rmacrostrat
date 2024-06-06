@@ -1,4 +1,4 @@
-#' @title Retrieve metadata associated with eODP
+#' @title Define objects associated with eODP
 #' @description Obtain metadata for variables associated with the
 #' [Extending Ocean Drilling Pursuits (eODP)](https://eodp.github.io) project.
 #' By default, data for all drilling sites are returned.
@@ -9,32 +9,33 @@
 #'   leg(s) to return a definition for.
 #' @param site \code{character}. The unique identification number(s) of drilling
 #'   site(s) to return a definition for.
-#' @param sf \code{logical}. Should the results be returned as an `sf` object
-#'   (defaults to `TRUE`)? If `FALSE`, a `data.frame` is returned.
+#' @param sf \code{logical}. Should the results be returned as an `sf` object?
+#' Defaults to `FALSE`.
 #'
-#' @return An `sf` object containing, for each retrieved core:
-#' \describe{
-#'  \item{epoch}{The name of the drilling program}
-#'  \item{exp}{The name of the leg/expedition}
-#'  \item{site}{The name of the drilling site}
-#'  \item{hole}{The name of the drilling hole}
-#'  \item{lat}{Decimal degree latitude of the core}
-#'  \item{lng}{Decimal degree longitude of the core}
-#'  \item{col_id}{The unique identifier of the Macrostrat column}
-#'  \item{col_group_id}{The unique identifier of the group to which the
-#'  Macrostrat column belongs}
-#'  \item{penetration}{The depth of the hole}
-#'  \item{cored}{}
-#'  \item{recovered}{}
-#'  \item{recovery}{}
-#'  \item{drilled_interval}{}
-#'  \item{drilled_intervals}{}
-#'  \item{cores}{}
-#'  \item{date_started}{The date on which drilling commenced}
-#'  \item{comments}{Written notes assigned to the core}
-#'  \item{ref_id}{The unique identifier of the reference}
+#' @return A \code{data.frame} object containing, for each retrieved core:
+#' \itemize{
+#'  \item \code{epoch}: The name of the drilling program.
+#'  \item \code{exp}: The name of the leg/expedition.
+#'  \item \code{site}: The name of the drilling site.
+#'  \item \code{hole}: The name of the drilling hole.
+#'  \item \code{lat}: Decimal degree latitude of the core.
+#'  \item \code{lng}: Decimal degree longitude of the core.
+#'  \item \code{col_id}: The unique identifier of the Macrostrat column.
+#'  \item \code{col_group_id}: The unique identifier of the group to which the
+#'    Macrostrat column belongs.
+#'  \item \code{penetration}: The depth of the hole.
+#'  \item \code{cored}: The amount of rock cored.
+#'  \item \code{recovered}: The amount of rock recovered.
+#'  \item \code{recovery}: The proportion of rock recovered.
+#'  \item \code{drilled_interval}: The interval drilled.
+#'  \item \code{drilled_intervals}: The number of drilled intervals.
+#'  \item \code{cores}: The number of cores.
+#'  \item \code{date_started}: The date on which drilling commenced.
+#'  \item \code{comments}: Written notes assigned to the core.
+#'  \item \code{ref_id}: The unique identifier of the reference.
 #'  }
-#'  If sf = FALSE, a \code{dataframe} is outputted instead.
+#'  If `sf` is `TRUE`, an `sf` object is returned instead, with a "geometry"
+#'   column that contains the spatial data instead of the `lat`/`lng` columns.
 #'
 #' @author Bethany Allen
 #' @section References:
@@ -45,50 +46,35 @@
 #'
 #' @examples
 #' \dontrun{
-#' if (interactive()) {
-#'   # core_info <- def_drilling_sites(site = "U1547")
-#'   # core_info <- def_drilling_sites(exp = "385")
-#' }
+#' # Return all core information for a specific site
+#' core_info <- def_drilling_sites(site = "U1547")
+#' # Return all core information for a specific expedition
+#' core_info <- def_drilling_sites(exp = "385")
 #' }
 #' @export
 #' @family external
-def_drilling_sites <- function(
-    program = NULL,
-    exp = NULL,
-    site = NULL,
-    sf = TRUE) {
+def_drilling_sites <- function(program = NULL, exp = NULL, site = NULL,
+    sf = FALSE) {
 
   # Error handling
   # Collect input arguments as a list
   args <- as.list(environment())
   # Check whether class of arguments is valid
-  ref <- list(
-    program = "character",
-    exp = "character",
-    site = "character",
+  ref <- list(program = "character", exp = "character", site = "character",
     sf = "logical"
   )
   check_arguments(x = args, ref = ref)
-  # Check whether provided program fits categories
-  if (!is.null(program) && (program != "DSDP" && program != "IODP" &&
-                            program != "ODP")) {
-    stop("program must either be 'DSDP', 'IODP', or 'ODP'")
-  }
-
   # Recode names
   api_names <- list(program = "epoch")
   # Match names
   rpl <- match(x = names(api_names), table = names(args))
   # Replace names
   names(args)[rpl] <- as.vector(unlist(api_names))
-
   # Set default for format
   if (sf) format <- "geojson" else format <- "json"
-
   # Get request
   dat <- GET_macrostrat(endpoint = "defs/drilling_sites", query = args,
                         format = format)
-
   # Return data
   return(dat)
 }
