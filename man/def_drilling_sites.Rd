@@ -2,9 +2,9 @@
 % Please edit documentation in R/def_drilling_sites.R
 \name{def_drilling_sites}
 \alias{def_drilling_sites}
-\title{Retrieve metadata associated with eODP}
+\title{Define objects associated with eODP}
 \usage{
-def_drilling_sites(program = NULL, exp = NULL, site = NULL, sf = TRUE)
+def_drilling_sites(program = NULL, exp = NULL, site = NULL, sf = FALSE)
 }
 \arguments{
 \item{program}{\code{character}. The name of a drilling program (i.e.,
@@ -16,33 +16,34 @@ leg(s) to return a definition for.}
 \item{site}{\code{character}. The unique identification number(s) of drilling
 site(s) to return a definition for.}
 
-\item{sf}{\code{logical}. Should the results be returned as an \code{sf} object
-(defaults to \code{TRUE})? If \code{FALSE}, a \code{data.frame} is returned.}
+\item{sf}{\code{logical}. Should the results be returned as an \code{sf} object?
+Defaults to \code{FALSE}.}
 }
 \value{
-An \code{sf} object containing, for each retrieved core:
-\describe{
-\item{epoch}{The name of the drilling program}
-\item{exp}{The name of the leg/expedition}
-\item{site}{The name of the drilling site}
-\item{hole}{The name of the drilling hole}
-\item{lat}{Decimal degree latitude of the core}
-\item{lng}{Decimal degree longitude of the core}
-\item{col_id}{The unique identifier of the Macrostrat column}
-\item{col_group_id}{The unique identifier of the group to which the
-Macrostrat column belongs}
-\item{penetration}{The depth of the hole}
-\item{cored}{}
-\item{recovered}{}
-\item{recovery}{}
-\item{drilled_interval}{}
-\item{drilled_intervals}{}
-\item{cores}{}
-\item{date_started}{The date on which drilling commenced}
-\item{comments}{Written notes assigned to the core}
-\item{ref_id}{The unique identifier of the reference}
+A \code{data.frame} object containing, for each retrieved core:
+\itemize{
+\item \code{epoch}: The name of the drilling program.
+\item \code{exp}: The name of the leg/expedition.
+\item \code{site}: The name of the drilling site.
+\item \code{hole}: The name of the drilling hole.
+\item \code{lat}: Decimal degree latitude of the core.
+\item \code{lng}: Decimal degree longitude of the core.
+\item \code{col_id}: The unique identifier of the Macrostrat column.
+\item \code{col_group_id}: The unique identifier of the group to which the
+Macrostrat column belongs.
+\item \code{penetration}: The depth of the hole.
+\item \code{cored}: The amount of rock cored.
+\item \code{recovered}: The amount of rock recovered.
+\item \code{recovery}: The proportion of rock recovered.
+\item \code{drilled_interval}: The interval drilled.
+\item \code{drilled_intervals}: The number of drilled intervals.
+\item \code{cores}: The number of cores.
+\item \code{date_started}: The date on which drilling commenced.
+\item \code{comments}: Written notes assigned to the core.
+\item \code{ref_id}: The unique identifier of the reference.
 }
-If sf = FALSE, a \code{dataframe} is outputted instead.
+If \code{sf} is \code{TRUE}, an \code{sf} object is returned instead, with a "geometry"
+column that contains the spatial data instead of the \code{lat}/\code{lng} columns.
 }
 \description{
 Obtain metadata for variables associated with the
@@ -59,10 +60,10 @@ e2022GC010655. \doi{10.1029/2022GC010655}.
 
 \examples{
 \dontrun{
-if (interactive()) {
-  # core_info <- def_drilling_sites(site = "U1547")
-  # core_info <- def_drilling_sites(exp = "385")
-}
+# Return all core information for a specific site
+core_info <- def_drilling_sites(site = "U1547")
+# Return all core information for a specific expedition
+core_info <- def_drilling_sites(exp = "385")
 }
 }
 \seealso{
