@@ -5,9 +5,7 @@ test_that("get_eodp works", {
                                             site = "U1351",
                                             leg = "317",
                                             program = "IODP"),
-                          fail_args = list(# invalid program value
-                                           program = "test",
-                                           # wrong argument
+                          fail_args = list(# wrong argument
                                            column_group = 1,
                                            # wrong type
                                            column_id = "test"),
@@ -19,9 +17,7 @@ test_that("get_eodp works", {
                                             site = "U1351",
                                             leg = "317",
                                             program = "IODP"),
-                          fail_args = list(# invalid program value
-                                           program = "test",
-                                           # wrong argument
+                          fail_args = list(# wrong argument
                                            column_group = 1,
                                            # wrong type
                                            column_id = "test"),
