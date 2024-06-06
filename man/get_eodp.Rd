@@ -51,9 +51,9 @@ column that contains the spatial data instead of the \code{lat}/\code{lng} colum
 A function to retrieve data from the
 \href{https://eodp.github.io}{Extending Ocean Drilling Pursuits (eODP)}
 project, a collation of sedimentary description data
-from ocean drilling cores. This includes cores from the Deep Sea Drilling
-Project (DSDP), Integrated Ocean Drilling Program (IODP), and Ocean Drilling
-Program (ODP).
+from ocean drilling cores. This currently includes cores from the Deep Sea
+Drilling Project (DSDP), Integrated Ocean Drilling Program (IODP), and Ocean
+Drilling Program (ODP).
 }
 \details{
 More information can be found about the inputs for this function by

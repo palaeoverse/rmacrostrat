@@ -3,9 +3,9 @@
 #' @description A function to retrieve data from the
 #' [Extending Ocean Drilling Pursuits (eODP)](https://eodp.github.io)
 #' project, a collation of sedimentary description data
-#' from ocean drilling cores. This includes cores from the Deep Sea Drilling
-#' Project (DSDP), Integrated Ocean Drilling Program (IODP), and Ocean Drilling
-#' Program (ODP).
+#' from ocean drilling cores. This currently includes cores from the Deep Sea
+#' Drilling Project (DSDP), Integrated Ocean Drilling Program (IODP), and Ocean
+#' Drilling Program (ODP).
 #'
 #' @param column_id \code{integer}. Filter cores by their unique identification
 #'   number(s).
@@ -76,24 +76,16 @@ get_eodp <- function(column_id = NULL, site = NULL, leg = NULL, program = NULL,
   ref <- list(column_id = "integer", site = "character", leg = "character",
               program = "character", sf = "logical")
   check_arguments(x = args, ref = ref)
-  # Check whether provided program fits categories
-  if (!is.null(program) && (!program %in% c("DSDP", "IODP", "ODP"))) {
-    stop("program must either be 'DSDP', 'IODP', or 'ODP'")
-  }
-
   # Recode names
   api_names <- list(column_id = "col_id", program = "epoch")
   # Match names
   rpl <- match(x = names(api_names), table = names(args))
   # Replace names
   names(args)[rpl] <- as.vector(unlist(api_names))
-
   # Set default for format
   if (sf) format <- "geojson" else format <- "json"
-
   # Get request
   dat <- GET_macrostrat(endpoint = "eodp", query = args, format = format)
-
   # Return data
   return(dat)
 }
