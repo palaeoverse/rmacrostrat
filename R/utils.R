@@ -4,12 +4,15 @@
 #' NULL or FALSE and removes them.
 #'
 #' @param x \code{list}. The user-query list
+#' @param filter_null \code{logical}. Should NULL value queries be filtered?
+#' @param filter_false \code{logical}. Should FALSE value queries be filtered?
 #'
 #' @return A `NULL` and `FALSE` filtered list of `x`.
 #' @keywords internal
-filter_args <- function(x) {
-  x <- Filter(Negate(is.null), x)
-  Filter(Negate(isFALSE), x)
+filter_args <- function(x, filter_null = TRUE, filter_false = TRUE) {
+  if (filter_null) x <- Filter(Negate(is.null), x)
+  if (filter_false) x <- Filter(Negate(isFALSE), x)
+  x
 }
 
 #' Check if arguments are valid (internal)

@@ -4,10 +4,14 @@
 \alias{filter_args}
 \title{Filters NULL and FALSE arguments from a list}
 \usage{
-filter_args(x)
+filter_args(x, filter_null = TRUE, filter_false = TRUE)
 }
 \arguments{
 \item{x}{\code{list}. The user-query list}
+
+\item{filter_null}{\code{logical}. Should NULL value queries be filtered?}
+
+\item{filter_false}{\code{logical}. Should FALSE value queries be filtered?}
 }
 \value{
 A \code{NULL} and \code{FALSE} filtered list of \code{x}.
