@@ -2,7 +2,7 @@
 % Please edit documentation in R/get_age_model.R
 \name{get_age_model}
 \alias{get_age_model}
-\title{Retrieve column age models}
+\title{Retrieve Macrostrat column age models}
 \usage{
 get_age_model(column_id = NULL, section_id = NULL)
 }
@@ -14,33 +14,38 @@ column(s) as specified by their unique identification number(s).}
 section(s) as specified by their unique identification number(s).}
 }
 \value{
-A \code{dataframe} containing, for each boundary between units for
+A \code{data.frame} containing, for each boundary between units for
 each retrieved age model:
-\describe{
-\item{boundary_id}{The unique identifier of the boundary between two units}
-\item{col_id}{The unique identifier of the Macrostrat column}
-\item{section_id}{The unique identifier of the Macrostrat section}
-\item{interval_id}{The unique identifier of the time interval which the
-boundary lies within}
-\item{interval_name}{The name of the time interval which the boundary lies
-within}
-\item{age_bottom}{The numerical lower limit on the age of the boundary}
-\item{age_top}{The numerical upper limit on the age of the boundary}
-\item{rel_position}{The relative position of the boundary}
-\item{model_age}{The age of the boundary, as correlated with other ages in
-the column}
-\item{boundary_status}{The method used to determine the age of the boundary}
-\item{boundary_type}{The type of boundary}
-\item{boundary_position}{The position of the boundary}
-\item{unit_below}{The Macrostrat unit beneath the given boundary}
-\item{unit_above}{The Macrostrat unit above the given boundary}
-\item{ref_id}{The unique identifier of the reference}
+\itemize{
+\item{boundary_id}: The unique identification number of the boundary
+between two units.
+\item{col_id}: The unique identification number of the Macrostrat column.
+\item{section_id}: The unique identification number of the Macrostrat
+section.
+\item{interval_id}: The unique identification number of the time interval
+which the boundary lies within.
+\item{interval_name}: The name of the time interval which the boundary
+lies within.
+\item{age_bottom}: The numerical lower limit on the age of the boundary
+(maximum age), in millions of years before present.
+\item{age_top}: The numerical upper limit on the age of the boundary
+(minimum age), in millions of years before present.
+\item{rel_position}: The relative position of the boundary.
+\item{model_age}: The age of the boundary, as correlated with other ages in
+the column, in millions of years before present.
+\item{boundary_status}: The method used to determine the age of the
+boundary.
+\item{boundary_type}: The type of boundary.
+\item{boundary_position}: The position of the boundary.
+\item{unit_below}: The Macrostrat unit beneath the given boundary.
+\item{unit_above}: The Macrostrat unit above the given boundary.
+\item{ref_id}: The unique identification number of the reference.
 }
 }
 \description{
-Obtain information about the age models for columns. This
-largely consists of the temporal boundaries applied to the column's
-constituent units.
+A function to obtain information about the age models used for
+Macrostrat columns or sections. This largely consists of the temporal
+boundaries applied to the column's constituent units.
 }
 \details{
 The Macrostrat age models are used to determine the ages of the
@@ -48,11 +53,22 @@ boundaries between units in an internally consistent manner, allowing each
 boundary to be dated with respect to all age information available for the
 column.
 }
+\section{Developer(s)}{
+
+Bethany Allen
+}
+
+\section{Reviewer(s)}{
+
+Lewis A. Jones
+}
+
 \examples{
 \dontrun{
-if (interactive()) {
-  # age_model <- get_age_model(column_id = c(503, 504))
-}
+ # Get age model for specific columns by ID
+ ex1 <- get_age_model(column_id = c(503, 504))
+ # Get age model for specific sections by ID
+ ex2 <- get_age_model(section_id = c(65, 22))
 }
 }
 \seealso{
@@ -61,8 +77,5 @@ Macrostrat data entities:
 \code{\link{get_columns}()},
 \code{\link{get_sections}()},
 \code{\link{get_units}()}
-}
-\author{
-Bethany Allen
 }
 \concept{macrostrat}

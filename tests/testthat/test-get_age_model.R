@@ -4,7 +4,9 @@ test_that("get_age_model works", {
                           fail_args = list(# wrong argument
                                            column_group = 4,
                                            # wrong type
-                                           column_id = "test"),
+                                           column_id = "test",
+                                           # No input
+                                           NULL),
                           warn_args = list(column_id = -503),
                           col_no = 15)
 })
