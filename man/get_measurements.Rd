@@ -79,12 +79,11 @@ identification number(s) of the Macrostrat project(s).}
 Defaults to \code{FALSE}.}
 }
 \value{
-A \code{data.frame} containing:
+A \code{data.frame} containing the following columns:
 \itemize{
 \item \code{measurement_id}: The unique identification number of the
-measurement(s).
-\item \code{measuremeta_id}: The unique identification number of the sample
-number of the measurement.
+measurement.
+\item \code{measuremeta_id}: The unique identification number of the sample.
 \item \code{measurement}: The name of the type of measurement obtained.
 \item \code{measure_units}: The units of the measurement.
 \item \code{measure_phase}: The phase from which the measurement was taken.
@@ -92,7 +91,7 @@ number of the measurement.
 \item \code{n}: The number of observations or measurements.
 \item \code{ref_id}: The unique identification number of the reference
 associated with the measurement.
-\item \code{sample_name}: The name of the sample for the measurement.
+\item \code{sample_name}: The name of the sample.
 \item \code{geo_unit}: The Macrostrat unit from which the measurement was
 taken.
 \item \code{samp_lith}: A lithological description of the rock from which
@@ -107,14 +106,15 @@ measurement.
 \item \code{lng}: Decimal degree longitude of the measurement.
 \item \code{unit_id}: The unique identification number of the Macrostrat
 unit from which the measurement was taken.
-\item \code{unit_rel_pos}: The relative positive of the sample or
-measurement within the unit.
+\item \code{unit_rel_pos}: The relative positive of the sample within the
+unit.
 \item \code{col_id}: The unique identification number of the Macrostrat
 column from which the measurement was taken.
 \item \code{strat_name_id}: The unique identification number of the
-stratigraphic name.
-\item \code{match_basis}: A terse descriptor of how the measuremeta data was
-linked to the Macrostrat unit.
+stratigraphic name attributed to the unit from which the measurement was
+taken.
+\item \code{match_basis}: A terse description of how the measuremeta data
+was linked to the Macrostrat unit.
 \item \code{ref}: The name of the reference.
 \item \code{measure_value}: The value of the measurement.
 \item \code{measure_error}: The reported error on the measurement value.
@@ -126,7 +126,8 @@ measure_error.
 \item \code{sample_no}: The sample number for the measurement.
 \item \code{error_units}: The units of the error.
 }
-If sf = TRUE, an \code{sf} object is outputted instead.
+If \code{sf} = \code{TRUE}, an \code{sf} object is returned instead, with the same
+columns plus a "geometry" column that contains the spatial data.
 }
 \description{
 Retrieve a range of measurements relevant to making geological
@@ -152,8 +153,8 @@ Christopher D. Dean
 ex1 <- get_measurements(measure_id = c(353, 354))
 # Return measurements based on the ID of a specific measurement definition
 ex2 <- get_measurements(measurement_id = 42)
-# Return measurements for a specific Macrostrat column and measurement type
-ex3 <- get_measurements(column_id = 84, measurement = "SiO2")
+# Return measurements for a specific measurement type
+ex3 <- get_measurements(measurement = "SiO2")
 }
 }
 \seealso{
