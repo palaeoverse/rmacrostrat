@@ -2,7 +2,7 @@
 % Please edit documentation in R/def_econs.R
 \name{def_econs}
 \alias{def_econs}
-\title{Retrieve economic definitions}
+\title{Define economic resources}
 \usage{
 def_econs(econ = NULL, econ_type = NULL, econ_class = NULL, econ_id = NULL)
 }
@@ -20,16 +20,16 @@ reservoir") to return a definition for.}
 economic resource(s) to return a definition for.}
 }
 \value{
-A \code{dataframe} containing:
-\describe{
-\item{econ_id}{The unique identifier of the economic resource}
-\item{name}{The name of the economic resource}
-\item{type}{The type of economic resource}
-\item{class}{The class of economic resource}
-\item{color}{The recommended coloring for units based on the dominant
-lithology}
-\item{t_units}{The total number of Macrostrat units containing the economic
-resource}
+A \code{data.frame} containing the following columns:
+\itemize{
+\item \code{econ_id}: The unique identifier of the economic resource.
+\item \code{name}: The name of the economic resource.
+\item \code{type}: The type of economic resource.
+\item \code{class}: The class of economic resource.
+\item \code{color}: The recommended coloring for units based on the dominant
+lithology.
+\item \code{t_units}: The total number of Macrostrat units containing the
+economic resource.
 }
 }
 \description{
@@ -37,12 +37,22 @@ A function to retrieve the definitions for one or more
 economic resources in the Macrostrat database. By default, all economic
 definitions are returned.
 }
+\section{Developer(s)}{
+
+Bethany Allen
+}
+
+\section{Reviewer(s)}{
+
+William Gearty
+}
+
 \examples{
 \dontrun{
-if (interactive()) {
-  # econ_inf <- def_econs()
-  # econ_inf <- def_econs(econ_type = "hydrocarbon")
-}
+# Return all economic resource definitions
+econ_inf <- def_econs()
+# Return only definitions for hydrocarbon resources
+econ_inf <- def_econs(econ_type = "hydrocarbon")
 }
 }
 \seealso{
@@ -54,8 +64,5 @@ Geologic features and attributes:
 \code{\link{def_measurements}()},
 \code{\link{def_minerals}()},
 \code{\link{def_structures}()}
-}
-\author{
-Bethany Allen
 }
 \concept{defs_feat}
