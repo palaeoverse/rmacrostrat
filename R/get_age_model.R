@@ -1,8 +1,8 @@
 #' @title Retrieve Macrostrat column age models
 #'
 #' @description A function to obtain information about the age models used for
-#'   Macrostrat columns or sections. This largely consists of the temporal
-#'   boundaries applied to the column's constituent units.
+#'   Macrostrat columns or sections. This consists of the temporal boundaries
+#'   applied to the column's constituent units.
 #'
 #' @param column_id \code{integer}. Filter age models to those associated with
 #'   column(s) as specified by their unique identification number(s).
