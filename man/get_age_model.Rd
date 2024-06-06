@@ -44,8 +44,8 @@ boundary.
 }
 \description{
 A function to obtain information about the age models used for
-Macrostrat columns or sections. This largely consists of the temporal
-boundaries applied to the column's constituent units.
+Macrostrat columns or sections. This consists of the temporal boundaries
+applied to the column's constituent units.
 }
 \details{
 The Macrostrat age models are used to determine the ages of the
