@@ -1,4 +1,5 @@
-#' @title Obtain geological measurements
+#' @title Retrieve geological measurements
+#'
 #' @description Retrieve a range of measurements relevant to making geological
 #'  inferences.
 #'
@@ -40,108 +41,96 @@
 #'   identification number(s) of the Macrostrat project(s).
 #' @param sf \code{logical}. Should the results be returned as an `sf` object?
 #'   Defaults to `FALSE`.
-#'
-#' @return A \code{dataframe} containing, for each retrieved measurement:
-#' \describe{
-#'  \item{measurement_id}{The unique identifier of the set of measurements}
-#'  \item{measuremeta_id}{The unique identifier (sample number) of the
-#'  measurement}
-#'  \item{measurement}{The name of the type of measurement obtained}
-#'  \item{measure_units}{The units of the measurement}
-#'  \item{measure_phase}{The phase from which the measurement was taken}
-#'  \item{method}{The method used to generate the measurement}
-#'  \item{n}{The number of observations or measurements}
-#'  \item{ref_id}{The unique identifier of the reference}
-#'  \item{sample_name}{Name of the sample for the measurement}
-#'  \item{geo_unit}{The Macrostrat unit from which the measurement was
-#'  taken}
-#'  \item{samp_lith}{A lithological description of the rock from which the
-#'  measurement was taken}
-#'  \item{samp_lith_id}{The unique identifier of the lithological description of
-#'  the rock from which the measurement was taken}
-#'  \item{samp_desc}{A description of the sample used to generate the
-#'  measurement}
-#'  \item{samp_age}{The geological time interval assigned to the measurement}
-#'  \item{lat}{Decimal degree latitude of the measurement}
-#'  \item{lng}{Decimal degree longitude of the measurement}
-#'  \item{unit_id}{The unique identifier of the Macrostrat unit from which the
-#'  measurement was taken}
-#'  \item{unit_rel_pos}{The relative positive of the sample or measurement
-#'  within the unit}
-#'  \item{col_id}{The unique identifier of the Macrostrat column from which the
-#'  measurement was taken}
-#'  \item{strat_name_id}{The unique identifier of the stratigraphic name}
-#'  \item{match_basis}{A terse descriptor of how the measuremeta data was linked
-#'  to the Macrostrat unit}
-#'  \item{ref}{The name of the reference}
-#'  \item{measure_value}{The value of the measurement}
-#'  \item{measure_error}{The reported error on the measurement value}
-#'  \item{measure_position}{The position of the measurement in the Macrostrat
-#'  column}
-#'  \item{measure_n}{The number of measurements used to generate the
-#'  measure_value; if greater than one, usually used to produce the
-#'  measure_error}
-#'  \item{sample_no}{The sample number for the measurement}
-#'  \item{error_units}{The units of the error}
+#' @return A \code{data.frame} containing the following columns:
+#' \itemize{
+#'  \item \code{measurement_id}: The unique identification number of the
+#'    measurement.
+#'  \item \code{measuremeta_id}: The unique identification number of the sample.
+#'  \item \code{measurement}: The name of the type of measurement obtained.
+#'  \item \code{measure_units}: The units of the measurement.
+#'  \item \code{measure_phase}: The phase from which the measurement was taken.
+#'  \item \code{method}: The method used to generate the measurement.
+#'  \item \code{n}: The number of observations or measurements.
+#'  \item \code{ref_id}: The unique identification number of the reference
+#'    associated with the measurement.
+#'  \item \code{sample_name}: The name of the sample.
+#'  \item \code{geo_unit}: The Macrostrat unit from which the measurement was
+#'    taken.
+#'  \item \code{samp_lith}: A lithological description of the rock from which
+#'    the measurement was taken.
+#'  \item \code{samp_lith_id}: The unique identification number of the
+#'    lithological description of the rock from which the measurement was taken.
+#'  \item \code{samp_desc}: A description of the sample used to generate the
+#'    measurement.
+#'  \item \code{samp_age}: The geological time interval assigned to the
+#'    measurement.
+#'  \item \code{lat}: Decimal degree latitude of the measurement.
+#'  \item \code{lng}: Decimal degree longitude of the measurement.
+#'  \item \code{unit_id}: The unique identification number of the Macrostrat
+#'    unit from which the measurement was taken.
+#'  \item \code{unit_rel_pos}: The relative positive of the sample within the
+#'    unit.
+#'  \item \code{col_id}: The unique identification number of the Macrostrat
+#'    column from which the measurement was taken.
+#'  \item \code{strat_name_id}: The unique identification number of the
+#'    stratigraphic name attributed to the unit from which the measurement was
+#'    taken.
+#'  \item \code{match_basis}: A terse description of how the measuremeta data
+#'    was linked to the Macrostrat unit.
+#'  \item \code{ref}: The name of the reference.
+#'  \item \code{measure_value}: The value of the measurement.
+#'  \item \code{measure_error}: The reported error on the measurement value.
+#'  \item \code{measure_position}: The position of the measurement in the
+#'    Macrostrat column.
+#'  \item \code{measure_n}: The number of measurements used to generate the
+#'    measure_value; if greater than one, usually used to produce the
+#'    measure_error.
+#'  \item \code{sample_no}: The sample number for the measurement.
+#'  \item \code{error_units}: The units of the error.
 #'  }
-#'  If sf = TRUE, an `sf` object is outputted instead.
-#'
-#' @author Bethany Allen
+#'  If `sf` = `TRUE`, an `sf` object is returned instead, with the same
+#'   columns plus a "geometry" column that contains the spatial data.
+#' @section Developer(s):
+#'  Bethany Allen
+#' @section Reviewer(s):
+#'  Christopher D. Dean
 #' @details More information can be found about the inputs and outputs for this
 #'  function by using [def_measurements()].
-#'
 #' @examples
 #' \dontrun{
-#' if (interactive()) {
-#'   # age_model <- get_measurements(measure_id = c(353, 354))
-#'   # age_model <- get_measurements(measurement_id = 42)
-#'   # age_model <- get_measurements(column_id = 84, measurement = "SiO2")
-#' }
+#' # Return measurements based on their specific IDs
+#' ex1 <- get_measurements(measure_id = c(353, 354))
+#' # Return measurements based on the ID of a specific measurement definition
+#' ex2 <- get_measurements(measurement_id = 42)
+#' # Return measurements for a specific measurement type
+#' ex3 <- get_measurements(measurement = "SiO2")
 #' }
 #' @export
 #' @family external
-get_measurements <- function(
-    measure_id = NULL,
-    measurement_id = NULL,
-    measurement = NULL,
-    measurement_type = NULL,
-    measurement_class = NULL,
-    measuremeta_id = NULL,
-    measure_phase = NULL,
-    column_id = NULL,
-    section_id = NULL,
-    unit_id = NULL,
-    interval_name = NULL,
-    lithology_id = NULL,
-    lithology_type = NULL,
-    lithology_class = NULL,
-    project_id = NULL,
-    sf = FALSE) {
-
+get_measurements <- function(measure_id = NULL, measurement_id = NULL,
+                             measurement = NULL, measurement_type = NULL,
+                             measurement_class = NULL, measuremeta_id = NULL,
+                             measure_phase = NULL,
+                             column_id = NULL, section_id = NULL,
+                             unit_id = NULL, interval_name = NULL,
+                             lithology_id = NULL, lithology_type = NULL,
+                             lithology_class = NULL, project_id = NULL,
+                             sf = FALSE) {
   # Error handling
   # Collect input arguments as a list
   args <- as.list(environment())
   # Check whether class of arguments is valid
-  ref <- list(
-    measure_id = "integer",
-    measurement_id = "integer",
-    measurement = "character",
-    measurement_type = "character",
-    measurement_class = "character",
-    measuremeta_id = "integer",
-    measure_phase = "character",
-    column_id = "integer",
-    section_id = "integer",
-    unit_id = "integer",
-    interval_name = "character",
-    lithology_id = "integer",
-    lithology_type = "character",
-    lithology_class = "character",
-    project_id = "integer",
-    sf = "logical"
+  ref <- list(measure_id = "integer", measurement_id = "integer",
+              measurement = "character", measurement_type = "character",
+              measurement_class = "character",
+              measuremeta_id = "integer", measure_phase = "character",
+              column_id = "integer", section_id = "integer",
+              unit_id = "integer", interval_name = "character",
+              lithology_id = "integer", lithology_type = "character",
+              lithology_class = "character", project_id = "integer",
+              sf = "logical"
   )
   check_arguments(x = args, ref = ref)
-
   # Recode names
   api_names <- list(column_id = "col_id", lithology_id = "lith_id",
                     lithology_class = "lith_class",
@@ -150,17 +139,13 @@ get_measurements <- function(
   rpl <- match(x = names(api_names), table = names(args))
   # Replace names
   names(args)[rpl] <- as.vector(unlist(api_names))
-
   # Always retrieve measurement values
   args$show_values = TRUE
-
   # Set default for format
   if (sf) format <- "geojson" else format <- "json"
-
   # Get request
   dat <- GET_macrostrat(endpoint = "measurements", query = args,
                         format = format)
-
   # Return data
   return(dat)
 }
