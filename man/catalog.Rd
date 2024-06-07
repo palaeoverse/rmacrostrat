@@ -7,41 +7,8 @@
 catalog(type = NULL)
 }
 \arguments{
-\item{type}{\code{character}. The name of a definition set to retrieve.
-
-Options are:
-\describe{
-\item{columns}{Definitions of Macrostrat columns. See also
-\code{\link[=def_columns]{def_columns()}}.}
-\item{drilling_sites}{Definitions of eODP drilling cores. See also
-\code{\link[=def_drilling_sites]{def_drilling_sites()}}.}
-\item{econs}{Definitions of economic resources. See also \code{\link[=def_econs]{def_econs()}}.}
-\item{environments}{Definitions of environments. See also
-\code{\link[=def_environments]{def_environments()}}.}
-\item{grain_sizes}{Definitions of grain sizes. See also
-\code{\link[=def_grain_sizes]{def_grain_sizes()}}.}
-\item{intervals}{Definitions of temporal intervals. See also
-\code{\link[=def_intervals]{def_intervals()}}.}
-\item{lithologies}{Definitions of lithologies. See also
-\code{\link[=def_lithologies]{def_lithologies()}}.}
-\item{lithology_att}{Definitions of lithology attributes. See also
-\code{\link[=def_lithology_att]{def_lithology_att()}}.}
-\item{measurements}{Definitions of measurements. See also
-\code{\link[=def_measurements]{def_measurements()}}.}
-\item{minerals}{Defintions of minerals. See also \code{\link[=def_minerals]{def_minerals()}}.}
-\item{plates}{Definitions of tectonic plates. See also \code{\link[=def_plates]{def_plates()}}.}
-\item{projects}{Definitions of Macrostrat projects. See also
-\code{\link[=def_projects]{def_projects()}}.}
-\item{references}{Definitions of references. See also \code{\link[=def_references]{def_references()}}.}
-\item{sources}{Definitions of geological maps. See also \code{\link[=def_sources]{def_sources()}}.}
-\item{strat_name_concepts}{Definitions of stratigraphic name concepts. See
-also \code{\link[=def_strat_name_concepts]{def_strat_name_concepts()}}.}
-\item{strat_names}{Definitions of stratigraphic names. See also
-\code{\link[=def_strat_names]{def_strat_names()}}.}
-\item{structures}{Definitions of geological structures. See also
-\code{\link[=def_structures]{def_structures()}}.}
-\item{timescales}{Definitions of timescales. See also \code{\link[=def_timescales]{def_timescales()}}.}
-}}
+\item{type}{\code{character}. The name of a definition set to retrieve. See
+Definitions section below for options.}
 }
 \value{
 A \code{data.frame} containing an exhaustive list of the
@@ -54,6 +21,53 @@ A function to retrieve all definitions and/or metadata for a
 given definition set. Caution: some datasets are large and may take time
 to retrieve.
 }
+\section{Definitions}{
+
+
+\itemize{
+\item{columns}: Definitions of Macrostrat columns. See also
+\code{\link[=def_columns]{def_columns()}}.
+\item{drilling_sites}: Definitions of eODP drilling cores. See also
+\code{\link[=def_drilling_sites]{def_drilling_sites()}}.
+\item{econs}: Definitions of economic resources. See also \code{\link[=def_econs]{def_econs()}}.
+\item{environments}: Definitions of environments. See also
+\code{\link[=def_environments]{def_environments()}}.
+\item{grain_sizes}: Definitions of grain sizes. See also
+\code{\link[=def_grain_sizes]{def_grain_sizes()}}.
+\item{intervals}: Definitions of temporal intervals. See also
+\code{\link[=def_intervals]{def_intervals()}}.
+\item{lithologies}: Definitions of lithologies. See also
+\code{\link[=def_lithologies]{def_lithologies()}}.
+\item{lithology_att}: Definitions of lithology attributes. See also
+\code{\link[=def_lithology_att]{def_lithology_att()}}.
+\item{measurements}: Definitions of measurements. See also
+\code{\link[=def_measurements]{def_measurements()}}.
+\item{minerals}: Defintions of minerals. See also \code{\link[=def_minerals]{def_minerals()}}.
+\item{plates}: Definitions of tectonic plates. See also \code{\link[=def_plates]{def_plates()}}.
+\item{projects}: Definitions of Macrostrat projects. See also
+\code{\link[=def_projects]{def_projects()}}.
+\item{references}: Definitions of references. See also \code{\link[=def_references]{def_references()}}.
+\item{sources}: Definitions of geological maps. See also \code{\link[=def_sources]{def_sources()}}.
+\item{strat_name_concepts}: Definitions of stratigraphic name concepts.
+See also \code{\link[=def_strat_name_concepts]{def_strat_name_concepts()}}.
+\item{strat_names}: Definitions of stratigraphic names. See also
+\code{\link[=def_strat_names]{def_strat_names()}}.
+\item{structures}: Definitions of geological structures. See also
+\code{\link[=def_structures]{def_structures()}}.
+\item{timescales}: Definitions of timescales. See also \code{\link[=def_timescales]{def_timescales()}}.
+}
+}
+
+\section{Developer(s)}{
+
+Bethany Allen & Lewis A. Jones
+}
+
+\section{Reviewer(s)}{
+
+Lewis A. Jones
+}
+
 \examples{
 \dontrun{
   # Get mineral definitions
@@ -61,8 +75,5 @@ to retrieve.
   # Get grain size definitions
   ex2 <- catalog(type = "grain_sizes")
 }
-}
-\author{
-Bethany Allen & Lewis A. Jones
 }
 \concept{defs}
