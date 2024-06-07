@@ -19,13 +19,13 @@
 #'   \item \code{mineral_type}: The name of the type of mineral.
 #'   \item \code{formula}: The chemical formula of the mineral.
 #'   \item \code{formula_tags}: The chemical formula of the mineral with
-#'    appropriate sub/superscript html tags.
+#'     appropriate sub/superscript html tags.
 #'   \item \code{url}: A URL for the mineral's entry in
-#'    [Mindat](https://www.mindat.org).
+#'     [Mindat](https://www.mindat.org).
 #'   \item \code{hardness_min}: The minimum hardness value (Mohs Hardness
-#'    Scale) of the mineral.
+#'     Scale) of the mineral.
 #'   \item \code{hardness_max}: The maximum hardness value (Mohs Hardness
-#'    Scale) of the mineral.
+#'     Scale) of the mineral.
 #'   \item \code{crystal_form}: The crystal form of the mineral.
 #'   \item \code{mineral_color}: A description of the color of the mineral.
 #'   \item \code{lustre}: A description of the lustre of the mineral.
