@@ -1,6 +1,8 @@
 #' @title Retrieve Macrostrat section data
+#'
 #' @description A function to retrieve Macrostrat units contained within
-#'   gap-bound packages.
+#'   gap-bound packages (sections).
+#'
 #' @param section_id \code{integer}. Filter sections by their unique
 #'   identification number(s).
 #' @param column_id \code{integer}. Filter sections to those contained within
@@ -8,7 +10,7 @@
 #' @param unit_id \code{integer}. Filter sections to those containing unit(s) as
 #'   specified by their unique identification number(s).
 #' @param strat_name \code{character}. Filter sections to those containing a
-#'   unit that fuzzy matches a stratigraphic name (e.g., "Hell Creek").
+#'   unit that matches a stratigraphic name (e.g., "Hell Creek").
 #' @param strat_name_id \code{integer}. Filter sections to those containing a
 #'   unit that matches one or more stratigraphic name(s) as specified by their
 #'   unique identification number(s).
@@ -31,10 +33,11 @@
 #'   degree latitude. Must also specify `lng`.
 #' @param lng \code{numeric}. Return the sections at the specified decimal
 #'   degree longitude. Must also specify `lat`.
-#' @param lithology \code{character}. Filter sections to those containing one or
-#'   more lithology(ies) (e.g., "shale", "sandstone").
+#' @param lithology \code{character}. Filter sections to those containing a
+#'   named lithology (e.g., "shale", "sandstone").
 #' @param lithology_id \code{integer}. Filter sections to those containing one
-#'   or more lithology(ies) identified by their unique identification number(s).
+#'   or more lithology(ies) as specified by their unique identification
+#'   number(s).
 #' @param lithology_group \code{character}. Filter sections to those containing
 #'   a named lithology group (e.g., "sandstones", "mudrocks", "unconsolidated").
 #' @param lithology_type \code{character}. Filter sections to those containing a
@@ -57,6 +60,9 @@
 #'   named environment type (e.g., "fluvial", "eolian", "glacial").
 #' @param environ_class \code{character}. Filter sections to those containing a
 #'   named environment class (e.g., "marine", "non-marine").
+#' @param pbdb_collection_no \code{integer}. Filter sections to those containing
+#'   one or more Paleobiology Database collection(s) as specified by their
+#'   unique identification number(s).
 #' @param econ \code{character}. Filter sections to those containing a named
 #'   economic attribute (e.g., "brick", "ground water", "gold").
 #' @param econ_id \code{integer}. Filter sections to those containing one or
@@ -67,81 +73,83 @@
 #' @param econ_class \code{character}. Filter sections to those containing a
 #'   named economic attribute class (e.g., "material", "water", "precious
 #'   commodity").
-#' @param pbdb_collection_no \code{integer}. Filter sections to those containing
-#'   one or more Paleobiology Database collection(s) as specified by their
-#'   unique identification number(s).
-#' @param project_id \code{integer}. Filter sections to those contained within a
-#'   Macrostrat project as specified by its unique identification number.
+#' @param project_id \code{integer}. Filter sections to those contained within
+#'   one or more Macrostrat project(s) as specified by their unique
+#'   identification number(s).
 #' @param adjacents \code{logical}. If `column_id` or `lat`/`lng` is specified,
 #'   should all sections that touch the specified column be returned? Defaults
 #'   to `FALSE`.
+#'
 #' @return A \code{dataframe} containing the following columns:
 #' \itemize{
-#'   \item \code{col_id}: The unique Macrostrat column identification number.
+#'   \item \code{col_id}: The unique identification number of the Macrostrat
+#'     column.
 #'   \item \code{col_area}: The area of the Macrostrat column in
-#'   km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}}.
+#'     km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}}.
 #'   \item \code{section_id}: The unique identification number of the Macrostrat
-#'   section.
+#'     section.
 #'   \item \code{project_id}: The unique identification number of the Macrostrat
-#'   project.
-#'   \item \code{max_thick}: The maximum thickness within the focal region.
-#'   \item \code{min_thick}: The minimum thickness within the focal region.
-#'   \item \code{t_age}: The top age of the section, estimated using the
-#'   continuous time age model, in millions of years before present.
-#'   \item \code{b_age}: The bottom age of the section, estimated using the
-#'   continuous time age model, in millions of years before present.
+#'     project.
+#'   \item \code{max_thick}: The maximum thickness of the section, in meters.
+#'   \item \code{min_thick}: The minimum thickness of the section, in meters.
+#'   \item \code{t_age}: The age of the top of the section, estimated using the
+#'     continuous time age model, in millions of years before present.
+#'   \item \code{b_age}: The age of the bottom of the section, estimated using the
+#'     continuous time age model, in millions of years before present.
 #'   \item \code{pbdb_collections}: The number of PBDB collections contained
-#'   within the section.
+#'     within the section.
 #'   \item \code{lith}: a \code{dataframe} containing the lithologies present
-#'   within the section, with the following columns:
+#'     within the section, with the following columns:
 #'   \itemize{
 #'      \item \code{name}: The named lithology (e.g., "sandstone").
 #'      \item \code{type}: The named lithology type (e.g., "siliciclastic").
 #'      \item \code{class}: The named lithology class (e.g., "sedimentary").
 #'      \item \code{prop}: The proportion of the lithology within the section,
-#'      calculated from the individual Macrostrat units within the section.
+#'        calculated from the individual Macrostrat units within the section.
 #'      \item \code{lith_id}: The unique identification number of the lithology.
 #'   }}
 #'   \itemize{
-#'   \item \code{environ}: a \code{dataframe} containing the environments present
-#'   within the section, with the following columns:
+#'   \item \code{environ}: a \code{dataframe} containing the environments
+#'     present within the section, with the following columns:
 #'   \itemize{
 #'      \item \code{name}: The named environment (e.g., "delta plain").
 #'      \item \code{type}: The named environment type (e.g., "siliciclastic").
 #'      \item \code{class}: The named environment class (e.g., "marine").
 #'      \item \code{prop}: The proportion of the environment within the section,
-#'      calculated from the individual Macrostrat units within the section.
-#'      \item \code{environ_id}: The unique identification number of the environment.
+#'        calculated from the individual Macrostrat units within the section.
+#'      \item \code{environ_id}: The unique identification number of the
+#'        environment.
 #'   }}
 #'   \itemize{
 #'   \item \code{econ}: a \code{dataframe} containing the economic attributes
-#'   present within the section, with the following columns:
+#'     present within the section, with the following columns:
 #'   \itemize{
 #'      \item \code{name}: The named economic attribute (e.g., "gold").
 #'      \item \code{type}: The named economic attribute type (e.g., "mineral").
 #'      \item \code{class}: The named economic attribute class (e.g., "precious
-#'      commodity").
-#'      \item \code{prop}: The proportion of the economic attribute out of potential
-#'      economic attributes contained within the section, calculated from the
-#'      individual Macrostrat units within the section.
+#'        commodity").
+#'      \item \code{prop}: The proportion of the economic attribute out of
+#'        potential economic attributes contained within the section, calculated
+#'        from the individual Macrostrat units within the section.
 #'      \item \code{econ_id}: The unique identification number of the economic
-#'      attribute.
+#'        attribute.
 #'   }
 #' }
 #'
-#' @author Christopher D. Dean
+#' @section Developer(s):
+#'   Christopher D. Dean
+#' @section Reviewer(s):
+#'   Bethany Allen
+#'
 #' @details More information can be found for the inputs for this function
 #' using the definition functions (beginning with \code{defs_}).
+#'
 #' @examples
 #' \dontrun{
-#'   # get_sections(section_id = 1)
-#'   # get_sections(column_id = 10)
-#'   # head(get_sections(age = 73))
-#'   # head(get_sections(age_top = 70, age_bottom = 75))
-#'   # head(get_sections(lat = 45, lng = -100))
-#'   # head(get_sections(lithology = "sandstone"))
-#'   # head(get_sections(environ_type = "siliciclastic"))
-#'   # head(get_sections(pbdb_collection_no = c(1000:5000)))
+#' # Get sections within a specified column
+#' ex1 <- get_sections(column_id = 10)
+#' # Get sections within a specified latitude-longitude box
+#' ex2 <- get_sections(lng = -110.9, lat = 48.4)
 #' }
 #' @export
 #' @family macrostrat
@@ -155,8 +163,8 @@ get_sections <- function(section_id = NULL, column_id = NULL, unit_id = NULL,
     lithology_att_id = NULL, lithology_att_type = NULL,
     environ = NULL, environ_id = NULL, environ_type = NULL,
     environ_class = NULL,
-    econ = NULL, econ_id = NULL, econ_type = NULL, econ_class = NULL,
     pbdb_collection_no = NULL,
+    econ = NULL, econ_id = NULL, econ_type = NULL, econ_class = NULL,
     project_id = NULL, adjacents = NULL) {
 
   # Error handling
@@ -190,38 +198,21 @@ get_sections <- function(section_id = NULL, column_id = NULL, unit_id = NULL,
   args <- as.list(environment())
 
   # Check whether class of arguments is valid
-  ref <- list(
-    section_id = "integer",
-    column_id = "integer",
-    unit_id = "integer",
-    strat_name = "character",
-    strat_name_id = "integer",
-    interval_name = "character",
-    interval_id = "integer",
-    age = "numeric",
-    age_top = "numeric",
-    age_bottom = "numeric",
-    lat = "numeric",
-    lng = "numeric",
-    lithology = "character",
-    lithology_id = "integer",
-    lithology_group = "character",
-    lithology_type = "character",
-    lithology_class = "character",
-    lithology_att = "character",
-    lithology_att_id = "integer",
-    lithology_att_type = "character",
-    environ = "character",
-    environ_id = "integer",
-    environ_type = "character",
-    environ_class = "character",
-    econ = "character",
-    econ_id = "integer",
-    econ_type = "character",
-    econ_class = "character",
-    pbdb_collection_no = "integer",
-    project_id = "integer",
-    adjacents = "logical"
+  ref <- list(section_id = "integer", column_id = "integer",
+              unit_id = "integer", strat_name = "character",
+              strat_name_id = "integer", interval_name = "character",
+              interval_id = "integer", age = "numeric", age_top = "numeric",
+              age_bottom = "numeric", lat = "numeric", lng = "numeric",
+              lithology = "character", lithology_id = "integer",
+              lithology_group = "character", lithology_type = "character",
+              lithology_class = "character", lithology_att = "character",
+              lithology_att_id = "integer", lithology_att_type = "character",
+              environ = "character", environ_id = "integer",
+              environ_type = "character", environ_class = "character",
+              pbdb_collection_no = "integer", econ = "character",
+              econ_id = "integer", econ_type = "character",
+              econ_class = "character", project_id = "integer",
+              adjacents = "logical"
   )
   check_arguments(x = args, ref = ref)
 

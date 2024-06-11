@@ -10,7 +10,7 @@
 #' @param unit_id \code{integer}. Filter columns to those containing unit(s) as
 #'   specified by their unique identification number(s).
 #' @param strat_name \code{character}. Filter columns to those containing a unit
-#'   that fuzzy matches a stratigraphic name (e.g., "Hell Creek").
+#'   that matches a stratigraphic name (e.g., "Hell Creek").
 #' @param strat_name_id \code{integer}. Filter columns to those containing a
 #'   unit that matches one or more stratigraphic name(s) as specified by their
 #'   unique identification number(s).
@@ -97,15 +97,15 @@
 #'   \item \code{col_type}: The type of column.
 #'   \item \code{refs}: The unique identification number(s) for the reference(s)
 #'     associated with the column.
-#'   \item \code{max_thick}: Maximum unit thickness in meters.
+#'   \item \code{max_thick}: The maximum unit thickness in meters.
 #'   \item \code{max_min_thick}: The maximum possible minimum thickness in
 #'     meters.
 #'   \item \code{min_min_thick}: The minimum possible minimum thickness in
 #'     meters.
-#'   \item \code{b_age}: The estimated bottom age of the column, in millions of
-#'     years before present.
-#'   \item \code{t_age}: The estimated top age of the column, in millions of
-#'     years before present.
+#'   \item \code{b_age}: The age of the bottom of the unit, estimated using the
+#'      continuous time age model, in millions of years before present.
+#'   \item \code{t_age}: The age of the top of the unit, estimated using the
+#'      continuous time age model, in millions of years before present.
 #'   \item \code{b_int_name}: The name of the time interval represented at the
 #'     bottom of the column.
 #'   \item \code{t_int_name}: The name of the time interval represented at the
