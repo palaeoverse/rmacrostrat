@@ -72,7 +72,7 @@ ggplot(units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
   # Add geological time scale
   coord_geo(pos = "left", dat = list("stages"), rot = 90)
 ```
-![](setup/strat_column.png)
+![](man/figures/strat_column.png)
 
 A minimal example of getting and plotting outcrop data for the Hell Creek formation:
 
@@ -91,7 +91,7 @@ ggplot() +
   coord_sf(xlim = c(-112, -97), ylim = c(44, 50)) +
   theme_bw()
 ```
-![](setup/hell_creek_outcrop.png)
+![](man/figures/hell_creek_outcrop.png)
 
 A minimal example of getting and plotting the number of carbonate units through time for North America:
 
@@ -117,7 +117,7 @@ ggplot(units, aes(x = mid_age)) +
         legend.position.inside = c(0.1, 0.9)) +
   coord_geo()
 ```
-![](setup/carbonate_units.png)
+![](man/figures/carbonate_units.png)
 
 Extensive example usage of `rmacrostrat` is provided in the package vignettes/tutorials. These can be accessed via:
 
