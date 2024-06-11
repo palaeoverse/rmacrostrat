@@ -34,8 +34,8 @@ get_units(
   econ_id = NULL,
   econ_type = NULL,
   econ_class = NULL,
-  adjacents = NULL,
   project_id = NULL,
+  adjacents = NULL,
   sf = FALSE
 )
 }
@@ -140,13 +140,13 @@ economic attribute type (e.g., "construction", "aquifer", "mineral").}
 named economic attribute class (e.g., "material", "water", "precious
 commodity").}
 
-\item{adjacents}{\code{logical}. If \code{column_id} or \code{lat}/\code{lng} is
-specified, should all units that touch the specified column be returned?
-Defaults to \code{FALSE}.}
-
 \item{project_id}{\code{integer}. Filter units to those contained within
 one or more Macrostrat project(s) as specified by their unique
 identification number(s).}
+
+\item{adjacents}{\code{logical}. If \code{column_id} or \code{lat}/\code{lng} is
+specified, should all units that touch the specified column be returned?
+Defaults to \code{FALSE}.}
 
 \item{sf}{\code{logical}. Should the results be returned as an \code{sf} object?
 Defaults to \code{FALSE}.}
@@ -154,10 +154,14 @@ Defaults to \code{FALSE}.}
 \value{
 A \code{data.frame} containing the following columns:
 \itemize{
-\item \code{unit_id}: The unique Macrostrat unit ID.
-\item \code{section_id}: The unique Macrostrat section ID.
-\item \code{col_id}: The unique Macrostrat column ID.
-\item \code{project_id}: The unique Macrostrat project ID.
+\item \code{unit_id}: The unique identification number of the Macrostrat
+unit.
+\item \code{section_id}: The unique identification number of the
+Macrostrat section.
+\item \code{col_id}: The unique identification number of the Macrostrat
+column.
+\item \code{project_id}: The unique identification number of the
+Macrostrat project.
 \item \code{col_area}: The area of the Macrostrat column in
 km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}}.
 \item \code{unit_name}: The name of the Macrostrat unit.
@@ -166,18 +170,18 @@ km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}}.
 \item \code{Fm}: The lithostratigraphic formation.
 \item \code{Gp}: The lithostratigraphic group.
 \item \code{SGp}: The lithostratigraphic supergroup.
-\item \code{t_age}: Estimated top age based on continuous time age model
-in millions of years before present.
-\item \code{b_age}: Estimated bottom age based on continuous time age
-model in millions of years before present.
-\item \code{max_thick}: Maximum unit thickness in meters.
-\item \code{min_thick}: Minimum unit thickness in meters.
+\item \code{t_age}: The age of the top of the unit, estimated using the
+continuous time age model, in millions of years before present.
+\item \code{b_age}: The age of the bottom of the unit, estimated using the
+continuous time age model, in millions of years before present.
+\item \code{max_thick}: The maximum thickness of the unit, in meters.
+\item \code{min_thick}: The minimum thickness of the unit, in meters.
 \item \code{outcrop}: Type of exposure ("outcrop", "subsurface", or
 "both").
-\item \code{pbdb_collections}: Count of Paleobiology Database
-collections within the unit.
-\item \code{pbdb_occurrences}: Count of Paleobiology Database
-occurrences within the unit.
+\item \code{pbdb_collections}: The number of Paleobiology Database
+collections contained within the unit.
+\item \code{pbdb_occurrences}: The number of Paleobiology Database
+occurrences contained within the unit.
 \item \code{lith}: a \code{dataframe} containing the lithologies present
 within the unit, with the following columns:
 \itemize{
@@ -282,9 +286,9 @@ William Gearty
 
 \examples{
 \dontrun{
-# Get units by stratigraphic name
+# Get units with a specific stratigraphic name
 ex1 <- get_units(strat_name = "Hell Creek")
-# Get units by geographic coordinates
+# Get units within a specified latitude-longitude box
 ex2 <- get_units(lng = -110.9, lat = 48.4)
 }
 }
