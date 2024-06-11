@@ -89,7 +89,7 @@ Dean</h4>
     
 <p><strong>Authors:</strong> <a href="https://palaeoverse.org/#about-us" class="external-link">The Palaeoverse Development
 Team</a></p>
-<p><strong>Last updated:</strong> 2024-06-10</p>
+<p><strong>Last updated:</strong> 2024-06-11</p>
 <div style="text-align: justify">
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
@@ -276,20 +276,35 @@ handle and plot spatial data. Let’s do that now.</p>
 outlines of the USA, Canada and Mexico to use as a background.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load background information</span></span>
-<span><span class="va">n_a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/rnaturalearth/reference/ne_states.html" class="external-link">ne_states</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"united states of america"</span>, returnclass <span class="op">=</span> <span class="st">"sf"</span><span class="op">)</span></span>
-<span><span class="va">ca</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/rnaturalearth/reference/ne_states.html" class="external-link">ne_states</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"canada"</span>, returnclass <span class="op">=</span> <span class="st">"sf"</span><span class="op">)</span></span>
+<span><span class="va">n_a</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/rnaturalearth/reference/ne_states.html" class="external-link">ne_states</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"united states of america"</span>, returnclass <span class="op">=</span> <span class="st">"sf"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## The rnaturalearthhires package needs to be installed.</span></span></code></pre>
+<pre><code><span><span class="co">## Installing the rnaturalearthhires package.</span></span></code></pre>
+<pre><code><span><span class="co">## Using github PAT from envvar GITHUB_PAT. Use `gitcreds::gitcreds_set()` and unset GITHUB_PAT in .Renviron (or elsewhere) if you want to use the more secure git credential store instead.</span></span></code></pre>
+<pre><code><span><span class="co">## Downloading GitHub repo ropensci/rnaturalearthhires@HEAD</span></span></code></pre>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">## <span style="color: #00BBBB;">──</span> <span style="color: #00BBBB;">R CMD build</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────────</span></span></span>
+<span><span class="co">## * checking for file ‘/tmp/RtmpcwFDvM/remotes1ea91fc271ae/ropensci-rnaturalearthhires-dd1e210/DESCRIPTION’ ... OK</span></span>
+<span><span class="co">## * preparing ‘rnaturalearthhires’:</span></span>
+<span><span class="co">## * checking DESCRIPTION meta-information ... OK</span></span>
+<span><span class="co">## * checking for LF line-endings in source and make files and shell scripts</span></span>
+<span><span class="co">## * checking for empty or unneeded directories</span></span>
+<span><span class="co">## * building ‘rnaturalearthhires_1.0.0.9000.tar.gz’</span></span></code></pre>
+<pre><code><span><span class="co">## Installing package into '/home/runner/work/_temp/Library'</span></span>
+<span><span class="co">## (as 'lib' is unspecified)</span></span></code></pre>
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">ca</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/rnaturalearth/reference/ne_states.html" class="external-link">ne_states</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"canada"</span>, returnclass <span class="op">=</span> <span class="st">"sf"</span><span class="op">)</span></span>
 <span><span class="va">mx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/rnaturalearth/reference/ne_states.html" class="external-link">ne_states</a></span><span class="op">(</span>country <span class="op">=</span> <span class="st">"mexico"</span>, returnclass <span class="op">=</span> <span class="st">"sf"</span><span class="op">)</span></span></code></pre></div>
 <p>We then have to set the coordinate system of the outcrop data we’ve
 retrieved to match that of the state outlines. The <code>sf</code>
 package allows us to do this with a very simple line of code:</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Set coordinate system</span></span>
 <span><span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">st_crs</a></span><span class="op">(</span><span class="va">hc</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/st_crs.html" class="external-link">st_crs</a></span><span class="op">(</span><span class="va">n_a</span><span class="op">)</span></span></code></pre></div>
 <p>Now we’re ready to plot our outcrop! We can use the classic
 <code>ggplot2</code> package to help us do this, in particular the
 <code><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf()</a></code> function. Let’s plot our background maps and
 outcrop now:</p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsf.html" class="external-link">geom_sf</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">n_a</span><span class="op">)</span> <span class="op">+</span> </span>
@@ -304,7 +319,7 @@ dinosaur found in the Hell Creek is <em>Edmontosaurus</em>, a large
 duck-billed dinosaur. Let’s combine what we’ve got so far with data from
 <a href="https://paleobiodb.org" class="external-link">the Paleobiology Database</a> to make a
 map of <em>Edmontosaurus</em> occurrences in the Hell Creek.</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Access PBDB API for Edmontosaurus occurrences from the Hell Creek</span></span>
 <span><span class="va">ed</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/utils/read.table.html" class="external-link">read.csv</a></span><span class="op">(</span><span class="st">"https://paleobiodb.org/data1.2/occs/list.csv?base_name=Edmontosaurus&amp;strat=Hell%20Creek&amp;pgm=gplates,scotese,seton&amp;show=full,strat,lith,ref"</span><span class="op">)</span></span>
 <span><span class="co"># Turn points into spatial features</span></span>
@@ -337,11 +352,11 @@ issues.</p>
 good! But we can add a few more finishing touches to really make it pop.
 First, let’s the use package <a href="https://rphylopic.palaeoverse.org/index.html" class="external-link"><code>rphylopic</code></a>
 to add a silhouette of <em>Edmontosaurus</em> to the map.</p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load the rphylopic package</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://rphylopic.palaeoverse.org" class="external-link">rphylopic</a></span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## You are using rphylopic v.1.4.0. Please remember to credit PhyloPic contributors (hint: `get_attribution()`) and cite rphylopic in your work (hint: `citation("rphylopic")`).</span></span></code></pre>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get an appropriate silhouette for Edmontosaurus</span></span>
 <span><span class="va">ed.uuid</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rphylopic.palaeoverse.org/reference/get_uuid.html" class="external-link">get_uuid</a></span><span class="op">(</span>name <span class="op">=</span> <span class="st">"Edmontosaurus"</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span><span class="op">[[</span><span class="fl">3</span><span class="op">]</span><span class="op">]</span></span>
 <span><span class="co"># Get the credit for the author of the image</span></span>
@@ -371,7 +386,7 @@ to add a silhouette of <em>Edmontosaurus</em> to the map.</p>
 <span><span class="co">## </span></span>
 <span><span class="co">## $images$`72be89b9-3f2b-4dc3-b485-e74a5f8b1fbc`$license_abbr</span></span>
 <span><span class="co">## [1] "CC BY 3.0"</span></span></code></pre>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Setup data.frame for the silhouette</span></span>
 <span><span class="va">silhouette_df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>x <span class="op">=</span> <span class="op">-</span><span class="fl">99</span>, y <span class="op">=</span> <span class="fl">49.5</span>, name <span class="op">=</span> <span class="st">"Edmontosaurus"</span><span class="op">)</span></span>
 <span><span class="co"># Plot the map</span></span>
@@ -395,7 +410,7 @@ to add a silhouette of <em>Edmontosaurus</em> to the map.</p>
 <p><img src="add%20rphylopic-1.png" width="100%"></p>
 <p>Nice! Finally, we can add a few other touches to make it a
 publication worthy figure, including an inlay map and a scale bar:</p>
-<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load `ggpatial` package to add annotations, and `cowplot` to stitch final map </span></span>
 <span><span class="co"># together</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://paleolimbot.github.io/ggspatial/" class="external-link">ggspatial</a></span><span class="op">)</span></span>
