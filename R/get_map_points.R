@@ -8,47 +8,49 @@
 #' @param point_type \code{character}. Filter points to those of one or more
 #'   point type(s). Options are "cleavage", "bedding", "axial plane", "fault
 #'   plane", "foliation", and "joint". Ignored if `point_id` is supplied.
-#' @param min_lat \code{integer}. A minimum latitude that represents the
-#'   southwest corner of a bounding box of the points to return. Requires
-#'   `min_lng`, `max_lat`, and `max_lng`. Ignored if `point_id` is supplied.
-#' @param min_lng \code{integer}. A minimum longitude that represents the
-#'   southwest corner of a bounding box of the points to return. Requires
-#'   `min_lat`, `max_lat`, and `max_lng`. Ignored if `point_id` is supplied.
-#' @param max_lat \code{integer}. A maximum latitude that represents the
-#'   northeast corner of a bounding box of the points to return. Requires
-#'   `min_lat`, `min_lng`, and `max_lng`. Ignored if `point_id` is supplied.
-#' @param max_lng \code{integer}. A maximum longitude that represents the
-#'   northeast corner of a bounding box of the points to return. Requires
-#'   `min_lat`, `min_lng`, and `max_lat`. Ignored if `point_id` is supplied.
+#' @param min_lat \code{integer}. The minimum latitude of the points to return.
+#'   Requires `min_lng`, `max_lat`, and `max_lng`. Ignored if `point_id` is
+#'   supplied.
+#' @param min_lng \code{integer}. A minimum longitude of the points to return.
+#'   Requires `min_lat`, `max_lat`, and `max_lng`. Ignored if `point_id` is
+#'   supplied.
+#' @param max_lat \code{integer}. A maximum latitude of the points to return.
+#'   Requires `min_lat`, `min_lng`, and `max_lng`. Ignored if `point_id` is
+#'   supplied.
+#' @param max_lng \code{integer}. A maximum longitude of the points to return.
+#'   Requires `min_lat`, `min_lng`, and `max_lat`. Ignored if `point_id` is
+#'   supplied.
 #' @param source_id \code{integer}. The unique identification number(s) of the
 #'   source(s) to filter the points by. Ignored if `point_id` is supplied.
 #'
 #' @return An \code{sf} object containing the following columns:
 #' \itemize{
-#'   \item \code{point_id}: The identification number of the outcrop point
-#'     element.
-#'   \item \code{strike}: The strike value of the outcrop point element.
-#'   \item \code{dip}: The dip value of the outcrop point element.
-#'   \item \code{dip_dir}: The dip direction value of the outcrop point
-#'   element.
-#'   \item \code{point_type}: The type of the outcrop point element (e.g.
-#'   bedding).
-#'   \item \code{certainty}: The outcrop point element location certainty.
-#'   \item \code{comments}: Notes assigned to the outcrop point element.
+#'   \item \code{point_id}: The identification number of the point element.
+#'   \item \code{strike}: The strike value of the point element.
+#'   \item \code{dip}: The dip value of the point element.
+#'   \item \code{dip_dir}: The dip direction of the point element.
+#'   \item \code{point_type}: The type of point element (e.g. "bedding").
+#'   \item \code{certainty}: The certainty of the point element location.
+#'   \item \code{comments}: Notes assigned to the point element.
 #'   \item \code{source_id}: The unique identification number of the source
-#'   for the outcrop point element.
+#'     for the point element.
 #'   \item \code{geometry}: The point spatial data.
 #' }
 #'   If `sf` is `TRUE` (the default), an `sf` object is returned instead, with
 #'   the same columns plus a "geometry" column that contains the spatial data.
 #'
-#' @author Lewis A. Jones
-#' @details More information can be found for the inputs for this function
-#'   using the definition functions (beginning with \code{def_}).
+#' @section Developer(s):
+#'  Lewis A. Jones
+#' @section Reviewer(s):
+#'  Bethany Allen
+#' @details More information can be found relating to the inputs for this
+#'  function using the definition functions (beginning with \code{def_}).
 #'
 #' @examples
 #' \dontrun{
+#' # Return a specific point
 #' ex1 <- get_map_points(point_id = 1)
+#' # Return all points within a box specified using latitude and longitude
 #' ex2 <- get_map_points(min_lng = -80, min_lat = 40,
 #'                       max_lng = -70, max_lat = 50)
 #' }
@@ -62,14 +64,9 @@ get_map_points <- function(point_id = NULL, point_type = NULL,
   # Collect input arguments as a list
   args <- as.list(environment())
   # Check whether class of arguments is valid
-  ref <- list(
-    point_id = "integer",
-    point_type = "character",
-    min_lat = "integer",
-    min_lng = "integer",
-    max_lat = "integer",
-    max_lng = "integer",
-    source_id = "integer"
+  ref <- list(point_id = "integer", point_type = "character",
+              min_lat = "integer", min_lng = "integer", max_lat = "integer",
+              max_lng = "integer", source_id = "integer"
   )
   check_arguments(x = args, ref = ref)
   # Check geographic extents
