@@ -54,7 +54,7 @@
 #' # Return all core information for a specific site
 #' core_info <- def_drilling_sites(site = "U1547")
 #' # Return all core information for a specific expedition
-#' core_info <- def_drilling_sites(exp = "385")
+#' core_info <- def_drilling_sites(exp = "317")
 #' }
 #' @export
 #' @family external
