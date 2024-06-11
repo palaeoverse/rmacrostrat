@@ -1,6 +1,7 @@
 #' @title Retrieve Macrostrat database statistics
 #' @description A function to retrieve various statistics about each Macrostrat
-#'   project in the Macrostrat database.
+#'   project in the Macrostrat database. Function is called without
+#'   user-specified arguments.
 #' @return A `data.frame` containing the following columns:
 #' \itemize{
 #'   \item \code{project_id}: The unique identification number of the Macrostrat

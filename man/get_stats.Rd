@@ -9,7 +9,8 @@ get_stats()
 \value{
 A \code{data.frame} containing the following columns:
 \itemize{
-\item \code{project_id}: Unique ID of the Macrostrat project.
+\item \code{project_id}: The unique identification number of the Macrostrat
+project.
 \item \code{project}: The name of the Macrostrat project.
 \item \code{columns}: The number of Macrostrat columns associated with the
 project.
@@ -27,11 +28,23 @@ project.
 }
 \description{
 A function to retrieve various statistics about each Macrostrat
-project in the Macrostrat database.
+project in the Macrostrat database. Function is called without
+user-specified arguments.
 }
+\section{Developer(s)}{
+
+William Gearty
+}
+
+\section{Reviewer(s)}{
+
+Bethany Allen
+}
+
 \examples{
 \dontrun{
-get_stats()
+# Return all project statistics
+ex1 <- get_stats()
 }
 }
 \seealso{
@@ -39,8 +52,5 @@ Macrostrat database metadata:
 \code{\link{def_projects}()},
 \code{\link{def_references}()},
 \code{\link{def_sources}()}
-}
-\author{
-William Gearty
 }
 \concept{meta}
