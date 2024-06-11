@@ -2,7 +2,7 @@
 % Please edit documentation in R/def_strat_name_concepts.R
 \name{def_strat_name_concepts}
 \alias{def_strat_name_concepts}
-\title{Retrieve stratigraphic name concept definitions}
+\title{Define stratigraphic name concepts}
 \usage{
 def_strat_name_concepts(strat_concept_name = NULL, strat_concept_id = NULL)
 }
@@ -25,25 +25,26 @@ geologic entity.
 stratigraphic name concept, as defined in the original reference in plain
 text.
 \item \code{int_id}: The unique identification number of the
-chronostratigraphic interval associated with the stratigraphic name concept
-(see \code{\link[=def_intervals]{def_intervals()}}).
+chronostratigraphic interval associated with the stratigraphic name
+concept (see \code{\link[=def_intervals]{def_intervals()}}).
 \item \code{b_int_id}: The unique identification number of the bottom
 (oldest) chronostratigraphic interval associated with the stratigraphic
 name concept (see \code{\link[=def_intervals]{def_intervals()}}).
 \item \code{t_int_id}: The unique identification number of the top
 (youngest) chronostratigraphic interval associated with the stratigraphic
 name concept (see \code{\link[=def_intervals]{def_intervals()}}).
-\item \code{useage_notes}: Notes on the current validity of the
+\item \code{usage_notes}: Notes on the current validity of the
 stratigraphic name concept, in plain text.
 \item \code{other}: Other associated notes on the stratigraphic name
 concept, in plain text.
 \item \code{province}: The provinces where the stratigraphic name concept
 appears, in plain text.
 \item \code{refs}: The unique identification number of the reference from
-which the stratigraphic name concept was sourced (see \code{\link[=def_references]{def_references()}}).
+which the stratigraphic name concept was sourced (see
+\code{\link[=def_references]{def_references()}}).
 \item \code{url}: The URL associated with the stratigraphic name concept,
-where additional information, the source or contributing publication can be
-found.
+where additional information, the source or contributing publication can
+be found.
 \item \code{author}: The authors of the source reference.
 }
 }
@@ -55,11 +56,17 @@ are returned.
 \details{
 Stratigraphic name concepts consist of grouped \code{strat_name}s which
 represent the same geologic entity. This may be due to stratigraphic names
-appearing in multiple reference maps, or at multiple lithostratigraphic
+appearing in multiple reference maps or at multiple lithostratigraphic
 ranks.
 }
-\section{Reviewer}{
- N/A
+\section{Developer(s)}{
+
+Christopher D. Dean
+}
+
+\section{Reviewer(s)}{
+
+William Gearty
 }
 
 \examples{
@@ -73,8 +80,5 @@ ex1 <- def_strat_name_concepts(strat_concept_id = 8212)
 \seealso{
 Stratigraphic names:
 \code{\link{def_strat_names}()}
-}
-\author{
-Christopher D. Dean
 }
 \concept{defs_strat}
