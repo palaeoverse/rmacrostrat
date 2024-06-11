@@ -6,7 +6,11 @@ test_that("def_strat_names works", {
                           fail_args = list(# wrong argument
                                            strat_group = 70,
                                            # wrong type
-                                           strat_name = 1),
-                          warn_args = list(strat_name = "test"),
+                                           strat_name = 1,
+                                           # wrong rule
+                                           rule = "test"),
+                          warn_args = list(strat_name = "test",
+                                           # warning when using rule incorrectly
+                                           rule = "all"),
                           col_no = 24, check_null = TRUE)
 })
