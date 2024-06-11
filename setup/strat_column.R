@@ -36,5 +36,5 @@ ggplot(units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
   coord_geo(pos = "left", dat = list("stages"), rot = 90)
 
 # Save
-ggsave("./setup/strat_column.png", width = 100, height = 100, dpi = 300, units = "mm",
+ggsave("./setup/strat_column.png", width = 110, height = 100, dpi = 300, units = "mm",
        scale = 3)
