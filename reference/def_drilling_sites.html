@@ -73,7 +73,7 @@ By default, data for all drilling sites are returned.</p>
 
 <dt>exp</dt>
 <dd><p><code>character</code>. The unique identification number(s) of drilling
-leg(s) to return a definition for.</p></dd>
+expedition(s) to return a definition for (formerly known as 'leg(s)').</p></dd>
 
 
 <dt>site</dt>
@@ -91,26 +91,40 @@ Defaults to <code>FALSE</code>.</p></dd>
     
 
 <p>A <code>data.frame</code> object containing, for each retrieved core:</p><ul><li><p><code>epoch</code>: The name of the drilling program.</p></li>
-<li><p><code>exp</code>: The name of the leg/expedition.</p></li>
+<li><p><code>leg</code>: The name of the expedition (formerly known as a 'leg').</p></li>
 <li><p><code>site</code>: The name of the drilling site.</p></li>
 <li><p><code>hole</code>: The name of the drilling hole.</p></li>
-<li><p><code>lat</code>: Decimal degree latitude of the core.</p></li>
-<li><p><code>lng</code>: Decimal degree longitude of the core.</p></li>
-<li><p><code>col_id</code>: The unique identifier of the Macrostrat column.</p></li>
-<li><p><code>col_group_id</code>: The unique identifier of the group to which the
-Macrostrat column belongs.</p></li>
-<li><p><code>penetration</code>: The depth of the hole.</p></li>
-<li><p><code>cored</code>: The amount of rock cored.</p></li>
-<li><p><code>recovered</code>: The amount of rock recovered.</p></li>
-<li><p><code>recovery</code>: The proportion of rock recovered.</p></li>
+<li><p><code>lat</code>: The decimal degree latitude of the drilling hole.</p></li>
+<li><p><code>lng</code>: The decimal degree longitude of the drilling hole.</p></li>
+<li><p><code>col_id</code>: The unique identification number of the eODP column.</p></li>
+<li><p><code>col_group_id</code>: The unique identification number of the group to
+which the eODP column belongs.</p></li>
+<li><p><code>penetration</code>: The depth of the hole drilled, in meters.</p></li>
+<li><p><code>cored</code>: The amount of rock cored from the drill hole, in meters.</p></li>
+<li><p><code>recovered</code>: The amount of rock recovered from the core, in
+meters.</p></li>
+<li><p><code>recovery</code>: The proportion of rock recovered from the core.</p></li>
 <li><p><code>drilled_interval</code>: The interval drilled.</p></li>
 <li><p><code>drilled_intervals</code>: The number of drilled intervals.</p></li>
-<li><p><code>cores</code>: The number of cores.</p></li>
+<li><p><code>cores</code>: The total number of cores drilled at the hole.</p></li>
 <li><p><code>date_started</code>: The date on which drilling commenced.</p></li>
+<li><p><code>date_finished</code>: The date on which drilling concluded.</p></li>
 <li><p><code>comments</code>: Written notes assigned to the core.</p></li>
-<li><p><code>ref_id</code>: The unique identifier of the reference.</p></li>
+<li><p><code>ref_id</code>: The unique identification number of the reference.</p></li>
 </ul><p>If <code>sf</code> is <code>TRUE</code>, an <code>sf</code> object is returned instead, with a "geometry"
 column that contains the spatial data instead of the <code>lat</code>/<code>lng</code> columns.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="developer-s-">Developer(s)<a class="anchor" aria-label="anchor" href="#developer-s-"></a></h2>
+    
+
+<p>Bethany Allen</p>
+    </div>
+    <div class="section level2">
+    <h2 id="reviewer-s-">Reviewer(s)<a class="anchor" aria-label="anchor" href="#reviewer-s-"></a></h2>
+    
+
+<p>Christopher D. Dean</p>
     </div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
@@ -130,10 +144,6 @@ e2022GC010655. <a href="https://doi.org/10.1029/2022GC010655" class="external-li
 <code><a href="get_fossils.html">get_fossils</a>()</code>,
 <code><a href="get_measurements.html">get_measurements</a>()</code></p></div>
     </div>
-    <div class="section level2">
-    <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
-    <p>Bethany Allen</p>
-    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
@@ -141,7 +151,7 @@ e2022GC010655. <a href="https://doi.org/10.1029/2022GC010655" class="external-li
 <span class="r-in"><span><span class="co"># Return all core information for a specific site</span></span></span>
 <span class="r-in"><span><span class="va">core_info</span> <span class="op">&lt;-</span> <span class="fu">def_drilling_sites</span><span class="op">(</span>site <span class="op">=</span> <span class="st">"U1547"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="co"># Return all core information for a specific expedition</span></span></span>
-<span class="r-in"><span><span class="va">core_info</span> <span class="op">&lt;-</span> <span class="fu">def_drilling_sites</span><span class="op">(</span>exp <span class="op">=</span> <span class="st">"385"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">core_info</span> <span class="op">&lt;-</span> <span class="fu">def_drilling_sites</span><span class="op">(</span>exp <span class="op">=</span> <span class="st">"317"</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
 </code></pre></div>
     </div>
