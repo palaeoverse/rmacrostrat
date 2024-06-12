@@ -66,9 +66,9 @@ ggplot(units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
   theme_classic() +
   theme(legend.position = "none",
         axis.line.x = element_blank(),
-        axis.title.x=element_blank(),
-        axis.text.x=element_blank(),
-        axis.ticks.x=element_blank()) +
+        axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank()) +
   # Add geological time scale
   coord_geo(pos = "left", dat = list("stages"), rot = 90)
 ```
