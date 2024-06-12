@@ -11,7 +11,7 @@ def_drilling_sites(program = NULL, exp = NULL, site = NULL, sf = FALSE)
 "DSDP", "ODP", or "IODP") to return a definition for.}
 
 \item{exp}{\code{character}. The unique identification number(s) of drilling
-leg(s) to return a definition for.}
+expedition(s) to return a definition for (formerly known as 'leg(s)').}
 
 \item{site}{\code{character}. The unique identification number(s) of drilling
 site(s) to return a definition for.}
@@ -23,24 +23,26 @@ Defaults to \code{FALSE}.}
 A \code{data.frame} object containing, for each retrieved core:
 \itemize{
 \item \code{epoch}: The name of the drilling program.
-\item \code{exp}: The name of the leg/expedition.
+\item \code{leg}: The name of the expedition (formerly known as a 'leg').
 \item \code{site}: The name of the drilling site.
 \item \code{hole}: The name of the drilling hole.
-\item \code{lat}: Decimal degree latitude of the core.
-\item \code{lng}: Decimal degree longitude of the core.
-\item \code{col_id}: The unique identifier of the Macrostrat column.
-\item \code{col_group_id}: The unique identifier of the group to which the
-Macrostrat column belongs.
-\item \code{penetration}: The depth of the hole.
-\item \code{cored}: The amount of rock cored.
-\item \code{recovered}: The amount of rock recovered.
-\item \code{recovery}: The proportion of rock recovered.
+\item \code{lat}: The decimal degree latitude of the drilling hole.
+\item \code{lng}: The decimal degree longitude of the drilling hole.
+\item \code{col_id}: The unique identification number of the eODP column.
+\item \code{col_group_id}: The unique identification number of the group to
+which the eODP column belongs.
+\item \code{penetration}: The depth of the hole drilled, in meters.
+\item \code{cored}: The amount of rock cored from the drill hole, in meters.
+\item \code{recovered}: The amount of rock recovered from the core, in
+meters.
+\item \code{recovery}: The proportion of rock recovered from the core.
 \item \code{drilled_interval}: The interval drilled.
 \item \code{drilled_intervals}: The number of drilled intervals.
-\item \code{cores}: The number of cores.
+\item \code{cores}: The total number of cores drilled at the hole.
 \item \code{date_started}: The date on which drilling commenced.
+\item \code{date_finished}: The date on which drilling concluded.
 \item \code{comments}: Written notes assigned to the core.
-\item \code{ref_id}: The unique identifier of the reference.
+\item \code{ref_id}: The unique identification number of the reference.
 }
 If \code{sf} is \code{TRUE}, an \code{sf} object is returned instead, with a "geometry"
 column that contains the spatial data instead of the \code{lat}/\code{lng} columns.
@@ -50,6 +52,16 @@ Obtain metadata for variables associated with the
 \href{https://eodp.github.io}{Extending Ocean Drilling Pursuits (eODP)} project.
 By default, data for all drilling sites are returned.
 }
+\section{Developer(s)}{
+
+Bethany Allen
+}
+
+\section{Reviewer(s)}{
+
+Christopher D. Dean
+}
+
 \section{References}{
 
 Sessa JA, Fraass AJ, LeVay LJ, Jamson KM, and Peters SE. (2023). The
@@ -63,7 +75,7 @@ e2022GC010655. \doi{10.1029/2022GC010655}.
 # Return all core information for a specific site
 core_info <- def_drilling_sites(site = "U1547")
 # Return all core information for a specific expedition
-core_info <- def_drilling_sites(exp = "385")
+core_info <- def_drilling_sites(exp = "317")
 }
 }
 \seealso{
@@ -72,8 +84,5 @@ External data:
 \code{\link{get_eodp}()},
 \code{\link{get_fossils}()},
 \code{\link{get_measurements}()}
-}
-\author{
-Bethany Allen
 }
 \concept{external}
