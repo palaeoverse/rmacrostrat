@@ -1,7 +1,7 @@
 test_that("get_map_points works", {
-  rmacrostrat_test_checks(fn = get_map_points,,
+  rmacrostrat_test_checks(fn = get_map_points,
                           check_args = list(point_id = 1,
-                                            list(point_id = 1, sf = FALSE),
+                                            list(sf = FALSE),
                                             list(min_lng = -80, min_lat = 40,
                                                  max_lng = -70, max_lat = 50)),
                           fail_args = list(min_lat = 43, # needs other args
