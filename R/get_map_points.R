@@ -50,7 +50,7 @@
 #' \dontrun{
 #' # Return a specific point
 #' ex1 <- get_map_points(point_id = 1)
-#' # Return all points within a box specified using latitude and longitude
+#' # Return all points within a user-specified bounding box
 #' ex2 <- get_map_points(min_lng = -80, min_lat = 40,
 #'                       max_lng = -70, max_lat = 50)
 #' }
