@@ -8,18 +8,18 @@
 #' @param point_type \code{character}. Filter points to those of one or more
 #'   point type(s). Options are "cleavage", "bedding", "axial plane", "fault
 #'   plane", "foliation", and "joint". Ignored if `point_id` is supplied.
-#' @param min_lat \code{integer}. The minimum latitude of the points to return.
-#'   Requires `min_lng`, `max_lat`, and `max_lng`. Ignored if `point_id` is
-#'   supplied.
-#' @param min_lng \code{integer}. A minimum longitude of the points to return.
-#'   Requires `min_lat`, `max_lat`, and `max_lng`. Ignored if `point_id` is
-#'   supplied.
-#' @param max_lat \code{integer}. A maximum latitude of the points to return.
-#'   Requires `min_lat`, `min_lng`, and `max_lng`. Ignored if `point_id` is
-#'   supplied.
-#' @param max_lng \code{integer}. A maximum longitude of the points to return.
-#'   Requires `min_lat`, `min_lng`, and `max_lat`. Ignored if `point_id` is
-#'   supplied.
+#' @param min_lat \code{integer}. The minimum latitude used to define the
+#'   bounding box of the points to return. Requires `min_lng`, `max_lat`, and
+#'   `max_lng`. Ignored if `point_id` is supplied.
+#' @param min_lng \code{integer}. A minimum longitude used to define the
+#'   bounding box of the points to return. Requires `min_lat`, `max_lat`, and
+#'   `max_lng`. Ignored if `point_id` is supplied.
+#' @param max_lat \code{integer}. A maximum latitude used to define the
+#'   bounding box of the points to return. Requires `min_lat`, `min_lng`, and
+#'   `max_lng`. Ignored if `point_id` is supplied.
+#' @param max_lng \code{integer}. A maximum longitude used to define the
+#'   bounding box of the points to return. Requires `min_lat`, `min_lng`, and
+#'   `max_lat`. Ignored if `point_id` is supplied.
 #' @param source_id \code{integer}. The unique identification number(s) of the
 #'   source(s) to filter the points by. Ignored if `point_id` is supplied.
 #'
