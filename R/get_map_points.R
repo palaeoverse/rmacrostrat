@@ -22,6 +22,8 @@
 #'   `max_lat`. Ignored if `point_id` is supplied.
 #' @param source_id \code{integer}. The unique identification number(s) of the
 #'   source(s) to filter the points by. Ignored if `point_id` is supplied.
+#' @param sf \code{logical}. Should the results be returned as an `sf` object?
+#'   Defaults to `TRUE`.
 #'
 #' @return An \code{sf} object containing the following columns:
 #' \itemize{
@@ -36,8 +38,10 @@
 #'     for the point element.
 #'   \item \code{geometry}: The point spatial data.
 #' }
-#'   If `sf` is `TRUE` (the default), an `sf` object is returned instead, with
-#'   the same columns plus a "geometry" column that contains the spatial data.
+#'   If `sf` is `TRUE` (the default), an `sf` object is returned, with the
+#'   a "geometry" column that contains the spatial data. If `sf` is `FALSE`,
+#'   a `data.frame` object is returned with two additional columns (lng,
+#'   lat) containing the geographic coordinates of the point elements.
 #'
 #' @section Developer(s):
 #'  Lewis A. Jones
@@ -59,14 +63,14 @@
 get_map_points <- function(point_id = NULL, point_type = NULL,
                            min_lat = NULL, min_lng = NULL,
                            max_lat = NULL, max_lng = NULL,
-                           source_id = NULL) {
+                           source_id = NULL, sf = TRUE) {
   # Error handling
   # Collect input arguments as a list
   args <- as.list(environment())
   # Check whether class of arguments is valid
   ref <- list(point_id = "integer", point_type = "character",
               min_lat = "integer", min_lng = "integer", max_lat = "integer",
-              max_lng = "integer", source_id = "integer"
+              max_lng = "integer", source_id = "integer", sf = "logical"
   )
   check_arguments(x = args, ref = ref)
   # Check geographic extents
@@ -107,6 +111,12 @@ get_map_points <- function(point_id = NULL, point_type = NULL,
   # Get request
   dat <- GET_macrostrat(endpoint = "geologic_units/map/points",
                         query = args, format = "geojson")
+  # data.frame requested?
+  if (!sf) {
+    coords <- st_coordinates(dat)
+    colnames(coords) <- c("lng", "lat")
+    dat <- cbind.data.frame(st_drop_geometry(dat), coords)
+  }
   # Return data
   return(dat)
 }
