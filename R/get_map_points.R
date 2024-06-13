@@ -58,6 +58,7 @@
 #' ex2 <- get_map_points(min_lng = -80, min_lat = 40,
 #'                       max_lng = -70, max_lat = 50)
 #' }
+#' @importFrom sf st_coordinates st_drop_geometry
 #' @export
 #' @family maps
 get_map_points <- function(point_id = NULL, point_type = NULL,
