@@ -24,4 +24,5 @@ test_that("get_map_points works", {
                           warn_args = list(point_id = -1),
                           col_no = 9)
   expect_true(is.data.frame(get_map_points(point_id = 1, sf = FALSE)))
+  expect_false(any(class(get_map_points(point_id = 1, sf = FALSE)) == "sf"))
 })
