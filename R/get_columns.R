@@ -97,15 +97,15 @@
 #'   \item \code{col_type}: The type of column.
 #'   \item \code{refs}: The unique identification number(s) for the reference(s)
 #'     associated with the column.
-#'   \item \code{max_thick}: Maximum unit thickness in meters.
+#'   \item \code{max_thick}: The maximum unit thickness in meters.
 #'   \item \code{max_min_thick}: The maximum possible minimum thickness in
 #'     meters.
 #'   \item \code{min_min_thick}: The minimum possible minimum thickness in
 #'     meters.
-#'   \item \code{b_age}: The estimated bottom age of the column, in millions of
-#'     years before present.
-#'   \item \code{t_age}: The estimated top age of the column, in millions of
-#'     years before present.
+#'   \item \code{b_age}: The age of the bottom of the column, estimated using
+#'     the continuous time age model, in millions of years before present.
+#'   \item \code{t_age}: The age of the top of the column, estimated using the
+#'     continuous time age model, in millions of years before present.
 #'   \item \code{b_int_name}: The name of the time interval represented at the
 #'     bottom of the column.
 #'   \item \code{t_int_name}: The name of the time interval represented at the
@@ -143,7 +143,7 @@
 #'      \item \code{class}: The named economic attribute class (e.g., "precious
 #'        commodity").
 #'      \item \code{prop}: The proportion of the economic attribute out of
-#'        potential economic attributes contained within the column, calculated
+#'        all economic attributes contained within the column, calculated
 #'        from the individual Macrostrat units within the column.
 #'      \item \code{econ_id}: The unique identification number of the economic
 #'        attribute.
@@ -169,7 +169,7 @@
 #' ex2 <- get_columns(age_top = 200, age_bottom = 250)
 #' # Return columns that contain a specific stratigraphic unit, in `sf` format
 #' ex3 <- get_columns(strat_name = "mancos", sf = TRUE)
-#' # Return the columns surrounding a specific geographic coordinate
+#' # Return the columns at a specific geographic coordinate
 #' ex4 <- get_columns(lat = 43, lng = -89, adjacents = TRUE)
 #' }
 #' @export

@@ -10,7 +10,7 @@
 #' @param column_id \code{integer}. Filter units to those contained within
 #'   column(s) as specified by their unique identification number(s).
 #' @param strat_name \code{character}. Filter units to those containing a unit
-#'   that matches a stratigraphic name (e.g., "Hell Creek").
+#'   that fuzzy matches a stratigraphic name (e.g., "Hell Creek").
 #' @param strat_name_id \code{integer}. Filter units to those that match one
 #'   or more stratigraphic name(s) as specified by their unique identification
 #'   number(s).
@@ -74,22 +74,26 @@
 #' @param econ_class \code{character}. Filter units to those containing a
 #'   named economic attribute class (e.g., "material", "water", "precious
 #'   commodity").
-#' @param adjacents \code{logical}. If `column_id` or `lat`/`lng` is
-#'   specified, should all units that touch the specified column be returned?
-#'   Defaults to `FALSE`.
 #' @param project_id \code{integer}. Filter units to those contained within
 #'   one or more Macrostrat project(s) as specified by their unique
 #'   identification number(s).
+#' @param adjacents \code{logical}. If `column_id` or `lat`/`lng` is
+#'   specified, should all units that touch the specified column be returned?
+#'   Defaults to `FALSE`.
 #' @param sf \code{logical}. Should the results be returned as an `sf` object?
 #'   Defaults to `FALSE`.
 #'
 #' @return A \code{data.frame} containing the following columns:
 #' \itemize{
-#'    \item \code{unit_id}: The unique Macrostrat unit ID.
-#'    \item \code{section_id}: The unique Macrostrat section ID.
-#'    \item \code{col_id}: The unique Macrostrat column ID.
-#'    \item \code{project_id}: The unique Macrostrat project ID.
-#'    \item \code{col_area}: The area of the Macrostrat column in
+#'    \item \code{unit_id}: The unique identification number of the Macrostrat
+#'      unit.
+#'    \item \code{section_id}: The unique identification number of the
+#'      Macrostrat section containing the unit.
+#'    \item \code{col_id}: The unique identification number of the Macrostrat
+#'      column containing the unit.
+#'    \item \code{project_id}: The unique identification number of the
+#'      Macrostrat project.
+#'    \item \code{col_area}: The area of the associated Macrostrat column in
 #'      km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}}.
 #'    \item \code{unit_name}: The name of the Macrostrat unit.
 #'    \item \code{strat_name_id}: The unique Macrostrat stratigraphic name ID.
@@ -97,18 +101,18 @@
 #'    \item \code{Fm}: The lithostratigraphic formation.
 #'    \item \code{Gp}: The lithostratigraphic group.
 #'    \item \code{SGp}: The lithostratigraphic supergroup.
-#'    \item \code{t_age}: Estimated top age based on continuous time age model
-#'      in millions of years before present.
-#'    \item \code{b_age}: Estimated bottom age based on continuous time age
-#'      model in millions of years before present.
-#'    \item \code{max_thick}: Maximum unit thickness in meters.
-#'    \item \code{min_thick}: Minimum unit thickness in meters.
+#'    \item \code{t_age}: The age of the top of the unit, estimated using the
+#'      continuous time age model, in millions of years before present.
+#'    \item \code{b_age}: The age of the bottom of the unit, estimated using the
+#'      continuous time age model, in millions of years before present.
+#'    \item \code{max_thick}: The maximum thickness of the unit, in meters.
+#'    \item \code{min_thick}: The minimum thickness of the unit, in meters.
 #'    \item \code{outcrop}: Type of exposure ("outcrop", "subsurface", or
 #'      "both").
-#'    \item \code{pbdb_collections}: Count of Paleobiology Database
-#'      collections within the unit.
-#'    \item \code{pbdb_occurrences}: Count of Paleobiology Database
-#'      occurrences within the unit.
+#'    \item \code{pbdb_collections}: The number of Paleobiology Database
+#'      collections contained within the unit.
+#'    \item \code{pbdb_occurrences}: The number of Paleobiology Database
+#'      occurrences contained within the unit.
 #'    \item \code{lith}: a \code{dataframe} containing the lithologies present
 #'      within the unit, with the following columns:
 #'      \itemize{
@@ -203,9 +207,9 @@
 #'
 #' @examples
 #' \dontrun{
-#' # Get units by stratigraphic name
+#' # Get units with a specific stratigraphic name
 #' ex1 <- get_units(strat_name = "Hell Creek")
-#' # Get units by geographic coordinates
+#' # Get units at a specific geographic coordinate
 #' ex2 <- get_units(lng = -110.9, lat = 48.4)
 #' }
 #' @export
@@ -222,7 +226,7 @@ get_units <- function(unit_id = NULL, section_id = NULL, column_id = NULL,
                       environ = NULL, environ_id = NULL, environ_type = NULL,
                       environ_class = NULL, pbdb_collection_no = NULL,
                       econ = NULL, econ_id = NULL, econ_type = NULL,
-                      econ_class = NULL, adjacents = NULL, project_id = NULL,
+                      econ_class = NULL, project_id = NULL, adjacents = FALSE,
                       sf = FALSE) {
   # Error handling
   # Collect input arguments as a list
@@ -241,8 +245,8 @@ get_units <- function(unit_id = NULL, section_id = NULL, column_id = NULL,
               environ_type = "character", environ_class = "character",
               pbdb_collection_no = "integer", econ = "character",
               econ_id = "integer", econ_type = "character",
-              econ_class = "character", adjacents = "logical",
-              project_id = "integer", sf = "logical")
+              econ_class = "character", project_id = "integer",
+              adjacents = "logical", sf = "logical")
   # Check arguments
   check_arguments(x = args, ref = ref)
   # Check specific argument constraints

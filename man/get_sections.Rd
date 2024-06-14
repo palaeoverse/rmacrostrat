@@ -29,13 +29,13 @@ get_sections(
   environ_id = NULL,
   environ_type = NULL,
   environ_class = NULL,
+  pbdb_collection_no = NULL,
   econ = NULL,
   econ_id = NULL,
   econ_type = NULL,
   econ_class = NULL,
-  pbdb_collection_no = NULL,
   project_id = NULL,
-  adjacents = NULL
+  adjacents = FALSE
 )
 }
 \arguments{
@@ -81,11 +81,12 @@ degree latitude. Must also specify \code{lng}.}
 \item{lng}{\code{numeric}. Return the sections at the specified decimal
 degree longitude. Must also specify \code{lat}.}
 
-\item{lithology}{\code{character}. Filter sections to those containing one or
-more lithology(ies) (e.g., "shale", "sandstone").}
+\item{lithology}{\code{character}. Filter sections to those containing a
+named lithology (e.g., "shale", "sandstone").}
 
 \item{lithology_id}{\code{integer}. Filter sections to those containing one
-or more lithology(ies) identified by their unique identification number(s).}
+or more lithology(ies) as specified by their unique identification
+number(s).}
 
 \item{lithology_group}{\code{character}. Filter sections to those containing
 a named lithology group (e.g., "sandstones", "mudrocks", "unconsolidated").}
@@ -119,6 +120,10 @@ named environment type (e.g., "fluvial", "eolian", "glacial").}
 \item{environ_class}{\code{character}. Filter sections to those containing a
 named environment class (e.g., "marine", "non-marine").}
 
+\item{pbdb_collection_no}{\code{integer}. Filter sections to those containing
+one or more Paleobiology Database collection(s) as specified by their
+unique identification number(s).}
+
 \item{econ}{\code{character}. Filter sections to those containing a named
 economic attribute (e.g., "brick", "ground water", "gold").}
 
@@ -133,12 +138,9 @@ named economic attribute type (e.g., "construction", "aquifer", "mineral").}
 named economic attribute class (e.g., "material", "water", "precious
 commodity").}
 
-\item{pbdb_collection_no}{\code{integer}. Filter sections to those containing
-one or more Paleobiology Database collection(s) as specified by their
-unique identification number(s).}
-
-\item{project_id}{\code{integer}. Filter sections to those contained within a
-Macrostrat project as specified by its unique identification number.}
+\item{project_id}{\code{integer}. Filter sections to those contained within
+one or more Macrostrat project(s) as specified by their unique
+identification number(s).}
 
 \item{adjacents}{\code{logical}. If \code{column_id} or \code{lat}/\code{lng} is specified,
 should all sections that touch the specified column be returned? Defaults
@@ -147,19 +149,20 @@ to \code{FALSE}.}
 \value{
 A \code{dataframe} containing the following columns:
 \itemize{
-\item \code{col_id}: The unique Macrostrat column identification number.
-\item \code{col_area}: The area of the Macrostrat column in
+\item \code{col_id}: The unique identification number of the Macrostrat
+column containing the section.
+\item \code{col_area}: The area of the associated Macrostrat column in
 km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}}.
 \item \code{section_id}: The unique identification number of the Macrostrat
 section.
 \item \code{project_id}: The unique identification number of the Macrostrat
 project.
-\item \code{max_thick}: The maximum thickness within the focal region.
-\item \code{min_thick}: The minimum thickness within the focal region.
-\item \code{t_age}: The top age of the section, estimated using the
+\item \code{max_thick}: The maximum thickness of the section, in meters.
+\item \code{min_thick}: The minimum thickness of the section, in meters.
+\item \code{t_age}: The age of the top of the section, estimated using the
 continuous time age model, in millions of years before present.
-\item \code{b_age}: The bottom age of the section, estimated using the
-continuous time age model, in millions of years before present.
+\item \code{b_age}: The age of the bottom of the section, estimated using
+the continuous time age model, in millions of years before present.
 \item \code{pbdb_collections}: The number of PBDB collections contained
 within the section.
 \item \code{lith}: a \code{dataframe} containing the lithologies present
@@ -173,15 +176,16 @@ calculated from the individual Macrostrat units within the section.
 \item \code{lith_id}: The unique identification number of the lithology.
 }}
 \itemize{
-\item \code{environ}: a \code{dataframe} containing the environments present
-within the section, with the following columns:
+\item \code{environ}: a \code{dataframe} containing the environments
+present within the section, with the following columns:
 \itemize{
 \item \code{name}: The named environment (e.g., "delta plain").
 \item \code{type}: The named environment type (e.g., "siliciclastic").
 \item \code{class}: The named environment class (e.g., "marine").
 \item \code{prop}: The proportion of the environment within the section,
 calculated from the individual Macrostrat units within the section.
-\item \code{environ_id}: The unique identification number of the environment.
+\item \code{environ_id}: The unique identification number of the
+environment.
 }}
 \itemize{
 \item \code{econ}: a \code{dataframe} containing the economic attributes
@@ -191,9 +195,9 @@ present within the section, with the following columns:
 \item \code{type}: The named economic attribute type (e.g., "mineral").
 \item \code{class}: The named economic attribute class (e.g., "precious
 commodity").
-\item \code{prop}: The proportion of the economic attribute out of potential
-economic attributes contained within the section, calculated from the
-individual Macrostrat units within the section.
+\item \code{prop}: The proportion of the economic attribute out of
+all economic attributes contained within the section, calculated
+from the individual Macrostrat units within the section.
 \item \code{econ_id}: The unique identification number of the economic
 attribute.
 }
@@ -201,22 +205,28 @@ attribute.
 }
 \description{
 A function to retrieve Macrostrat units contained within
-gap-bound packages.
+gap-bound packages (sections).
 }
 \details{
 More information can be found for the inputs for this function
 using the definition functions (beginning with \code{defs_}).
 }
+\section{Developer(s)}{
+
+Christopher D. Dean
+}
+
+\section{Reviewer(s)}{
+
+Bethany Allen
+}
+
 \examples{
 \dontrun{
-  # get_sections(section_id = 1)
-  # get_sections(column_id = 10)
-  # head(get_sections(age = 73))
-  # head(get_sections(age_top = 70, age_bottom = 75))
-  # head(get_sections(lat = 45, lng = -100))
-  # head(get_sections(lithology = "sandstone"))
-  # head(get_sections(environ_type = "siliciclastic"))
-  # head(get_sections(pbdb_collection_no = c(1000:5000)))
+# Get sections within a specified column
+ex1 <- get_sections(column_id = 10)
+# Get sections at a specific geographic coordinate
+ex2 <- get_sections(lng = -110.9, lat = 48.4)
 }
 }
 \seealso{
@@ -225,8 +235,5 @@ Macrostrat data entities:
 \code{\link{get_age_model}()},
 \code{\link{get_columns}()},
 \code{\link{get_units}()}
-}
-\author{
-Christopher D. Dean
 }
 \concept{macrostrat}
