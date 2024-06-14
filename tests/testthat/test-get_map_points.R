@@ -1,5 +1,5 @@
 test_that("get_map_points works", {
-  rmacrostrat_test_checks(fn = get_map_points,,
+  rmacrostrat_test_checks(fn = get_map_points,
                           check_args = list(point_id = 1,
                                             list(min_lng = -80, min_lat = 40,
                                                  max_lng = -70, max_lat = 50)),
@@ -23,4 +23,6 @@ test_that("get_map_points works", {
                                            point_id = "test"),
                           warn_args = list(point_id = -1),
                           col_no = 9)
+  expect_true(is.data.frame(get_map_points(point_id = 1, sf = FALSE)))
+  expect_false(any(class(get_map_points(point_id = 1, sf = FALSE)) == "sf"))
 })
