@@ -65,7 +65,8 @@ elements from various sources.</p>
 <span>  min_lng <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  max_lat <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  max_lng <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  source_id <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  source_id <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  sf <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -83,58 +84,74 @@ plane", "foliation", and "joint". Ignored if <code>point_id</code> is supplied.<
 
 
 <dt>min_lat</dt>
-<dd><p><code>integer</code>. A minimum latitude that represents the
-southwest corner of a bounding box of the points to return. Requires
-<code>min_lng</code>, <code>max_lat</code>, and <code>max_lng</code>. Ignored if <code>point_id</code> is supplied.</p></dd>
+<dd><p><code>integer</code>. The minimum latitude used to define the
+bounding box of the points to return. Requires <code>min_lng</code>, <code>max_lat</code>, and
+<code>max_lng</code>. Ignored if <code>point_id</code> is supplied.</p></dd>
 
 
 <dt>min_lng</dt>
-<dd><p><code>integer</code>. A minimum longitude that represents the
-southwest corner of a bounding box of the points to return. Requires
-<code>min_lat</code>, <code>max_lat</code>, and <code>max_lng</code>. Ignored if <code>point_id</code> is supplied.</p></dd>
+<dd><p><code>integer</code>. A minimum longitude used to define the
+bounding box of the points to return. Requires <code>min_lat</code>, <code>max_lat</code>, and
+<code>max_lng</code>. Ignored if <code>point_id</code> is supplied.</p></dd>
 
 
 <dt>max_lat</dt>
-<dd><p><code>integer</code>. A maximum latitude that represents the
-northeast corner of a bounding box of the points to return. Requires
-<code>min_lat</code>, <code>min_lng</code>, and <code>max_lng</code>. Ignored if <code>point_id</code> is supplied.</p></dd>
+<dd><p><code>integer</code>. A maximum latitude used to define the
+bounding box of the points to return. Requires <code>min_lat</code>, <code>min_lng</code>, and
+<code>max_lng</code>. Ignored if <code>point_id</code> is supplied.</p></dd>
 
 
 <dt>max_lng</dt>
-<dd><p><code>integer</code>. A maximum longitude that represents the
-northeast corner of a bounding box of the points to return. Requires
-<code>min_lat</code>, <code>min_lng</code>, and <code>max_lat</code>. Ignored if <code>point_id</code> is supplied.</p></dd>
+<dd><p><code>integer</code>. A maximum longitude used to define the
+bounding box of the points to return. Requires <code>min_lat</code>, <code>min_lng</code>, and
+<code>max_lat</code>. Ignored if <code>point_id</code> is supplied.</p></dd>
 
 
 <dt>source_id</dt>
 <dd><p><code>integer</code>. The unique identification number(s) of the
 source(s) to filter the points by. Ignored if <code>point_id</code> is supplied.</p></dd>
 
+
+<dt>sf</dt>
+<dd><p><code>logical</code>. Should the results be returned as an <code>sf</code> object?
+Defaults to <code>TRUE</code>.</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     
 
-<p>An <code>sf</code> object containing the following columns:</p><ul><li><p><code>point_id</code>: The identification number of the outcrop point
-element.</p></li>
-<li><p><code>strike</code>: The strike value of the outcrop point element.</p></li>
-<li><p><code>dip</code>: The dip value of the outcrop point element.</p></li>
-<li><p><code>dip_dir</code>: The dip direction value of the outcrop point
-element.</p></li>
-<li><p><code>point_type</code>: The type of the outcrop point element (e.g.
-bedding).</p></li>
-<li><p><code>certainty</code>: The outcrop point element location certainty.</p></li>
-<li><p><code>comments</code>: Notes assigned to the outcrop point element.</p></li>
+<p>An <code>sf</code> object containing the following columns:</p><ul><li><p><code>point_id</code>: The identification number of the point element.</p></li>
+<li><p><code>strike</code>: The strike value of the point element.</p></li>
+<li><p><code>dip</code>: The dip value of the point element.</p></li>
+<li><p><code>dip_dir</code>: The dip direction of the point element.</p></li>
+<li><p><code>point_type</code>: The type of point element (e.g. "bedding").</p></li>
+<li><p><code>certainty</code>: The certainty of the point element location.</p></li>
+<li><p><code>comments</code>: Notes assigned to the point element.</p></li>
 <li><p><code>source_id</code>: The unique identification number of the source
-for the outcrop point element.</p></li>
+for the point element.</p></li>
 <li><p><code>geometry</code>: The point spatial data.</p></li>
-</ul><p>If <code>sf</code> is <code>TRUE</code> (the default), an <code>sf</code> object is returned instead, with
-the same columns plus a "geometry" column that contains the spatial data.</p>
+</ul><p>If <code>sf</code> is <code>TRUE</code> (the default), an <code>sf</code> object is returned, with the
+a "geometry" column that contains the spatial data. If <code>sf</code> is <code>FALSE</code>,
+a <code>data.frame</code> object is returned with two additional columns (lng,
+lat) containing the geographic coordinates of the point elements.</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>More information can be found for the inputs for this function
-using the definition functions (beginning with <code>def_</code>).</p>
+    <p>More information can be found relating to the inputs for this
+function using the definition functions (beginning with <code>def_</code>).</p>
+    </div>
+    <div class="section level2">
+    <h2 id="developer-s-">Developer(s)<a class="anchor" aria-label="anchor" href="#developer-s-"></a></h2>
+    
+
+<p>Lewis A. Jones</p>
+    </div>
+    <div class="section level2">
+    <h2 id="reviewer-s-">Reviewer(s)<a class="anchor" aria-label="anchor" href="#reviewer-s-"></a></h2>
+    
+
+<p>Bethany Allen</p>
     </div>
     <div class="section level2">
     <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
@@ -143,15 +160,13 @@ using the definition functions (beginning with <code>def_</code>).</p>
 <code><a href="get_map_legends.html">get_map_legends</a>()</code>,
 <code><a href="get_map_outcrop.html">get_map_outcrop</a>()</code></p></div>
     </div>
-    <div class="section level2">
-    <h2 id="author">Author<a class="anchor" aria-label="anchor" href="#author"></a></h2>
-    <p>Lewis A. Jones</p>
-    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="op">{</span></span></span>
+<span class="r-in"><span><span class="co"># Return a specific point</span></span></span>
 <span class="r-in"><span><span class="va">ex1</span> <span class="op">&lt;-</span> <span class="fu">get_map_points</span><span class="op">(</span>point_id <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="co"># Return all points within a user-specified bounding box</span></span></span>
 <span class="r-in"><span><span class="va">ex2</span> <span class="op">&lt;-</span> <span class="fu">get_map_points</span><span class="op">(</span>min_lng <span class="op">=</span> <span class="op">-</span><span class="fl">80</span>, min_lat <span class="op">=</span> <span class="fl">40</span>,</span></span>
 <span class="r-in"><span>                      max_lng <span class="op">=</span> <span class="op">-</span><span class="fl">70</span>, max_lat <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="op">}</span></span></span>
