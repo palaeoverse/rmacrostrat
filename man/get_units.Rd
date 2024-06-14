@@ -35,7 +35,7 @@ get_units(
   econ_type = NULL,
   econ_class = NULL,
   project_id = NULL,
-  adjacents = NULL,
+  adjacents = FALSE,
   sf = FALSE
 )
 }
@@ -50,7 +50,7 @@ section(s) as specified by their unique identification number(s).}
 column(s) as specified by their unique identification number(s).}
 
 \item{strat_name}{\code{character}. Filter units to those containing a unit
-that matches a stratigraphic name (e.g., "Hell Creek").}
+that fuzzy matches a stratigraphic name (e.g., "Hell Creek").}
 
 \item{strat_name_id}{\code{integer}. Filter units to those that match one
 or more stratigraphic name(s) as specified by their unique identification
@@ -157,12 +157,12 @@ A \code{data.frame} containing the following columns:
 \item \code{unit_id}: The unique identification number of the Macrostrat
 unit.
 \item \code{section_id}: The unique identification number of the
-Macrostrat section.
+Macrostrat section containing the unit.
 \item \code{col_id}: The unique identification number of the Macrostrat
-column.
+column containing the unit.
 \item \code{project_id}: The unique identification number of the
 Macrostrat project.
-\item \code{col_area}: The area of the Macrostrat column in
+\item \code{col_area}: The area of the associated Macrostrat column in
 km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}}.
 \item \code{unit_name}: The name of the Macrostrat unit.
 \item \code{strat_name_id}: The unique Macrostrat stratigraphic name ID.
@@ -288,7 +288,7 @@ William Gearty
 \dontrun{
 # Get units with a specific stratigraphic name
 ex1 <- get_units(strat_name = "Hell Creek")
-# Get units within a specified latitude-longitude box
+# Get units at a specific geographic coordinate
 ex2 <- get_units(lng = -110.9, lat = 48.4)
 }
 }

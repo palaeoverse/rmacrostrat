@@ -10,7 +10,7 @@
 #' @param unit_id \code{integer}. Filter columns to those containing unit(s) as
 #'   specified by their unique identification number(s).
 #' @param strat_name \code{character}. Filter columns to those containing a unit
-#'   that matches a stratigraphic name (e.g., "Hell Creek").
+#'   that fuzzy matches a stratigraphic name (e.g., "Hell Creek").
 #' @param strat_name_id \code{integer}. Filter columns to those containing a
 #'   unit that matches one or more stratigraphic name(s) as specified by their
 #'   unique identification number(s).
@@ -102,10 +102,10 @@
 #'     meters.
 #'   \item \code{min_min_thick}: The minimum possible minimum thickness in
 #'     meters.
-#'   \item \code{b_age}: The age of the bottom of the unit, estimated using the
-#'      continuous time age model, in millions of years before present.
-#'   \item \code{t_age}: The age of the top of the unit, estimated using the
-#'      continuous time age model, in millions of years before present.
+#'   \item \code{b_age}: The age of the bottom of the column, estimated using
+#'     the continuous time age model, in millions of years before present.
+#'   \item \code{t_age}: The age of the top of the column, estimated using the
+#'     continuous time age model, in millions of years before present.
 #'   \item \code{b_int_name}: The name of the time interval represented at the
 #'     bottom of the column.
 #'   \item \code{t_int_name}: The name of the time interval represented at the
@@ -143,7 +143,7 @@
 #'      \item \code{class}: The named economic attribute class (e.g., "precious
 #'        commodity").
 #'      \item \code{prop}: The proportion of the economic attribute out of
-#'        potential economic attributes contained within the column, calculated
+#'        all economic attributes contained within the column, calculated
 #'        from the individual Macrostrat units within the column.
 #'      \item \code{econ_id}: The unique identification number of the economic
 #'        attribute.
@@ -169,7 +169,7 @@
 #' ex2 <- get_columns(age_top = 200, age_bottom = 250)
 #' # Return columns that contain a specific stratigraphic unit, in `sf` format
 #' ex3 <- get_columns(strat_name = "mancos", sf = TRUE)
-#' # Return the columns surrounding a specific geographic coordinate
+#' # Return the columns at a specific geographic coordinate
 #' ex4 <- get_columns(lat = 43, lng = -89, adjacents = TRUE)
 #' }
 #' @export

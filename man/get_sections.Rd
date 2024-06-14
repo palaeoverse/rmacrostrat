@@ -35,7 +35,7 @@ get_sections(
   econ_type = NULL,
   econ_class = NULL,
   project_id = NULL,
-  adjacents = NULL
+  adjacents = FALSE
 )
 }
 \arguments{
@@ -49,7 +49,7 @@ column(s) as specified by their unique identification number(s).}
 specified by their unique identification number(s).}
 
 \item{strat_name}{\code{character}. Filter sections to those containing a
-unit that matches a stratigraphic name (e.g., "Hell Creek").}
+unit that fuzzy matches a stratigraphic name (e.g., "Hell Creek").}
 
 \item{strat_name_id}{\code{integer}. Filter sections to those containing a
 unit that matches one or more stratigraphic name(s) as specified by their
@@ -150,8 +150,8 @@ to \code{FALSE}.}
 A \code{dataframe} containing the following columns:
 \itemize{
 \item \code{col_id}: The unique identification number of the Macrostrat
-column.
-\item \code{col_area}: The area of the Macrostrat column in
+column containing the section.
+\item \code{col_area}: The area of the associated Macrostrat column in
 km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}}.
 \item \code{section_id}: The unique identification number of the Macrostrat
 section.
@@ -161,8 +161,8 @@ project.
 \item \code{min_thick}: The minimum thickness of the section, in meters.
 \item \code{t_age}: The age of the top of the section, estimated using the
 continuous time age model, in millions of years before present.
-\item \code{b_age}: The age of the bottom of the section, estimated using the
-continuous time age model, in millions of years before present.
+\item \code{b_age}: The age of the bottom of the section, estimated using
+the continuous time age model, in millions of years before present.
 \item \code{pbdb_collections}: The number of PBDB collections contained
 within the section.
 \item \code{lith}: a \code{dataframe} containing the lithologies present
@@ -196,7 +196,7 @@ present within the section, with the following columns:
 \item \code{class}: The named economic attribute class (e.g., "precious
 commodity").
 \item \code{prop}: The proportion of the economic attribute out of
-potential economic attributes contained within the section, calculated
+all economic attributes contained within the section, calculated
 from the individual Macrostrat units within the section.
 \item \code{econ_id}: The unique identification number of the economic
 attribute.
@@ -225,7 +225,7 @@ Bethany Allen
 \dontrun{
 # Get sections within a specified column
 ex1 <- get_sections(column_id = 10)
-# Get sections within a specified latitude-longitude box
+# Get sections at a specific geographic coordinate
 ex2 <- get_sections(lng = -110.9, lat = 48.4)
 }
 }
