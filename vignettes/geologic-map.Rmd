@@ -1,6 +1,5 @@
 ---
 title: "Making a geologic outcrop map with rmacrostrat"
-author: "Christopher D. Dean"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Making a geologic outcrop map with rmacrostrat}
@@ -110,7 +109,7 @@ Now we're ready to plot our outcrop! We can use the `ggplot2` package to help us
 ggplot() +
   geom_sf(data = us) + 
   geom_sf(data = ca) +
-  geom_sf(data = hc, color = "#a75224", fill = "#C7622B") +
+  geom_sf(data = hc, color = NA, fill = "#C7622B") +
   coord_sf(xlim = c(-112, -97), ylim = c(44, 50), expand = FALSE) +
   labs(x = "Longitude (º)", y = "Latitude (º)")
 ```
@@ -129,7 +128,7 @@ st_crs(ed_sf) <- st_crs(4326)
 ggplot() +
   geom_sf(data = us) + 
   geom_sf(data = ca) +
-  geom_sf(data = hc, color = "#a75224", fill = "#C7622B") +
+  geom_sf(data = hc, color = NA, fill = "#C7622B") +
   geom_sf(data = ed_sf, color = "black", size = 0.7) +
   coord_sf(xlim = c(-112, -97), ylim = c(44, 50), expand = FALSE) +
   labs(x = "Longitude (º)", y = "Latitude (º)")
@@ -152,8 +151,8 @@ silhouette_df <- data.frame(x = -99, y = 49.5, name = "Edmontosaurus")
 ggplot() +
   geom_sf(data = us) + 
   geom_sf(data = ca) +
-  geom_sf(data = hc, color = '#a75224', fill = '#C7622B', lwd = 0) +
-  geom_sf(data = ed_sf, color = 'black', size = 0.7) +
+  geom_sf(data = hc, color = NA, fill = "#C7622B") +
+  geom_sf(data = ed_sf, color = "black", size = 0.7) +
   coord_sf(xlim = c(-112, -97), ylim = c(44, 50), expand = FALSE) +
   geom_phylopic(data = silhouette_df, aes(x = x, y = y), uuid = ed_uuid, 
                 size = 0.8, alpha = 1, color = "black") +
@@ -172,7 +171,7 @@ inset <-  ggplot() +
   geom_sf(data = us) +
   geom_sf(data = ca) + 
   geom_sf(data = mx) +
-  geom_rect(xmin = -112, xmax = -97, ymin = 44, ymax = 50, 
+  annotate("rect", xmin = -112, xmax = -97, ymin = 44, ymax = 50, 
             color = "red", fill = NA) +
   xlim(-130, -70) +
   ylim(30, 70) +
@@ -189,11 +188,10 @@ ed_hc_map <- ggplot() +
   geom_sf(data = us) + 
   geom_sf(data = ca) +
   geom_sf(data = hc,
-          color = '#a75224',
-          fill = '#C7622B',
-          lwd = 0) +
+          color = NA,
+          fill = "#C7622B") +
   geom_sf(data = ed_sf, 
-          color = 'black', 
+          color = "black", 
           size = 0.7) +
   coord_sf(xlim = c(-112, -97), ylim = c(44, 50), expand = FALSE) +
   annotation_north_arrow(location = "br",
