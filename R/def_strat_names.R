@@ -1,4 +1,4 @@
-#' @title Retrieve stratigraphic name definitions
+#' @title Define stratigraphic names
 #' @description A function to retrieve the definitions for one or more
 #'   stratigraphic names in the Macrostrat database. By default, all
 #'   stratigraphic name definitions are returned.
@@ -79,14 +79,14 @@
 #'   \item \code{ref_id}: The unique identification number of the reference from
 #'    which the stratigraphic name was sourced (see [def_references()]).
 #' }
-#' @section: Developer(s):
-#' Christopher D. Dean
+#' @section Developer(s):
+#'   Christopher D. Dean
 #' @section Reviewer(s):
-#' Bethany Allen
+#'   Bethany Allen
 #' @examples
 #' \dontrun{
 #' # Return a sample of stratigraphic names
-#' ex1 <- head(def_strat_names())
+#' ex1 <- def_strat_names()
 #' # Return all stratigraphic names associated with a particular stratigraphic
 #' # name
 #' ex2 <- def_strat_names(strat_name = "Hell Creek")

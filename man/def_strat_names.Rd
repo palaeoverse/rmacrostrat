@@ -2,7 +2,7 @@
 % Please edit documentation in R/def_strat_names.R
 \name{def_strat_names}
 \alias{def_strat_names}
-\title{Retrieve stratigraphic name definitions}
+\title{Define stratigraphic names}
 \usage{
 def_strat_names(
   strat_name = NULL,
@@ -19,16 +19,16 @@ def_strat_names(
 unit(s) to return a definition for.}
 
 \item{interval_name}{\code{character}. The chronostratigraphic interval name
-for which to return stratigraphic name definitions with any temporal
-overlap (e.g., "Campanian"). This returns only \code{strat_names} with an age
-declared in Macrostrat.}
+(e.g., "Campanian") for which to return stratigraphic name definitions.
+This returns \code{strat_names} with an age declared in Macrostrat, whose age
+has any temporal overlap with the desired interval.}
 
 \item{rank}{\code{character}. The formal stratigraphic rank abbreviation of
-the desired unit(s) (i.e., "SGp", "Gp", "SubGp", "Fm", "Mbr", or "Bed") to
+the desired name(s) (i.e., "SGp", "Gp", "SubGp", "Fm", "Mbr", or "Bed") to
 return a definition for.}
 
-\item{concept_id}{\code{integer}. The unique identification number(s) of
-stratigraphic concepts (grouped \code{strat_name}s which represent the same
+\item{concept_id}{\code{integer}. The unique identification number(s) of the
+stratigraphic concept(s) (grouped \code{strat_name}s which represent the same
 entity) to return a definition for.}
 
 \item{ref_id}{\code{character}. The unique identification number(s) of the
@@ -41,8 +41,8 @@ the desired stratigraphic name to return a definition for.}
 \item{rule}{\code{character}. The hierarchical rule for returning
 stratigraphic name definitions (either "all" or "down"). The "all" option
 will return the entire stratigraphic name hierarchy (parents and children
-of all levels) that the specified request belongs to. The "down" option
-will return any direct children of the requested stratigraphic name. Can
+of all levels) that the requested name(s) belongs to. The "down" option
+will return any direct children of the requested stratigraphic name(s). Can
 only be used with \code{strat_name_id}.}
 }
 \value{
@@ -55,9 +55,11 @@ the lithostratigraphic rank of the stratigraphic name (e.g., "Hell Creek
 Formation").
 \item \code{rank}: The lithostratigraphic rank of the stratigraphic name
 (e.g., "Formation"), in short form (e.g., "Fm").
+\item \code{strat_name_id}: The unique identification number of the
+stratigraphic name.
 \item \code{concept_id}: The unique identification number of the associated
-stratigraphic name concept, which groups variant strat_names for the same
-geologic entity (see \code{\link[=def_strat_name_concepts]{def_strat_name_concepts()}}).
+stratigraphic name concept, which groups variant \code{strat_names} for the
+same geologic entity (see \code{\link[=def_strat_name_concepts]{def_strat_name_concepts()}}).
 \item \code{bed}: The stratigraphic name of the bed associated with the
 specified stratigraphic name.
 \item \code{bed_id}: The unique identification number (strat_name_id) of
@@ -87,10 +89,10 @@ the supergroup associated with the specified stratigraphic name.
 stratigraphic name, in millions of years before present.
 \item \code{t_age}: The top age (minimum age) associated with the
 stratigraphic name, in millions of years before present.
-\item \code{b_period}: The name of the bottom geologic time period (oldest
-period) associated with the stratigraphic name (see \code{\link[=def_intervals]{def_intervals()}}).
-\item \code{t_period}:The name of the top geologic time period (youngest
-period) associated with the stratigraphic name (see \code{\link[=def_intervals]{def_intervals()}}).
+\item \code{b_period}: The name of the oldest geologic time period
+associated with the stratigraphic name (see \code{\link[=def_intervals]{def_intervals()}}).
+\item \code{t_period}:The name of the youngest geologic time period
+associated with the stratigraphic name (see \code{\link[=def_intervals]{def_intervals()}}).
 \item \code{c_interval}: The name of the central interval associated with
 the stratigraphic name (see \code{\link[=def_intervals]{def_intervals()}}).
 \item \code{t_units}: The total number of Macrostrat units that are
@@ -104,27 +106,29 @@ A function to retrieve the definitions for one or more
 stratigraphic names in the Macrostrat database. By default, all
 stratigraphic name definitions are returned.
 }
-\section{Reviewer}{
- N/A
+\section{Developer(s)}{
+
+Christopher D. Dean
+}
+
+\section{Reviewer(s)}{
+
+Bethany Allen
 }
 
 \examples{
 \dontrun{
-# Return all stratigraphic names
-ex1 <- head(def_strat_names())
+# Return a sample of stratigraphic names
+ex1 <- def_strat_names()
 # Return all stratigraphic names associated with a particular stratigraphic
 # name
 ex2 <- def_strat_names(strat_name = "Hell Creek")
 # Return all stratigraphic names that intersect with a chosen time interval
-and lithostratigraphic rank
-ex3 <- head(def_strat_names(interval_name = "Campanian", rank = "Fm"))
+ex3 <- def_strat_names(interval_name = "Campanian")
 }
 }
 \seealso{
 Stratigraphic names:
 \code{\link{def_strat_name_concepts}()}
-}
-\author{
-Christopher D. Dean
 }
 \concept{defs_strat}

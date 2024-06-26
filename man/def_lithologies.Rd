@@ -2,7 +2,7 @@
 % Please edit documentation in R/def_lithologies.R
 \name{def_lithologies}
 \alias{def_lithologies}
-\title{Retrieve lithology definitions}
+\title{Define lithologies}
 \usage{
 def_lithologies(
   lithology = NULL,
@@ -13,17 +13,17 @@ def_lithologies(
 )
 }
 \arguments{
-\item{lithology}{\code{character}. The name of a lithology (e.g.,
+\item{lithology}{\code{character}. The name of the desired lithology (e.g.,
 "limestone") to return a definition for.}
 
-\item{lithology_group}{\code{character}. The name of a lithological group
-(e.g., "unconsolidated") to return a definition for.}
+\item{lithology_group}{\code{character}. The name of the desired lithological
+group (e.g., "unconsolidated") to return a definition for.}
 
-\item{lithology_class}{\code{character}. The name of a lithological class
-(e.g., "sedimentary") to return a definition for.}
+\item{lithology_class}{\code{character}. The name of the desired lithological
+class (e.g., "sedimentary") to return a definition for.}
 
-\item{lithology_type}{\code{character}. The name of a lithological type
-(e.g., "siliciclastic") to return a definition for.}
+\item{lithology_type}{\code{character}. The name of the desired lithological
+type (e.g., "siliciclastic") to return a definition for.}
 
 \item{lithology_id}{\code{integer}. The unique identification number(s) of
 one or more lithologies to return a definition for.}
@@ -31,12 +31,12 @@ one or more lithologies to return a definition for.}
 \value{
 A \code{data.frame} containing the following columns:
 \itemize{
-\item \code{lith_id}: Unique ID of the lithology.
+\item \code{lith_id}: The unique identification number of the lithology.
 \item \code{name}: The name of the lithology.
-\item \code{type}: Lithology type, less inclusive than class.
-\item \code{group}: Lithology group, less inclusive than type.
-\item \code{class}: Lithology class, more inclusive than type.
-\item \code{color}: Recommended coloring for lithology.
+\item \code{type}: The lithology type, less inclusive than class.
+\item \code{group}: The lithology group, less inclusive than type.
+\item \code{class}: The lithology class, more inclusive than type.
+\item \code{color}: The recommended coloring for the lithology.
 \item \code{fill}: The code for the fill pattern as established in the
 \href{https://ngmdb.usgs.gov/fgdc_gds/}{Federal Geographic Data Committee}'s
 \href{https://ngmdb.usgs.gov/fgdc_gds/}{Digital Cartographic Standard for Geologic Map Symbolization}.
@@ -45,17 +45,29 @@ partially or entirely composed of the lithology.
 }
 }
 \description{
-A function to retrieve the definitions for one or more
-lithologies in the Macrostrat database. By default, all lithology
-definitions are returned.
+A function to retrieve the definitions of one or more
+lithologies in the Macrostrat database. If no arguments are specified
+(the default), all lithology definitions are returned.
 }
+\section{Developer(s)}{
+
+William Gearty
+}
+
+\section{Reviewer(s)}{
+
+Bethany Allen
+}
+
 \examples{
 \dontrun{
 # return all lithology definitions
 ex1 <- def_lithologies()
-# return subsets of lithology definitions
+# return a definition for sandstone
 ex2 <- def_lithologies(lithology = "sandstone")
+# return definitions for lithologies of a specific type
 ex3 <- def_lithologies(lithology_type = "sedimentary")
+# return definitions for lithologies using their unique ID numbers
 ex4 <- def_lithologies(lithology_id = c(1,5))
 }
 }
@@ -68,8 +80,5 @@ Geologic features and attributes:
 \code{\link{def_measurements}()},
 \code{\link{def_minerals}()},
 \code{\link{def_structures}()}
-}
-\author{
-William Gearty
 }
 \concept{defs_feat}
