@@ -224,7 +224,7 @@ area_m <- sum(st_area(hc_area))
 area_km <- area_m/1000000
 print(area_km)
 ```
-So from these few lines of code, we can work out that Hell Creek Formation outcrop is a touch larger than the total land area of Polynesia, which is approximately 37,141 km\ifelse{html}{\out{<sup>2</sup>}}{\eqn{^2}}! Pretty neat. 
+So from these few lines of code, we can work out that the total outcrop area for the Hell Creek Formation is a touch larger than the total land area of Polynesia (which is approximately 37,141 km^2^)! Pretty neat. 
 
 Hopefully this vignette has shown you some potential uses for `rmacrostrat` functions and helped provide a workflow for your own analyses. If you have any questions about the package or its functionality, please feel free to join our [Palaeoverse Google group](https://groups.google.com/g/palaeoverse) and leave a comment; we'll aim to answer it as soon as possible!
 
