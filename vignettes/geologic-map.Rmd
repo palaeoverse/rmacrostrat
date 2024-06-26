@@ -87,7 +87,7 @@ That looks like what we need! We have a simple features collection consisting of
 # Visualization
 To plot our outcrop map, we'll have to load some packages that let us handle and plot spatial data. Let's do that now. 
 
-```{r map-packages, eval = TRUE}
+```{r map-packages, eval = TRUE, message = FALSE}
 # Load required packages
 library(rnaturalearth)
 library(ggplot2)
@@ -122,8 +122,7 @@ Looking good! But we can take this map a bit further. A common dinosaur found in
 ed <- read.csv(paste0("https://paleobiodb.org/data1.2/occs/list.csv",
                       "?base_name=Edmontosaurus&strat=Hell%20Creek&show=full"))
 # Turn points into spatial features
-ed_sf <- st_as_sf(x = ed,                         
-           coords = c("lng", "lat"))
+ed_sf <- st_as_sf(x = ed, coords = c("lng", "lat"))
 # Set coordinate system (WGS84) for Edmontosaurus occurrences
 st_crs(ed_sf) <- st_crs(4326)
 # Plot
@@ -138,7 +137,7 @@ ggplot() +
 
 Those *Edmontosaurus* occurrences are now plotted on the map. You may notice that there are some occurrences that don't overlay the plotted outcrop, despite apparently being from the Hell Creek. This could be due to an error in the PBDB data, potentially relating to the accuracy of the latitude and longitude co-ordinates, or it could be that we're missing some outcrop data of the Hell Creek. Either way, this shows that plotting occurrences over their respective outcrop can a good way to explore potential data issues. 
 
-Asides from those errant occurrences, it's starting to look pretty good! But we can add a few more finishing touches to really make it pop. First, let's the use package [`rphylopic`](https://rphylopic.palaeoverse.org/index.html) to add a silhouette of *Edmontosaurus* to the map. 
+Aside from those errant occurrences, it's starting to look pretty good! But we can add a few more finishing touches to really make it pop. First, let's the use package [`rphylopic`](https://rphylopic.palaeoverse.org/index.html) to add a silhouette of *Edmontosaurus* to the map. 
 
 ```{r add-rphylopic, eval = TRUE}
 # Load the rphylopic package
@@ -163,7 +162,7 @@ ggplot() +
 
 Nice! Finally, we can add a few other touches to make it a publication-worthy figure, including an inlay map, a scale bar, and a North arrow:
 
-``` {r add-inlay-scale, evail = TRUE}
+``` {r add-inlay-scale, eval = TRUE}
 # Load `ggpatial` package to add annotations, and `cowplot` to stitch final map 
 # together
 library(ggspatial)
@@ -182,7 +181,7 @@ inset <-  ggplot() +
   theme(axis.text = element_blank(),
         axis.ticks = element_blank(),
         axis.ticks.length = unit(0, "pt"),
-        axis.title=element_blank(),
+        axis.title = element_blank(),
         plot.margin = margin(0, 0, 0, 0, "cm"),
         panel.background = element_rect(fill = "lightblue"))
 # Add a scale bar, North arrow, and new theme to the original map and save it
