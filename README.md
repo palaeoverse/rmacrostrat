@@ -110,14 +110,14 @@ units$mid_age <- (units$b_age + units$t_age) / 2
 ggplot(units, aes(x = mid_age)) +
   geom_histogram(binwidth = 10, center = 5,
                  color = "black", fill = "#add8e6") +
-  scale_y_continuous("Number of carbonate units") +
+  scale_y_continuous("Number of marine units") +
   scale_x_reverse("Time (Ma)", limits = c(538.8, 0)) +
   theme_bw() +
   theme(legend.title = element_blank(),
         legend.position.inside = c(0.1, 0.9)) +
   coord_geo()
 ```
-![](man/figures/carbonate_units.png)
+![](man/figures/marine_units.png)
 
 Extensive example usage of `rmacrostrat` is provided in the package vignettes/tutorials. These can be accessed [online](https://rmacrostrat.palaeoverse.org/articles/) or in R via:
 
