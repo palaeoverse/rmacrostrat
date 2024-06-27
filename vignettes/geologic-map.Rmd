@@ -70,7 +70,7 @@ hc_def
 ```
 Yup, these three are the only entries for Hell Creek. But hang on! Before going ahead and using these to pull our spatial data, you'll also notice that one of the `strat_name`s here is actually the Hell Creek "Member", which is described as belonging to the Lance Formation. On a hunt in the literature, it turns out that this is a term used for the Hell Creek before it was designated to the rank of formation (Archibald, 1982), so it's okay to include here. But it's always worth remembering to check your data for errors prior to using it!
 
-Let's go ahead and use the `strat_name_id`s associated with the `concept_id`s to get some spatial data. To do this, we'll need to use the `get_map_outcrop()` function, which allows us to grab outcrop polygons from geologic maps. Let's do that now, specifying that we want the output to be returned as an sf, or 'simple features', object. An sf object is a collection of simple features (representations of real world objects) that includes attributes and geometries in the form of a `data.frame`. 
+Let's go ahead and use the `strat_name_id`s associated with the Hell Creek `concept_id` to get some spatial data. To do this, we'll need to use the `get_map_outcrop()` function, which allows us to grab outcrop polygons from geologic maps. Let's do that now, specifying that we want the output to be returned as an sf, or 'simple features', object. An sf object is a collection of simple features (representations of real world objects) that includes attributes and geometries in the form of a `data.frame`. 
 
 ```{r get_map_outcrop, eval = TRUE}
 # Get spatial outcrop information associated with each Hell Creek strat_name_id
@@ -215,7 +215,7 @@ ggdraw() +
 
 And that's it! One completed map. 
 
-...But that's not all we can do with outcrop data! As a quick extra, lets calculate the total outcrop area of the Hell Creek Formation:
+...But that's not all we can do with outcrop data! As a quick extra, let's calculate the total outcrop area of the Hell Creek Formation:
 
 ```{r outcrop-area, eval = TRUE}
 # Fix potential issues with polygon boundaries/shapes
@@ -223,10 +223,11 @@ hc_area <- st_make_valid(hc)
 # Calculate the area in meters squared
 area_m <- sum(st_area(hc_area))
 # Calculate the area in kilometers squared
+units(area_m) <- NULL
 area_km <- area_m/1000000
 print(area_km)
 ```
-So from these few lines of code, we can work out that the total outcrop area for the Hell Creek Formation is a touch larger than the total land area of Polynesia (which is approximately 37,141 km^2^)! Pretty neat. 
+So from these few lines of code, we can work out that the total outcrop area for the Hell Creek Formation is a touch larger than the total land area of Polynesia (which is approximately 37,141 km^2)! Pretty neat. 
 
 Hopefully this vignette has shown you some potential uses for `rmacrostrat` functions and helped provide a workflow for your own analyses. If you have any questions about the package or its functionality, please feel free to join our [Palaeoverse Google group](https://groups.google.com/g/palaeoverse) and leave a comment; we'll aim to answer it as soon as possible!
 
