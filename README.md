@@ -93,7 +93,7 @@ ggplot() +
 ```
 ![](man/figures/hell_creek_outcrop.png)
 
-A minimal example of getting and plotting the number of carbonate units through time for North America:
+A minimal example of getting and plotting the number of marine units through time for North America:
 
 ```r
 # Load libraries
@@ -101,7 +101,7 @@ library(rmacrostrat)
 library(ggplot2)
 library(deeptime)
 # Get all carbonate units for North America
-units <- get_units(lithology_type = "carbonate",
+units <- get_units(environ_class = "marine",
                    interval_name = "Phanerozoic",
                    project_id = 1)
 # Add mid age for units
