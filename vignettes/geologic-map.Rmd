@@ -84,16 +84,21 @@ head(hc, n = 1)
 That looks like what we need! We have a simple features collection consisting of multi-polygons, with attributes that indicate it contains data for the Hell Creek Formation. Now let's move on to visualizing the data. 
 
 # Visualization
-To plot our outcrop map, we'll have to load some packages that let us handle and plot spatial data. Let's do that now. 
+To plot our outcrop map, we'll have to install and load some packages that let us handle and plot spatial data. Let's do that now. 
 
 ```{r map-packages, eval = TRUE, message = FALSE}
+# Install rnaturalearthhires to use maps with state boundaries
+remotes::install_github("ropensci/rnaturalearthhires")
+install.packages("rnaturalearthhires", repos = "https://ropensci.r-universe.dev", type = "source")
+
 # Load required packages
 library(rnaturalearth)
+library(rnaturalearthhires)
 library(ggplot2)
 library(sf)
 ```
 
-First, we can use the package `rnaturalearth` to get the outlines of the USA, Canada and Mexico to use as a background. 
+First, we can use the packages `rnaturalearth` and `rnaturalearthhires` to get the maps and state/province outlines of the USA, Mexico and Canada to use as a background. 
 
 ```{r load-countries, eval = TRUE}
 # Load country outlines
