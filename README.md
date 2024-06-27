@@ -102,8 +102,8 @@ library(ggplot2)
 library(deeptime)
 # Get all carbonate units for North America
 units <- get_units(lithology_type = "carbonate",
-                       interval_name = "Phanerozoic",
-                       project_id = 1)
+                   interval_name = "Phanerozoic",
+                   project_id = 1)
 # Add mid age for units
 units$mid_age <- (units$b_age + units$t_age) / 2
 # Plot data
@@ -119,7 +119,7 @@ ggplot(units, aes(x = mid_age)) +
 ```
 ![](man/figures/carbonate_units.png)
 
-Extensive example usage of `rmacrostrat` is provided in the package vignettes/tutorials. These can be accessed via:
+Extensive example usage of `rmacrostrat` is provided in the package vignettes/tutorials. These can be accessed [online](https://rmacrostrat.palaeoverse.org/articles/) or in R via:
 
 ```r
 browseVignettes(package = "rmacrostrat")
