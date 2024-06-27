@@ -101,7 +101,7 @@ library(rmacrostrat)
 library(ggplot2)
 library(deeptime)
 # Get all carbonate units for North America
-carbonate <- get_units(environ_type = "carbonate",
+units <- get_units(lithology_type = "carbonate",
                        interval_name = "Phanerozoic",
                        project_id = 1)
 # Add mid age for units
