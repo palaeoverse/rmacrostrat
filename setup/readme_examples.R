@@ -88,4 +88,4 @@ ggplot(units, aes(x = mid_age)) +
 
 # Save
 ggsave("./man/figures/marine_units.png", width = 150, height = 100,
-       dpi = 300, units = "mm", scale = 2)
+       dpi = 300, units = "mm", scale = 1.5)
