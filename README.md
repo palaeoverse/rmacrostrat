@@ -72,7 +72,7 @@ ggplot(units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
   # Add geological time scale
   coord_geo(pos = "left", dat = list("stages"), rot = 90)
 ```
-![](man/figures/strat_column.png)
+<center><img src="man/figures/strat_column.png" width="50%" /></center>
 
 A minimal example of getting and plotting outcrop data for the Hell Creek formation:
 
