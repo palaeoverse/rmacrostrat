@@ -34,14 +34,17 @@ Suggests:
     deeptime,
     devtools,
     ggplot2,
+    ggrepel,
     rnaturalearth,
+    rnaturalearthhires,
     cowplot,
     rphylopic,
     ggspatial,
     knitr,
     palaeoverse,
     rmarkdown,
-    testthat (>= 3.0.0)
+    testthat (>= 3.0.0),
+    units
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 URL: https://rmacrostrat.palaeoverse.org,

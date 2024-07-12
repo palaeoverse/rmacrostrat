@@ -40,11 +40,11 @@ install.packages("devtools")
 devtools::install_github("palaeoverse/rmacrostrat")
 ```
 
-You can now load `rmacrostrat` using the default `library` function, alongside some packages we will need for plotting, namely `ggplot2`, `ggrepel`, and `deeptime`:
+You can now load `rmacrostrat` using the default `library` function, alongside some packages we will need for plotting, namely `ggplot2`, `ggrepel`, and `deeptime` (don't forget to install these packages if you don't have them already!):
 
 ```{r load-library, eval = TRUE}
 library(rmacrostrat)
-# Load data visualization packages
+# Install and load data visualization packages
 library(ggplot2)
 library(ggrepel)
 library(deeptime)
@@ -69,11 +69,11 @@ Our first step is to search for geologic columns named "San Juan Basin" and retr
 def_columns(column_name = "San Juan Basin")
 ```
 
-From this call, we can see there is a single column named "San Juan Basin". We are also given some information about this column, such as its geographic location (in the form of a latitude and longitude), the area over which it spans, its thickness (or depth), and the number of geologic units it contains. We are also given its `col_id`, 489, which we can use to retrieve more information through other functions in `rmacrostrat`. We will do this now, specifically using `get_columns`:
+From this call, we can see there is a single column named "San Juan Basin". We are also given some information about this column, such as its geographic location (in the form of a latitude and longitude), the area over which it spans, its thickness, and the number of geologic units it contains. We are also given its `col_id`, 489, which we can use to retrieve more information through other functions in `rmacrostrat`. We will do this now, specifically using `get_columns`:
 
 ```{r source_column, eval = TRUE}
 # Using the column ID, retrieve the San Juan Basin column
-San_Juan <- get_columns(column_id = 489)
+san_juan <- get_columns(column_id = 489)
 ```
 
 # Exploring data
@@ -82,26 +82,26 @@ We now have much more information relating to the San Juan Basin column. For exa
 
 ```{r ages, eval = TRUE}
 # Print (numerical) age range of San Juan Basin column
-San_Juan$b_age
-San_Juan$t_age
+san_juan$b_age
+san_juan$t_age
 # Print (interval) age range of the San Juan Basin column
-San_Juan$b_int_name
-San_Juan$t_int_name
+san_juan$b_int_name
+san_juan$t_int_name
 ```
 
-We can see that our column spans from 2050 to 32 million years ago, from the Paleoproterozoic to the Cenozoic.
+We can see that our column spans from 2050 to 32 million years ago, from the Orosirian (Paleoproterozoic) to the Rupelian (Cenozoic).
 Let's take a look at the mix of lithologies contained in the column:
 
 ```{r lithologies, eval = TRUE}
-# Print a summary of lithologies contained in the San Juan Basin column
-head(San_Juan$lith)
+# Print the lithologies contained in the San Juan Basin column
+san_juan$lith
 ```
 
 So our column contains a total of 25 different lithologies, including sedimentary, metamorphic, and igneous rocks. We can quickly visualize the proportion of the column made up of these different rocks, colored by their class:
 
 ```{r lith_plot, eval = TRUE}
 # Extract lithologies
-lith_table <- San_Juan$lith[[1]]
+lith_table <- san_juan$lith[[1]]
 # Plot lithologies by proportion in San Juan Basin column
 ggplot(lith_table, aes(y = prop, x = reorder(name, -prop))) +
   # Plot bars
@@ -109,18 +109,16 @@ ggplot(lith_table, aes(y = prop, x = reorder(name, -prop))) +
   # Label axes
   scale_x_discrete("Lithology") +
   scale_y_continuous("Proportion of stratigraphic column") +
-  # Data plotting colors
-  scale_fill_viridis_d() +
   theme_classic() +
   theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
 ```
 
-It seems the San Juan Basin is dominated by sedimentary rocks. Perhaps this is not surprising given that we know it is famed for fossils and fossil fuels!
+It seems the San Juan Basin is dominated by sedimentary rocks. Perhaps this is not surprising given that we know it is famed for fossils and energy resources!
 Speaking of these, let's take a look at the column's economic attributes:
 
 ```{r econ, eval = TRUE}
 # Print a summary of economic attributes of the San Juan Basin column
-San_Juan$econ
+san_juan$econ
 ```
 
 Here we can see that not only does the San Juan Basin contain coal, oil, and natural gas, but also some uranium ore and aquifers.
@@ -128,31 +126,31 @@ We can also see the number of [Paleobiology Database](https://paleobiodb.org) co
 
 ```{r classes, eval = TRUE}
 # Print number of PBDB collections
-San_Juan$pbdb_collections
+san_juan$pbdb_collections
 ```
 
 To view more information about these fossil data, we need to use a different `rmacrostrat` function, `get_fossils`: 
 
 ```{r get_fossils, eval = TRUE}
 # Retrieve fossils associated with the San Juan Basin column
-SJ_fossils <- get_fossils(column_id = 489)
+sj_fossils <- get_fossils(column_id = 489)
 ```
 
 This table contains information about each of the ~650 [Paleobiology Database](https://paleobiodb.org) collections associated with the San Juan Basin, including their ages and the number of occurrences they contain. Let's find out how many fossil occurrences we have in total:
 
 ```{r count_fossils, eval = TRUE}
 # How many fossil occurrences are associated with the San Juan Basin?
-sum(SJ_fossils$pbdb_occs)
+sum(sj_fossils$pbdb_occs)
 ```
 
 So over 2000 fossils are known from this single basin. We can also visualize the temporal distribution of these fossil collections, using the midpoint of their age ranges:
 
 ```{r fossil_plot, eval = TRUE}
 # Add midpoint age for plotting
-SJ_fossils$m_age <- (SJ_fossils$b_age + SJ_fossils$t_age) / 2
+sj_fossils$m_age <- (sj_fossils$b_age + sj_fossils$t_age) / 2
 
 # Plot of fossil occurrence counts from the San Juan Basin through time
-ggplot(SJ_fossils, aes(x = m_age)) + 
+ggplot(sj_fossils, aes(x = m_age)) + 
   # Histogram with bars 5 million years wide
   geom_histogram(binwidth = 5, boundary = 0) +
   # Label y-axis
@@ -174,16 +172,16 @@ To plot the stratigraphic column, we will need to obtain data for each lithologi
 
 ```{r source_units, eval = TRUE}
 # Using the column ID, retrieve the units in the San Juan Basin column
-San_Juan_units <- get_units(column_id = 489, interval_name = "Cretaceous")
+san_juan_units <- get_units(column_id = 489, interval_name = "Cretaceous")
 # See the first few rows
-head(San_Juan_units)
+head(san_juan_units)
 ```
 
-We now have information for each of the 17 Cretaceous geologic units contained within the San Juan Basin, including the age of the top and bottom of each, which is what we will use to plot our stratigraphic column. To reiterate, the y-axis on our plot is going to be time rather than depth, so any unconformities present in the column will be evident. We can start out very simply, by using `geom_rect` in `ggplot2` to plot a rectangle corresponding to the age range of each unit in the section.
+We now have information for each of the 17 Cretaceous geologic units contained within the San Juan Basin, including the age of the top and bottom of each, which is what we will use to plot our stratigraphic column. To reiterate, the y-axis on our plot is going to be time rather than height/thickness, so any unconformities present in the column will be evident. We can start out very simply, by using `geom_rect` in `ggplot2` to plot a rectangle corresponding to the age range of each unit in the section.
 
 ```{r column_a, eval = TRUE, fig.height = 8}
 # Plot stratigraphic column
-ggplot(San_Juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
+ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
   # Plot units
   geom_rect(alpha = 0.5, color = "black", linetype = 2) +
   # Reverse direction of y-axis
@@ -197,13 +195,13 @@ ggplot(San_Juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
         axis.ticks.x = element_blank())
 ```
 
-We can already see something that roughly resembles a geologic column. However, there is a lot we can do to improve the aesthetics of our plot. For example, the column named `color` in our dataframe specifies the hexadecimal colour corresponding to the dominant lithology of the unit. We can use this to color-code the units by lithology.
+We can already see something that roughly resembles a stratigraphic column. However, there is a lot we can do to improve the aesthetics of our plot. For example, the column named `color` in our dataframe specifies the hexadecimal color corresponding to the dominant lithology of the unit. We can use this to color-code the units by lithology.
 
 ```{r column_b, eval = TRUE, fig.height = 8}
 # Plot stratigraphic column
-ggplot(San_Juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
+ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
   # Plot units
-  geom_rect(alpha = 0.5, fill = San_Juan_units$color, color = "black",
+  geom_rect(alpha = 0.5, fill = san_juan_units$color, color = "black",
             linetype = 2) +
   # Reverse direction of y-axis
   scale_y_reverse(limits = c(145, 66), n.breaks = 10, name = "Time (Ma)") +
@@ -220,12 +218,12 @@ Great! Now let's add labels indicating the names of the different units.
 
 ```{r column_c, eval = TRUE, fig.height = 8}
 # Add midpoint age for plotting
-San_Juan_units$m_age <- (San_Juan_units$b_age + San_Juan_units$t_age) / 2
+san_juan_units$m_age <- (san_juan_units$b_age + san_juan_units$t_age) / 2
 
 # Plot stratigraphic column
-ggplot(San_Juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
+ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
   # Plot units
-  geom_rect(alpha = 0.5, fill = San_Juan_units$color, color = "black",
+  geom_rect(alpha = 0.5, fill = san_juan_units$color, color = "black",
             linetype = 2) +
   # Add text labels
   geom_text_repel(aes(x = 1, y = m_age, label = unit_name),
@@ -247,9 +245,9 @@ And finally, we can add an additional facet on the y-axis indicating the differe
 
 ```{r column_d, eval = TRUE, fig.height = 8}
 # Plot stratigraphic column
-ggplot(San_Juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
+ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
   # Plot units
-  geom_rect(alpha = 0.5, fill = San_Juan_units$color, color = "black",
+  geom_rect(alpha = 0.5, fill = san_juan_units$color, color = "black",
             linetype = 2) +
   # Add text labels
   geom_text_repel(aes(x = 1, y = m_age, label = unit_name),
@@ -258,7 +256,7 @@ ggplot(San_Juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
                   nudge_x = rep_len(x = c(2, 3), length.out = 17)) +
   # Add additional unit rectangles
   geom_rect(aes(ymin = b_age, ymax = t_age, xmin = 0.9, xmax = 1),
-            fill = San_Juan_units$color, color = "black") +
+            fill = san_juan_units$color, color = "black") +
   # Reverse direction of y-axis
   scale_y_reverse(limits = c(145, 66), n.breaks = 10, name = "Time (Ma)") +
   # Theming
