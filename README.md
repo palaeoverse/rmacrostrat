@@ -93,7 +93,7 @@ ggplot() +
 ```
 ![](man/figures/hell_creek_outcrop.png)
 
-A minimal example of getting and plotting the number of carbonate units through time for North America:
+A minimal example of getting and plotting the number of marine units through time for North America:
 
 ```r
 # Load libraries
@@ -101,25 +101,25 @@ library(rmacrostrat)
 library(ggplot2)
 library(deeptime)
 # Get all carbonate units for North America
-carbonate <- get_units(environ_type = "carbonate",
-                       interval_name = "Phanerozoic",
-                       project_id = 1)
+units <- get_units(environ_class = "marine",
+                   interval_name = "Phanerozoic",
+                   project_id = 1)
 # Add mid age for units
 units$mid_age <- (units$b_age + units$t_age) / 2
 # Plot data
 ggplot(units, aes(x = mid_age)) +
   geom_histogram(binwidth = 10, center = 5,
                  color = "black", fill = "#add8e6") +
-  scale_y_continuous("Number of carbonate units") +
+  scale_y_continuous("Number of marine units") +
   scale_x_reverse("Time (Ma)", limits = c(538.8, 0)) +
   theme_bw() +
   theme(legend.title = element_blank(),
         legend.position.inside = c(0.1, 0.9)) +
   coord_geo()
 ```
-![](man/figures/carbonate_units.png)
+![](man/figures/marine_units.png)
 
-Extensive example usage of `rmacrostrat` is provided in the package vignettes/tutorials. These can be accessed via:
+Extensive example usage of `rmacrostrat` is provided in the package vignettes/tutorials. These can be accessed [online](https://rmacrostrat.palaeoverse.org/articles/) or in R via:
 
 ```r
 browseVignettes(package = "rmacrostrat")

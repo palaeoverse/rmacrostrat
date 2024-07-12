@@ -86,11 +86,12 @@ That looks like what we need! We have a simple features collection consisting of
 # Visualization
 To plot our outcrop map, we'll have to install and load some packages that let us handle and plot spatial data. Let's do that now. 
 
-```{r map-packages, eval = TRUE, message = FALSE}
+```{r install-hires, message = FALSE}
 # Install rnaturalearthhires to use maps with state boundaries
-remotes::install_github("ropensci/rnaturalearthhires")
-install.packages("rnaturalearthhires", repos = "https://ropensci.r-universe.dev", type = "source")
+devtools::install_github("ropensci/rnaturalearthhires")
+```
 
+```{r map-packages, message = FALSE}
 # Load required packages
 library(rnaturalearth)
 library(rnaturalearthhires)
@@ -143,15 +144,19 @@ Those *Edmontosaurus* occurrences are now plotted on the map. You may notice tha
 
 Aside from those errant occurrences, it's starting to look pretty good! But we can add a few more finishing touches to really make it pop. First, let's the use package [`rphylopic`](https://rphylopic.palaeoverse.org/index.html) to add a silhouette of *Edmontosaurus* to the map. 
 
-```{r add-rphylopic, eval = TRUE}
+```{r load-rphylopic, message = FALSE}
 # Load the rphylopic package
 library(rphylopic)
+```
+
+```{r add-rphylopic}
 # Get an appropriate silhouette for Edmontosaurus
 ed_uuid <- get_uuid(name = "Edmontosaurus", n = 3)[3]
 # Get the attribution information for the author of the image
 get_attribution(uuid = ed_uuid, text = TRUE)
 # Setup data.frame for the silhouette (plot location)
 silhouette_df <- data.frame(x = -99, y = 49.5, name = "Edmontosaurus")
+
 # Plot the map
 ggplot() +
   geom_sf(data = us) + 
@@ -166,7 +171,7 @@ ggplot() +
 
 Nice! Finally, we can add a few other touches to make it a publication-worthy figure, including an inlay map, a scale bar, and a North arrow:
 
-``` {r add-inlay-scale, eval = TRUE}
+``` {r add-inlay-scale, eval = TRUE, message = FALSE}
 # Load `ggpatial` package to add annotations, and `cowplot` to stitch final map 
 # together
 library(ggspatial)
@@ -222,12 +227,11 @@ And that's it! One completed map.
 hc_area <- st_make_valid(hc)
 # Calculate the area in meters squared
 area_m <- sum(st_area(hc_area))
-# Calculate the area in kilometers squared
-units(area_m) <- NULL
-area_km <- area_m/1000000
+# Convert the area to kilometers squared
+area_km <- units::set_units(area_m, km^2)
 print(area_km)
 ```
-So from these few lines of code, we can work out that the total outcrop area for the Hell Creek Formation is a touch larger than the total land area of Polynesia (which is approximately 37,141 km^2)! Pretty neat. 
+So from these few lines of code, we can work out that the total outcrop area for the Hell Creek Formation is a touch larger than the total land area of Polynesia (which is approximately 37,141 km^2^)! Pretty neat. 
 
 Hopefully this vignette has shown you some potential uses for `rmacrostrat` functions and helped provide a workflow for your own analyses. If you have any questions about the package or its functionality, please feel free to join our [Palaeoverse Google group](https://groups.google.com/g/palaeoverse) and leave a comment; we'll aim to answer it as soon as possible!
 
