@@ -58,7 +58,7 @@ citation("rmacrostrat")
 
 # Context
 
-The San Juan Basin is a large structural depression which spans parts of New Mexico, Colorado, Utah, and Arizona. It is renowned for its oil and natural gas reserves, but also for its late Cretaceous dinosaurs. In this vignette, we will investigate the geologic attributes of the rocks of the San Juan Basin, and use this information to plot a stratigraphic column. In order to do this, we will make use of the `rmacrostrat` package to fetch data from the [Macrostrat](https://macrostrat.org) database.
+The San Juan Basin is a large structural depression which spans parts of New Mexico, Colorado, Utah, and Arizona. It is renowned for its oil and natural gas reserves, but it is also well-known for its late Cretaceous dinosaurs. In this vignette, we will investigate the geologic attributes of the rocks of the San Juan Basin and use this information to plot a stratigraphic column. In order to do this, we will make use of the `rmacrostrat` package to fetch data from the [Macrostrat](https://macrostrat.org) database.
 
 # Retrieving data
 
@@ -69,7 +69,7 @@ Our first step is to search for geologic columns named "San Juan Basin" and retr
 def_columns(column_name = "San Juan Basin")
 ```
 
-From this call, we can see there is a single column named "San Juan Basin". We are also given some information about this column, such as its geographic location (in the form of a latitude and longitude), the area over which it spans, its thickness, and the number of geologic units it contains. We are also given its `col_id`, 489, which we can use to retrieve more information through other functions in `rmacrostrat`. We will do this now, specifically using `get_columns`:
+From this call, we can see there is a single column named "San Juan Basin". We are also given some information about this column, such as its geographic location (in the form of a latitude and longitude), the area over which it spans in km^2, its thickness in meters, and the number of geologic units it contains (`t_units`). We are also given its `col_id`, 489, which we can use to retrieve more information through other functions in `rmacrostrat`. We will do this now, specifically using `get_columns`:
 
 ```{r source_column, eval = TRUE}
 # Using the column ID, retrieve the San Juan Basin column
@@ -121,7 +121,7 @@ Speaking of these, let's take a look at the column's economic attributes:
 san_juan$econ
 ```
 
-Here we can see that not only does the San Juan Basin contain coal, oil, and natural gas, but also some uranium ore and aquifers.
+Here we can see that not only does the San Juan Basin contain coal, oil, and natural gas, but it also has some uranium ore and aquifers.
 We can also see the number of [Paleobiology Database](https://paleobiodb.org) collections linked to the San Juan Basin in our column information:
 
 ```{r classes, eval = TRUE}
@@ -168,16 +168,17 @@ Now that we have explored the data in the [Macrostrat](https://macrostrat.org) d
 
 # Plotting the stratigraphic column
 
-To plot the stratigraphic column, we will need to obtain data for each lithological unit contained within the San Juan Basin column. We will do this using another `rmacrostrat` function, namely `get_units`, by referencing the `column_id` for the San Juan Basin. To keep our column contained, we will limit it to geological units which are Cretaceous in age:
+To plot the stratigraphic column, we will need to obtain data for each lithological unit contained within the San Juan Basin column. We will do this using another `rmacrostrat` function, `get_units`, and referencing the `column_id` for the San Juan Basin. To keep our column plot contained, we will limit it to geological units which are Cretaceous in age:
 
 ```{r source_units, eval = TRUE}
 # Using the column ID, retrieve the units in the San Juan Basin column
 san_juan_units <- get_units(column_id = 489, interval_name = "Cretaceous")
-# See the first few rows
-head(san_juan_units)
+# See the column names and number of rows
+colnames(san_juan_units)
+nrow(san_juan_units)
 ```
 
-We now have information for each of the 17 Cretaceous geologic units contained within the San Juan Basin, including the age of the top and bottom of each, which is what we will use to plot our stratigraphic column. To reiterate, the y-axis on our plot is going to be time rather than height/thickness, so any unconformities present in the column will be evident. We can start out very simply, by using `geom_rect` in `ggplot2` to plot a rectangle corresponding to the age range of each unit in the section.
+We now have information for each of the 17 Cretaceous geologic units contained within the San Juan Basin, including the age of the top and bottom of each, which is what we will use to plot our stratigraphic column. To reiterate, the y-axis on our plot is going to be time rather than height or thickness, so any unconformities present in the column will be evident. We can start out very simply, by using `geom_rect` in `ggplot2` to plot a rectangle corresponding to the age range of each unit in the section.
 
 ```{r column_a, eval = TRUE, fig.height = 8}
 # Plot stratigraphic column
@@ -200,7 +201,7 @@ We can already see something that roughly resembles a stratigraphic column. Howe
 ```{r column_b, eval = TRUE, fig.height = 8}
 # Plot stratigraphic column
 ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
-  # Plot units
+  # Plot units, colored by rock type
   geom_rect(alpha = 0.5, fill = san_juan_units$color, color = "black",
             linetype = 2) +
   # Reverse direction of y-axis
@@ -222,7 +223,7 @@ san_juan_units$m_age <- (san_juan_units$b_age + san_juan_units$t_age) / 2
 
 # Plot stratigraphic column
 ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
-  # Plot units
+  # Plot units, colored by rock type
   geom_rect(alpha = 0.5, fill = san_juan_units$color, color = "black",
             linetype = 2) +
   # Add text labels
@@ -241,12 +242,12 @@ ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
         axis.ticks.x = element_blank())
 ```
 
-And finally, we can add an additional facet on the y-axis indicating the different stages of the Cretaceous, using the R package `deeptime`:
+And finally, we can add a column along the y-axis indicating the different stages of the Cretaceous, using the R package `deeptime`:
 
 ```{r column_d, eval = TRUE, fig.height = 8}
 # Plot stratigraphic column
 ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
-  # Plot units
+  # Plot units, colored by rock type
   geom_rect(alpha = 0.5, fill = san_juan_units$color, color = "black",
             linetype = 2) +
   # Add text labels
