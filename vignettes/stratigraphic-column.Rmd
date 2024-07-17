@@ -69,7 +69,7 @@ Our first step is to search for geologic columns named "San Juan Basin" and retr
 def_columns(column_name = "San Juan Basin")
 ```
 
-From this call, we can see there is a single column named "San Juan Basin". We are also given some information about this column, such as its geographic location (in the form of a latitude and longitude), the area over which it spans in km^2, its thickness in meters, and the number of geologic units it contains (`t_units`). We are also given its `col_id`, 489, which we can use to retrieve more information through other functions in `rmacrostrat`. We will do this now, specifically using `get_columns`:
+From this call, we can see there is a single column named "San Juan Basin". We are also given some information about this column, such as its geographic location (in the form of a latitude and longitude), the area over which it spans in km^2^, its thickness in meters, and the number of geologic units it contains (`t_units`). We are also given its `col_id`, 489, which we can use to retrieve more information through other functions in `rmacrostrat`. We will do this now, specifically using `get_columns`:
 
 ```{r source_column, eval = TRUE}
 # Using the column ID, retrieve the San Juan Basin column
@@ -184,7 +184,7 @@ We now have information for each of the 17 Cretaceous geologic units contained w
 # Plot stratigraphic column
 ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
   # Plot units
-  geom_rect(alpha = 0.5, color = "black", linetype = 2) +
+  geom_rect(alpha = 0.5, color = "black") +
   # Reverse direction of y-axis
   scale_y_reverse(limits = c(145, 66), n.breaks = 10, name = "Time (Ma)") +
   # Theming
@@ -202,7 +202,7 @@ We can already see something that roughly resembles a stratigraphic column. One 
 # Plot stratigraphic column
 ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
   # Plot units with position dodge
-  geom_rect(position = "dodge2", alpha = 0.5, color = "black", linetype = 2) +
+  geom_rect(position = "dodge2", alpha = 0.5, color = "black") +
   # Reverse direction of y-axis
   scale_y_reverse(limits = c(145, 66), n.breaks = 10, name = "Time (Ma)") +
   # Theming
@@ -227,9 +227,8 @@ san_juan_units$x_min[11] <- 0.5
 # Plot stratigraphic column
 ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
                            xmin = x_min, xmax = x_max)) +
-  # Plot units, colored by rock type
-  geom_rect(alpha = 0.5, fill = san_juan_units$color, color = "black",
-            linetype = 2) +
+  # Plot units
+  geom_rect(alpha = 0.5, color = "black") +
   # Reverse direction of y-axis
   scale_y_reverse(limits = c(145, 66), n.breaks = 10, name = "Time (Ma)") +
   # Theming
@@ -248,8 +247,7 @@ However, there is a lot we can do to improve the aesthetics of our plot. For exa
 ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
                            xmin = x_min, xmax = x_max)) +
   # Plot units, colored by rock type
-  geom_rect(alpha = 0.5, fill = san_juan_units$color, color = "black",
-            linetype = 2) +
+  geom_rect(fill = san_juan_units$color, color = "black") +
   # Reverse direction of y-axis
   scale_y_reverse(limits = c(145, 66), n.breaks = 10, name = "Time (Ma)") +
   # Theming
@@ -271,8 +269,7 @@ san_juan_units$m_age <- (san_juan_units$b_age + san_juan_units$t_age) / 2
 ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
                            xmin = x_min, xmax = x_max)) +
   # Plot units, colored by rock type
-  geom_rect(alpha = 0.5, fill = san_juan_units$color, color = "black",
-            linetype = 2) +
+  geom_rect(fill = san_juan_units$color, color = "black") +
   # Add text labels
   geom_text_repel(aes(x = x_max, y = m_age, label = unit_name),
                   size = 4, hjust = 0, force = 2,
@@ -296,8 +293,7 @@ And finally, we can add a column along the y-axis indicating the different stage
 ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
                            xmin = x_min, xmax = x_max)) +
   # Plot units, colored by rock type
-  geom_rect(alpha = 0.5, fill = san_juan_units$color, color = "black",
-            linetype = 2) +
+  geom_rect(fill = san_juan_units$color, color = "black") +
   # Add text labels
   geom_text_repel(aes(x = x_max, y = m_age, label = unit_name),
                   size = 3.5, hjust = 0, force = 2,
