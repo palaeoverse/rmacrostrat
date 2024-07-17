@@ -274,7 +274,7 @@ ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
   geom_rect(alpha = 0.5, fill = san_juan_units$color, color = "black",
             linetype = 2) +
   # Add text labels
-  geom_text_repel(aes(x = 1, y = m_age, label = unit_name),
+  geom_text_repel(aes(x = x_max, y = m_age, label = unit_name),
                   size = 4, hjust = 0, force = 2,
                   min.segment.length = 0, direction = "y",
                   nudge_x = rep_len(x = c(2, 3), length.out = 17)) +
@@ -299,7 +299,7 @@ ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
   geom_rect(alpha = 0.5, fill = san_juan_units$color, color = "black",
             linetype = 2) +
   # Add text labels
-  geom_text_repel(aes(x = 1, y = m_age, label = unit_name),
+  geom_text_repel(aes(x = x_max, y = m_age, label = unit_name),
                   size = 3.5, hjust = 0, force = 2,
                   min.segment.length = 0, direction = "y",
                   nudge_x = rep_len(x = c(2, 3), length.out = 17)) +
