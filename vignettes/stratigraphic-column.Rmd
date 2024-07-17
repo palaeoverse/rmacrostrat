@@ -196,11 +196,57 @@ ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
         axis.ticks.x = element_blank())
 ```
 
-We can already see something that roughly resembles a stratigraphic column. However, there is a lot we can do to improve the aesthetics of our plot. For example, the column named `color` in our dataframe specifies the hexadecimal color corresponding to the dominant lithology of the unit. We can use this to color-code the units by lithology.
+We can already see something that roughly resembles a stratigraphic column. One thing to notice here is that we seem to have some overlap between our units, resulting in a darker shade of gray. We can take a closer look at this by dodging the units horizontally.
 
 ```{r column_b, eval = TRUE, fig.height = 8}
 # Plot stratigraphic column
 ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
+  # Plot units with position dodge
+  geom_rect(position = "dodge2", alpha = 0.5, color = "black", linetype = 2) +
+  # Reverse direction of y-axis
+  scale_y_reverse(limits = c(145, 66), n.breaks = 10, name = "Time (Ma)") +
+  # Theming
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.line.x = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank())
+```
+
+Indeed, there are two units that overlap with each other: the Gallup Sandstone and the Upper Shale Member of the Mancos Shale. We can make these units plot next to each other by adding columns to our dataframe which define the x-axis values.
+
+```{r column_c, eval = TRUE, fig.height = 8}
+# Specify x_min and x_max in dataframe
+san_juan_units$x_min <- 0
+san_juan_units$x_max <- 1
+# Tweak values for overlapping units
+san_juan_units$x_max[10] <- 0.5
+san_juan_units$x_min[11] <- 0.5
+
+# Plot stratigraphic column
+ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
+                           xmin = x_min, xmax = x_max)) +
+  # Plot units, colored by rock type
+  geom_rect(alpha = 0.5, fill = san_juan_units$color, color = "black",
+            linetype = 2) +
+  # Reverse direction of y-axis
+  scale_y_reverse(limits = c(145, 66), n.breaks = 10, name = "Time (Ma)") +
+  # Theming
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.line.x = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank())
+```
+
+However, there is a lot we can do to improve the aesthetics of our plot. For example, the column named `color` in our dataframe specifies the hexadecimal color corresponding to the dominant lithology of the unit. We can use this to color-code the units by lithology.
+
+```{r column_d, eval = TRUE, fig.height = 8}
+# Plot stratigraphic column
+ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
+                           xmin = x_min, xmax = x_max)) +
   # Plot units, colored by rock type
   geom_rect(alpha = 0.5, fill = san_juan_units$color, color = "black",
             linetype = 2) +
@@ -217,12 +263,13 @@ ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
 
 Great! Now let's add labels indicating the names of the different units.
 
-```{r column_c, eval = TRUE, fig.height = 8}
+```{r column_e, eval = TRUE, fig.height = 8}
 # Add midpoint age for plotting
 san_juan_units$m_age <- (san_juan_units$b_age + san_juan_units$t_age) / 2
 
 # Plot stratigraphic column
-ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
+ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
+                           xmin = x_min, xmax = x_max)) +
   # Plot units, colored by rock type
   geom_rect(alpha = 0.5, fill = san_juan_units$color, color = "black",
             linetype = 2) +
@@ -244,9 +291,10 @@ ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
 
 And finally, we can add a column along the y-axis indicating the different stages of the Cretaceous, using the R package `deeptime`:
 
-```{r column_d, eval = TRUE, fig.height = 8}
+```{r column_f, eval = TRUE, fig.height = 8}
 # Plot stratigraphic column
-ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
+ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
+                           xmin = x_min, xmax = x_max)) +
   # Plot units, colored by rock type
   geom_rect(alpha = 0.5, fill = san_juan_units$color, color = "black",
             linetype = 2) +
@@ -255,9 +303,6 @@ ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
                   size = 3.5, hjust = 0, force = 2,
                   min.segment.length = 0, direction = "y",
                   nudge_x = rep_len(x = c(2, 3), length.out = 17)) +
-  # Add additional unit rectangles
-  geom_rect(aes(ymin = b_age, ymax = t_age, xmin = 0.9, xmax = 1),
-            fill = san_juan_units$color, color = "black") +
   # Reverse direction of y-axis
   scale_y_reverse(limits = c(145, 66), n.breaks = 10, name = "Time (Ma)") +
   # Theming
