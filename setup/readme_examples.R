@@ -10,25 +10,28 @@ library(deeptime)
 # Get the column definition of the San Juan Basin
 column_def <- def_columns(column_name = "San Juan Basin")
 # Using the column ID, retrieve all units of Cretaceous age
-units <- get_units(column_id = column_def$col_id,
-                   interval_name = "Cretaceous")
+san_juan_units <- get_units(column_id = column_def$col_id,
+                            interval_name = "Cretaceous")
+# Specify x_min and x_max in dataframe
+san_juan_units$x_min <- 0
+san_juan_units$x_max <- 1
+# Tweak values for overlapping units
+san_juan_units$x_max[10] <- 0.5
+san_juan_units$x_min[11] <- 0.5
 # Add midpoint age for plotting
-units$m_age <- (units$b_age + units$t_age) / 2
+san_juan_units$m_age <- (san_juan_units$b_age + san_juan_units$t_age) / 2
 # Plot stratigraphic column
-ggplot(units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
-  # Plot units
-  geom_rect(alpha = 0.5, fill = units$color, color = "black",
-            linetype = 2) +
+ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
+                           xmin = x_min, xmax = x_max)) +
+  # Plot units, colored by rock type
+  geom_rect(fill = san_juan_units$color, color = "black") +
   # Add text labels
-  geom_text_repel(aes(x = 1, y = m_age, label = unit_name),
-                  size = 4, hjust = 0,
-                  min.segment.length = 0, direction = "x",
+  geom_text_repel(aes(x = x_max, y = m_age, label = unit_name),
+                  size = 3.5, hjust = 0, force = 2,
+                  min.segment.length = 0, direction = "y",
                   nudge_x = rep_len(x = c(2, 3), length.out = 17)) +
-  # Add additional unit rectangles
-  geom_rect(aes(ymin = b_age, ymax = t_age, xmin = 0.9, xmax = 1),
-            fill = units$color, color = "black") +
   # Reverse direction of y-axis
-  scale_y_reverse(n.breaks = 10, name = "Time (Ma)") +
+  scale_y_reverse(limits = c(145, 66), n.breaks = 10, name = "Time (Ma)") +
   # Theming
   theme_classic() +
   theme(legend.position = "none",
