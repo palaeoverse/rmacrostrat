@@ -1,0 +1,333 @@
+---
+title: "Plotting a stratigraphic column with rmacrostrat"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Plotting a stratigraphic column with rmacrostrat}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+**Authors:** [Palaeoverse Development Team](https://palaeoverse.org/#about-us)
+
+**Last updated:** `r Sys.Date()`
+
+```{r setup, include = FALSE, eval = TRUE}
+knitr::opts_chunk$set(echo = TRUE, include = TRUE, eval = TRUE,
+                      out.width = "100%", fig.width = 7.2, fig.height = 6, dpi = 200,
+                      fig.path = "")
+library(devtools)
+load_all()
+```
+
+<div style="text-align: justify">
+
+# Introduction
+
+`rmacrostrat` is an R package which allows users to easily retrieve geological data from the [Macrostrat](https://macrostrat.org) database and facilitates analyses of these data within the R environment. This vignette (or tutorial, if you prefer) is provided to guide you through the installation process and some of the functionality available within `rmacrostrat`. Specifically, we will focus on obtaining and plotting a geologic column, containing stratigraphic and lithological information for the San Juan Basin, located in the southwestern United States.
+
+# Installation
+
+The `rmacrostrat` package can be installed via CRAN, or its dedicated [GitHub repository](https://github.com/palaeoverse/rmacrostrat) if the development version is preferred. To install via CRAN, simply use:
+
+```{r install, eval = FALSE}
+install.packages("rmacrostrat")
+```
+
+To install the development version, first install the `devtools` package, and then use `install_github` to install `rmacrostrat` directly from GitHub.
+
+```{r install-dev, eval = FALSE}
+install.packages("devtools")
+devtools::install_github("palaeoverse/rmacrostrat")
+```
+
+You can now load `rmacrostrat` using the default `library` function, alongside some packages we will need for plotting, namely `ggplot2`, `ggrepel`, and `deeptime` (don't forget to install these packages if you don't have them already!):
+
+```{r load-library, eval = TRUE}
+library(rmacrostrat)
+# Install and load data visualization packages
+library(ggplot2)
+library(ggrepel)
+library(deeptime)
+```
+
+**Before we get into the good stuff, the development team has a small request**. If you use `rmacrostrat` in your research, please cite the associated publication. This will help us to continue our work in supporting you to do yours. You can access the appropriate citation via:
+
+```{r citation, eval = TRUE}
+citation("rmacrostrat")
+```
+
+# Context
+
+The San Juan Basin is a large structural depression which spans parts of New Mexico, Colorado, Utah, and Arizona. It is renowned for its oil and natural gas reserves, but it is also well-known for its late Cretaceous dinosaurs. In this vignette, we will investigate the geologic attributes of the rocks of the San Juan Basin and use this information to plot a stratigraphic column. In order to do this, we will make use of the `rmacrostrat` package to fetch data from the [Macrostrat](https://macrostrat.org) database.
+
+# Retrieving data
+
+Our first step is to search for geologic columns named "San Juan Basin" and retrieve some basic information about them, using the `def_columns` function:
+
+```{r column, eval = TRUE}
+# Get column definitions for the San Juan Basin
+def_columns(column_name = "San Juan Basin")
+```
+
+From this call, we can see there is a single column named "San Juan Basin". We are also given some information about this column, such as its geographic location (in the form of a latitude and longitude), the area over which it spans in km^2^, its thickness in meters, and the number of geologic units it contains (`t_units`). We are also given its `col_id`, 489, which we can use to retrieve more information through other functions in `rmacrostrat`. We will do this now, specifically using `get_columns`:
+
+```{r source_column, eval = TRUE}
+# Using the column ID, retrieve the San Juan Basin column
+san_juan <- get_columns(column_id = 489)
+```
+
+# Exploring data
+
+We now have much more information relating to the San Juan Basin column. For example, we can look at the age range it spans:
+
+```{r ages, eval = TRUE}
+# Print (numerical) age range of San Juan Basin column
+san_juan$b_age
+san_juan$t_age
+# Print (interval) age range of the San Juan Basin column
+san_juan$b_int_name
+san_juan$t_int_name
+```
+
+We can see that our column spans from 2050 to 32 million years ago, from the Orosirian (Paleoproterozoic) to the Rupelian (Cenozoic).
+Let's take a look at the mix of lithologies contained in the column:
+
+```{r lithologies, eval = TRUE}
+# Print the lithologies contained in the San Juan Basin column
+san_juan$lith
+```
+
+So our column contains a total of 25 different lithologies, including sedimentary, metamorphic, and igneous rocks. We can quickly visualize the proportion of the column made up of these different rocks, colored by their class:
+
+```{r lith_plot, eval = TRUE}
+# Extract lithologies
+lith_table <- san_juan$lith[[1]]
+# Plot lithologies by proportion in San Juan Basin column
+ggplot(lith_table, aes(y = prop, x = reorder(name, -prop))) +
+  # Plot bars
+  geom_bar(stat = "identity", aes(fill = class)) +
+  # Label axes
+  scale_x_discrete("Lithology") +
+  scale_y_continuous("Proportion of stratigraphic column") +
+  theme_classic() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+```
+
+It seems the San Juan Basin is dominated by sedimentary rocks. Perhaps this is not surprising given that we know it is famed for fossils and energy resources!
+Speaking of these, let's take a look at the column's economic attributes:
+
+```{r econ, eval = TRUE}
+# Print a summary of economic attributes of the San Juan Basin column
+san_juan$econ
+```
+
+Here we can see that not only does the San Juan Basin contain coal, oil, and natural gas, but it also has some uranium ore and aquifers.
+We can also see the number of [Paleobiology Database](https://paleobiodb.org) collections linked to the San Juan Basin in our column information:
+
+```{r classes, eval = TRUE}
+# Print number of PBDB collections
+san_juan$pbdb_collections
+```
+
+To view more information about these fossil data, we need to use a different `rmacrostrat` function, `get_fossils`: 
+
+```{r get_fossils, eval = TRUE}
+# Retrieve fossils associated with the San Juan Basin column
+sj_fossils <- get_fossils(column_id = 489)
+```
+
+This table contains information about each of the ~650 [Paleobiology Database](https://paleobiodb.org) collections associated with the San Juan Basin, including their ages and the number of occurrences they contain. Let's find out how many fossil occurrences we have in total:
+
+```{r count_fossils, eval = TRUE}
+# How many fossil occurrences are associated with the San Juan Basin?
+sum(sj_fossils$pbdb_occs)
+```
+
+So over 2000 fossils are known from this single basin. We can also visualize the temporal distribution of these fossil collections, using the midpoint of their age ranges:
+
+```{r fossil_plot, eval = TRUE}
+# Add midpoint age for plotting
+sj_fossils$m_age <- (sj_fossils$b_age + sj_fossils$t_age) / 2
+
+# Plot of fossil occurrence counts from the San Juan Basin through time
+ggplot(sj_fossils, aes(x = m_age)) + 
+  # Histogram with bars 5 million years wide
+  geom_histogram(binwidth = 5, boundary = 0) +
+  # Label y-axis
+  scale_y_continuous("Number of fossil collections") +
+  # Label x-axis and reverse direction
+  scale_x_reverse("Time (Ma)", breaks = c(250, 200, 150, 100, 50)) +
+  # Theming 
+  theme_bw() +
+  # Add geological timescale
+  coord_geo()
+```
+
+From this plot, we can see that the San Juan Basin fossils range in age from the Permian to the Paleogene, but we have the highest concentration of fossil collections around the K-Pg boundary.
+Now that we have explored the data in the [Macrostrat](https://macrostrat.org) database on the San Juan Basin, it is time to plot our stratigraphic column.
+
+# Plotting the stratigraphic column
+
+To plot the stratigraphic column, we will need to obtain data for each lithological unit contained within the San Juan Basin column. We will do this using another `rmacrostrat` function, `get_units`, and referencing the `column_id` for the San Juan Basin. To keep our column plot contained, we will limit it to geological units which are Cretaceous in age:
+
+```{r source_units, eval = TRUE}
+# Using the column ID, retrieve the units in the San Juan Basin column
+san_juan_units <- get_units(column_id = 489, interval_name = "Cretaceous")
+# See the column names and number of rows
+colnames(san_juan_units)
+nrow(san_juan_units)
+```
+
+We now have information for each of the 17 Cretaceous geologic units contained within the San Juan Basin, including the age of the top and bottom of each, which is what we will use to plot our stratigraphic column. To reiterate, the y-axis on our plot is going to be time rather than height or thickness, so any unconformities present in the column will be evident. We can start out very simply, by using `geom_rect` in `ggplot2` to plot a rectangle corresponding to the age range of each unit in the section.
+
+```{r column_a, eval = TRUE, fig.height = 8}
+# Plot stratigraphic column
+ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
+  # Plot units
+  geom_rect(alpha = 0.5, color = "black") +
+  # Reverse direction of y-axis
+  scale_y_reverse(limits = c(145, 66), n.breaks = 10, name = "Time (Ma)") +
+  # Theming
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.line.x = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank())
+```
+
+We can already see something that roughly resembles a stratigraphic column. One thing to notice here is that we seem to have some overlap between our units, resulting in a darker shade of gray. We can take a closer look at this by dodging the units horizontally.
+
+```{r column_b, eval = TRUE, fig.height = 8}
+# Plot stratigraphic column
+ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age, xmin = 0, xmax = 1)) +
+  # Plot units with position dodge
+  geom_rect(position = "dodge2", alpha = 0.5, color = "black") +
+  # Reverse direction of y-axis
+  scale_y_reverse(limits = c(145, 66), n.breaks = 10, name = "Time (Ma)") +
+  # Theming
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.line.x = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank())
+```
+
+Indeed, there are two units that overlap with each other: the Gallup Sandstone and the Upper Shale Member of the Mancos Shale. We can make these units plot next to each other by adding columns to our dataframe which define the x-axis values.
+
+```{r column_c, eval = TRUE, fig.height = 8}
+# Specify x_min and x_max in dataframe
+san_juan_units$x_min <- 0
+san_juan_units$x_max <- 1
+# Tweak values for overlapping units
+san_juan_units$x_max[10] <- 0.5
+san_juan_units$x_min[11] <- 0.5
+
+# Plot stratigraphic column
+ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
+                           xmin = x_min, xmax = x_max)) +
+  # Plot units
+  geom_rect(alpha = 0.5, color = "black") +
+  # Reverse direction of y-axis
+  scale_y_reverse(limits = c(145, 66), n.breaks = 10, name = "Time (Ma)") +
+  # Theming
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.line.x = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank())
+```
+
+However, there is a lot we can do to improve the aesthetics of our plot. For example, the column named `color` in our dataframe specifies the hexadecimal color corresponding to the dominant lithology of the unit. We can use this to color-code the units by lithology.
+
+```{r column_d, eval = TRUE, fig.height = 8}
+# Plot stratigraphic column
+ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
+                           xmin = x_min, xmax = x_max)) +
+  # Plot units, colored by rock type
+  geom_rect(fill = san_juan_units$color, color = "black") +
+  # Reverse direction of y-axis
+  scale_y_reverse(limits = c(145, 66), n.breaks = 10, name = "Time (Ma)") +
+  # Theming
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.line.x = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank())
+```
+
+Great! Now let's add labels indicating the names of the different units.
+
+```{r column_e, eval = TRUE, fig.height = 8}
+# Add midpoint age for plotting
+san_juan_units$m_age <- (san_juan_units$b_age + san_juan_units$t_age) / 2
+
+# Plot stratigraphic column
+ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
+                           xmin = x_min, xmax = x_max)) +
+  # Plot units, colored by rock type
+  geom_rect(fill = san_juan_units$color, color = "black") +
+  # Add text labels
+  geom_text_repel(aes(x = x_max, y = m_age, label = unit_name),
+                  size = 4, hjust = 0, force = 2,
+                  min.segment.length = 0, direction = "y",
+                  nudge_x = rep_len(x = c(2, 3), length.out = 17)) +
+  # Reverse direction of y-axis
+  scale_y_reverse(limits = c(145, 66), n.breaks = 10, name = "Time (Ma)") +
+  # Theming
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.line.x = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank())
+```
+
+And finally, we can add a column along the y-axis indicating the different stages of the Cretaceous, using the R package `deeptime`:
+
+```{r column_f, eval = TRUE, fig.height = 8}
+# Plot stratigraphic column
+ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
+                           xmin = x_min, xmax = x_max)) +
+  # Plot units, colored by rock type
+  geom_rect(fill = san_juan_units$color, color = "black") +
+  # Add text labels
+  geom_text_repel(aes(x = x_max, y = m_age, label = unit_name),
+                  size = 3.5, hjust = 0, force = 2,
+                  min.segment.length = 0, direction = "y",
+                  nudge_x = rep_len(x = c(2, 3), length.out = 17)) +
+  # Reverse direction of y-axis
+  scale_y_reverse(limits = c(145, 66), n.breaks = 10, name = "Time (Ma)") +
+  # Theming
+  theme_classic() +
+  theme(legend.position = "none",
+        axis.line.x = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.x = element_blank(),
+        axis.ticks.x = element_blank()) +
+  # Add geological time scale
+  coord_geo(pos = "left", dat = list("stages"), rot = 90)
+```
+
+Hopefully this vignette has shown you the potential uses for `rmacrostrat` functions and helped provide a workflow for your own analyses. If you have any questions about the package or its functionality, please feel free to join our [Palaeoverse Google group](https://groups.google.com/g/palaeoverse) and leave a question; we'll aim to answer it as soon as possible!
+
+If you're interested in learning more about `rmacrostrat`, don't forget to check out our other vignettes! You can see which ones are available by calling `vignette(package = "rmacrostrat")`.
+
+# References
+
+Gearty, W. 2024. deeptime: Plotting Tools for Anyone Working in Deep Time. R package version 1.1.1, <https://CRAN.R-project.org/package=deeptime>.
+
+Jones, L.A., Gearty, W., Allen, B.J., Eichenseer, K., Dean, C.D., Galván S., Kouvari, M., Godoy, P.L., Nicholl, C.S.C., Dillon, E.M., Flannery-Sutherland, J.T., Chiarenza, A.A. 2022. palaeoverse: A community-driven R package to support palaeobiological analysis. *Methods in Ecology and Evolution*, 14(9), 2205--2215. doi: 10.1111/2041-210X.14099.
+
+Wickham, H. 2016. ggplot2: Elegant Graphics for Data Analysis. *Springer-Verlag New York*.
+
+</div>
+
+```{css echo = FALSE}
+p.caption {
+  display: none;
+}
+```
