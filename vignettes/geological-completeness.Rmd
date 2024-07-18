@@ -86,7 +86,7 @@ marginal_envs <- c("shallow subtidal", "open shallow subtidal",
               "lacustrine delta plain", "lacustrine prodelta", "playa")
 ```
 
-Now we've defined our marginal paleoenvironments, we can re-classify the `class` column in `environments` so that we have three categories. We can also replace "non-marine" environments with "terrestrial" for clarity:
+Now that we've defined our marginal paleoenvironments, we can re-classify the `class` column in `environments` so that we have three categories. We can also replace "non-marine" environments with "terrestrial" for clarity:
 
 ```{r recode, eval = TRUE}
 # Update class to include marginal
@@ -121,7 +121,7 @@ marginal_units$environ_class <- "Marginal"
 terrestrial_units$environ_class <- "Terrestrial"
 ```
 
-Nice! That was pretty straight forward. However, we notice something weird. Some `unit_id` values in the `marine` dataframe are also present in the marginal and terrestrial dataframes, and vice versa:
+Nice! That was pretty straightforward. However, we notice something weird. Some `unit_id` values in the `marine` dataframe are also present in the marginal and terrestrial dataframes, and vice versa:
 
 ```{r duplicate_ids, eval = TRUE}
 # How many marine unit IDs are also in terrestrial?
@@ -160,11 +160,26 @@ Great, we can now see that we don't have any duplicate units in our dataset anym
 any(table(litho_units$unit_id) > 1)
 ```
 
-However, we've just remembered that [Macrostrat](https://macrostrat.org) doesn't just cover North America, and we've pulled all units available worldwide. To make our closer reproduction of Figure 14 from [Peters & Heim (2010)](https://www.jstor.org/stable/25609444), we ought to just focus on North America. Conveniently, [Macrostrat](https://macrostrat.org) is split into different projects, which tend to cover different regions:
+OK - we now have four lithostratigraphic groupings for our units, but Figure 14 from [Peters & Heim (2010)](https://www.jstor.org/stable/25609444) includes a fifth unit group, "unknown". For the sake of completeness, let's get all lithostratigraphic units not already covered by our other four groupings (marine, marginal, mixed, and terrestrial). As we can not search [Macrostrat](https://macrostrat.org) by "unknown", we will first pull all Phanerozoic units, and then filter out units already present in our `litho_units` dataset.
+
+```{r unknown_units, eval = TRUE}
+# Get all Phanerozoic units
+all_units <- get_units(interval_name = "Phanerozoic")
+# Remove units not already present in litho_units (unknown palaeoenvironments)
+unknown_units <- subset(all_units, !unit_id %in% litho_units$unit_id)
+# Check if any environment information is associated with units - none, great!
+head(unknown_units$environ)
+# Add environment class
+unknown_units$environ_class <- "Unknown"
+# Combine dataframes
+litho_units <- rbind.data.frame(litho_units, unknown_units)
+```
+
+Great! But we've just remembered that [Macrostrat](https://macrostrat.org) doesn't just cover North America, and we've pulled all units available worldwide. To make a closer reproduction of Figure 14 from [Peters & Heim (2010)](https://www.jstor.org/stable/25609444), we ought to just focus on North America. Conveniently, [Macrostrat](https://macrostrat.org) is split into different projects, which tend to cover different regions:
 
 ```{r projects, eval = TRUE}
 # Check available projects
-def_projects()
+def_projects()[, 1:2]
 ```
 
 From this call, we can see that North America has a `project_id` of 1. We can use this information to further filter `litho_units`:
@@ -184,17 +199,17 @@ We are interested in how the number and proportion of lithostratigraphic units r
 # Load palaeoverse R package
 library(palaeoverse)
 # Generate stage-level time bins
-bins <- time_bins(rank = "stage")
+bins <- time_bins(scale = "international ages")
 # Rename age columns in litho_units to be consistent with bins
 colnames(litho_units)[which(colnames(litho_units) == "b_age")] <- "max_ma"
 colnames(litho_units)[which(colnames(litho_units) == "t_age")] <- "min_ma"
 # As we are only interested in the Phanerozoic, let's remove any
-# units that have a minimum age of more than 541 Ma 
-litho_units <- subset(litho_units, min_ma <= 541)
-# In case the maximum age of units exceeds 541, but the minimum 
-# age is less than 541, let's set max_ma to 541 to still count it 
+# units that have a minimum age of more than 538.8 Ma 
+litho_units <- subset(litho_units, min_ma <= 538.8)
+# In case the maximum age of units exceeds 538.8, but the minimum 
+# age is less than 538.8, let's set max_ma to 538.8 to still count it 
 # if it appears at any point in the Fortunian
-litho_units$max_ma[which(litho_units$max_ma > 541)] <- 541
+litho_units$max_ma[which(litho_units$max_ma > 538.8)] <- 538.8
 # Bin data using the bin_time function using the "all"
 # method. This will place units into all bins the unit
 # overlaps with, generating additional rows for each time 
@@ -226,7 +241,8 @@ library(deeptime)
 
 # Let's first set our factor levels to replicate the original figure
 counts$environment <- factor(counts$environment, levels = c("Marine", "Marginal", 
-                                                            "Mixed", "Terrestrial"))
+                                                            "Mixed", "Terrestrial", 
+                                                            "Unknown"))
 
 # Generate a plot of raw counts of lithostratigraphic units through time
 # grouped by paleoenvironment
