@@ -45,7 +45,6 @@ Suggests:
     testthat (>= 3.0.0),
     units
 Additional_repositories: http://packages.ropensci.org
-Config/Needs/website: ropensci/rnaturalearthhires
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 URL: https://rmacrostrat.palaeoverse.org,
