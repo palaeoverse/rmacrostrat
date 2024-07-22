@@ -3,9 +3,10 @@ test_that("utils works", {
                               ref = list(a = "integer", b = "character",
                                          c = "list")))
 
-  expect_error(check_arguments(x = list(a = 1, b = "test", c = list(y = 0)),
-                               ref = list(a = "character", b = "character",
-                                          c = "list")))
+  suppressMessages(expect_error(
+    check_arguments(x = list(a = 1, b = "test", c = list(y = 0)),
+                    ref = list(a = "character", b = "character",
+                               c = "list"))))
 
   expect_error(check_arguments(x = list(x = 1, b = "test", c = list(y = 0)),
                                ref = list(a = "integer", b = "character",
