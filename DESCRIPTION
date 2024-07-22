@@ -35,6 +35,7 @@ Suggests:
     ggplot2,
     ggrepel,
     rnaturalearth,
+    rnaturalearthhires,
     cowplot,
     rphylopic,
     ggspatial,
@@ -43,6 +44,7 @@ Suggests:
     rmarkdown,
     testthat (>= 3.0.0),
     units
+Additional_repositories: http://packages.ropensci.org
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 URL: https://rmacrostrat.palaeoverse.org,
