@@ -36,7 +36,7 @@ api_version <- function() {
 #' @importFrom curl nslookup
 #' @importFrom geojsonsf geojson_sf
 #' @importFrom sf st_sf
-#' @importFrom readr read_csv
+#' @importFrom utils read.csv
 #' @keywords internal
 GET_macrostrat <- function(endpoint, query = list(), format = "json",
                            output = "df") {
@@ -77,7 +77,7 @@ GET_macrostrat <- function(endpoint, query = list(), format = "json",
   # Extract content
   cont <- content(res, as = "text", encoding = "UTF-8")
   if (format == "csv") {
-    suppressWarnings(dat <- read_csv(cont, show_col_types = FALSE))
+    suppressWarnings(dat <- read.csv(text = cont))
     if (ncol(dat) == 1) {
       stop("Error when trying query. Check your request.", call. = FALSE)
     }
