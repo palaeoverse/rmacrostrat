@@ -44,7 +44,7 @@ library(deeptime)
 column_def <- def_columns(column_name = "San Juan Basin")
 # Using the column ID, retrieve all units of Cretaceous age
 san_juan_units <- get_units(column_id = column_def$col_id,
-                   interval_name = "Cretaceous")
+                            interval_name = "Cretaceous")
 # Specify x_min and x_max in dataframe
 san_juan_units$x_min <- 0
 san_juan_units$x_max <- 1
@@ -60,9 +60,7 @@ ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
   geom_rect(fill = san_juan_units$color, color = "black") +
   # Add text labels
   geom_text_repel(aes(x = x_max, y = m_age, label = unit_name),
-                  size = 3.5, hjust = 0, force = 2,
-                  min.segment.length = 0, direction = "y",
-                  nudge_x = rep_len(x = c(2, 3), length.out = 17)) +
+                  size = 3.5, nudge_x = 1.5) +
   # Reverse direction of y-axis
   scale_y_reverse(limits = c(145, 66), n.breaks = 10, name = "Time (Ma)") +
   # Theming
