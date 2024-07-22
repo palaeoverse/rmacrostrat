@@ -95,7 +95,7 @@ environments$class[which(environments$name %in% marginal_envs)] <- "marginal"
 environments$class[which(environments$class == "non-marine")] <- "terrestrial"
 ```
 
-For simplicity, we will create three separate `dataframe`s, one for each paleoenvironment.
+For simplicity, we will create three separate `data.frame`s, one for each paleoenvironment.
 
 ```{r classes, eval = TRUE}
 # Subset dataframe
