@@ -28,8 +28,8 @@ Useful links:
 Authors:
 \itemize{
   \item William Gearty \email{willgearty@gmail.com} (\href{https://orcid.org/0000-0003-0076-3262}{ORCID})
-  \item Bethany Allen \email{bethany.allen@bsse.ethz.ch} (\href{https://orcid.org/0000-0003-0282-6407}{ORCID})
   \item Christopher D. Dean \email{christopherdaviddean@gmail.com} (\href{https://orcid.org/0000-0001-6471-6903}{ORCID})
+  \item Bethany Allen \email{bethany.allen@bsse.ethz.ch} (\href{https://orcid.org/0000-0003-0282-6407}{ORCID})
 }
 
 }

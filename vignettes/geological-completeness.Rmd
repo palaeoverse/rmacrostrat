@@ -1,8 +1,8 @@
 ---
-title: "The Geological Completeness of Paleontological Sampling in North America"
+title: "Quantifying the geological completeness of paleontological sampling in North America"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{The Geological Completeness of Paleontological Sampling in North America}
+  %\VignetteIndexEntry{Quantifying the geological completeness of paleontological sampling in North America}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

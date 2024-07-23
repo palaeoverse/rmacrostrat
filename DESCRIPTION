@@ -4,16 +4,16 @@ Description: Work with the Macrostrat Web Service (<https://macrostrat.org/>)
     to fetch geological data relevant to the spatial and temporal distribution
     of sedimentary, igneous, and metamorphic rocks as well as data extracted 
     from them. 
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: c(
     person(given = "Lewis A.", family = "Jones", email = "LewisA.Jones@outlook.com",
       role = c("aut", "cre"), comment = c(ORCID = "0000-0003-3902-8986")),
     person(given = "William", family = "Gearty", email = "willgearty@gmail.com",
       role = c("aut"), comment = c(ORCID = "0000-0003-0076-3262")),
-    person(given = "Bethany", family = "Allen", email = "bethany.allen@bsse.ethz.ch",
-      role = c("aut"), comment =c(ORCID = "0000-0003-0282-6407")),
     person(given = "Christopher D.", family = "Dean", email = "christopherdaviddean@gmail.com",
-      role = c("aut"), comment =c(ORCID = "0000-0001-6471-6903")))
+      role = c("aut"), comment =c(ORCID = "0000-0001-6471-6903")),
+    person(given = "Bethany", family = "Allen", email = "bethany.allen@bsse.ethz.ch",
+      role = c("aut"), comment =c(ORCID = "0000-0003-0282-6407")))
 License: GPL (>= 3)
 Language: en-US
 Encoding: UTF-8
@@ -30,18 +30,18 @@ Imports:
     sf
 Suggests:
     covr,
+    cowplot,
     deeptime,
     devtools,
     ggplot2,
     ggrepel,
-    rnaturalearth,
-    rnaturalearthhires,
-    cowplot,
-    rphylopic,
     ggspatial,
     knitr,
-    palaeoverse,
     rmarkdown,
+    rnaturalearth,
+    rnaturalearthhires,
+    rphylopic,
+    palaeoverse,
     testthat (>= 3.0.0),
     units
 Additional_repositories: http://packages.ropensci.org

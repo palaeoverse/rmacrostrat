@@ -7,7 +7,7 @@
 [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/ThePalaeoverse.svg?style=social&label=Follow%20%40ThePalaeoverse)](https://twitter.com/ThePalaeoverse)
 <!-- badges: end -->
 
-The goal of `rmacrostrat` is to streamline and improve accessibility to the geological database [Macrostrat](https://macrostrat.org). The package provides functionality for querying the database via the dedicated application programming interface (API) and retrieving various geological data (e.g. lithostratigraphic units) and definitions/metadata associated with those data and Macrostrat more broadly.
+The goal of `rmacrostrat` is to streamline and improve accessibility to the geological database [Macrostrat](https://macrostrat.org). The package provides functionality for querying the database via the dedicated application programming interface (API) and retrieving various geological data (e.g., lithostratigraphic units) and definitions/metadata associated with those data and Macrostrat more broadly.
 
 ## Development team
 - [Lewis A. Jones](mailto:LewisAlan.Jones@uvigo.es), Universidade de Vigo
@@ -17,7 +17,7 @@ The goal of `rmacrostrat` is to streamline and improve accessibility to the geol
 
 ## Installation
 
-(PENDING SUBMISSION TO CRAN) The stable version of `rmacrostrat` can be installed from CRAN using:
+**(PENDING SUBMISSION TO CRAN)** The stable version of `rmacrostrat` can be installed from CRAN using:
 
 ```r
 install.packages("rmacrostrat")
@@ -137,7 +137,7 @@ As with any community project, society, or meeting we feel it is important to es
 
 If you use the `rmacrostrat` R package in your work, please cite as:
 
-Jones, L.A., Gearty, W., Dean, C.D., Allen, B.J. 2024. rmacrostrat: An R package for accessing and retrieving data from the geological database Macrostrat. TBD. doi: TBD.
+Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R package for accessing and retrieving data from the Macrostrat geological database. TBD. doi: TBD.
 
 <p align="left">
 
