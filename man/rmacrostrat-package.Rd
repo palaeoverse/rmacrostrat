@@ -16,14 +16,13 @@ Useful links:
   \item \url{https://rmacrostrat.palaeoverse.org}
   \item \url{https://palaeoverse.org}
   \item \url{https://macrostrat.org}
-  \item \url{https://palaeoverse.github.io/rmacrostrat/}
   \item \url{https://github.com/UW-Macrostrat/macrostrat/issues}
   \item Report bugs at \url{https://github.com/palaeoverse/rmacrostrat/issues}
 }
 
 }
 \author{
-\strong{Maintainer}: Lewis A. Jones \email{LewisA.Jones@outlook.com} (\href{https://orcid.org/0000-0003-3902-8986}{ORCID})
+\strong{Maintainer}: Lewis A. Jones \email{LewisA.Jones@outlook.com} (\href{https://orcid.org/0000-0003-3902-8986}{ORCID}) [copyright holder]
 
 Authors:
 \itemize{

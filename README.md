@@ -17,7 +17,7 @@ The goal of `rmacrostrat` is to streamline and improve accessibility to the geol
 
 ## Installation
 
-**(PENDING SUBMISSION TO CRAN)** The stable version of `rmacrostrat` can be installed from CRAN using:
+The stable version of `rmacrostrat` can be installed from CRAN using:
 
 ```r
 install.packages("rmacrostrat")
@@ -137,7 +137,7 @@ As with any community project, society, or meeting we feel it is important to es
 
 If you use the `rmacrostrat` R package in your work, please cite as:
 
-Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R package for accessing and retrieving data from the Macrostrat geological database. TBD. doi: TBD.
+Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R package for accessing and retrieving data from the Macrostrat geological database. EarthArXiv. doi: [10.31223/X5XX37](https://doi.org/10.31223/X5XX37).
 
 <p align="left">
 

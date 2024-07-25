@@ -24,3 +24,4 @@ cran-comments.md
 ^Meta$
 .DS_Store
 dictionary.R
+^cran-comments\.md$
