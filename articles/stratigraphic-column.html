@@ -74,7 +74,7 @@
     
 <p><strong>Authors:</strong> <a href="https://palaeoverse.org/#about-us" class="external-link">Palaeoverse Development
 Team</a></p>
-<p><strong>Last updated:</strong> 2024-07-25</p>
+<p><strong>Last updated:</strong> 2024-07-29</p>
 <div style="text-align: justify">
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
@@ -124,10 +124,9 @@ appropriate citation via:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"rmacrostrat"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## To cite rmacrostrat in publications, use the following citation:</span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024.</span></span>
-<span><span class="co">##   rmacrostrat: An R package for accessing and retrieving data from the</span></span>
-<span><span class="co">##   Macrostrat geological database. EarthArXiv, 1–29, doi:</span></span>
-<span><span class="co">##   10.31223/X5XX37</span></span>
+<span><span class="co">##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R</span></span>
+<span><span class="co">##   package for accessing and retrieving data from the Macrostrat geological</span></span>
+<span><span class="co">##   database. EarthArXiv, 1–29, doi: 10.31223/X5XX37</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## A BibTeX entry for LaTeX users is</span></span>
 <span><span class="co">## </span></span>
@@ -160,10 +159,10 @@ Basin” and retrieve some basic information about them, using the
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get column definitions for the San Juan Basin</span></span>
 <span><span class="fu"><a href="../reference/def_columns.html">def_columns</a></span><span class="op">(</span>column_name <span class="op">=</span> <span class="st">"San Juan Basin"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##   col_id col_group_id       col_name    lat      lng col_area max_thick ref_id</span></span>
-<span><span class="co">## 1    489            3 San Juan Basin 35.896 -108.068 35096.52      8040      1</span></span>
-<span><span class="co">##   status t_units project_id notes</span></span>
-<span><span class="co">## 1 active      47          1    NA</span></span></code></pre>
+<pre><code><span><span class="co">##   col_id col_group_id       col_name    lat      lng col_area max_thick ref_id status</span></span>
+<span><span class="co">## 1    489            3 San Juan Basin 35.896 -108.068 35096.52      8040      1 active</span></span>
+<span><span class="co">##   t_units project_id notes</span></span>
+<span><span class="co">## 1      47          1    NA</span></span></code></pre>
 <p>From this call, we can see there is a single column named “San Juan
 Basin”. We are also given some information about this column, such as
 its geographic location (in the form of a latitude and longitude), the
@@ -244,7 +243,11 @@ by their class:</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span><span class="st">"Proportion of stratigraphic column"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_classic</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">90</span>, vjust <span class="op">=</span> <span class="fl">0.5</span>, hjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="lith_plot-1.png" width="100%"></p>
+<div class="figure">
+<img src="lith_plot-1.png" alt="plot of chunk lith_plot" width="100%"><p class="caption">
+plot of chunk lith_plot
+</p>
+</div>
 <p>It seems the San Juan Basin is dominated by sedimentary rocks.
 Perhaps this is not surprising given that we know it is famed for
 fossils and energy resources! Speaking of these, let’s take a look at
@@ -303,7 +306,11 @@ the midpoint of their age ranges:</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="co"># Add geological timescale</span></span>
 <span>  <span class="fu"><a href="https://williamgearty.com/deeptime/reference/coord_geo.html" class="external-link">coord_geo</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="fossil_plot-1.png" width="100%"></p>
+<div class="figure">
+<img src="fossil_plot-1.png" alt="plot of chunk fossil_plot" width="100%"><p class="caption">
+plot of chunk fossil_plot
+</p>
+</div>
 <p>From this plot, we can see that the San Juan Basin fossils range in
 age from the Permian to the Paleogene, but we have the highest
 concentration of fossil collections around the K-Pg boundary. Now that
@@ -360,7 +367,11 @@ corresponding to the age range of each unit in the section.</p>
 <span>        axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>        axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>        axis.ticks.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="column_a-1.png" width="100%"></p>
+<div class="figure">
+<img src="column_a-1.png" alt="plot of chunk column_a" width="100%"><p class="caption">
+plot of chunk column_a
+</p>
+</div>
 <p>We can already see something that roughly resembles a stratigraphic
 column. One thing to notice here is that we seem to have some overlap
 between our units, resulting in a darker shade of gray. We can take a
@@ -379,7 +390,11 @@ closer look at this by dodging the units horizontally.</p>
 <span>        axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>        axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>        axis.ticks.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="column_b-1.png" width="100%"></p>
+<div class="figure">
+<img src="column_b-1.png" alt="plot of chunk column_b" width="100%"><p class="caption">
+plot of chunk column_b
+</p>
+</div>
 <p>Indeed, there are two units that overlap with each other: the Gallup
 Sandstone and the Upper Shale Member of the Mancos Shale. We can make
 these units plot next to each other by adding columns to our dataframe
@@ -406,7 +421,11 @@ which define the x-axis values.</p>
 <span>        axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>        axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>        axis.ticks.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="column_c-1.png" width="100%"></p>
+<div class="figure">
+<img src="column_c-1.png" alt="plot of chunk column_c" width="100%"><p class="caption">
+plot of chunk column_c
+</p>
+</div>
 <p>However, there is a lot we can do to improve the aesthetics of our
 plot. For example, the column named <code>color</code> in our dataframe
 specifies the hexadecimal color corresponding to the dominant lithology
@@ -426,7 +445,11 @@ of the unit. We can use this to color-code the units by lithology.</p>
 <span>        axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>        axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>        axis.ticks.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="column_d-1.png" width="100%"></p>
+<div class="figure">
+<img src="column_d-1.png" alt="plot of chunk column_d" width="100%"><p class="caption">
+plot of chunk column_d
+</p>
+</div>
 <p>Great! Now let’s add labels indicating the names of the different
 units.</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
@@ -452,7 +475,11 @@ units.</p>
 <span>        axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>        axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span>,</span>
 <span>        axis.ticks.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="column_e-1.png" width="100%"></p>
+<div class="figure">
+<img src="column_e-1.png" alt="plot of chunk column_e" width="100%"><p class="caption">
+plot of chunk column_e
+</p>
+</div>
 <p>And finally, we can add a column along the y-axis indicating the
 different stages of the Cretaceous, using the R package
 <code>deeptime</code>:</p>
@@ -478,7 +505,11 @@ different stages of the Cretaceous, using the R package
 <span>        axis.ticks.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_blank</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="co"># Add geological time scale</span></span>
 <span>  <span class="fu"><a href="https://williamgearty.com/deeptime/reference/coord_geo.html" class="external-link">coord_geo</a></span><span class="op">(</span>pos <span class="op">=</span> <span class="st">"left"</span>, dat <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="st">"stages"</span><span class="op">)</span>, rot <span class="op">=</span> <span class="fl">90</span><span class="op">)</span></span></code></pre></div>
-<p><img src="column_f-1.png" width="100%"></p>
+<div class="figure">
+<img src="column_f-1.png" alt="plot of chunk column_f" width="100%"><p class="caption">
+plot of chunk column_f
+</p>
+</div>
 <p>Hopefully this vignette has shown you the potential uses for
 <code>rmacrostrat</code> functions and helped provide a workflow for
 your own analyses. If you have any questions about the package or its

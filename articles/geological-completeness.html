@@ -74,7 +74,7 @@
     
 <p><strong>Authors:</strong> <a href="https://palaeoverse.org/#about-us" class="external-link">Palaeoverse Development
 Team</a></p>
-<p><strong>Last updated:</strong> 2024-07-25</p>
+<p><strong>Last updated:</strong> 2024-07-29</p>
 <div style="text-align: justify">
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
@@ -118,10 +118,9 @@ appropriate citation via:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"rmacrostrat"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## To cite rmacrostrat in publications, use the following citation:</span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024.</span></span>
-<span><span class="co">##   rmacrostrat: An R package for accessing and retrieving data from the</span></span>
-<span><span class="co">##   Macrostrat geological database. EarthArXiv, 1–29, doi:</span></span>
-<span><span class="co">##   10.31223/X5XX37</span></span>
+<span><span class="co">##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R</span></span>
+<span><span class="co">##   package for accessing and retrieving data from the Macrostrat geological</span></span>
+<span><span class="co">##   database. EarthArXiv, 1–29, doi: 10.31223/X5XX37</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## A BibTeX entry for LaTeX users is</span></span>
 <span><span class="co">## </span></span>
@@ -170,20 +169,13 @@ what different environments are actually available in <a href="https://macrostra
 <span><span class="va">environments</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/def_environments.html">def_environments</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="co"># See the first few rows</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">environments</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##   environ_id                                 name      type  class   color</span></span>
-<span><span class="co">## 1          1                            peritidal carbonate marine #B8B8E6</span></span>
-<span><span class="co">## 2          2                     shallow subtidal carbonate marine #3399FF</span></span>
-<span><span class="co">## 3          3                open shallow subtidal carbonate marine #3399FF</span></span>
-<span><span class="co">## 4          4 lagoonal/restricted shallow subtidal carbonate marine #B8B8E6</span></span>
-<span><span class="co">## 5          5                           sand shoal carbonate marine #5CADFF</span></span>
-<span><span class="co">## 6          6                                 reef carbonate marine #33CCFF</span></span>
-<span><span class="co">##   t_units</span></span>
-<span><span class="co">## 1      94</span></span>
-<span><span class="co">## 2     815</span></span>
-<span><span class="co">## 3     421</span></span>
-<span><span class="co">## 4     216</span></span>
-<span><span class="co">## 5      25</span></span>
-<span><span class="co">## 6     156</span></span></code></pre>
+<pre><code><span><span class="co">##   environ_id                                 name      type  class   color t_units</span></span>
+<span><span class="co">## 1          1                            peritidal carbonate marine #B8B8E6      94</span></span>
+<span><span class="co">## 2          2                     shallow subtidal carbonate marine #3399FF     815</span></span>
+<span><span class="co">## 3          3                open shallow subtidal carbonate marine #3399FF     421</span></span>
+<span><span class="co">## 4          4 lagoonal/restricted shallow subtidal carbonate marine #B8B8E6     216</span></span>
+<span><span class="co">## 5          5                           sand shoal carbonate marine #5CADFF      25</span></span>
+<span><span class="co">## 6          6                                 reef carbonate marine #33CCFF     156</span></span></code></pre>
 <p>From this call, we can see a whole suite of different inferred
 paleoenvironments are available, which are conveniently grouped into a
 type (e.g., carbonate, fluvial, lacustrine) and class (i.e., marine and
@@ -440,7 +432,11 @@ packages.</p>
 <span>        legend.position <span class="op">=</span> <span class="st">"top"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="co"># Add geological timescale</span></span>
 <span>  <span class="fu"><a href="https://williamgearty.com/deeptime/reference/coord_geo.html" class="external-link">coord_geo</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="visualize_counts-1.png" width="100%"></p>
+<div class="figure">
+<img src="visualize_counts-1.png" alt="plot of chunk visualize_counts" width="100%"><p class="caption">
+plot of chunk visualize_counts
+</p>
+</div>
 <p>We can also plot the proportion of units within each paleoenvironment
 group through time.</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
@@ -462,7 +458,11 @@ group through time.</p>
 <span>        legend.position <span class="op">=</span> <span class="st">"top"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="co"># Add geological timescale</span></span>
 <span>  <span class="fu"><a href="https://williamgearty.com/deeptime/reference/coord_geo.html" class="external-link">coord_geo</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
-<p><img src="visualize_proportions-1.png" width="100%"></p>
+<div class="figure">
+<img src="visualize_proportions-1.png" alt="plot of chunk visualize_proportions" width="100%"><p class="caption">
+plot of chunk visualize_proportions
+</p>
+</div>
 <p>And that’s it! Not too bad, right? There are some clear differences
 between our generated plots and those from the original <a href="https://www.jstor.org/stable/25609444" class="external-link">Peters &amp; Heim
 (2010)</a> paper (Fig. 14), which is to be expected given that
