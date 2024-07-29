@@ -53,7 +53,7 @@ Bethany Allen
 }
 
 \examples{
-\dontrun{
+\donttest{
   # Get all mineral definitions
   ex1 <- def_minerals()
   # Get mineral definitions by type

@@ -63,7 +63,7 @@
 #'   William Gearty
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Return all intervals
 #' ex1 <- def_intervals()
 #' # Return all specific timescale intervals

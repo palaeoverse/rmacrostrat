@@ -39,7 +39,7 @@ tectonics. Biogeosciences, 10, 1529--1541. \doi{10.5194/bg-10-1529-2013}.
 }
 
 \examples{
-\dontrun{
+\donttest{
  # Get all tectonic plates
  ex1 <- def_plates()
  # Get name of tectonic plate by ID

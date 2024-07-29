@@ -31,7 +31,7 @@
 #'   William Gearty
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Return all economic resource definitions
 #' econ_inf <- def_econs()
 #' # Return only definitions for hydrocarbon resources

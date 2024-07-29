@@ -51,7 +51,7 @@ Christopher D. Dean
 }
 
 \examples{
-\dontrun{
+\donttest{
 # Return all definitions
 ex1 <- def_measurements()
 # Return subsets of definitions

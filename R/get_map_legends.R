@@ -89,7 +89,7 @@
 #'   (continental), "medium" (regional), or "large" (local).
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'  # Get legend components by ID of the original source map
 #'  ex1 <- get_map_legends(source_id = 1)
 #'  # Get legend components for any sedimentary lithologies

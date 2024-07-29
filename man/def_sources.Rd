@@ -75,7 +75,7 @@ Lewis A. Jones
 }
 
 \examples{
-\dontrun{
+\donttest{
 # Get all sources
 ex1 <- def_sources()
 # Get subset of sources

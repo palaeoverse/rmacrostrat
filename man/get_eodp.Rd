@@ -78,7 +78,7 @@ e2022GC010655. \doi{10.1029/2022GC010655}.
 }
 
 \examples{
-\dontrun{
+\donttest{
 # Get data for specific cores
 cores <- get_eodp(column_id = c(5081, 5082))
 # Get data for all cores at a specific site

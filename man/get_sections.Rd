@@ -222,7 +222,7 @@ Bethany Allen
 }
 
 \examples{
-\dontrun{
+\donttest{
 # Get sections within a specified column
 ex1 <- get_sections(column_id = 10)
 # Get sections at a specific geographic coordinate

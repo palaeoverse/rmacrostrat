@@ -34,7 +34,7 @@
 #' Lewis A. Jones
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'  ex1 <- def_projects()
 #'  ex2 <- def_projects(project_id = 4)
 #' }

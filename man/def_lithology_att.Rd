@@ -46,7 +46,7 @@ Christopher D. Dean
 }
 
 \examples{
-\dontrun{
+\donttest{
 # Return all lithology attribute definitions
 ex1 <- def_lithology_att()
 # Return subsets of lithology attribute definitions

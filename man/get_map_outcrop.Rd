@@ -109,7 +109,7 @@ Lewis A. Jones
 }
 
 \examples{
-\dontrun{
+\donttest{
 ex1 <- get_map_outcrop(lat = 43, lng = -89.3)
 ex2 <- get_map_outcrop(lat = 43, lng = -89.3, scale = "tiny")
 }

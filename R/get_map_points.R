@@ -51,7 +51,7 @@
 #'  function using the definition functions (beginning with \code{def_}).
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Return a specific point
 #' ex1 <- get_map_points(point_id = 1)
 #' # Return all points within a user-specified bounding box

@@ -36,7 +36,7 @@ Christopher D. Dean
 }
 
 \examples{
-\dontrun{
+\donttest{
  # Retrieve all timescale definitions
  ex1 <- def_timescales()
 }

@@ -39,7 +39,7 @@
 #'   William Gearty
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'  # Return all definitions
 #'  ex1 <- def_grain_sizes()
 #'  # Return grain sizes by group

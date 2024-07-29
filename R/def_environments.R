@@ -29,7 +29,7 @@
 #' @section Reviewer(s):
 #'  Lewis A. Jones
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Return all environment definitions
 #' ex1 <- def_environments()
 #' # Return subsets of environment definitions

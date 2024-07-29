@@ -243,7 +243,7 @@ Christopher D. Dean
 }
 
 \examples{
-\dontrun{
+\donttest{
 # Return columns that overlap with a named chronostratigraphic interval
 ex1 <- get_columns(interval_name = "Permian")
 # Return columns that overlap with a specified age range

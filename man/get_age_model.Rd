@@ -64,7 +64,7 @@ Lewis A. Jones
 }
 
 \examples{
-\dontrun{
+\donttest{
  # Get age model for specific columns by ID
  ex1 <- get_age_model(column_id = c(503, 504))
  # Get age model for specific sections by ID

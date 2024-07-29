@@ -285,7 +285,7 @@ William Gearty
 }
 
 \examples{
-\dontrun{
+\donttest{
 # Get units with a specific stratigraphic name
 ex1 <- get_units(strat_name = "Hell Creek")
 # Get units at a specific geographic coordinate

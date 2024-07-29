@@ -25,7 +25,7 @@
 #' @section Reviewer(s):
 #' Bethany Allen
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Return all project statistics
 #' ex1 <- get_stats()
 #' }

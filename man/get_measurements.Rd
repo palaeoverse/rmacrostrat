@@ -148,7 +148,7 @@ Christopher D. Dean
 }
 
 \examples{
-\dontrun{
+\donttest{
 # Return measurements based on their specific IDs
 ex1 <- get_measurements(measure_id = c(353, 354))
 # Return measurements based on the ID of a specific measurement definition

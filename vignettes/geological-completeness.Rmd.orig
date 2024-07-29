@@ -9,9 +9,15 @@ vignette: >
 
 **Authors:** [Palaeoverse Development Team](https://palaeoverse.org/#about-us)
 
-**Last updated:** 2024-07-29
+**Last updated:** `r Sys.Date()`
 
-
+```{r setup, include = FALSE, eval = TRUE}
+knitr::opts_chunk$set(echo = TRUE, include = TRUE, eval = TRUE,
+                      out.width = "100%", fig.width = 7.2, fig.height = 6, dpi = 200,
+                      fig.path = "")
+library(devtools)
+load_all()
+```
 
 <div style="text-align: justify">
 
@@ -23,50 +29,27 @@ vignette: >
 
 The `rmacrostrat` package can be installed via CRAN, or its dedicated [GitHub repository](https://github.com/palaeoverse/rmacrostrat) if the development version is preferred. To install via CRAN, simply use:
 
-
-``` r
+```{r install, eval = FALSE}
 install.packages("rmacrostrat")
 ```
 
 To install the development version, first install the `devtools` package, and then use `install_github` to install `rmacrostrat` directly from GitHub.
 
-
-``` r
+```{r install-dev, eval = FALSE}
 install.packages("devtools")
 devtools::install_github("palaeoverse/rmacrostrat")
 ```
 
 You can now load `rmacrostrat` using the standard `library` function:
 
-
-``` r
+```{r load-library, eval = TRUE}
 library(rmacrostrat)
 ```
 
 **Before we get into the good stuff, the development team has a small request**. If you use `rmacrostrat` in your research, please cite the associated publication. This will help us to continue our work in supporting you to do yours. You can access the appropriate citation via:
 
-
-``` r
+```{r citation, eval = TRUE}
 citation("rmacrostrat")
-```
-
-```
-## To cite rmacrostrat in publications, use the following citation:
-## 
-##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R
-##   package for accessing and retrieving data from the Macrostrat geological
-##   database. EarthArXiv, 1–29, doi: 10.31223/X5XX37
-## 
-## A BibTeX entry for LaTeX users is
-## 
-##   @Article{,
-##     title = {rmacrostrat: An R Package for fetching geologic data from the Macrostrat database.},
-##     author = {Lewis A. Jones and Christopher D. Dean and William Gearty and Bethany J. Allen},
-##     year = {2024},
-##     journal = {EarthArXiv},
-##     pages = {1–29},
-##     doi = {10.31223/X5XX37},
-##   }
 ```
 
 # Context
@@ -79,8 +62,7 @@ To quantify how the number and proportion of different lithostratigraphic units 
 
 *Hint: Remember that all definitions of data stored in [Macrostrat](https://macrostrat.org) are available via the `def_` suite of functions.*
 
-
-``` r
+```{r environments, eval = TRUE}
 # What environments are available?
 # Hint: Defining no arguments returns all environments
 environments <- def_environments()
@@ -88,22 +70,11 @@ environments <- def_environments()
 head(environments)
 ```
 
-```
-##   environ_id                                 name      type  class   color t_units
-## 1          1                            peritidal carbonate marine #B8B8E6      94
-## 2          2                     shallow subtidal carbonate marine #3399FF     815
-## 3          3                open shallow subtidal carbonate marine #3399FF     421
-## 4          4 lagoonal/restricted shallow subtidal carbonate marine #B8B8E6     216
-## 5          5                           sand shoal carbonate marine #5CADFF      25
-## 6          6                                 reef carbonate marine #33CCFF     156
-```
-
 From this call, we can see a whole suite of different inferred paleoenvironments are available, which are conveniently grouped into a type (e.g., carbonate, fluvial, lacustrine) and class (i.e., marine and non-marine). Class seems helpful for discerning between marine and non-marine environments, but we also want a marginal category, so we need to re-classify some of these environment definitions.
 
 We can define which paleoenvironments are marginal using the additional information available in the `name` column of `environments`. For this definition, let's consider that any environment that is classified as a delta, beach, barrier island, estuary, lagoon, or tidal flat is a marginal environment. From our available environments (*n* = 87), we can identify 22 as marginal environments. This classification is perhaps a little subjective, but for this vignette it provides a fair representation of marginal environments:
 
-
-``` r
+```{r marginal, eval = TRUE}
 # Define an object classifying marginal paleoenvironments
 marginal_envs <- c("shallow subtidal", "open shallow subtidal", 
               "lagoonal/restricted shallow subtidal", "paralic indet.", 
@@ -117,8 +88,7 @@ marginal_envs <- c("shallow subtidal", "open shallow subtidal",
 
 Now that we've defined our marginal paleoenvironments, we can re-classify the `class` column in `environments` so that we have three categories. We can also replace the label "non-marine" with "terrestrial" for clarity:
 
-
-``` r
+```{r recode, eval = TRUE}
 # Update class to include marginal
 environments$class[which(environments$name %in% marginal_envs)] <- "marginal"
 # Change the name of non-marine class to terrestrial
@@ -127,8 +97,7 @@ environments$class[which(environments$class == "non-marine")] <- "terrestrial"
 
 For simplicity, we will create three separate `data.frame`s, one for each paleoenvironment.
 
-
-``` r
+```{r classes, eval = TRUE}
 # Subset dataframe
 marine <- subset(environments, class == "marine")
 marginal <- subset(environments, class == "marginal")
@@ -139,8 +108,7 @@ Great! So we now have our groupings, but if we want to investigate how lithostra
 
 *Hint: Remember that to retrieve data stored in [Macrostrat](https://macrostrat.org) (e.g., Macrostrat columns, sections, and units), the `get_` suite of functions must be used.*
 
-
-``` r
+```{r get_units, eval = TRUE}
 # Retrieve marine units
 marine_units <- get_units(environ_id = marine$environ_id)
 # Retrieve marginal units
@@ -155,20 +123,14 @@ terrestrial_units$environ_class <- "Terrestrial"
 
 Nice! That was pretty straightforward. However, some `unit_id` values in the `marine` dataframe are also present in the marginal and terrestrial dataframes, and vice versa:
 
-
-``` r
+```{r duplicate_ids, eval = TRUE}
 # How many marine unit IDs are also in terrestrial?
 length(which(marine_units$unit_id %in% terrestrial_units$unit_id))
 ```
 
-```
-## [1] 499
-```
-
 On further investigation, we can see that some lithostratigraphic units are associated with multiple different paleoenvironments (various combinations of marine, marginal, and terrestrial). Interesting, but perhaps to be expected given transgression and regression cycles! We should treat these differently to our pre-existing groupings for clarity. Let's make a new paleoenvironment class called "mixed", and update the environment class accordingly.
 
-
-``` r
+```{r create_mixed, eval = TRUE}
 # Which unit IDs are shared between several paleoenvironments?
 shared_id <- c(
   # Marine
@@ -193,49 +155,20 @@ litho_units <- unique(litho_units)
 
 Great, we can now see that we don't have any duplicate units in our dataset anymore: 
 
-
-``` r
+```{r check_units, eval = TRUE}
 # Check if any units appear more than once
 any(table(litho_units$unit_id) > 1)
 ```
 
-```
-## [1] FALSE
-```
-
 OK - we now have four lithostratigraphic groupings for our units, but Figure 14 from [Peters & Heim (2010)](https://www.jstor.org/stable/25609444) includes a fifth unit group, "unknown". For the sake of completeness, let's get all lithostratigraphic units not already covered by our other four groupings (marine, marginal, mixed, and terrestrial). As we cannot search [Macrostrat](https://macrostrat.org) by "unknown", we will first pull all Phanerozoic units, and then filter out units already present in our `litho_units` dataset.
 
-
-``` r
+```{r unknown_units, eval = TRUE}
 # Get all Phanerozoic units
 all_units <- get_units(interval_name = "Phanerozoic")
 # Remove units not already present in litho_units (unknown palaeoenvironments)
 unknown_units <- subset(all_units, !unit_id %in% litho_units$unit_id)
 # Check if any environment information is associated with units - none, great!
 head(unknown_units$environ)
-```
-
-```
-## [[1]]
-## data frame with 0 columns and 0 rows
-## 
-## [[2]]
-## data frame with 0 columns and 0 rows
-## 
-## [[3]]
-## data frame with 0 columns and 0 rows
-## 
-## [[4]]
-## data frame with 0 columns and 0 rows
-## 
-## [[5]]
-## data frame with 0 columns and 0 rows
-## 
-## [[6]]
-## data frame with 0 columns and 0 rows
-```
-
-``` r
 # Add environment class
 unknown_units$environ_class <- "Unknown"
 # Combine dataframes
@@ -244,32 +177,14 @@ litho_units <- rbind.data.frame(litho_units, unknown_units)
 
 Great! But we've just remembered that [Macrostrat](https://macrostrat.org) doesn't only cover North America, and we've pulled all units available worldwide. To make a closer reproduction of Figure 14 from [Peters & Heim (2010)](https://www.jstor.org/stable/25609444), we ought to just focus on North America. Conveniently, [Macrostrat](https://macrostrat.org) is split into different projects, which tend to cover different regions:
 
-
-``` r
+```{r projects, eval = TRUE}
 # Check available projects
 def_projects()[, 1:2]
 ```
 
-```
-##    project_id                   project
-## 1           1             North America
-## 2           3                      eODP
-## 3           4                  Deep Sea
-## 4           5               New Zealand
-## 5           6                 Australia
-## 6           7                 Caribbean
-## 7           8             South America
-## 8           9                    Africa
-## 9          10  North American Ediacaran
-## 10         11 North American Cretaceous
-## 11         12                 Indonesia
-## 12         13          Northern Eurasia
-```
-
 From this call, we can see that North America has a `project_id` of 1. We can use this information to further filter `litho_units`:
 
-
-``` r
+```{r n_am, eval = TRUE}
 # Filter to N. America
 litho_units <- subset(litho_units, project_id == 1)
 ```
@@ -280,8 +195,7 @@ Now we've got our data and done a bit of wrangling, let's get on with summarizin
 
 We are interested in how the number and proportion of lithostratigraphic units representing different paleoenvironment classes changes through time. Conveniently, lithostratigraphic units in [Macrostrat](https://macrostrat.org) have age information associated with them, specifically the minimum (`t_age`) and maximum (`b_age`) age in millions of years before present. Using this data, with some handy support functions from the `palaeoverse` R package, we can count the number of lithographic units within each paleoenvironmental group, and within each time bin. We will use international stratigraphic stage bins as our time bins for this:
 
-
-``` r
+```{r counts, eval = TRUE}
 # Load palaeoverse R package
 library(palaeoverse)
 # Generate stage-level time bins
@@ -320,8 +234,7 @@ counts <- merge(x = bins, y = counts, by = "bin")
 
 Now we have our summary of the lithostratigraphic units, we can visualize this data. First, we will plot the number of units within each paleoenvironment group through time. To support this data visualization, we will make use of the `ggplot2` (plotting) and `deeptime` (adding a geological timescale axis) R packages.
 
-
-``` r
+```{r visualize_counts, eval = TRUE}
 # Load data visualization packages
 library(ggplot2)
 library(deeptime)
@@ -351,15 +264,9 @@ ggplot(counts, aes(fill = environment, y = count, x = mid_ma)) +
   coord_geo()
 ```
 
-<div class="figure">
-<img src="visualize_counts-1.png" alt="plot of chunk visualize_counts" width="100%" />
-<p class="caption">plot of chunk visualize_counts</p>
-</div>
-
 We can also plot the proportion of units within each paleoenvironment group through time.
 
-
-``` r
+```{r visualize_proportions, eval = TRUE}
 # Generate a plot of lithostratigraphic units through time grouped by
 # paleoenvironment as proportions
 ggplot(counts, aes(fill = environment, y = count, x = mid_ma)) + 
@@ -380,11 +287,6 @@ ggplot(counts, aes(fill = environment, y = count, x = mid_ma)) +
   coord_geo()
 ```
 
-<div class="figure">
-<img src="visualize_proportions-1.png" alt="plot of chunk visualize_proportions" width="100%" />
-<p class="caption">plot of chunk visualize_proportions</p>
-</div>
-
 And that's it! Not too bad, right? There are some clear differences between our generated plots and those from the original [Peters & Heim (2010)](https://www.jstor.org/stable/25609444) paper (Fig. 14), which is to be expected given that substantially more data is now available in [Macrostrat](https://macrostrat.org), and there may be differences in what we defined as "marginal" environments. Despite these differences, some broad-scale patterns are largely consistent, such as the higher proportion of terrestrial lithostratigraphic units in the Mesozoic and Cenozoic, compared to the Paleozoic.
 
 Hopefully this vignette has shown you some potential uses for `rmacrostrat` functions and helped provide a workflow for your own analyses. If you have any questions about the package or its functionality, please feel free to join our [Palaeoverse Google group](https://groups.google.com/g/palaeoverse) and leave a comment; we'll aim to answer it as soon as possible!
@@ -403,8 +305,8 @@ Wickham, H. 2016. ggplot2: Elegant Graphics for Data Analysis. *Springer-Verlag 
 
 </div>
 
-<style type="text/css">
+```{css echo = FALSE}
 p.caption {
   display: none;
 }
-</style>
+```

@@ -117,7 +117,7 @@ Bethany Allen
 }
 
 \examples{
-\dontrun{
+\donttest{
 # Return a sample of stratigraphic names
 ex1 <- def_strat_names()
 # Return all stratigraphic names associated with a particular stratigraphic

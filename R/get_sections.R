@@ -145,7 +145,7 @@
 #' using the definition functions (beginning with \code{defs_}).
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Get sections within a specified column
 #' ex1 <- get_sections(column_id = 10)
 #' # Get sections at a specific geographic coordinate

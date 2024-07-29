@@ -44,7 +44,7 @@ tectonics. Biogeosciences, 10, 1529--1541. \doi{10.5194/bg-10-1529-2013}.
 }
 
 \examples{
-\dontrun{
+\donttest{
  # Get paleogeographic map via age
  ex1 <- get_paleogeography(age = 250)
  # Get paleogeographic map via interval name

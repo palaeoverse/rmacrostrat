@@ -54,7 +54,7 @@
 #'  Lewis A. Jones
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'   # Get mineral definitions
 #'   ex1 <- catalog(type = "minerals")
 #'   # Get grain size definitions

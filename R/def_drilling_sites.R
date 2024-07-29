@@ -50,7 +50,7 @@
 #' e2022GC010655. \doi{10.1029/2022GC010655}.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Return all core information for a specific site
 #' core_info <- def_drilling_sites(site = "U1547")
 #' }

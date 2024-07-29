@@ -37,7 +37,7 @@
 #' @section Reviewer(s):
 #'  Christopher D. Dean
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Return all column definitions
 #' ex1 <- def_columns()
 #' # Return subsets of column definitions

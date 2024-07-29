@@ -60,7 +60,7 @@ Bethany Allen
 }
 
 \examples{
-\dontrun{
+\donttest{
 # return all lithology definitions
 ex1 <- def_lithologies()
 # return a definition for sandstone

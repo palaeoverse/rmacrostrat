@@ -25,7 +25,7 @@
 #' @section Reviewer(s):
 #'  Lewis A. Jones
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Get all structure definitions
 #' ex1 <- def_structures()
 #' # Get subset of structure definitions

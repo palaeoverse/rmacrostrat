@@ -105,7 +105,7 @@
 #' 40(11), pp. 1--56. \doi{10.5070/P9401160531}.
 #'
 #' @examples
-#' \dontrun{
+#' \donttest{
 #'  # Get fossils by Macrostrat column ID
 #'  ex1 <- get_fossils(column_id = 10)
 #'  # Get fossils by Macrostrat unit ID

@@ -97,7 +97,7 @@
 #' @details More information can be found about the inputs and outputs for this
 #'  function by using [def_measurements()].
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Return measurements based on their specific IDs
 #' ex1 <- get_measurements(measure_id = c(353, 354))
 #' # Return measurements based on the ID of a specific measurement definition

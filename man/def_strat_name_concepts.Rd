@@ -70,7 +70,7 @@ William Gearty
 }
 
 \examples{
-\dontrun{
+\donttest{
 # Return a stratigraphic name concept based on a string
 ex1 <- def_strat_name_concepts(strat_concept_name = "Dakota")
 # Return a stratigraphic name concept based on an ID

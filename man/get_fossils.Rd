@@ -165,7 +165,7 @@ C. (2023). Paleobiology Database User Guide Version 1.0. \emph{PaleoBios},
 }
 
 \examples{
-\dontrun{
+\donttest{
  # Get fossils by Macrostrat column ID
  ex1 <- get_fossils(column_id = 10)
  # Get fossils by Macrostrat unit ID

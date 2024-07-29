@@ -1,6 +1,6 @@
 Package: rmacrostrat
-Title: Fetch Geologic Data from the Macrostrat Platform
-Description: Work with the Macrostrat Web Service (<https://macrostrat.org/>)
+Title: Fetch Geologic Data from the 'Macrostrat' Platform
+Description: Work with the 'Macrostrat' Web Service (<https://macrostrat.org/>)
     to fetch geological data relevant to the spatial and temporal distribution
     of sedimentary, igneous, and metamorphic rocks as well as data extracted 
     from them. 

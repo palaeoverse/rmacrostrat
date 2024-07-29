@@ -83,7 +83,7 @@ Bethany Allen
 }
 
 \examples{
-\dontrun{
+\donttest{
 # Return a specific point
 ex1 <- get_map_points(point_id = 1)
 # Return all points within a user-specified bounding box

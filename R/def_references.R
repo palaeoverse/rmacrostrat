@@ -23,7 +23,7 @@
 #' @section Reviewer(s):
 #'   Bethany Allen
 #' @examples
-#' \dontrun{
+#' \donttest{
 #' # Return all references
 #' ex1 <- def_references()
 #' # Return a subset of references
