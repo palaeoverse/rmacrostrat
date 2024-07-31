@@ -4,6 +4,8 @@
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/palaeoverse/rmacrostrat/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/palaeoverse/rmacrostrat/actions/workflows/R-CMD-check.yaml)
 [![Codecov test coverage](https://codecov.io/gh/palaeoverse/rmacrostrat/branch/main/graph/badge.svg)](https://app.codecov.io/gh/palaeoverse/rmacrostrat?branch=main)
+[![CRAN status](https://www.r-pkg.org/badges/version/rmacrostrat)](https://CRAN.R-project.org/package=rmacrostrat)
+[![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/rmacrostrat)](https://cran.r-project.org/package=rmacrostrat)
 [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/ThePalaeoverse.svg?style=social&label=Follow%20%40ThePalaeoverse)](https://twitter.com/ThePalaeoverse)
 <!-- badges: end -->
 
@@ -52,7 +54,8 @@ san_juan_units$x_max <- 1
 san_juan_units$x_max[10] <- 0.5
 san_juan_units$x_min[11] <- 0.5
 # Add midpoint age for plotting
-san_juan_units$m_age <- (san_juan_units$b_age + san_juan_units$t_age) / 2
+san_juan_units$m_age <- (san_juan_units$b_age +
+                           san_juan_units$t_age) / 2
 # Plot stratigraphic column
 ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
                            xmin = x_min, xmax = x_max)) +
@@ -60,9 +63,11 @@ ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
   geom_rect(fill = san_juan_units$color, color = "black") +
   # Add text labels
   geom_text_repel(aes(x = x_max, y = m_age, label = unit_name),
-                  size = 3.5, nudge_x = 1.5) +
+                  box.padding = 0.1, nudge_x = 3,
+                  size = 3.5) +
   # Reverse direction of y-axis
-  scale_y_reverse(limits = c(145, 66), n.breaks = 10, name = "Time (Ma)") +
+  scale_y_reverse(limits = c(145, 66), n.breaks = 10,
+                  name = "Time (Ma)") +
   # Theming
   theme_classic() +
   theme(legend.position = "none",

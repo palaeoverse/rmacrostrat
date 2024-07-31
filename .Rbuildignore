@@ -29,3 +29,4 @@ vignettes/precompile.R
 geological-map.Rmd.orig
 stratigraphic-column.Rmd.orig
 geological-completeness.Rmd.orig
+release.R

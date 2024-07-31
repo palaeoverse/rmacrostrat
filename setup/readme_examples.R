@@ -19,7 +19,8 @@ san_juan_units$x_max <- 1
 san_juan_units$x_max[10] <- 0.5
 san_juan_units$x_min[11] <- 0.5
 # Add midpoint age for plotting
-san_juan_units$m_age <- (san_juan_units$b_age + san_juan_units$t_age) / 2
+san_juan_units$m_age <- (san_juan_units$b_age +
+                           san_juan_units$t_age) / 2
 # Plot stratigraphic column
 ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
                            xmin = x_min, xmax = x_max)) +
@@ -27,9 +28,11 @@ ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
   geom_rect(fill = san_juan_units$color, color = "black") +
   # Add text labels
   geom_text_repel(aes(x = x_max, y = m_age, label = unit_name),
-                  size = 3.5, nudge_x = 1.5) +
+                  box.padding = 0.1, nudge_x = 3,
+                  size = 3.5) +
   # Reverse direction of y-axis
-  scale_y_reverse(limits = c(145, 66), n.breaks = 10, name = "Time (Ma)") +
+  scale_y_reverse(limits = c(145, 66), n.breaks = 10,
+                  name = "Time (Ma)") +
   # Theming
   theme_classic() +
   theme(legend.position = "none",
@@ -39,10 +42,10 @@ ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
         axis.ticks.x = element_blank()) +
   # Add geological time scale
   coord_geo(pos = "left", dat = list("stages"), rot = 90)
-
 # Save
-ggsave("./man/figures/strat_column.png", width = 70, height = 100, dpi = 300,
-       units = "mm", scale = 3)
+ggsave("./man/figures/strat_column.png",
+       width = 70, height = 150, dpi = 300,
+       units = "mm", scale = 1.75)
 
 ## Outcrop map
 
