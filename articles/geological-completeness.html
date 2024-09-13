@@ -74,7 +74,7 @@
     
 <p><strong>Authors:</strong> <a href="https://palaeoverse.org/#about-us" class="external-link">Palaeoverse Development
 Team</a></p>
-<p><strong>Last updated:</strong> 2024-07-29</p>
+<p><strong>Last updated:</strong> 2024-09-13</p>
 <div style="text-align: justify">
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
@@ -118,9 +118,8 @@ appropriate citation via:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"rmacrostrat"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## To cite rmacrostrat in publications, use the following citation:</span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R</span></span>
-<span><span class="co">##   package for accessing and retrieving data from the Macrostrat geological</span></span>
-<span><span class="co">##   database. EarthArXiv, 1–29, doi: 10.31223/X5XX37</span></span>
+<span><span class="co">##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R package for accessing and</span></span>
+<span><span class="co">##   retrieving data from the Macrostrat geological database. EarthArXiv, 1–29, doi: 10.31223/X5XX37</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## A BibTeX entry for LaTeX users is</span></span>
 <span><span class="co">## </span></span>
@@ -315,15 +314,31 @@ our <code>litho_units</code> dataset.</p>
 <span><span class="co">## data frame with 0 columns and 0 rows</span></span></code></pre>
 <div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Add environment class</span></span>
-<span><span class="va">unknown_units</span><span class="op">$</span><span class="va">environ_class</span> <span class="op">&lt;-</span> <span class="st">"Unknown"</span></span>
-<span><span class="co"># Combine dataframes</span></span>
-<span><span class="va">litho_units</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind.data.frame</a></span><span class="op">(</span><span class="va">litho_units</span>, <span class="va">unknown_units</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">unknown_units</span><span class="op">$</span><span class="va">environ_class</span> <span class="op">&lt;-</span> <span class="st">"Unknown"</span></span></code></pre></div>
+<p>Out of curiosity, let’s see what types of lithologies are included in
+these units with unknown environments.</p>
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="va">c</span>, <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">unknown_units</span><span class="op">$</span><span class="va">lith</span>, <span class="kw">function</span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="va">df</span><span class="op">$</span><span class="va">class</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">##     igneous metamorphic </span></span>
+<span><span class="co">##        2341         808</span></span></code></pre>
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/table.html" class="external-link">table</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/do.call.html" class="external-link">do.call</a></span><span class="op">(</span><span class="va">c</span>, <span class="fu"><a href="https://rdrr.io/r/base/lapply.html" class="external-link">lapply</a></span><span class="op">(</span><span class="va">unknown_units</span><span class="op">$</span><span class="va">lith</span>, <span class="kw">function</span><span class="op">(</span><span class="va">df</span><span class="op">)</span> <span class="va">df</span><span class="op">$</span><span class="va">type</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## </span></span>
+<span><span class="co">##         igneous     metaigneous     metamorphic metasedimentary    metavolcanic        plutonic        volcanic </span></span>
+<span><span class="co">##              51               4             484             301              19            1005            1285</span></span></code></pre>
+<p>Looks like it’s all igneous and metamorphic rocks. That makes sense,
+it is often very difficult to assign units with lithologies of those
+classes to environments without more information. Let’s add these
+unknown units to our ongoing data.frame of units for later:</p>
+<pre><code><span><span class="co"># Combine dataframes</span></span>
+<span><span class="va">litho_units</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind.data.frame</a></span><span class="op">(</span><span class="va">litho_units</span>, <span class="va">unknown_units</span><span class="op">)</span></span></code></pre>
 <p>Great! But we’ve just remembered that <a href="https://macrostrat.org" class="external-link">Macrostrat</a> doesn’t only cover North
 America, and we’ve pulled all units available worldwide. To make a
 closer reproduction of Figure 14 from <a href="https://www.jstor.org/stable/25609444" class="external-link">Peters &amp; Heim
 (2010)</a>, we ought to just focus on North America. Conveniently, <a href="https://macrostrat.org" class="external-link">Macrostrat</a> is split into different
 projects, which tend to cover different regions:</p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Check available projects</span></span>
 <span><span class="fu"><a href="../reference/def_projects.html">def_projects</a></span><span class="op">(</span><span class="op">)</span><span class="op">[</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">2</span><span class="op">]</span></span></code></pre></div>
 <pre><code><span><span class="co">##    project_id                   project</span></span>
@@ -342,7 +357,7 @@ projects, which tend to cover different regions:</p>
 <p>From this call, we can see that North America has a
 <code>project_id</code> of 1. We can use this information to further
 filter <code>litho_units</code>:</p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Filter to N. America</span></span>
 <span><span class="va">litho_units</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/subset.html" class="external-link">subset</a></span><span class="op">(</span><span class="va">litho_units</span>, <span class="va">project_id</span> <span class="op">==</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p>Now we’ve got our data and done a bit of wrangling, let’s get on with
@@ -361,7 +376,7 @@ Using this data, with some handy support functions from the
 lithographic units within each paleoenvironmental group, and within each
 time bin. We will use international stratigraphic stage bins as our time
 bins for this:</p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load palaeoverse R package</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://palaeoverse.palaeoverse.org" class="external-link">palaeoverse</a></span><span class="op">)</span></span>
 <span><span class="co"># Generate stage-level time bins</span></span>
@@ -404,7 +419,7 @@ paleoenvironment group through time. To support this data visualization,
 we will make use of the <code>ggplot2</code> (plotting) and
 <code>deeptime</code> (adding a geological timescale axis) R
 packages.</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load data visualization packages</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://williamgearty.com/deeptime/" class="external-link">deeptime</a></span><span class="op">)</span></span>
@@ -439,7 +454,7 @@ plot of chunk visualize_counts
 </div>
 <p>We can also plot the proportion of units within each paleoenvironment
 group through time.</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Generate a plot of lithostratigraphic units through time grouped by</span></span>
 <span><span class="co"># paleoenvironment as proportions</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">counts</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="va">environment</span>, y <span class="op">=</span> <span class="va">count</span>, x <span class="op">=</span> <span class="va">mid_ma</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
