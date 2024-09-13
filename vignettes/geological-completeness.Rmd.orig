@@ -171,6 +171,19 @@ unknown_units <- subset(all_units, !unit_id %in% litho_units$unit_id)
 head(unknown_units$environ)
 # Add environment class
 unknown_units$environ_class <- "Unknown"
+```
+
+Out of curiosity, let's see what types of lithologies are included in these units with unknown environments.
+
+```{r unknown_liths, eval = TRUE}
+# Extract class column from each lithology data.frame
+table(do.call(c, lapply(unknown_units$lith, function(df) df$class)))
+table(do.call(c, lapply(unknown_units$lith, function(df) df$type)))
+```
+
+Looks like it's all igneous and metamorphic rocks. That makes sense, it is often very difficult to assign units with lithologies of those classes to environments without more information. Let's add these unknown units to our ongoing data.frame of units for later:
+
+```
 # Combine dataframes
 litho_units <- rbind.data.frame(litho_units, unknown_units)
 ```

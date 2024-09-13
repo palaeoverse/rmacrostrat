@@ -9,7 +9,7 @@ vignette: >
 
 **Authors:** [Palaeoverse Development Team](https://palaeoverse.org/#about-us)
 
-**Last updated:** 2024-07-29
+**Last updated:** 2024-09-13
 
 
 
@@ -53,9 +53,8 @@ citation("rmacrostrat")
 ```
 ## To cite rmacrostrat in publications, use the following citation:
 ## 
-##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R
-##   package for accessing and retrieving data from the Macrostrat geological
-##   database. EarthArXiv, 1–29, doi: 10.31223/X5XX37
+##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R package for accessing and
+##   retrieving data from the Macrostrat geological database. EarthArXiv, 1–29, doi: 10.31223/X5XX37
 ## 
 ## A BibTeX entry for LaTeX users is
 ## 
@@ -238,6 +237,34 @@ head(unknown_units$environ)
 ``` r
 # Add environment class
 unknown_units$environ_class <- "Unknown"
+```
+
+Out of curiosity, let's see what types of lithologies are included in these units with unknown environments.
+
+
+``` r
+table(do.call(c, lapply(unknown_units$lith, function(df) df$class)))
+```
+
+```
+## 
+##     igneous metamorphic 
+##        2341         808
+```
+
+``` r
+table(do.call(c, lapply(unknown_units$lith, function(df) df$type)))
+```
+
+```
+## 
+##         igneous     metaigneous     metamorphic metasedimentary    metavolcanic        plutonic        volcanic 
+##              51               4             484             301              19            1005            1285
+```
+
+Looks like it's all igneous and metamorphic rocks. That makes sense, it is often very difficult to assign units with lithologies of those classes to environments without more information. Let's add these unknown units to our ongoing data.frame of units for later:
+
+```
 # Combine dataframes
 litho_units <- rbind.data.frame(litho_units, unknown_units)
 ```
