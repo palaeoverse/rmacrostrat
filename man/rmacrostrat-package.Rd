@@ -8,7 +8,7 @@
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Work with the 'Macrostrat' Web Service (\url{https://macrostrat.org/}) to fetch geological data relevant to the spatial and temporal distribution of sedimentary, igneous, and metamorphic rocks as well as data extracted from them.
+Work with the 'Macrostrat' (\url{https://macrostrat.org/}) Web Service (v.2, \url{https://macrostrat.org/api/v2}) to fetch geological data relevant to the spatial and temporal distribution of sedimentary, igneous, and metamorphic rocks as well as data extracted from them.
 }
 \seealso{
 Useful links:
