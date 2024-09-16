@@ -5,7 +5,9 @@
 #' project, a collation of sedimentary description data
 #' from ocean drilling cores. This currently includes cores from the Deep Sea
 #' Drilling Project (DSDP), Integrated Ocean Drilling Program (IODP), and Ocean
-#' Drilling Program (ODP).
+#' Drilling Program (ODP). Note: eODP data is currently being integrated
+#' into Macrostrat's data entities (e.g. columns and units) and should be
+#' available via [get_columns()] and [get_units()] in the future.
 #'
 #' @param column_id \code{integer}. Filter cores by their unique identification
 #'   number(s).

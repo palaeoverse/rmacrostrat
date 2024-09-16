@@ -6,6 +6,7 @@
 [![Codecov test coverage](https://codecov.io/gh/palaeoverse/rmacrostrat/branch/main/graph/badge.svg)](https://app.codecov.io/gh/palaeoverse/rmacrostrat?branch=main)
 [![CRAN status](https://www.r-pkg.org/badges/version/rmacrostrat)](https://CRAN.R-project.org/package=rmacrostrat)
 [![CRAN downloads](https://cranlogs.r-pkg.org/badges/grand-total/rmacrostrat)](https://cran.r-project.org/package=rmacrostrat)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13143096.svg)](https://doi.org/10.5281/zenodo.13143096)
 [![Twitter URL](https://img.shields.io/twitter/url/https/twitter.com/ThePalaeoverse.svg?style=social&label=Follow%20%40ThePalaeoverse)](https://twitter.com/ThePalaeoverse)
 <!-- badges: end -->
 
