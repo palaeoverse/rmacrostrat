@@ -258,13 +258,6 @@ ggplot() +
   labs(x = "Longitude (º)", y = "Latitude (º)")
 ```
 
-```
-## Warning: Using the `size` aesthetic in this geom was deprecated in rphylopic 1.5.0.
-## ℹ Please use the `height` and `width` aesthetics instead.
-## This warning is displayed once every 8 hours.
-## Call `lifecycle::last_lifecycle_warnings()` to see where this warning was generated.
-```
-
 <div class="figure">
 <img src="add-rphylopic-1.png" alt="plot of chunk add-rphylopic" width="100%" />
 <p class="caption">plot of chunk add-rphylopic</p>
@@ -277,21 +270,7 @@ Nice! Finally, we can add a few other touches to make it a publication-worthy fi
 # Load `ggpatial` package to add annotations, and `cowplot` to stitch final map 
 # together
 library(ggspatial)
-```
-
-```
-## Error in library(ggspatial): there is no package called 'ggspatial'
-```
-
-``` r
 library(cowplot)
-```
-
-```
-## Error in library(cowplot): there is no package called 'cowplot'
-```
-
-``` r
 # Make an inlay using the country maps we included earlier
 inset <-  ggplot() + 
   geom_sf(data = us) +
@@ -328,22 +307,16 @@ ed_hc_map <- ggplot() +
               size = 0.8, alpha = 1, color = "black") +
   labs(x = "Longitude (º)", y = "Latitude (º)") +
   theme_bw()
-```
-
-```
-## Error in annotation_north_arrow(location = "br", pad_y = unit(0.75, "cm"), : could not find function "annotation_north_arrow"
-```
-
-``` r
 # Plot the two together
 ggdraw() +
   draw_plot(ed_hc_map) +
   draw_plot(inset, 0.08, 0.63, width = 0.2, height = 0.2)
 ```
 
-```
-## Error in ggdraw(): could not find function "ggdraw"
-```
+<div class="figure">
+<img src="add-inlay-scale-1.png" alt="plot of chunk add-inlay-scale" width="100%" />
+<p class="caption">plot of chunk add-inlay-scale</p>
+</div>
 
 And that's it! One completed map. 
 
