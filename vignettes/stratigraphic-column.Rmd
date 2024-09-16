@@ -9,7 +9,7 @@ vignette: >
 
 **Authors:** [Palaeoverse Development Team](https://palaeoverse.org/#about-us)
 
-**Last updated:** 2024-07-29
+**Last updated:** 2024-09-16
 
 
 
@@ -57,9 +57,9 @@ citation("rmacrostrat")
 ```
 ## To cite rmacrostrat in publications, use the following citation:
 ## 
-##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R
-##   package for accessing and retrieving data from the Macrostrat geological
-##   database. EarthArXiv, 1–29, doi: 10.31223/X5XX37
+##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R package for
+##   accessing and retrieving data from the Macrostrat geological database. EarthArXiv, 1–29,
+##   doi: 10.31223/X5XX37
 ## 
 ## A BibTeX entry for LaTeX users is
 ## 
@@ -88,10 +88,10 @@ def_columns(column_name = "San Juan Basin")
 ```
 
 ```
-##   col_id col_group_id       col_name    lat      lng col_area max_thick ref_id status
-## 1    489            3 San Juan Basin 35.896 -108.068 35096.52      8040      1 active
-##   t_units project_id notes
-## 1      47          1    NA
+##   col_id col_group_id       col_name    lat      lng col_area max_thick ref_id status t_units
+## 1    489            3 San Juan Basin 35.896 -108.068 35096.52      8040      1 active      47
+##   project_id notes
+## 1          1    NA
 ```
 
 From this call, we can see there is a single column named "San Juan Basin". We are also given some information about this column, such as its geographic location (in the form of a latitude and longitude), the area over which it spans in km^2^, its thickness in meters, and the number of geologic units it contains (`t_units`). We are also given its `col_id`, 489, which we can use to retrieve more information through other functions in `rmacrostrat`. We will do this now, specifically using `get_columns`:
@@ -298,16 +298,14 @@ colnames(san_juan_units)
 ```
 
 ```
-##  [1] "unit_id"          "section_id"       "col_id"           "project_id"      
-##  [5] "col_area"         "unit_name"        "strat_name_id"    "Mbr"             
-##  [9] "Fm"               "Gp"               "SGp"              "t_age"           
-## [13] "b_age"            "max_thick"        "min_thick"        "outcrop"         
-## [17] "pbdb_collections" "pbdb_occurrences" "lith"             "environ"         
-## [21] "econ"             "measure"          "notes"            "color"           
-## [25] "text_color"       "t_int_id"         "t_int_name"       "t_int_age"       
-## [29] "t_prop"           "units_above"      "b_int_id"         "b_int_name"      
-## [33] "b_int_age"        "b_prop"           "units_below"      "strat_name_long" 
-## [37] "refs"             "clat"             "clng"             "t_plat"          
+##  [1] "unit_id"          "section_id"       "col_id"           "project_id"       "col_area"        
+##  [6] "unit_name"        "strat_name_id"    "Mbr"              "Fm"               "Gp"              
+## [11] "SGp"              "t_age"            "b_age"            "max_thick"        "min_thick"       
+## [16] "outcrop"          "pbdb_collections" "pbdb_occurrences" "lith"             "environ"         
+## [21] "econ"             "measure"          "notes"            "color"            "text_color"      
+## [26] "t_int_id"         "t_int_name"       "t_int_age"        "t_prop"           "units_above"     
+## [31] "b_int_id"         "b_int_name"       "b_int_age"        "b_prop"           "units_below"     
+## [36] "strat_name_long"  "refs"             "clat"             "clng"             "t_plat"          
 ## [41] "t_plng"           "b_plat"           "b_plng"
 ```
 
