@@ -74,7 +74,7 @@
     
 <p><strong>Authors:</strong> <a href="https://palaeoverse.org/#about-us" class="external-link">The Palaeoverse Development
 Team</a></p>
-<p><strong>Last updated:</strong> 2024-07-29</p>
+<p><strong>Last updated:</strong> 2024-09-16</p>
 <div style="text-align: justify">
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
@@ -117,9 +117,9 @@ appropriate citation via:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"rmacrostrat"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## To cite rmacrostrat in publications, use the following citation:</span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R</span></span>
-<span><span class="co">##   package for accessing and retrieving data from the Macrostrat geological</span></span>
-<span><span class="co">##   database. EarthArXiv, 1–29, doi: 10.31223/X5XX37</span></span>
+<span><span class="co">##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R package for</span></span>
+<span><span class="co">##   accessing and retrieving data from the Macrostrat geological database. EarthArXiv, 1–29,</span></span>
+<span><span class="co">##   doi: 10.31223/X5XX37</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## A BibTeX entry for LaTeX users is</span></span>
 <span><span class="co">## </span></span>
@@ -165,18 +165,18 @@ Hell Creek, using <code><a href="../reference/def_strat_names.html">def_strat_na
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Search stratigraphic names for Hell Creek</span></span>
 <span><span class="fu"><a href="../reference/def_strat_names.html">def_strat_names</a></span><span class="op">(</span>strat_name <span class="op">=</span> <span class="st">"hell creek"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##   strat_name      strat_name_long rank strat_name_id concept_id bed bed_id        mbr</span></span>
-<span><span class="co">## 1 Hell Creek Hell Creek Formation   Fm         71267       8598          0           </span></span>
-<span><span class="co">## 2 Hell Creek    Hell Creek Member  Mbr         71268       8598          0 Hell Creek</span></span>
-<span><span class="co">## 3 Hell Creek Hell Creek Formation   Fm           867       8598          0           </span></span>
-<span><span class="co">##   mbr_id         fm fm_id subgp subgp_id                gp gp_id sgp sgp_id b_age t_age</span></span>
-<span><span class="co">## 1      0 Hell Creek 71267              0           Montana  2565          0 100.5    56</span></span>
-<span><span class="co">## 2  71268      Lance  1090              0 Black Buttes coal 69391          0 100.5    56</span></span>
-<span><span class="co">## 3      0 Hell Creek   867              0                       0          0  72.1    66</span></span>
-<span><span class="co">##     b_period  t_period c_interval t_units ref_id</span></span>
-<span><span class="co">## 1 Cretaceous Paleogene                  0     19</span></span>
-<span><span class="co">## 2 Cretaceous Paleogene                  0     19</span></span>
-<span><span class="co">## 3 Cretaceous Paleogene                 13      1</span></span></code></pre>
+<pre><code><span><span class="co">##   strat_name      strat_name_long rank strat_name_id concept_id bed bed_id        mbr mbr_id</span></span>
+<span><span class="co">## 1 Hell Creek Hell Creek Formation   Fm         71267       8598          0                 0</span></span>
+<span><span class="co">## 2 Hell Creek    Hell Creek Member  Mbr         71268       8598          0 Hell Creek  71268</span></span>
+<span><span class="co">## 3 Hell Creek Hell Creek Formation   Fm           867       8598          0                 0</span></span>
+<span><span class="co">##           fm fm_id subgp subgp_id                gp gp_id sgp sgp_id b_age t_age   b_period  t_period</span></span>
+<span><span class="co">## 1 Hell Creek 71267              0           Montana  2565          0 100.5    56 Cretaceous Paleogene</span></span>
+<span><span class="co">## 2      Lance  1090              0 Black Buttes coal 69391          0 100.5    56 Cretaceous Paleogene</span></span>
+<span><span class="co">## 3 Hell Creek   867              0                       0          0  72.1    66 Cretaceous Paleogene</span></span>
+<span><span class="co">##   c_interval t_units ref_id</span></span>
+<span><span class="co">## 1                  0     19</span></span>
+<span><span class="co">## 2                  0     19</span></span>
+<span><span class="co">## 3                 13      1</span></span></code></pre>
 <p>We can see that there are three different <code>strat_name</code>s
 associated with the name Hell Creek. You’ll also see that all three have
 the same <code>concept_id</code>, showing that these stratigraphic names
@@ -188,18 +188,18 @@ Creek:</p>
 <span><span class="va">hc_def</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/def_strat_names.html">def_strat_names</a></span><span class="op">(</span>concept_id <span class="op">=</span> <span class="fl">8598</span><span class="op">)</span></span>
 <span><span class="co"># View data</span></span>
 <span><span class="va">hc_def</span></span></code></pre></div>
-<pre><code><span><span class="co">##   strat_name      strat_name_long rank strat_name_id concept_id bed bed_id        mbr</span></span>
-<span><span class="co">## 1 Hell Creek Hell Creek Formation   Fm         71267       8598          0           </span></span>
-<span><span class="co">## 2 Hell Creek    Hell Creek Member  Mbr         71268       8598          0 Hell Creek</span></span>
-<span><span class="co">## 3 Hell Creek Hell Creek Formation   Fm           867       8598          0           </span></span>
-<span><span class="co">##   mbr_id         fm fm_id subgp subgp_id                gp gp_id sgp sgp_id b_age t_age</span></span>
-<span><span class="co">## 1      0 Hell Creek 71267              0           Montana  2565          0 100.5    56</span></span>
-<span><span class="co">## 2  71268      Lance  1090              0 Black Buttes coal 69391          0 100.5    56</span></span>
-<span><span class="co">## 3      0 Hell Creek   867              0                       0          0  72.1    66</span></span>
-<span><span class="co">##     b_period  t_period c_interval t_units ref_id</span></span>
-<span><span class="co">## 1 Cretaceous Paleogene                  0     19</span></span>
-<span><span class="co">## 2 Cretaceous Paleogene                  0     19</span></span>
-<span><span class="co">## 3 Cretaceous Paleogene                 13      1</span></span></code></pre>
+<pre><code><span><span class="co">##   strat_name      strat_name_long rank strat_name_id concept_id bed bed_id        mbr mbr_id</span></span>
+<span><span class="co">## 1 Hell Creek Hell Creek Formation   Fm         71267       8598          0                 0</span></span>
+<span><span class="co">## 2 Hell Creek    Hell Creek Member  Mbr         71268       8598          0 Hell Creek  71268</span></span>
+<span><span class="co">## 3 Hell Creek Hell Creek Formation   Fm           867       8598          0                 0</span></span>
+<span><span class="co">##           fm fm_id subgp subgp_id                gp gp_id sgp sgp_id b_age t_age   b_period  t_period</span></span>
+<span><span class="co">## 1 Hell Creek 71267              0           Montana  2565          0 100.5    56 Cretaceous Paleogene</span></span>
+<span><span class="co">## 2      Lance  1090              0 Black Buttes coal 69391          0 100.5    56 Cretaceous Paleogene</span></span>
+<span><span class="co">## 3 Hell Creek   867              0                       0          0  72.1    66 Cretaceous Paleogene</span></span>
+<span><span class="co">##   c_interval t_units ref_id</span></span>
+<span><span class="co">## 1                  0     19</span></span>
+<span><span class="co">## 2                  0     19</span></span>
+<span><span class="co">## 3                 13      1</span></span></code></pre>
 <p>Yup, these three are the only entries for Hell Creek. But hang on!
 Before going ahead and using these to pull our spatial data, you’ll also
 notice that one of the <code>strat_name</code>s here is actually the
@@ -230,14 +230,12 @@ like.</p>
 <span><span class="co">## Dimension:     XY</span></span>
 <span><span class="co">## Bounding box:  xmin: -110.0199 ymin: 45.86057 xmax: -110.0168 ymax: 45.86277</span></span>
 <span><span class="co">## Geodetic CRS:  WGS 84</span></span>
-<span><span class="co">##    map_id source_id                 name           strat_name</span></span>
-<span><span class="co">## 1 2092425        25 Hell Creek Formation Hell Creek Formation</span></span>
-<span><span class="co">##                            lith descrip comments macro_units       strat_names liths</span></span>
-<span><span class="co">## 1 Major:: {sandstone, mudstone}                         9213 867, 71267, 71268 7, 10</span></span>
-<span><span class="co">##   t_int_id t_int_age      t_int_name b_int_id b_int_age      b_int_name   color t_age</span></span>
-<span><span class="co">## 1       34        66 Late Cretaceous       34     100.5 Late Cretaceous #F2FA8C    66</span></span>
-<span><span class="co">##   b_age best_int_name                       geometry</span></span>
-<span><span class="co">## 1  72.1 Maastrichtian MULTIPOLYGON (((-110.0168 4...</span></span></code></pre>
+<span><span class="co">##    map_id source_id                 name           strat_name                          lith descrip</span></span>
+<span><span class="co">## 1 2092425        25 Hell Creek Formation Hell Creek Formation Major:: {sandstone, mudstone}        </span></span>
+<span><span class="co">##   comments macro_units       strat_names liths t_int_id t_int_age      t_int_name b_int_id b_int_age</span></span>
+<span><span class="co">## 1                 9213 867, 71267, 71268 7, 10       34        66 Late Cretaceous       34     100.5</span></span>
+<span><span class="co">##        b_int_name   color t_age b_age best_int_name                       geometry</span></span>
+<span><span class="co">## 1 Late Cretaceous #F2FA8C    66  72.1 Maastrichtian MULTIPOLYGON (((-110.0168 4...</span></span></code></pre>
 <p>That looks like what we need! We have a simple features collection
 consisting of multi-polygons, with attributes that indicate it contains
 data for the Hell Creek Formation. Now let’s move on to visualizing the
