@@ -56,3 +56,6 @@ inst/doc
 /doc/
 /Meta/
 CRAN-SUBMISSION
+
+# Rev dep check
+/revdep
