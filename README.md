@@ -1,5 +1,5 @@
 
-# rmacrostrat
+# rmacrostrat <img src="man/figures/logo.png" align="right" alt="" width="120">
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/palaeoverse/rmacrostrat/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/palaeoverse/rmacrostrat/actions/workflows/R-CMD-check.yaml)
