@@ -163,7 +163,7 @@ any(table(litho_units$unit_id) > 1)
 OK - we now have four lithostratigraphic groupings for our units, but Figure 14 from [Peters & Heim (2010)](https://www.jstor.org/stable/25609444) includes a fifth unit group, "unknown". For the sake of completeness, let's get all sedimentary lithostratigraphic units not already covered by our other four groupings (marine, marginal, mixed, and terrestrial). As we cannot search [Macrostrat](https://macrostrat.org) by "unknown", we will first pull all Phanerozoic sedimentary units, and then filter out units already present in our `litho_units` dataset.
 
 ```{r unknown_units, eval = TRUE}
-# Get all Phanerozoic units
+# Get all sedimentary Phanerozoic units
 all_units <- get_units(interval_name = "Phanerozoic", lithology_class = "sedimentary")
 # Remove units not already present in litho_units (unknown palaeoenvironments)
 unknown_units <- subset(all_units, !unit_id %in% litho_units$unit_id)
@@ -289,7 +289,7 @@ And that's it! Not too bad, right? There are some clear differences between our 
 We can use very similar code to explore many different geological questions. For example, what if we were interested in the temporal distribution of igneous and metamorphic rocks, as well as sedimentary? Below we extract and plot data showing exactly this.
 
 
-``` r
+```{r class_proportions, eval = TRUE}
 # Get units by lithology class, interval, and project ID
 sedimentary <- get_units(lithology_class = "sedimentary",
                          interval_name = "Phanerozoic",
@@ -342,8 +342,8 @@ ggplot(counts, aes(fill = lithology_class, y = count, x = mid_ma)) +
   scale_fill_manual(values = c("#FF0000", "#00A08A", "#F2AD00")) +
   # Theming
   theme_bw() +
-  theme(legend.title = element_blank(),
-        legend.position = c(0.9, 0.9)) +
+  theme(legend.title = element_blank(), legend.position = "inside",
+        legend.position.inside = c(0.9, 0.9)) +
   # Add geological time scale
   coord_geo()
 ```
