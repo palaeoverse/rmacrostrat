@@ -363,7 +363,7 @@ ggplot(counts, aes(fill = environment, y = count, x = mid_ma)) +
 
 And that's it! Not too bad, right? There are some clear differences between our generated plots and those from the original [Peters & Heim (2010)](https://www.jstor.org/stable/25609444) paper (Fig. 14), which is to be expected given that substantially more data is now available in [Macrostrat](https://macrostrat.org) (e.g., no "unknown" paleoenvironments), and there may be differences in what we defined as "marginal" environments. Despite these differences, some broad-scale patterns are largely consistent, such as the higher proportion of terrestrial lithostratigraphic units in the Mesozoic and Cenozoic, compared to the Paleozoic.
 
-# Bonus plot: rock types
+# Bonus plot: rock classes
 
 We can use very similar code to explore many different geological questions. For example, what if we were interested in the temporal distribution of igneous and metamorphic rocks, as well as sedimentary? Below we extract and plot data showing exactly this.
 
