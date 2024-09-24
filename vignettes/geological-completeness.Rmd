@@ -9,7 +9,7 @@ vignette: >
 
 **Authors:** [Palaeoverse Development Team](https://palaeoverse.org/#about-us)
 
-**Last updated:** 2024-09-16
+**Last updated:** 2024-09-23
 
 
 
@@ -53,9 +53,8 @@ citation("rmacrostrat")
 ```
 ## To cite rmacrostrat in publications, use the following citation:
 ## 
-##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R package for
-##   accessing and retrieving data from the Macrostrat geological database. EarthArXiv, 1–29,
-##   doi: 10.31223/X5XX37
+##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R package for accessing
+##   and retrieving data from the Macrostrat geological database. EarthArXiv, 1–29, doi: 10.31223/X5XX37
 ## 
 ## A BibTeX entry for LaTeX users is
 ## 
@@ -207,7 +206,7 @@ OK - we now have four lithostratigraphic groupings for our units, but Figure 14 
 
 
 ``` r
-# Get all Phanerozoic units
+# Get all sedimentary Phanerozoic units
 all_units <- get_units(interval_name = "Phanerozoic", lithology_class = "sedimentary")
 # Remove units not already present in litho_units (unknown palaeoenvironments)
 unknown_units <- subset(all_units, !unit_id %in% litho_units$unit_id)
@@ -362,6 +361,76 @@ ggplot(counts, aes(fill = environment, y = count, x = mid_ma)) +
 </div>
 
 And that's it! Not too bad, right? There are some clear differences between our generated plots and those from the original [Peters & Heim (2010)](https://www.jstor.org/stable/25609444) paper (Fig. 14), which is to be expected given that substantially more data is now available in [Macrostrat](https://macrostrat.org) (e.g., no "unknown" paleoenvironments), and there may be differences in what we defined as "marginal" environments. Despite these differences, some broad-scale patterns are largely consistent, such as the higher proportion of terrestrial lithostratigraphic units in the Mesozoic and Cenozoic, compared to the Paleozoic.
+
+# Bonus plot: rock classes
+
+We can use very similar code to explore many different geological questions. For example, what if we were interested in the temporal distribution of igneous and metamorphic rocks, as well as sedimentary? Below we extract and plot data showing exactly this.
+
+
+
+``` r
+# Get units by lithology class, interval, and project ID
+sedimentary <- get_units(lithology_class = "sedimentary",
+                         interval_name = "Phanerozoic",
+                         project_id = 1)
+igneous <- get_units(lithology_class = "igneous",
+                     interval_name = "Phanerozoic",
+                     project_id = 1)
+metamorphic<- get_units(lithology_class = "metamorphic",
+                        interval_name = "Phanerozoic",
+                        project_id = 1)
+# Add column of sediment type
+sedimentary$lithology_class <- "Sedimentary"
+igneous$lithology_class <- "Igneous"
+metamorphic$lithology_class <- "Metamorphic"
+# Bind data
+units <- rbind.data.frame(sedimentary, igneous, metamorphic)
+# Load palaeoverse library
+library(palaeoverse)
+# Generate stage-level time bins
+bins <- time_bins(interval = c("Phanerozoic"), scale = "GTS2020")
+# Rename age columns in units to be consistent with our bins
+colnames(units)[which(colnames(units) == "b_age")] <- "max_ma"
+colnames(units)[which(colnames(units) == "t_age")] <- "min_ma"
+# Filter units with older maximum age than bins
+units <- units[units$max_ma < 541,]
+# Bin data
+units <- bin_time(occdf = units, bins = bins,
+                  min_ma = "min_ma", max_ma = "max_ma",
+                  method = "all")
+# Calculate the number of lithological classes per bin assignment
+counts <- group_apply(occdf = units,
+                      group = c("lithology_class",
+                                "bin_assignment"),
+                      fun = nrow)
+# Rename columns to ease reading and merging
+colnames(counts) <- c("count", "lithology_class", "bin")
+# Merge datasets by bin number
+counts <- merge(x = bins, y = counts, by = "bin")
+# Generate a plot of lithostratigraphic units through time
+ggplot(counts, aes(fill = lithology_class, y = count, x = mid_ma)) +
+  # Stacked bar chart with width specified by interval duration
+  geom_bar(position = "stack", stat = "identity",
+           width = counts$duration_myr,
+           color = "black", linewidth = 0.1) +
+  # Label y-axis
+  scale_y_continuous("Counts of lithostratigraphic units") +
+  # Label x-axis and reverse direction
+  scale_x_reverse("Time (Ma)") +
+  # Data plotting colors
+  scale_fill_manual(values = c("#FF0000", "#00A08A", "#F2AD00")) +
+  # Theming
+  theme_bw() +
+  theme(legend.title = element_blank(), legend.position = "inside",
+        legend.position.inside = c(0.9, 0.9)) +
+  # Add geological time scale
+  coord_geo()
+```
+
+<div class="figure">
+<img src="class_proportions-1.png" alt="plot of chunk class_proportions" width="100%" />
+<p class="caption">plot of chunk class_proportions</p>
+</div>
 
 Hopefully this vignette has shown you some potential uses for `rmacrostrat` functions and helped provide a workflow for your own analyses. If you have any questions about the package or its functionality, please feel free to join our [Palaeoverse Google group](https://groups.google.com/g/palaeoverse) and leave a comment; we'll aim to answer it as soon as possible!
 
