@@ -25,6 +25,8 @@ cran-comments.md
 .DS_Store
 dictionary.R
 ^cran-comments\.md$
-^vignettes/source$
+vignettes/source/geological-map.Rmd
+vignettes/source/stratigraphic-column.Rmd
+vignettes/source/geological-completeness.Rmd
 vignettes/precompile.R
 release.R
