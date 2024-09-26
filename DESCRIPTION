@@ -44,7 +44,7 @@ Suggests:
     palaeoverse,
     testthat (>= 3.0.0),
     units
-Additional_repositories: http://packages.ropensci.org
+Additional_repositories: https://ropensci.r-universe.dev
 VignetteBuilder: knitr
 Config/testthat/edition: 3
 URL: https://rmacrostrat.palaeoverse.org,
