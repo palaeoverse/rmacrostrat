@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>Plotting a stratigraphic column with rmacrostrat • rmacrostrat</title>
+<title> • rmacrostrat</title>
 <!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
 <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
 <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
@@ -16,7 +16,7 @@
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="Plotting a stratigraphic column with rmacrostrat">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -39,9 +39,12 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/geologic-map.html">Making a geologic outcrop map with rmacrostrat</a></li>
-    <li><a class="dropdown-item" href="../articles/geological-completeness.html">Quantifying the geological completeness of paleontological sampling in North America</a></li>
-    <li><a class="dropdown-item" href="../articles/stratigraphic-column.html">Plotting a stratigraphic column with rmacrostrat</a></li>
+<li><a class="dropdown-item" href="../articles/geologic-map.html">UNKNOWN TITLE</a></li>
+    <li><a class="dropdown-item" href="../articles/source/geologic-map.html">Making a geologic outcrop map with rmacrostrat</a></li>
+    <li><a class="dropdown-item" href="../articles/geological-completeness.html">UNKNOWN TITLE</a></li>
+    <li><a class="dropdown-item" href="../articles/source/geological-completeness.html">Quantifying the geological completeness of paleontological sampling in North America</a></li>
+    <li><a class="dropdown-item" href="../articles/source/stratigraphic-column.html">Plotting a stratigraphic column with rmacrostrat</a></li>
+    <li><a class="dropdown-item" href="../articles/stratigraphic-column.html">UNKNOWN TITLE</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -63,7 +66,7 @@
 
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>Plotting a stratigraphic column with rmacrostrat</h1>
+      <img src="../logo.png" class="logo" alt=""><h1></h1>
             
       
       <small class="dont-index">Source: <a href="https://github.com/palaeoverse/rmacrostrat/blob/main/vignettes/stratigraphic-column.Rmd" class="external-link"><code>vignettes/stratigraphic-column.Rmd</code></a></small>
@@ -74,7 +77,7 @@
     
 <p><strong>Authors:</strong> <a href="https://palaeoverse.org/#about-us" class="external-link">Palaeoverse Development
 Team</a></p>
-<p><strong>Last updated:</strong> 2024-09-16</p>
+<p><strong>Last updated:</strong> 2024-09-25</p>
 <div style="text-align: justify">
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
@@ -124,9 +127,9 @@ appropriate citation via:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/citation.html" class="external-link">citation</a></span><span class="op">(</span><span class="st">"rmacrostrat"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## To cite rmacrostrat in publications, use the following citation:</span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R package for</span></span>
-<span><span class="co">##   accessing and retrieving data from the Macrostrat geological database. EarthArXiv, 1–29,</span></span>
-<span><span class="co">##   doi: 10.31223/X5XX37</span></span>
+<span><span class="co">##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R</span></span>
+<span><span class="co">##   package for accessing and retrieving data from the Macrostrat geological database.</span></span>
+<span><span class="co">##   EarthArXiv, 1–29, doi: 10.31223/X5XX37</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## A BibTeX entry for LaTeX users is</span></span>
 <span><span class="co">## </span></span>
@@ -331,14 +334,16 @@ to geological units which are Cretaceous in age:</p>
 <span><span class="va">san_juan_units</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_units.html">get_units</a></span><span class="op">(</span>column_id <span class="op">=</span> <span class="fl">489</span>, interval_name <span class="op">=</span> <span class="st">"Cretaceous"</span><span class="op">)</span></span>
 <span><span class="co"># See the column names and number of rows</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">san_juan_units</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">##  [1] "unit_id"          "section_id"       "col_id"           "project_id"       "col_area"        </span></span>
-<span><span class="co">##  [6] "unit_name"        "strat_name_id"    "Mbr"              "Fm"               "Gp"              </span></span>
-<span><span class="co">## [11] "SGp"              "t_age"            "b_age"            "max_thick"        "min_thick"       </span></span>
-<span><span class="co">## [16] "outcrop"          "pbdb_collections" "pbdb_occurrences" "lith"             "environ"         </span></span>
-<span><span class="co">## [21] "econ"             "measure"          "notes"            "color"            "text_color"      </span></span>
-<span><span class="co">## [26] "t_int_id"         "t_int_name"       "t_int_age"        "t_prop"           "units_above"     </span></span>
-<span><span class="co">## [31] "b_int_id"         "b_int_name"       "b_int_age"        "b_prop"           "units_below"     </span></span>
-<span><span class="co">## [36] "strat_name_long"  "refs"             "clat"             "clng"             "t_plat"          </span></span>
+<pre><code><span><span class="co">##  [1] "unit_id"          "section_id"       "col_id"           "project_id"      </span></span>
+<span><span class="co">##  [5] "col_area"         "unit_name"        "strat_name_id"    "Mbr"             </span></span>
+<span><span class="co">##  [9] "Fm"               "Gp"               "SGp"              "t_age"           </span></span>
+<span><span class="co">## [13] "b_age"            "max_thick"        "min_thick"        "outcrop"         </span></span>
+<span><span class="co">## [17] "pbdb_collections" "pbdb_occurrences" "lith"             "environ"         </span></span>
+<span><span class="co">## [21] "econ"             "measure"          "notes"            "color"           </span></span>
+<span><span class="co">## [25] "text_color"       "t_int_id"         "t_int_name"       "t_int_age"       </span></span>
+<span><span class="co">## [29] "t_prop"           "units_above"      "b_int_id"         "b_int_name"      </span></span>
+<span><span class="co">## [33] "b_int_age"        "b_prop"           "units_below"      "strat_name_long" </span></span>
+<span><span class="co">## [37] "refs"             "clat"             "clng"             "t_plat"          </span></span>
 <span><span class="co">## [41] "t_plng"           "b_plat"           "b_plng"</span></span></code></pre>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">san_juan_units</span><span class="op">)</span></span></code></pre></div>
