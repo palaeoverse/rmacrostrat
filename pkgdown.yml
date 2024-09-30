@@ -3,12 +3,9 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   geologic-map: geologic-map.html
-  source/geologic-map: source/geologic-map.html
   geological-completeness: geological-completeness.html
-  source/geological-completeness: source/geological-completeness.html
-  source/stratigraphic-column: source/stratigraphic-column.html
   stratigraphic-column: stratigraphic-column.html
-last_built: 2024-09-26T06:03Z
+last_built: 2024-09-30T22:20Z
 urls:
   reference: https://rmacrostrat.palaeoverse.org/reference
   article: https://rmacrostrat.palaeoverse.org/articles
