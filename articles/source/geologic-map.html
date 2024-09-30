@@ -77,7 +77,7 @@
     
 <p><strong>Authors:</strong> <a href="https://palaeoverse.org/#about-us" class="external-link">The Palaeoverse Development
 Team</a></p>
-<p><strong>Last updated:</strong> 2024-09-26</p>
+<p><strong>Last updated:</strong> 2024-09-30</p>
 <div style="text-align: justify">
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
@@ -256,7 +256,7 @@ that let us handle and plot spatial data. Let’s do that now.</p>
 <code class="sourceCode R"><span><span class="co"># Install rnaturalearthhires to use maps with state boundaries</span></span>
 <span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"ropensci/rnaturalearthhires"</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #00BBBB;">──</span> <span style="color: #00BBBB;">R CMD build</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">## * checking for file ‘/tmp/Rtmp4V0hQY/remotes1e80e2b5a24/ropensci-rnaturalearthhires-e02c28d/DESCRIPTION’ ... OK</span></span>
+<span><span class="co">## * checking for file ‘/tmp/RtmpoQQyeY/remotes1ec5179e4361/ropensci-rnaturalearthhires-e02c28d/DESCRIPTION’ ... OK</span></span>
 <span><span class="co">## * preparing ‘rnaturalearthhires’:</span></span>
 <span><span class="co">## * checking DESCRIPTION meta-information ... OK</span></span>
 <span><span class="co">## * checking for LF line-endings in source and make files and shell scripts</span></span>
@@ -351,11 +351,12 @@ to add a silhouette of <em>Edmontosaurus</em> to the map.</p>
 <span><span class="co">## <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
 <span><span class="co">## <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
 <span><span class="co">## <span style="color: #555555;">generated.</span></span></span></code></pre>
+<pre><code><span><span class="co">## Warning: "72be89b9-3f2b-4dc3-b485-e74a5f8b1fbc" is not a valid PhyloPic `uuid`.</span></span></code></pre>
 <p><img src="add-rphylopic-1.png" width="100%"></p>
 <p>Nice! Finally, we can add a few other touches to make it a
 publication-worthy figure, including an inlay map, a scale bar, and a
 North arrow:</p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load `ggpatial` package to add annotations, and `cowplot` to stitch final map </span></span>
 <span><span class="co"># together</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://paleolimbot.github.io/ggspatial/" class="external-link">ggspatial</a></span><span class="op">)</span></span>
@@ -404,7 +405,7 @@ North arrow:</p>
 <p>And that’s it! One completed map.</p>
 <p>…But that’s not all we can do with outcrop data! As a quick extra,
 let’s calculate the total outcrop area of the Hell Creek Formation:</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Fix potential issues with polygon boundaries/shapes</span></span>
 <span><span class="va">hc_area</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://r-spatial.github.io/sf/reference/valid.html" class="external-link">st_make_valid</a></span><span class="op">(</span><span class="va">hc</span><span class="op">)</span></span>
 <span><span class="co"># Calculate the area in meters squared</span></span>
