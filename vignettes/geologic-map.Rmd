@@ -232,7 +232,7 @@ get_attribution(uuid = ed_uuid, text = TRUE)
 ```
 
 ```
-## Organism silhouettes are from PhyloPic (https://www.phylopic.org/; T. Michael Keesey, 2023) and were added using the rphylopic R package ver. 1.4.0.9000 (Gearty & Jones, 2023). Silhouette was made by Matt Dempsey, 2020 (CC BY 3.0). Silhouette was contributed by Matthew Dempsey.
+## Organism silhouettes are from PhyloPic (https://www.phylopic.org/; T. Michael Keesey, 2023) and were added using the rphylopic R package ver. 1.5.0 (Gearty & Jones, 2023). Silhouette was made by Matt Dempsey, 2020 (CC BY 3.0). Silhouette was contributed by Matthew Dempsey.
 ```
 
 ``` r
@@ -247,7 +247,7 @@ ggplot() +
   geom_sf(data = ed_sf, color = "black", size = 0.7) +
   coord_sf(xlim = c(-112, -97), ylim = c(44, 50), expand = FALSE) +
   geom_phylopic(data = silhouette_df, aes(x = x, y = y), uuid = ed_uuid, 
-                size = 0.8, alpha = 1, color = "black") +
+                height = 0.8, alpha = 1, color = "black") +
   labs(x = "Longitude (º)", y = "Latitude (º)")
 ```
 
@@ -297,7 +297,7 @@ ed_hc_map <- ggplot() +
                          height = unit(1, "cm"), width = unit(1, "cm")) +
   annotation_scale(location = "br", width_hint = 0.3) +
   geom_phylopic(data = silhouette_df, aes(x = x, y = y), uuid = ed_uuid, 
-              size = 0.8, alpha = 1, color = "black") +
+                height = 0.8, alpha = 1, color = "black") +
   labs(x = "Longitude (º)", y = "Latitude (º)") +
   theme_bw()
 # Plot the two together
