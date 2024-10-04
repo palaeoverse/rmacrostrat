@@ -286,6 +286,21 @@ ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
         axis.ticks.x = element_blank())
 ```
 
+Oh, we've just noticed that some of the unit names seem to have some mistakes and do not match the [USGS Geolex](https://ngmdb.usgs.gov/Geolex/search). Let's go ahead and update those names.
+
+```{r update_unit_names, eval = TRUE}
+# Standardize and correct unit names according to USGS Geolex
+san_juan_units$unit_name <- gsub(pattern = "Kirkland",
+                                 replacement = "Kirtland",
+                                 x = san_juan_units$unit_name)
+san_juan_units$unit_name <- gsub(pattern = "Graneros Mbr",
+                                 replacement = "Graneros Shale Mbr",
+                                 x = san_juan_units$unit_name)
+san_juan_units$unit_name <- gsub(pattern = "Sanostee Mbr",
+                                 replacement = "Sanastee Sandstone Mbr",
+                                 x = san_juan_units$unit_name)
+```
+
 And finally, we can add a column along the y-axis indicating the different stages of the Cretaceous, using the R package `deeptime`:
 
 ```{r column_f, eval = TRUE, fig.height = 8}

@@ -1,3 +1,9 @@
+# rmacrostrat 1.0.0
+
+* Accepted peer-reviewed version
+* Updated citation file
+* Minor changes to stratigraphic column vignette
+
 # rmacrostrat 0.0.2
 
 * Minor changes to geological completeness vignette

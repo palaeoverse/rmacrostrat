@@ -7,12 +7,11 @@ bibentry(bibtype = "Article",
                     as.person("William Gearty"),
                     as.person("Bethany J. Allen")),
          year = "2024",
-         journal = "EarthArXiv",
-         pages = "1–29",
-         doi = "10.31223/X5XX37",
+         journal = "Geosphere",
+         volume = "20",
+         doi = "10.1130/GES02815.1",
          textVersion = paste("Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024.",
          "rmacrostrat: An R package for accessing and retrieving data from the Macrostrat geological database.",
-         "EarthArXiv,",
-         "1–29,",
-         "doi: 10.31223/X5XX37")
+         "Geosphere, v. 20, ",
+         "doi: 10.1130/GES02815.1")
 )

@@ -11,7 +11,7 @@ vignette: >
 
 **Authors:** [Palaeoverse Development Team](https://palaeoverse.org/#about-us)
 
-**Last updated:** 2024-10-02
+**Last updated:** 2024-10-04
 
 
 
@@ -59,8 +59,9 @@ citation("rmacrostrat")
 ```
 ## To cite rmacrostrat in publications, use the following citation:
 ## 
-##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R package for accessing and retrieving
-##   data from the Macrostrat geological database. EarthArXiv, 1–29, doi: 10.31223/X5XX37
+##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R package for accessing
+##   and retrieving data from the Macrostrat geological database. Geosphere, v. 20, doi:
+##   10.1130/GES02815.1
 ## 
 ## A BibTeX entry for LaTeX users is
 ## 
@@ -68,9 +69,9 @@ citation("rmacrostrat")
 ##     title = {rmacrostrat: An R Package for fetching geologic data from the Macrostrat database.},
 ##     author = {Lewis A. Jones and Christopher D. Dean and William Gearty and Bethany J. Allen},
 ##     year = {2024},
-##     journal = {EarthArXiv},
-##     pages = {1–29},
-##     doi = {10.31223/X5XX37},
+##     journal = {Geosphere},
+##     volume = {20},
+##     doi = {10.1130/GES02815.1},
 ##   }
 ```
 
@@ -297,14 +298,15 @@ colnames(san_juan_units)
 ```
 
 ```
-##  [1] "unit_id"          "section_id"       "col_id"           "project_id"       "col_area"         "unit_name"       
-##  [7] "strat_name_id"    "Mbr"              "Fm"               "Gp"               "SGp"              "t_age"           
-## [13] "b_age"            "max_thick"        "min_thick"        "outcrop"          "pbdb_collections" "pbdb_occurrences"
-## [19] "lith"             "environ"          "econ"             "measure"          "notes"            "color"           
-## [25] "text_color"       "t_int_id"         "t_int_name"       "t_int_age"        "t_prop"           "units_above"     
-## [31] "b_int_id"         "b_int_name"       "b_int_age"        "b_prop"           "units_below"      "strat_name_long" 
-## [37] "refs"             "clat"             "clng"             "t_plat"           "t_plng"           "b_plat"          
-## [43] "b_plng"
+##  [1] "unit_id"          "section_id"       "col_id"           "project_id"       "col_area"        
+##  [6] "unit_name"        "strat_name_id"    "Mbr"              "Fm"               "Gp"              
+## [11] "SGp"              "t_age"            "b_age"            "max_thick"        "min_thick"       
+## [16] "outcrop"          "pbdb_collections" "pbdb_occurrences" "lith"             "environ"         
+## [21] "econ"             "measure"          "notes"            "color"            "text_color"      
+## [26] "t_int_id"         "t_int_name"       "t_int_age"        "t_prop"           "units_above"     
+## [31] "b_int_id"         "b_int_name"       "b_int_age"        "b_prop"           "units_below"     
+## [36] "strat_name_long"  "refs"             "clat"             "clng"             "t_plat"          
+## [41] "t_plng"           "b_plat"           "b_plng"
 ```
 
 ``` r
@@ -452,6 +454,22 @@ ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
 <img src="column_e-1.png" alt="plot of chunk column_e" width="100%" />
 <p class="caption">plot of chunk column_e</p>
 </div>
+
+Oh, we've just noticed that some of the unit names seem to have some mistakes and do not match the [USGS Geolex](https://ngmdb.usgs.gov/Geolex/search). Let's go ahead and update those names.
+
+
+``` r
+# Standardize and correct unit names according to USGS Geolex
+san_juan_units$unit_name <- gsub(pattern = "Kirkland",
+                                 replacement = "Kirtland",
+                                 x = san_juan_units$unit_name)
+san_juan_units$unit_name <- gsub(pattern = "Graneros Mbr",
+                                 replacement = "Graneros Shale Mbr",
+                                 x = san_juan_units$unit_name)
+san_juan_units$unit_name <- gsub(pattern = "Sanostee Mbr",
+                                 replacement = "Sanastee Sandstone Mbr",
+                                 x = san_juan_units$unit_name)
+```
 
 And finally, we can add a column along the y-axis indicating the different stages of the Cretaceous, using the R package `deeptime`:
 

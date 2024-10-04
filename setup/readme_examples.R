@@ -21,6 +21,16 @@ san_juan_units$x_min[11] <- 0.5
 # Add midpoint age for plotting
 san_juan_units$m_age <- (san_juan_units$b_age +
                            san_juan_units$t_age) / 2
+# Standardize and correct unit names according to USGS Geolex
+san_juan_units$unit_name <- gsub(pattern = "Kirkland",
+                                 replacement = "Kirtland",
+                                 x = san_juan_units$unit_name)
+san_juan_units$unit_name <- gsub(pattern = "Graneros Mbr",
+                                 replacement = "Graneros Shale Mbr",
+                                 x = san_juan_units$unit_name)
+san_juan_units$unit_name <- gsub(pattern = "Sanostee Mbr",
+                                 replacement = "Sanastee Sandstone Mbr",
+                                 x = san_juan_units$unit_name)
 # Plot stratigraphic column
 ggplot(san_juan_units, aes(ymin = b_age, ymax = t_age,
                            xmin = x_min, xmax = x_max)) +
@@ -52,7 +62,7 @@ ggsave("./man/figures/strat_column.png",
 # Load libraries
 library(rmacrostrat)
 library(ggplot2)
-library(sf)
+library(ggspatial)
 # Get data for the chosen formation
 hc_def <- def_strat_names(strat_name = "Hell Creek", rank = "Fm")
 # Get spatial outcrop data for the formation
@@ -61,6 +71,10 @@ hc <- get_map_outcrop(strat_name_id = hc_def$strat_name_id, sf = TRUE)
 ggplot() +
   geom_sf(data = hc, fill = "#C7622B", lwd = 0) +
   coord_sf(xlim = c(-112, -97), ylim = c(44, 50)) +
+  annotation_north_arrow(location = "br",
+                         pad_y = unit(0.75, "cm"),
+                         height = unit(1, "cm"), width = unit(1, "cm")) +
+  annotation_scale(location = "br", width_hint = 0.3) +
   theme_bw()
 
 # Save
