@@ -13,7 +13,7 @@
 The goal of `rmacrostrat` is to streamline and improve accessibility to the geological database [Macrostrat](https://macrostrat.org). The package provides functionality for querying the database via the dedicated application programming interface (API) and retrieving various geological data (e.g., lithostratigraphic units) and definitions/metadata associated with those data and Macrostrat more broadly.
 
 ## Development team
-- [Lewis A. Jones](mailto:LewisAlan.Jones@uvigo.es), Universidade de Vigo
+- [Lewis A. Jones](mailto:Lewis.Jones@ucl.ac.uk), University College London
 - [William Gearty](mailto:willgearty@gmail.com), American Museum of Natural History
 - [Christopher D. Dean](mailto:christopherdaviddean@gmail.com), University College London
 - [Bethany J. Allen](mailto:Bethany.Allen@bsse.ethz.ch), ETH Zürich
