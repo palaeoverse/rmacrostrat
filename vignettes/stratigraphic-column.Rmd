@@ -11,7 +11,7 @@ vignette: >
 
 **Authors:** [Palaeoverse Development Team](https://palaeoverse.org/#about-us)
 
-**Last updated:** 2024-10-04
+**Last updated:** 2024-10-17
 
 
 
@@ -59,9 +59,8 @@ citation("rmacrostrat")
 ```
 ## To cite rmacrostrat in publications, use the following citation:
 ## 
-##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R package for accessing
-##   and retrieving data from the Macrostrat geological database. Geosphere, v. 20, doi:
-##   10.1130/GES02815.1
+##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R package for accessing and retrieving data from
+##   the Macrostrat geological database. Geosphere doi: 10.1130/GES02815.1
 ## 
 ## A BibTeX entry for LaTeX users is
 ## 
@@ -70,7 +69,6 @@ citation("rmacrostrat")
 ##     author = {Lewis A. Jones and Christopher D. Dean and William Gearty and Bethany J. Allen},
 ##     year = {2024},
 ##     journal = {Geosphere},
-##     volume = {20},
 ##     doi = {10.1130/GES02815.1},
 ##   }
 ```
@@ -298,15 +296,13 @@ colnames(san_juan_units)
 ```
 
 ```
-##  [1] "unit_id"          "section_id"       "col_id"           "project_id"       "col_area"        
-##  [6] "unit_name"        "strat_name_id"    "Mbr"              "Fm"               "Gp"              
-## [11] "SGp"              "t_age"            "b_age"            "max_thick"        "min_thick"       
-## [16] "outcrop"          "pbdb_collections" "pbdb_occurrences" "lith"             "environ"         
-## [21] "econ"             "measure"          "notes"            "color"            "text_color"      
-## [26] "t_int_id"         "t_int_name"       "t_int_age"        "t_prop"           "units_above"     
-## [31] "b_int_id"         "b_int_name"       "b_int_age"        "b_prop"           "units_below"     
-## [36] "strat_name_long"  "refs"             "clat"             "clng"             "t_plat"          
-## [41] "t_plng"           "b_plat"           "b_plng"
+##  [1] "unit_id"          "section_id"       "col_id"           "project_id"       "col_area"         "unit_name"        "strat_name_id"   
+##  [8] "Mbr"              "Fm"               "Gp"               "SGp"              "t_age"            "b_age"            "max_thick"       
+## [15] "min_thick"        "outcrop"          "pbdb_collections" "pbdb_occurrences" "lith"             "environ"          "econ"            
+## [22] "measure"          "notes"            "color"            "text_color"       "t_int_id"         "t_int_name"       "t_int_age"       
+## [29] "t_prop"           "units_above"      "b_int_id"         "b_int_name"       "b_int_age"        "b_prop"           "units_below"     
+## [36] "strat_name_long"  "refs"             "clat"             "clng"             "t_plat"           "t_plng"           "b_plat"          
+## [43] "b_plng"
 ```
 
 ``` r
