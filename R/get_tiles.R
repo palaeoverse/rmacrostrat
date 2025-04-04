@@ -77,7 +77,7 @@ get_tiles <- function(zoom = 0, x = NULL, y = NULL, scale = "carto") {
       if (http_error(url)) {
         stop("Tile does not exist: ", url)
       }
-      tiles_list[[length(tiles_list) + 1]] <- read_mvt_sf(url)
+      tiles_list[[paste0(i, "/", j)]] <- read_mvt_sf(url)
     }
   }
   # remove tiles without data
@@ -87,16 +87,12 @@ get_tiles <- function(zoom = 0, x = NULL, y = NULL, scale = "carto") {
   # TODO: use st_union to combine duplicates based on map_id
   lines <- lapply(tiles_filt, function(x) x$lines)
   lines_filt <- Filter(Negate(is.null), lines)
-  tiles$lines <- as.data.frame(st_rbindlist(lines_filt,
-                                            use.names = TRUE,
-                                            ignore.attr = TRUE,
-                                            fill = TRUE))
+  tiles$lines <- st_rbindlist(lines_filt, use.names = TRUE, ignore.attr = TRUE,
+                              fill = TRUE, idcol = "tile")
   units <- lapply(tiles_filt, function(x) x$units)
   units_filt <- Filter(Negate(is.null), units)
-  tiles$units <- as.data.frame(st_rbindlist(units_filt,
-                                            use.names = TRUE,
-                                            ignore.attr = TRUE,
-                                            fill = TRUE))
+  tiles$units <- st_rbindlist(units_filt, use.names = TRUE, ignore.attr = TRUE,
+                              fill = TRUE, idcol = "tile")
   return(tiles)
   # TODO: document variables in return object
 }
@@ -122,7 +118,7 @@ st_rbindlist <- function(l, ..., geometry_name = NULL) {
   if(!any(is_not_null)) {
     stop("no sf objects included in input list", call. = FALSE)
   }
-  if (length(unique(lapply(l[is_not_null], sf::st_crs))) > 1) {
+  if (length(unique(lapply(l[is_not_null], st_crs))) > 1) {
     stop("arguments have different crs", call. = FALSE)
   }
   # name of geometry column of the first listed sf-object
@@ -145,7 +141,7 @@ st_rbindlist <- function(l, ..., geometry_name = NULL) {
     }
   }
 
-  sf <- st_as_sf(data.table::rbindlist(l, ...))
+  sf <- st_as_sf(rbindlist(l, ...))
   sf <- sf[seq_len(nrow(sf)), ]
   class(sf) <- c("sf", "data.frame")
 
