@@ -27,6 +27,7 @@ Imports:
     geojsonsf,
     httr,
     jsonlite,
+    protolite,
     sf
 Suggests:
     covr,
