@@ -85,13 +85,75 @@ get_tiles <- function(zoom = 0, x = NULL, y = NULL, scale = "carto") {
   # combine the tiles
   tiles <- list()
   # TODO: use st_union to combine duplicates based on map_id
-  # NOTE: do.call(rbind) can take a while for high zooms
   lines <- lapply(tiles_filt, function(x) x$lines)
   lines_filt <- Filter(Negate(is.null), lines)
-  tiles$lines <- do.call(rbind, lines_filt)
+  tiles$lines <- as.data.frame(st_rbindlist(lines_filt,
+                                            use.names = TRUE,
+                                            ignore.attr = TRUE,
+                                            fill = TRUE))
   units <- lapply(tiles_filt, function(x) x$units)
   units_filt <- Filter(Negate(is.null), units)
-  tiles$units <- do.call(rbind, units_filt)
+  tiles$units <- as.data.frame(st_rbindlist(units_filt,
+                                            use.names = TRUE,
+                                            ignore.attr = TRUE,
+                                            fill = TRUE))
   return(tiles)
   # TODO: document variables in return object
+}
+
+# MODIFIED FROM https://github.com/a-benini/sfhelpers
+#' @importFrom data.table rbindlist
+#' @importFrom sf st_as_sf st_crs st_geometry_type
+#' @importFrom uuid UUIDgenerate
+st_rbindlist <- function(l, ..., geometry_name = NULL) {
+  if (!is.list(l) || is.data.frame(l)) {
+    stop("input is ", class(l)[1L], " but should be a plain list of sf objects",
+         " to be stacked", call. = FALSE)
+  }
+  if (!(is.null(geometry_name) | (is.character(geometry_name) &
+                                 length(geometry_name) == 1))) {
+    stop("geometry_name must be either NULL or a single character string",
+         call. = FALSE)
+  }
+  is_not_null <- !vapply(l, is.null, logical(1))
+  if (!all(vapply(l[is_not_null], inherits, what = "sf", logical(1)))) {
+    stop("not all listed objects are of the class sf", call. = FALSE)
+  }
+  if(!any(is_not_null)) {
+    stop("no sf objects included in input list", call. = FALSE)
+  }
+  if (length(unique(lapply(l[is_not_null], sf::st_crs))) > 1) {
+    stop("arguments have different crs", call. = FALSE)
+  }
+  # name of geometry column of the first listed sf-object
+  first_geometry_name <- attr(l[is_not_null][[1]], "sf_column")
+
+  # homogenize name of active geometry columns
+  if (length(unique(vapply(l[is_not_null], attr,
+                           which = "sf_column", character(1)))) > 1) {
+    tmp_geometry_name <- UUIDgenerate()
+    for (i in seq_along(l)[is_not_null]) {
+      st_geometry(l[[i]]) <- tmp_geometry_name
+    }
+  }
+
+  # homogenize geometry types
+  if (length(unique(vapply(l[is_not_null], st_geometry_type,
+                           by_geometry = FALSE, factor(1)))) > 1) {
+    for (i in seq_along(l)[is_not_null]) {
+      class(l[[i]][[attr(l[[i]], "sf_column")]])[[1]] <- "sfc_GEOMETRY"
+    }
+  }
+
+  sf <- st_as_sf(data.table::rbindlist(l, ...))
+  sf <- sf[seq_len(nrow(sf)), ]
+  class(sf) <- c("sf", "data.frame")
+
+  if (is.null(geometry_name)) {
+    st_geometry(sf) <- first_geometry_name
+  } else {
+    st_geometry(sf) <- geometry_name
+  }
+
+  return(sf)
 }

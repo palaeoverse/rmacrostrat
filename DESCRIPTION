@@ -24,11 +24,13 @@ Depends:
     R (>= 4.0)
 Imports: 
     curl,
+    data.table,
     geojsonsf,
     httr,
     jsonlite,
     protolite,
-    sf
+    sf,
+    uuid
 Suggests:
     covr,
     cowplot,
