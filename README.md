@@ -16,7 +16,7 @@ The goal of `rmacrostrat` is to streamline and improve accessibility to the geol
 - [Lewis A. Jones](mailto:Lewis.Jones@ucl.ac.uk), University College London
 - [William Gearty](mailto:willgearty@gmail.com), American Museum of Natural History
 - [Christopher D. Dean](mailto:christopherdaviddean@gmail.com), University College London
-- [Bethany J. Allen](mailto:Bethany.Allen@bsse.ethz.ch), ETH Zürich
+- [Bethany J. Allen](mailto:bethany.janet.allen@gfz.de), GFZ Helmholtz Centre for Geosciences
 
 ## Installation
 
