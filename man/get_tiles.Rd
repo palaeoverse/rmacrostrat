@@ -75,8 +75,8 @@ Lewis A. Jones
 \donttest{
 # get single carto tile of the world
 ex1 <- get_tiles()
-# get specific "large" tile
-ex2 <- get_tiles(zoom = 6, x = 5, y = 5, scale = "tiny")
+# get specific tile at a higher zoom
+ex2 <- get_tiles(zoom = 6, x = 5, y = 5)
 }
 }
 \seealso{

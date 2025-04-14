@@ -55,14 +55,14 @@
 #' \donttest{
 #' # get single carto tile of the world
 #' ex1 <- get_tiles()
-#' # get specific "large" tile
-#' ex2 <- get_tiles(zoom = 6, x = 5, y = 5, scale = "tiny")
+#' # get specific tile at a higher zoom
+#' ex2 <- get_tiles(zoom = 6, x = 5, y = 5)
 #' }
 #' @export
 #' @importFrom protolite read_mvt_sf
 #' @importFrom httr http_error
 #' @importFrom sf st_union
-#' @importFrom utils txtProgressBar
+#' @importFrom utils txtProgressBar setProgressBar
 #' @family maps
 get_tiles <- function(zoom = 0, x = NULL, y = NULL, scale = "carto",
                       combined = TRUE) {
