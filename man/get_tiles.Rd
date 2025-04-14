@@ -4,7 +4,7 @@
 \alias{get_tiles}
 \title{Retrieve Macrostrat vectorized tiles}
 \usage{
-get_tiles(zoom = 0, x = NULL, y = NULL, scale = "carto")
+get_tiles(zoom = 0, x = NULL, y = NULL, scale = "carto", combined = TRUE)
 }
 \arguments{
 \item{zoom}{\code{integer}. The unique identification number(s) of the map
@@ -24,6 +24,12 @@ are "tiny" (global), "small" (continental), "medium" (regional), "large",
 visualization purposes, and makes many assumptions about the relative
 priority of each map. The layers and scales are seamlessly blended so no
 scale-dependent decisions can or should be made.}
+
+\item{combined}{\code{logical}. Whether all tiles should be combined. If
+\code{TRUE} (the default), the function returns a single list with all
+tiles combined (as described below). If \code{FALSE}, the function returns
+a list of lists, each element of which represents the data for a single
+tile.}
 }
 \value{
 A \code{list} of length two containing the following elements:
@@ -44,6 +50,16 @@ polygons. It includes 23 variables:
 \description{
 A function to retrieve map tile data from the
 \href{https://tiles.macrostrat.org/}{Macrostrat tile server}. This includes
+geologic line features such as faults, anticlines, and moraines, as well as
+geologic map polygons. The function retrieves the data in vectorized tile
+format.
+}
+\details{
+Note that the tile indices (\code{x} and \code{y}) are zero-indexed,
+meaning that the first tile in each dimension is \code{0}. The zoom level
+is also zero-indexed, meaning that the first zoom level is \code{0}. For a
+given zoom level, the possible tile indices are \code{0} to \code{2 ^ zoom
+  - 1}.
 }
 \section{Developer(s)}{
 

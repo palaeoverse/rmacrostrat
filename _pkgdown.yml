@@ -42,6 +42,7 @@ reference:
   - get_map_outcrop
   - get_map_points
   - get_map_legends
+  - get_tiles
   - def_sources
 
 - title: External data linked to Macrostrat entities

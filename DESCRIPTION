@@ -29,8 +29,7 @@ Imports:
     httr,
     jsonlite,
     protolite,
-    sf,
-    uuid
+    sf
 Suggests:
     covr,
     cowplot,
