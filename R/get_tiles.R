@@ -99,7 +99,7 @@ get_tiles <- function(zoom = 0, x = NULL, y = NULL, scale = "carto") {
 
 # MODIFIED FROM https://github.com/a-benini/sfhelpers
 #' @importFrom data.table rbindlist
-#' @importFrom sf st_as_sf st_crs st_geometry_type
+#' @importFrom sf st_as_sf st_crs st_geometry st_geometry_type
 #' @importFrom uuid UUIDgenerate
 st_rbindlist <- function(l, ..., geometry_name = NULL) {
   if (!is.list(l) || is.data.frame(l)) {
