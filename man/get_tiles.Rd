@@ -7,7 +7,8 @@
 get_tiles(zoom = 0, x = NULL, y = NULL, scale = "carto", combined = TRUE)
 }
 \arguments{
-\item{zoom}{\code{integer}. The zoom level of the tile(s) to retrieve.}
+\item{zoom}{\code{integer}. The zoom level of the tile(s) to retrieve. The
+minimum zoom level is \code{0}.}
 
 \item{x}{\code{integer}. The x index/indices of the tile(s) to retrieve. If
 \code{NULL} (the default), tiles of all x indices will be retrieved and
@@ -100,8 +101,8 @@ A function to retrieve map tile data from the
 \href{https://tiles.macrostrat.org/}{Macrostrat tile server}. This includes
 geologic line features such as faults, anticlines, and moraines, as well as
 geologic map polygons (similar to \code{\link[=get_map_outcrop]{get_map_outcrop()}} but for an entire
-geographic tile). The function retrieves the data in vectorized tile
-format.
+geographic tile). The function retrieves the data in vectorized (\code{sf})
+tile format.
 }
 \details{
 The tile indices (\code{x} and \code{y}) are zero-indexed, meaning
@@ -111,11 +112,16 @@ zero-indexed, meaning that the first (most zoomed out) zoom level is
 \code{2 ^ zoom - 1}. Note that retrieving multiple (or all tiles) at higher
 zoom levels returns large (memory-wise) data objects.
 
-Also note that adjacent tiles have a small amount of overlap. Furthermore,
-two (or more) tiles may contain parts of the same geologic outcrop polygon.
-To address both of these problems, users may wish wish to combine these
-polygons using the \code{\link[sf:geos_combine]{sf::st_union()}} function (either with
-\code{dplyr::group_by(map_id)} or \code{palaeoverse::group_apply()}).
+Also note that two (or more) tiles may contain parts of the same geologic
+outcrop polygon. Since tiles also overlap slightly, these separate outcrop
+components may also overlap, which may lead to confusing visualizations or
+invalid downstream analyses. To address this, users are encouraged to union
+polygons that have the same \code{map_id} values using the \code{\link[sf:geos_combine]{sf::st_union()}}
+function (either with a combination of \code{\link[dplyr:group_by]{dplyr::group_by()}} and
+\code{\link[dplyr:summarise]{dplyr::summarise()}} or with \code{\link[palaeoverse:group_apply]{palaeoverse::group_apply()}}, the former of
+which is significantly faster for a large number of tiles). We have not
+implemented this here to reduce the number of package dependencies and to
+reduce the computational time of this function.
 }
 \section{Developer(s)}{
 

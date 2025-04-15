@@ -4,8 +4,8 @@
 #'   [Macrostrat tile server](https://tiles.macrostrat.org/). This includes
 #'   geologic line features such as faults, anticlines, and moraines, as well as
 #'   geologic map polygons (similar to [get_map_outcrop()] but for an entire
-#'   geographic tile). The function retrieves the data in vectorized tile
-#'   format.
+#'   geographic tile). The function retrieves the data in vectorized (\code{sf})
+#'   tile format.
 #'
 #' @details The tile indices (\code{x} and \code{y}) are zero-indexed, meaning
 #'   that the first tile in each dimension is \code{0}. The zoom level is also
@@ -14,13 +14,19 @@
 #'   \code{2 ^ zoom - 1}. Note that retrieving multiple (or all tiles) at higher
 #'   zoom levels returns large (memory-wise) data objects.
 #'
-#'   Also note that adjacent tiles have a small amount of overlap. Furthermore,
-#'   two (or more) tiles may contain parts of the same geologic outcrop polygon.
-#'   To address both of these problems, users may wish wish to combine these
-#'   polygons using the [sf::st_union()] function (either with
-#'   \code{dplyr::group_by(map_id)} or \code{palaeoverse::group_apply()}).
+#'   Also note that two (or more) tiles may contain parts of the same geologic
+#'   outcrop polygon. Since tiles also overlap slightly, these separate outcrop
+#'   components may also overlap, which may lead to confusing visualizations or
+#'   invalid downstream analyses. To address this, users are encouraged to union
+#'   polygons that have the same \code{map_id} values using the [sf::st_union()]
+#'   function (either with a combination of [dplyr::group_by()] and
+#'   [dplyr::summarise()] or with [palaeoverse::group_apply()], the former of
+#'   which is significantly faster for a large number of tiles). We have not
+#'   implemented this here to reduce the number of package dependencies and to
+#'   reduce the computational time of this function.
 #'
-#' @param zoom \code{integer}. The zoom level of the tile(s) to retrieve.
+#' @param zoom \code{integer}. The zoom level of the tile(s) to retrieve. The
+#'   minimum zoom level is \code{0}.
 #' @param x \code{integer}. The x index/indices of the tile(s) to retrieve. If
 #'   \code{NULL} (the default), tiles of all x indices will be retrieved and
 #'   combined.
@@ -183,7 +189,6 @@ get_tiles <- function(zoom = 0, x = NULL, y = NULL, scale = "carto",
   tiles_filt <- Filter(length, tiles_list)
   # combine the tiles
   tiles <- list()
-  # TODO: use st_union to combine duplicates based on map_id
   cat("Cleaning and combining tiles...\n")
   lines <- lapply(tiles_filt, function(x) x$lines)
   lines_filt <- Filter(Negate(is.null), lines)
@@ -194,7 +199,6 @@ get_tiles <- function(zoom = 0, x = NULL, y = NULL, scale = "carto",
   tiles$units <- st_rbindlist(units_filt, use.names = TRUE, ignore.attr = TRUE,
                               fill = TRUE, idcol = "tile")
   return(tiles)
-  # TODO: document variables in return object
 }
 
 # MODIFIED FROM https://github.com/a-benini/sfhelpers
