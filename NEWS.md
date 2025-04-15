@@ -1,3 +1,7 @@
+# rmacrostrat (development version)
+
+* Added get_tiles to retrieve vectorized map tile data from the [Macrostrat tile server](https://tiles.macrostrat.org/)
+
 # rmacrostrat 1.0.0
 
 * Accepted peer-reviewed version
