@@ -7,8 +7,7 @@
 get_tiles(zoom = 0, x = NULL, y = NULL, scale = "carto", combined = TRUE)
 }
 \arguments{
-\item{zoom}{\code{integer}. The unique identification number(s) of the map
-outcrop shape element(s) to return.}
+\item{zoom}{\code{integer}. The zoom level of the tile(s) to retrieve.}
 
 \item{x}{\code{integer}. The x index/indices of the tile(s) to retrieve. If
 \code{NULL} (the default), tiles of all x indices will be retrieved and
@@ -35,15 +34,64 @@ tile.}
 A \code{list} of length two containing the following elements:
 \itemize{
 \item \code{lines}: An \code{sf} object containing the geologic line
-features such as faults, anticlines, and moraines. It includes 7
+features such as faults, anticlines, and moraines. It includes 8
 variables:
 \itemize{
-\item \code{map_id}: The unique identification number of the geologic
+\item \code{tile}: An identifier of the form "x/y" for the tile that
+contains the line feature. Not included if \code{combined = FALSE}.
+\item \code{line_id}: The unique identifier for a line feature.
+\item \code{source_id}: An integer that corresponds to the original map
+sources (see \code{\link[=def_sources]{def_sources()}}).
+\item \code{descrip}: A description of the line.
+\item \code{name}: The name of the line, if available.
+\item \code{direction}: A normalized direction of the line. Not
+commonly available.
+\item \code{type}: A normalized line type (fault, fold, anticline,
+etc).
+\item \code{geometry}: The line features as \code{sf} objects.
 }
 \item \code{units}: An \code{sf} object containing the geologic map
-polygons. It includes 23 variables:
+polygons. It includes 24 variables:
 \itemize{
-\item \code{map_id}: The unique identification number of the geologic
+\item \code{tile}: An identifier of the form "x/y" for the tile that
+contains the polygon. Not included if \code{combined = FALSE}.
+\item \code{map_id}: The unique identifier for a polygon (see
+[get_map_outcrop[]).
+\item \code{source_id}: An integer that corresponds to the original map
+sources (see \code{\link[=def_sources]{def_sources()}}).
+\item \code{legend_id}: An integer that corresponds to the
+associated legend component of the original map source (see
+\code{\link[=get_map_legends]{get_map_legends()}}).
+\item \code{best_age_top}: The best top age that Macrostrat can assign
+to the unit based on linked resources.
+\item \code{best_age_bottom}: The best bottom age that Macrostrat can
+assign to the unit based on linked resources.
+\item \code{color}: A hex code associated with the best containing time
+interval for the map unit.
+\item \code{name}: The name of the polygon. Usually either a
+stratigraphic name or lithological description.
+\item \code{age}: The age indicated by the map author.
+\item \code{lith}: Lithologies, or lithological description (see
+\code{\link[=def_lithologies]{def_lithologies()}}).
+\item \code{descrip}: A description of the map unit.
+\item \code{comments}: Comments about the map unit.
+\item \code{t_int_id}: The Macrostrat interval ID associated with the
+top age of the map unit (see \code{\link[=def_intervals]{def_intervals()}}).
+\item \code{t_int}: The name of the Macrostrat interval associated with
+the top age of the map unit (see \code{\link[=def_intervals]{def_intervals()}}).
+\item \code{b_int_id}: The Macrostrat interval ID associated with the
+bottom age of the map unit (see \code{\link[=def_intervals]{def_intervals()}}).
+\item \code{b_int}: The name of the Macrostrat interval associated with
+the bottom age of the map unit (see \code{\link[=def_intervals]{def_intervals()}}).
+\item \code{ref_url}: A URL to the original map source.
+\item \code{ref_name}: The name of the original map source.
+\item \code{ref_title}: The title of the original map source.
+\item \code{ref_authors}: The authors of the original map source.
+\item \code{ref_source}: The publication source of the original map
+source.
+\item \code{ref_year}: The publication year of the original map source.
+\item \code{ref_isbn}: The ISBN of the original map source.
+\item \code{geometry}: The polygon geometries as \code{sf} objects.
 }
 }
 }
@@ -51,15 +99,23 @@ polygons. It includes 23 variables:
 A function to retrieve map tile data from the
 \href{https://tiles.macrostrat.org/}{Macrostrat tile server}. This includes
 geologic line features such as faults, anticlines, and moraines, as well as
-geologic map polygons. The function retrieves the data in vectorized tile
+geologic map polygons (similar to \code{\link[=get_map_outcrop]{get_map_outcrop()}} but for an entire
+geographic tile). The function retrieves the data in vectorized tile
 format.
 }
 \details{
-Note that the tile indices (\code{x} and \code{y}) are zero-indexed,
-meaning that the first tile in each dimension is \code{0}. The zoom level
-is also zero-indexed, meaning that the first zoom level is \code{0}. For a
-given zoom level, the possible tile indices are \code{0} to \code{2 ^ zoom
-  - 1}.
+The tile indices (\code{x} and \code{y}) are zero-indexed, meaning
+that the first tile in each dimension is \code{0}. The zoom level is also
+zero-indexed, meaning that the first (most zoomed out) zoom level is
+\code{0}. For a given zoom level, the possible tile indices are \code{0} to
+\code{2 ^ zoom - 1}. Note that retrieving multiple (or all tiles) at higher
+zoom levels returns large (memory-wise) data objects.
+
+Also note that adjacent tiles have a small amount of overlap. Furthermore,
+two (or more) tiles may contain parts of the same geologic outcrop polygon.
+To address both of these problems, users may wish wish to combine these
+polygons using the \code{\link[sf:geos_combine]{sf::st_union()}} function (either with
+\code{dplyr::group_by(map_id)} or \code{palaeoverse::group_apply()}).
 }
 \section{Developer(s)}{
 
