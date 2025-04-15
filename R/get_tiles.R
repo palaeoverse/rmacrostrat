@@ -159,6 +159,7 @@ get_tiles <- function(zoom = 0, x = NULL, y = NULL, scale = "carto",
   tiles_list <- list()
   cat("Retrieving tiles...\n")
   pb <- txtProgressBar(min = 0, max = length(x) * length(y), style = 3)
+  ind <- 1
   for (i in x) {
     for (j in y) {
       # Check if the tile exists
@@ -170,7 +171,8 @@ get_tiles <- function(zoom = 0, x = NULL, y = NULL, scale = "carto",
         stop("Tile does not exist: ", url)
       }
       tiles_list[[paste0(i, "/", j)]] <- read_mvt_sf(url)
-      setTxtProgressBar(pb, i * length(y) + j + 1)
+      setTxtProgressBar(pb, ind)
+      ind <- ind + 1
     }
   }
   close(pb)
