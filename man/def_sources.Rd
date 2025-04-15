@@ -92,7 +92,8 @@ ex4 <- def_sources(shape = st_as_text(line), buffer = 100)
 Geologic maps:
 \code{\link{get_map_legends}()},
 \code{\link{get_map_outcrop}()},
-\code{\link{get_map_points}()}
+\code{\link{get_map_points}()},
+\code{\link{get_tiles}()}
 
 Macrostrat database metadata:
 \code{\link{def_projects}()},
