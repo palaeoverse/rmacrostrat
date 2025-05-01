@@ -11,7 +11,7 @@ vignette: >
 
 **Authors:** [The Palaeoverse Development Team](https://palaeoverse.org/#about-us)
 
-**Last updated:** 2024-10-17
+**Last updated:** 2025-05-01
 
 
 
@@ -53,8 +53,8 @@ citation("rmacrostrat")
 ```
 ## To cite rmacrostrat in publications, use the following citation:
 ## 
-##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R package for accessing and retrieving data from
-##   the Macrostrat geological database. Geosphere doi: 10.1130/GES02815.1
+##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R package for accessing and retrieving
+##   data from the Macrostrat geological database. Geosphere, v. 20:6, 1456--1467. doi: 10.1130/GES02815.1
 ## 
 ## A BibTeX entry for LaTeX users is
 ## 
@@ -63,6 +63,9 @@ citation("rmacrostrat")
 ##     author = {Lewis A. Jones and Christopher D. Dean and William Gearty and Bethany J. Allen},
 ##     year = {2024},
 ##     journal = {Geosphere},
+##     volume = {20},
+##     number = {6},
+##     pages = {1456--1467},
 ##     doi = {10.1130/GES02815.1},
 ##   }
 ```
@@ -131,10 +134,10 @@ head(hc, n = 1)
 ## Dimension:     XY
 ## Bounding box:  xmin: -110.0199 ymin: 45.86057 xmax: -110.0168 ymax: 45.86277
 ## Geodetic CRS:  WGS 84
-##    map_id source_id                 name           strat_name                          lith descrip comments macro_units       strat_names
-## 1 2092425        25 Hell Creek Formation Hell Creek Formation Major:: {sandstone, mudstone}                         9213 867, 71267, 71268
-##   liths t_int_id t_int_age      t_int_name b_int_id b_int_age      b_int_name   color t_age b_age best_int_name
-## 1 7, 10       34        66 Late Cretaceous       34     100.5 Late Cretaceous #F2FA8C    66  72.1 Maastrichtian
+##    map_id source_id                 name           strat_name                          lith descrip comments macro_units
+## 1 2092425        25 Hell Creek Formation Hell Creek Formation Major:: {sandstone, mudstone}                         9213
+##         strat_names liths t_int_id t_int_age      t_int_name b_int_id b_int_age      b_int_name   color t_age b_age best_int_name
+## 1 867, 71267, 71268 7, 10       34        66 Late Cretaceous       34     100.5 Late Cretaceous #F2FA8C    66  72.1 Maastrichtian
 ##                         geometry
 ## 1 MULTIPOLYGON (((-110.0168 4...
 ```
@@ -147,6 +150,33 @@ To plot our outcrop map, we'll have to install and load some packages that let u
 ``` r
 # Install rnaturalearthhires to use maps with state boundaries
 devtools::install_github("ropensci/rnaturalearthhires")
+```
+
+```
+## ── R CMD build ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+##   
+   checking for file ‘/private/var/folders/85/wlm9sk6j32q_hg2dpxl1k7_40000gn/T/RtmpsoXBk5/remotes154af7a8b6a22/ropensci-rnaturalearthhires-153b0ea/DESCRIPTION’ ...
+  
+✔  checking for file ‘/private/var/folders/85/wlm9sk6j32q_hg2dpxl1k7_40000gn/T/RtmpsoXBk5/remotes154af7a8b6a22/ropensci-rnaturalearthhires-153b0ea/DESCRIPTION’
+## 
+  
+─  preparing ‘rnaturalearthhires’:
+##    checking DESCRIPTION meta-information ...
+  
+✔  checking DESCRIPTION meta-information
+## 
+  
+─  checking for LF line-endings in source and make files and shell scripts
+## 
+  
+─  checking for empty or unneeded directories
+## 
+  
+─  building ‘rnaturalearthhires_1.0.0.9000.tar.gz’
+## 
+  
+   
+## 
 ```
 
 
@@ -231,7 +261,7 @@ get_attribution(uuid = ed_uuid, text = TRUE)
 ```
 
 ```
-## Organism silhouettes are from PhyloPic (https://www.phylopic.org/; T. Michael Keesey, 2023) and were added using the rphylopic R package ver. 1.4.0.9000 (Gearty & Jones, 2023). Silhouette was made by Matt Dempsey, 2020 (CC BY 3.0). Silhouette was contributed by Matthew Dempsey.
+## Organism silhouettes are from PhyloPic (https://www.phylopic.org/; T. Michael Keesey, 2023) and were added using the rphylopic R package ver. 1.5.0 (Gearty & Jones, 2023). Silhouette was made by Matt Dempsey, 2020 (CC BY 3.0). Silhouette was contributed by Matthew Dempsey.
 ```
 
 ``` r

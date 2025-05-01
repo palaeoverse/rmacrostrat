@@ -11,7 +11,7 @@ vignette: >
 
 **Authors:** [Palaeoverse Development Team](https://palaeoverse.org/#about-us)
 
-**Last updated:** 2024-10-17
+**Last updated:** 2025-05-01
 
 
 
@@ -55,8 +55,8 @@ citation("rmacrostrat")
 ```
 ## To cite rmacrostrat in publications, use the following citation:
 ## 
-##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R package for accessing and retrieving data from
-##   the Macrostrat geological database. Geosphere doi: 10.1130/GES02815.1
+##   Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R package for accessing and retrieving
+##   data from the Macrostrat geological database. Geosphere, v. 20:6, 1456--1467. doi: 10.1130/GES02815.1
 ## 
 ## A BibTeX entry for LaTeX users is
 ## 
@@ -65,6 +65,9 @@ citation("rmacrostrat")
 ##     author = {Lewis A. Jones and Christopher D. Dean and William Gearty and Bethany J. Allen},
 ##     year = {2024},
 ##     journal = {Geosphere},
+##     volume = {20},
+##     number = {6},
+##     pages = {1456--1467},
 ##     doi = {10.1130/GES02815.1},
 ##   }
 ```
