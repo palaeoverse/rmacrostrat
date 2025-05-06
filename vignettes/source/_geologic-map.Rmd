@@ -86,7 +86,7 @@ That looks like what we need! We have a simple features collection consisting of
 # Visualization
 To plot our outcrop map, we'll have to install and load some packages that let us handle and plot spatial data. Let's do that now. 
 
-```{r install-hires, message = FALSE}
+```{r install-hires, message = FALSE, results = FALSE}
 # Install rnaturalearthhires to use maps with state boundaries
 devtools::install_github("ropensci/rnaturalearthhires")
 ```
