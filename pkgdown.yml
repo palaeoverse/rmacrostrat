@@ -1,11 +1,11 @@
 pandoc: 3.1.11
-pkgdown: 2.1.1
+pkgdown: 2.1.2
 pkgdown_sha: ~
 articles:
   geologic-map: geologic-map.html
   geological-completeness: geological-completeness.html
   stratigraphic-column: stratigraphic-column.html
-last_built: 2025-04-08T07:34Z
+last_built: 2025-05-06T12:27Z
 urls:
   reference: https://rmacrostrat.palaeoverse.org/reference
   article: https://rmacrostrat.palaeoverse.org/articles
