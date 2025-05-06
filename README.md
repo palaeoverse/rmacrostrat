@@ -157,7 +157,7 @@ As with any community project, society, or meeting we feel it is important to es
 
 If you use the `rmacrostrat` R package in your work, please cite as:
 
-Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R package for accessing and retrieving data from the Macrostrat geological database. *Geosphere*. doi: [10.1130/GES02815.1](https://doi.org/10.1130/GES02815.1).
+Jones, L.A., Dean, C.D., Gearty, W., and Allen, B.J. 2024. rmacrostrat: An R package for accessing and retrieving data from the Macrostrat geological database. *Geosphere*, v. 20:6, 1456--1467. DOI: [10.1130/GES02815.1](https://doi.org/10.1130/GES02815.1).
 
 <p align="left">
 
