@@ -134,6 +134,7 @@ William Gearty
 Geologic maps:
 \code{\link{def_sources}()},
 \code{\link{get_map_outcrop}()},
-\code{\link{get_map_points}()}
+\code{\link{get_map_points}()},
+\code{\link{get_tiles}()}
 }
 \concept{maps}
