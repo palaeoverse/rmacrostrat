@@ -197,6 +197,7 @@ get_tiles <- function(zoom = 0, x = NULL, y = NULL, combined = TRUE) {
   return(tiles)
 }
 
+# nocov start
 # MODIFIED FROM https://github.com/a-benini/sfhelpers
 #' @importFrom data.table rbindlist
 #' @importFrom sf st_as_sf st_crs st_geometry<- st_geometry_type
@@ -244,3 +245,4 @@ st_rbindlist <- function(l, ..., geometry_name = NULL) {
 
   return(sf)
 }
+# nocov end
