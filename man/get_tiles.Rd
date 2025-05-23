@@ -4,7 +4,7 @@
 \alias{get_tiles}
 \title{Retrieve Macrostrat vectorized tiles}
 \usage{
-get_tiles(zoom = 0, x = NULL, y = NULL, scale = "carto", combined = TRUE)
+get_tiles(zoom = 0, x = NULL, y = NULL, combined = TRUE)
 }
 \arguments{
 \item{zoom}{\code{integer}. The zoom level of the tile(s) to retrieve. The
@@ -17,13 +17,6 @@ combined.}
 \item{y}{\code{integer}. The y index/indices of the tile(s) to retrieve. If
 \code{NULL} (the default), tiles of all y indices will be retrieved and
 combined.}
-
-\item{scale}{\code{character}. The Macrostrat map scale to be used. Options
-are "tiny" (global), "small" (continental), "medium" (regional), "large",
-(local), or "carto" (blended). The "carto" scale (the default) is for
-visualization purposes, and makes many assumptions about the relative
-priority of each map. The layers and scales are seamlessly blended so no
-scale-dependent decisions can or should be made.}
 
 \item{combined}{\code{logical}. Whether all tiles should be combined. If
 \code{TRUE} (the default), the function returns a single list with all
@@ -102,7 +95,11 @@ A function to retrieve map tile data from the
 geologic line features such as faults, anticlines, and moraines, as well as
 geologic map polygons (similar to \code{\link[=get_map_outcrop]{get_map_outcrop()}} but for an entire
 geographic tile). The function retrieves the data in vectorized (\code{sf})
-tile format.
+tile format. Note that the geographic features come from the "carto"
+Macrostrat scale, which is primarily for visualization purposes, and makes
+many assumptions about the relative priority of each source map. The layers
+and scales are seamlessly blended based on the chosen \code{zoom} level, so
+no scale-dependent decisions can or should be made.
 }
 \details{
 The tile indices (\code{x} and \code{y}) are zero-indexed, meaning

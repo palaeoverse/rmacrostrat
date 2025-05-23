@@ -5,7 +5,11 @@
 #'   geologic line features such as faults, anticlines, and moraines, as well as
 #'   geologic map polygons (similar to [get_map_outcrop()] but for an entire
 #'   geographic tile). The function retrieves the data in vectorized (\code{sf})
-#'   tile format.
+#'   tile format. Note that the geographic features come from the "carto"
+#'   Macrostrat scale, which is primarily for visualization purposes, and makes
+#'   many assumptions about the relative priority of each source map. The layers
+#'   and scales are seamlessly blended based on the chosen \code{zoom} level, so
+#'   no scale-dependent decisions can or should be made.
 #'
 #' @details The tile indices (\code{x} and \code{y}) are zero-indexed, meaning
 #'   that the first tile in each dimension is \code{0}. The zoom level is also
@@ -33,12 +37,6 @@
 #' @param y \code{integer}. The y index/indices of the tile(s) to retrieve. If
 #'   \code{NULL} (the default), tiles of all y indices will be retrieved and
 #'   combined.
-#' @param scale \code{character}. The Macrostrat map scale to be used. Options
-#'   are "tiny" (global), "small" (continental), "medium" (regional), "large",
-#'   (local), or "carto" (blended). The "carto" scale (the default) is for
-#'   visualization purposes, and makes many assumptions about the relative
-#'   priority of each map. The layers and scales are seamlessly blended so no
-#'   scale-dependent decisions can or should be made.
 #' @param combined \code{logical}. Whether all tiles should be combined. If
 #'   \code{TRUE} (the default), the function returns a single list with all
 #'   tiles combined (as described below). If \code{FALSE}, the function returns
@@ -126,8 +124,7 @@
 #' @importFrom sf st_union
 #' @importFrom utils txtProgressBar setTxtProgressBar
 #' @family maps
-get_tiles <- function(zoom = 0, x = NULL, y = NULL, scale = "carto",
-                      combined = TRUE) {
+get_tiles <- function(zoom = 0, x = NULL, y = NULL, combined = TRUE) {
   # Error handling
   # Collect input arguments as a list
   args <- as.list(environment())
@@ -136,7 +133,6 @@ get_tiles <- function(zoom = 0, x = NULL, y = NULL, scale = "carto",
     zoom = "integer",
     x = "integer",
     y = "integer",
-    scale = "character",
     combined = "logical"
   )
   check_arguments(x = args, ref = ref)
@@ -170,7 +166,7 @@ get_tiles <- function(zoom = 0, x = NULL, y = NULL, scale = "carto",
     for (j in y) {
       # Check if the tile exists
       url <- paste0(
-        "https://tiles.macrostrat.org/", scale, "/",
+        "https://tiles.macrostrat.org/", "carto", "/",
         zoom, "/", i, "/", j, ".mvt"
       )
       if (http_error(url)) {
