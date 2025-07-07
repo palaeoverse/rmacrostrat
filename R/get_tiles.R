@@ -67,7 +67,7 @@
 #'       \item \code{tile}: An identifier of the form "x/y" for the tile that
 #'         contains the polygon. Not included if \code{combined = FALSE}.
 #'       \item \code{map_id}: The unique identifier for a polygon (see
-#'         [get_map_outcrop[]).
+#'         [get_map_outcrop()].
 #'       \item \code{source_id}: An integer that corresponds to the original map
 #'         sources (see [def_sources()]).
 #'       \item \code{legend_id}: An integer that corresponds to the
