@@ -1,0 +1,22 @@
+test_that("get_tiles works", {
+  invisible(capture.output(ex1 <- get_tiles()))
+  expect_length(ex1, 2)
+  expect_s3_class(ex1$units, "sf")
+  expect_s3_class(ex1$lines, "sf")
+
+  invisible(capture.output(ex2 <- get_tiles(zoom = 1, combined = FALSE)))
+  expect_length(ex2, 4)
+  expect_length(ex2[[1]], 2)
+  expect_s3_class(ex2[[1]]$units, "sf")
+  expect_s3_class(ex2[[1]]$lines, "sf")
+
+  expect_error(get_tiles(zoom = NULL))
+  suppressMessages(expect_error(get_tiles(zoom = "small")))
+  expect_error(get_tiles(zoom = -1))
+  suppressMessages(expect_error(get_tiles(x = "left")))
+  expect_error(get_tiles(x = -1))
+  suppressMessages(expect_error(get_tiles(y = "right")))
+  suppressMessages(expect_error(get_tiles(combined = "yes")))
+  expect_error(get_tiles(zoom = 2, x = 5))
+  expect_error(get_tiles(zoom = 2, y = 5))
+})
