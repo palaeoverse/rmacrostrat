@@ -118,6 +118,7 @@ ex2 <- get_map_outcrop(lat = 43, lng = -89.3, scale = "tiny")
 Geologic maps:
 \code{\link{def_sources}()},
 \code{\link{get_map_legends}()},
-\code{\link{get_map_points}()}
+\code{\link{get_map_points}()},
+\code{\link{get_tiles}()}
 }
 \concept{maps}

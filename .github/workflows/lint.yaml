@@ -25,6 +25,7 @@ jobs:
         with:
           extra-packages: any::lintr, local::.
           needs: lint
+          pak-version: "devel"
 
       - name: Lint
         run: lintr::lint_package(exclusions = list("data-raw"))
