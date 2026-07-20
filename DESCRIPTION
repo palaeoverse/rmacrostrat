@@ -49,6 +49,7 @@ Suggests:
 Additional_repositories: https://ropensci.r-universe.dev
 VignetteBuilder: knitr
 Config/testthat/edition: 3
+Config/Needs/website: palaeoverse/palaeoverse.template
 URL: https://rmacrostrat.palaeoverse.org,
     https://palaeoverse.org,
     https://macrostrat.org,
