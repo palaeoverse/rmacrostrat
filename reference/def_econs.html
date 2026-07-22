@@ -3,7 +3,13 @@
 economic resources in the Macrostrat database. By default, all economic
 definitions are returned."><meta property="og:description" content="A function to retrieve the definitions for one or more
 economic resources in the Macrostrat database. By default, all economic
-definitions are returned."><meta property="og:image" content="https://rmacrostrat.palaeoverse.org/logo.png"></head><body>
+definitions are returned."><meta property="og:image" content="https://rmacrostrat.palaeoverse.org/logo.png"><!-- This is for site analytics. --><!--  Include the domain in the URL reported in goatcounter's dashboard. This is needed to separate subdomains that would point to the same page name, e.g. "palaeoverse.palaeoverse.org/getting-started" and "rphylopic.palaeoverse.org/getting-started"
+https://goatcounter.com/help/domains
+  --><script>
+    window.goatcounter = {
+        path: function (p) { return location.host + p }
+    }
+</script><script data-goatcounter="https://palaeoverse.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -124,10 +130,8 @@ economic resource.</p></li>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># \donttest{</span></span></span>
 <span class="r-in"><span><span class="co"># Return all economic resource definitions</span></span></span>
 <span class="r-in"><span><span class="va">econ_inf</span> <span class="op">&lt;-</span> <span class="fu">def_econs</span><span class="op">(</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in GET_macrostrat(endpoint = "defs/econs", query = args, format = "json"):</span> Content not found. Check your request.</span>
 <span class="r-in"><span><span class="co"># Return only definitions for hydrocarbon resources</span></span></span>
 <span class="r-in"><span><span class="va">econ_inf</span> <span class="op">&lt;-</span> <span class="fu">def_econs</span><span class="op">(</span>econ_type <span class="op">=</span> <span class="st">"hydrocarbon"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in GET_macrostrat(endpoint = "defs/econs", query = args, format = "json"):</span> Content not found. Check your request.</span>
 <span class="r-in"><span><span class="co"># }</span></span></span>
 </code></pre></div>
     </div>

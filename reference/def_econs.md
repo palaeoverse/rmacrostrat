@@ -75,9 +75,7 @@ Geologic features and attributes:
 # \donttest{
 # Return all economic resource definitions
 econ_inf <- def_econs()
-#> Error in GET_macrostrat(endpoint = "defs/econs", query = args, format = "json"): Content not found. Check your request.
 # Return only definitions for hydrocarbon resources
 econ_inf <- def_econs(econ_type = "hydrocarbon")
-#> Error in GET_macrostrat(endpoint = "defs/econs", query = args, format = "json"): Content not found. Check your request.
 # }
 ```

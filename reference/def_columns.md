@@ -100,7 +100,6 @@ ex1 <- def_columns()
 # Return subsets of column definitions
 ex2 <- def_columns(column_group_id = 17)
 ex3 <- def_columns(column_id = c(22,24))
-#> Error in GET_macrostrat(endpoint = "/defs/columns", query = args, format = "json"): Content not found. Check your request.
 ex4 <- def_columns(column_name = "Eastern Kentucky")
 # }
 ```

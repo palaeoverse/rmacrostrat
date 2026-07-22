@@ -109,6 +109,5 @@ External data:
 # \donttest{
 # Return all core information for a specific site
 core_info <- def_drilling_sites(site = "U1547")
-#> Error in GET_macrostrat(endpoint = "defs/drilling_sites", query = args,     format = format): Content not found. Check your request.
 # }
 ```

@@ -98,6 +98,5 @@ Geologic features and attributes:
  ex1 <- def_grain_sizes()
  # Return grain sizes by group
  ex2 <- def_grain_sizes(grain_group = "Gravel")
-#> Error in GET_macrostrat(endpoint = "defs/grainsizes", query = args, format = "json"): Content not found. Check your request.
 # }
 ```

@@ -80,13 +80,9 @@ Geologic features and attributes:
 # \donttest{
 # Return all environment definitions
 ex1 <- def_environments()
-#> Error in GET_macrostrat(endpoint = "defs/environments", query = args,     format = "json"): Content not found. Check your request.
 # Return subsets of environment definitions
 ex2 <- def_environments(environ = "reef")
-#> Error in GET_macrostrat(endpoint = "defs/environments", query = args,     format = "json"): Content not found. Check your request.
 ex3 <- def_environments(environ_type = "carbonate")
-#> Error in GET_macrostrat(endpoint = "defs/environments", query = args,     format = "json"): Content not found. Check your request.
 ex4 <- def_environments(environ_class = "marine")
-#> Error in GET_macrostrat(endpoint = "defs/environments", query = args,     format = "json"): Content not found. Check your request.
 # }
 ```
